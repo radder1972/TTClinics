@@ -66,12 +66,13 @@ html {
 }
 
 
-/* Header: diagonale streep (parallel aan de footer) met oranje accent */
+/* Header: diagonale streep met taps toelopend oranje accent (zoals footer) */
 .header-swoosh-wrap {
     background: #FF6B00;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 4vw));
     margin-bottom: 2rem;
 }
 .header-swoosh {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 0 calc(100% - 4vw - 8px));
+    padding-bottom: calc(4vw + 2.5rem);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), 0 calc(100% - 4vw));
 }
