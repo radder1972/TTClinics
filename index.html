@@ -158,15 +158,18 @@
 
 
     <!-- Twee tafeltennisballetjes met TT Clinics logo links boven Techniek -->
-    <div class="max-w-6xl mx-auto px-4 relative pointer-events-none -mt-16 sm:-mt-28 md:-mt-36 -mb-6 sm:-mb-10 md:-mb-14" style="z-index: 35;">
+    <div class="max-w-6xl mx-auto px-4 relative pointer-events-none -mt-24 sm:-mt-36 md:-mt-44 -mb-2 sm:-mb-4 md:-mb-6" style="z-index: 35;">
         <div class="tt-balls-container inline-block select-none transform scale-80 sm:scale-100 origin-left" title="TT Clinics Tafeltennisballen">
             <div class="relative w-56 h-36 sm:w-64 sm:h-40">
-                <!-- Vaste realistische slagschaduwen onder de stilliggende balletjes -->
-                <div class="absolute bottom-1 left-28 w-28 h-6 bg-black/25 rounded-full blur-sm transform scale-y-75"></div>
-                <div class="absolute bottom-1 left-2 w-34 h-7 bg-black/30 rounded-full blur-sm transform scale-y-75 z-10"></div>
+                <!-- Vaste realistische zachte slagschaduwen onder de stilliggende balletjes -->
+                <div class="tt-shadow-back"></div>
+                <div class="tt-contact-back"></div>
+                
+                <div class="tt-shadow-front z-10"></div>
+                <div class="tt-contact-front z-10"></div>
 
                 <!-- Achterste stilliggend balletje (z-5) -->
-                <div class="tt-sphere absolute left-28 bottom-2 w-24 h-24 sm:w-26 sm:h-26 flex flex-col items-center justify-center p-2.5 z-5 overflow-hidden">
+                <div class="tt-sphere absolute left-28 bottom-2 w-26 h-26 flex flex-col items-center justify-center p-2.5 z-5 overflow-hidden">
                     <div class="flex flex-col items-center justify-center transform -rotate-6 scale-95 opacity-95">
                         <img src="images/logo-ball-print.png" alt="TT Clinics" class="w-11 sm:w-12 h-auto filter contrast-105">
                         <div class="flex gap-0.5 text-[8px] sm:text-[9px] text-tt-black font-black tracking-widest mt-0.5">★★★</div>
@@ -174,7 +177,7 @@
                 </div>
 
                 <!-- Voorste stilliggend balletje (deels overlappend op de voorgrond z-20) -->
-                <div class="tt-sphere absolute left-2 bottom-2 w-28 h-28 sm:w-30 sm:h-30 flex flex-col items-center justify-center p-3 z-20 overflow-hidden">
+                <div class="tt-sphere tt-sphere-front absolute left-2 bottom-2 w-30 h-30 flex flex-col items-center justify-center p-3 z-20 overflow-hidden">
                     <div class="flex flex-col items-center justify-center transform rotate-3 opacity-95">
                         <img src="images/logo-ball-print.png" alt="TT Clinics" class="w-14 sm:w-15 h-auto filter contrast-105">
                         <div class="flex gap-0.5 text-[9px] sm:text-[10px] text-tt-black font-black tracking-widest mt-0.5">★★★</div>
