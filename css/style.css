@@ -11,10 +11,9 @@
 
 /* Hero Section Background (vervang de URL door een echte foto) */
 .hero-bg {
-    background-image: url('https://media.istockphoto.com/id/1222183464/photo/ping-pong-equipment-on-blue-table.jpg?s=1024x1024&w=is&k=20&c=L_qg0o4R-m8b92b6aYq8p_Uu2_e4_T4m-97216-92c=');
-    background-position: center center;
-    /* Optioneel: voeg een subtiel filter toe */
-    filter: grayscale(10%) contrast(110%);
+    background-image: url('../images/hero-photo.jpg');
+    background-position: center 30%;
+    filter: grayscale(40%) contrast(125%) brightness(0.7);
 }
 
 /* Vloeiende scroll voor anker links */
