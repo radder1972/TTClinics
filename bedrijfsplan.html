@@ -18,11 +18,12 @@
                 extend: {
                     colors: {
                         'tt-orange': '#FF6B00',
+                        'tt-orange-dark': '#E05D00',
                         'tt-orange-light': '#FF8A33',
-                        'tt-black': '#1E1E1E',
-                        'tt-dark': '#101014',
-                        'tt-card': '#1C1C22',
-                        'tt-border': '#33333D',
+                        'tt-orange-bg': '#FFF7ED',
+                        'tt-slate': '#0F172A',
+                        'tt-dark': '#1E293B',
+                        'tt-card-border': '#E2E8F0',
                     },
                     fontFamily: {
                         'montserrat': ['Montserrat', 'sans-serif'],
@@ -37,22 +38,22 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: #08080A;
-            color: #ffffff;
+            background: #F1F5F9;
+            color: #0F172A;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* 16:9 Presentatie Aspect Ratio Container */
+        /* 16:9 Presentatie Aspect Ratio Container (Wit Thema) */
         .slide-stage {
             width: 100%;
             max-width: 1150px;
             aspect-ratio: 16 / 9;
             position: relative;
-            background: #101014;
+            background: #FFFFFF;
             border-radius: 16px;
-            border: 1px solid #2B2B36;
-            box-shadow: 0 25px 60px -15px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,107,0,0.15);
+            border: 1px solid #CBD5E1;
+            box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 107, 0, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -66,6 +67,7 @@
             padding: 2.2rem 2.8rem;
             flex-direction: column;
             justify-content: space-between;
+            background: #FFFFFF;
             animation: fadeIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
@@ -84,34 +86,47 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: #FF6B00;
+        }
+
+        .brand-icon-badge {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 0, 0.2));
+        }
+
+        .brand-icon-sm {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
         }
     </style>
 </head>
 <body class="p-4 sm:p-6 flex flex-col items-center justify-between min-h-screen">
 
     <!-- Top Bar Navigation -->
-    <header class="w-full max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 mb-2 border-b border-gray-800/80">
-        <a href="index.html" class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group">
-            <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-tt-orange transition-colors">
+    <header class="w-full max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 mb-2 border-b border-slate-200">
+        <a href="index.html" class="flex items-center gap-3 text-slate-700 hover:text-tt-orange transition-colors group">
+            <div class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 flex items-center justify-center group-hover:bg-tt-orange group-hover:text-white transition-all">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             </div>
             <span class="font-bold text-sm">Terug naar website</span>
         </a>
 
         <div class="flex items-center gap-2">
-            <span class="text-xs uppercase tracking-wider font-semibold text-gray-400">Presentatie</span>
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-tt-orange/20 text-tt-orange border border-tt-orange/30">16:9 Widescreen</span>
+            <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Presentatie</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-tt-orange-dark border border-orange-200">Wit Thema · 16:9</span>
         </div>
 
         <div class="flex items-center gap-3">
-            <a href="TT_Clinics_Bedrijfsplan.pptx" download="TT_Clinics_Bedrijfsplan.pptx" class="flex items-center gap-2 bg-tt-orange hover:bg-orange-600 text-white text-xs sm:text-sm font-bold py-2 px-4 rounded-lg shadow-lg hover:shadow-orange-500/25 transition-all">
+            <a href="TT_Clinics_Bedrijfsplan.pptx" download="TT_Clinics_Bedrijfsplan.pptx" class="flex items-center gap-2 bg-tt-orange hover:bg-tt-orange-dark text-white text-xs sm:text-sm font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-orange-500/25 transition-all">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 <span>Download .PPTX Bestand</span>
             </a>
-            <button id="fullscreenBtn" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white text-xs sm:text-sm font-semibold py-2 px-3 rounded-lg border border-gray-700 transition-all" title="Volledig scherm">
-                <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+            <button id="fullscreenBtn" class="flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold py-2 px-3 rounded-lg border border-slate-300 shadow-sm transition-all" title="Volledig scherm">
+                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
             </button>
         </div>
     </header>
@@ -121,372 +136,403 @@
         
         <div id="slideStage" class="slide-stage">
             
-            <!-- SLIDE 1: COVER -->
-            <div class="slide-pane active" data-slide="1">
-                <div class="flex justify-between items-start">
+            <!-- SLIDE 1: COVER (WIT THEMA) -->
+            <div class="slide-pane active relative overflow-hidden" data-slide="1">
+                <!-- Subtiele warme gloed in hoek -->
+                <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-orange-100/60 blur-3xl pointer-events-none"></div>
+
+                <div class="flex justify-between items-start relative z-10">
                     <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-12 w-auto">
-                    <span class="text-xs uppercase font-bold text-tt-orange tracking-widest bg-tt-orange/15 px-3 py-1 rounded-full border border-tt-orange/30">Bedrijfsplan 2026 - 2028</span>
+                    <span class="text-xs uppercase font-bold text-tt-orange-dark tracking-widest bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200">★ Bedrijfsplan 2026 - 2028</span>
                 </div>
-                <div class="my-auto py-4">
-                    <h1 class="font-montserrat text-4xl sm:text-5xl font-black italic tracking-tight text-white mb-3">
+
+                <div class="my-auto py-4 relative z-10">
+                    <h1 class="font-montserrat text-4xl sm:text-5xl font-black italic tracking-tight text-slate-900 mb-3">
                         DYNAMIEK &amp; <span class="text-tt-orange">SNELHEID</span>
                     </h1>
                     <div class="w-48 h-1.5 bg-tt-orange rounded-full mb-4"></div>
-                    <p class="text-xl sm:text-2xl font-bold text-gray-200 mb-2">Het sportieve bedrijfsuitje &amp; vitaliteit op de werkvloer</p>
-                    <p class="text-sm text-gray-400 max-w-xl">Laagdrempelige masterclasses, energieke teamcompetities en vitaliteitsprogramma's voor bedrijven door heel Nederland.</p>
+                    <p class="text-xl sm:text-2xl font-bold text-slate-800 mb-2">Het sportieve bedrijfsuitje &amp; vitaliteit op de werkvloer</p>
+                    <p class="text-sm text-slate-600 max-w-xl">Laagdrempelige masterclasses, energieke teamcompetities en vitaliteitsprogramma's voor bedrijven door heel Nederland.</p>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-400 border-t border-gray-800/80 pt-3">
-                    <div>Oprichter &amp; Trainer: <strong class="text-white">Edward Westhoff</strong></div>
-                    <div class="text-tt-orange font-mono font-bold">www.ttclinics.nl</div>
+
+                <div class="flex justify-between items-center text-xs text-slate-500 border-t border-slate-200 pt-3 relative z-10">
+                    <div>Oprichter &amp; Hoofdtrainer: <strong class="text-slate-800">Edward Westhoff</strong></div>
+                    <div class="flex items-center gap-3">
+                        <img src="images/icon-trophy.png" alt="Trofee" class="w-6 h-6 object-contain">
+                        <span class="text-tt-orange-dark font-mono font-bold">www.ttclinics.nl</span>
+                    </div>
                 </div>
             </div>
 
             <!-- SLIDE 2: EXECUTIVE SUMMARY -->
             <div class="slide-pane" data-slide="2">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Managementsamenvatting</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Executive Summary: De Kracht van TT Clinics</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Managementsamenvatting</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Executive Summary: De Kracht van TT Clinics</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">HET CONCEPT</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Energieke tafeltennisclinics en bedrijfsuitjes voor MKB en corporate teams. Binnen 5 minuten ontstaat er plezier, gezonde rivaliteit en maximale teamdynamiek.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
+                        <img src="images/icon-trophy.png" alt="Trofee" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">HET CONCEPT</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed pr-8">Energieke tafeltennisclinics en bedrijfsuitjes voor MKB en corporate teams. Binnen 5 minuten ontstaat er plezier, gezonde rivaliteit en maximale teamdynamiek.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">DE MISSIE</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Teams verbinden, beeldschermmoeheid doorbreken en vitaliteit bevorderen met 'schaken op topsnelheid'. Fysiek én mentaal de ultieme breinfitness.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 relative">
+                        <img src="images/icon-heartbeat.png" alt="Vitaliteit" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">DE MISSIE</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed pr-8">Teams verbinden, beeldschermmoeheid doorbreken en vitaliteit bevorderen met 'schaken op topsnelheid'. Fysiek én mentaal de ultieme breinfitness.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">DE OORSPRONG</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Wat begon als een gezellig tafeltennisclubje op de woensdagmorgen, is uitgegroeid tot een professionele partner voor bedrijfsvitaliteit en teambuilding.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
+                        <img src="images/icon-location.png" alt="Locatie" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">DE OORSPRONG</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed pr-8">Wat begon als een bescheiden clubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit en teambuilding.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">DE AMBITIE</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Binnen 3 jaar uitgroeien tot de toonaangevende vitaliteitspartner in Nederland voor actieve bedrijfsevenementen met 100+ clinics per jaar.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 relative">
+                        <img src="images/icon-chart.png" alt="Groei" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">DE AMBITIE</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed pr-8">Binnen 3 jaar uitgroeien tot de toonaangevende vitaliteitspartner in Nederland voor actieve bedrijfsevenementen met 100+ clinics per jaar.</p>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 2 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 3: PROBLEEM & MARKTKANS -->
             <div class="slide-pane" data-slide="3">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Marktanalyse</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Het Probleem op Kantoor &amp; Onze Marktkans</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Marktanalyse</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Het Probleem op Kantoor &amp; Onze Marktkans</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-5 my-auto py-2">
-                    <div class="bg-red-950/20 p-4 rounded-xl border border-red-900/40 border-t-2 border-t-red-500">
-                        <h3 class="font-montserrat text-sm font-bold text-red-400 mb-2">HET PROBLEEM OP DE WERKVLOER</h3>
-                        <ul class="space-y-1.5 text-xs text-gray-300">
-                            <li>• <strong>Schermmoeheid &amp; Zitgedrag:</strong> Medewerkers zitten 8-10u stil; verzuim stijgt.</li>
-                            <li>• <strong>Vervreemding door Hybride:</strong> Minder spontane verbinding tussen collega's.</li>
-                            <li>• <strong>Saaie Bedrijfsuitjes:</strong> Standaard borrels zorgen zelden voor blijvende teamenergie.</li>
-                            <li>• <strong>Uitsluiting bij Sport:</strong> Karten of padel sluit vaak collega's uit door conditie.</li>
+                    <div class="bg-red-50/60 p-4 rounded-xl border border-red-200 border-t-4 border-t-red-500 relative">
+                        <img src="images/icon-shield.png" alt="Schild" class="brand-icon-sm absolute top-3 right-3 opacity-80">
+                        <h3 class="font-montserrat text-sm font-bold text-red-700 mb-2">HET PROBLEEM OP DE WERKVLOER</h3>
+                        <ul class="space-y-1.5 text-xs text-slate-700">
+                            <li>✕ <strong>Schermmoeheid &amp; Zitgedrag:</strong> Medewerkers zitten 8-10u stil; energie daalt.</li>
+                            <li>✕ <strong>Vervreemding door Hybride:</strong> Minder spontane verbinding tussen collega's.</li>
+                            <li>✕ <strong>Saaie Bedrijfsuitjes:</strong> Standaard borrels zorgen zelden voor blijvende energie.</li>
+                            <li>✕ <strong>Uitsluiting bij Sport:</strong> Padel of zeskamp sluit collega's uit op conditie.</li>
                         </ul>
                     </div>
-                    <div class="bg-green-950/20 p-4 rounded-xl border border-green-900/40 border-t-2 border-t-tt-orange">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-2">DE KANS VOOR TT CLINICS</h3>
-                        <ul class="space-y-1.5 text-xs text-gray-300">
+                    <div class="bg-orange-50/60 p-4 rounded-xl border border-orange-200 border-t-4 border-t-tt-orange relative">
+                        <img src="images/icon-trophy.png" alt="Kans" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-2">DE KANS VOOR TT CLINICS</h3>
+                        <ul class="space-y-1.5 text-xs text-slate-700">
                             <li>✓ <strong>Groeiend WKR-Budget:</strong> Werkgevers investeren fors in preventieve vitaliteit.</li>
-                            <li>✓ <strong>Tafeltennis Herwaardering:</strong> Populair spel, maar zelden gestructureerd benut.</li>
+                            <li>✓ <strong>Tafeltennis Herwaardering:</strong> Populair spel, nu professioneel ingezet.</li>
                             <li>✓ <strong>Schaken op Topsnelheid:</strong> Bewezen reflexen, focus en mentale ontlading.</li>
-                            <li>✓ <strong>100% Flexibel Model:</strong> Op eigen kantoorlocatie óf professionele sporthal.</li>
+                            <li>✓ <strong>100% Flexibel Model:</strong> Op eigen kantoorlocatie óf fijne sportzaal incl. borrel.</li>
                         </ul>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 3 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 4: DIENSTENAANBOD & PAKKETTEN -->
             <div class="slide-pane" data-slide="4">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Product &amp; Propositie</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Het Dienstenaanbod: Drie Krachtige Formules</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Product &amp; Propositie</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Het Dienstenaanbod: Drie Krachtige Formules</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-3 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border flex flex-col justify-between">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between relative">
+                        <img src="images/icon-location.png" alt="Locatie" class="brand-icon-sm absolute top-3 right-3">
                         <div>
-                            <div class="font-montserrat text-xs font-bold text-gray-300 mb-1">TEAM KICK-OFF</div>
-                            <div class="text-2xl font-black text-white">€395</div>
-                            <div class="text-[10px] text-gray-400 mb-3">1,5 uur · Tot 12 personen</div>
-                            <ul class="space-y-1 text-[11px] text-gray-300">
-                                <li>• Masterclass basistechniek &amp; spin</li>
-                                <li>• King of the Court toernooitje</li>
-                                <li>• Professioneel materiaal inbegrepen</li>
-                                <li>• Op eigen kantoor of sporthal</li>
+                            <div class="font-montserrat text-xs font-bold text-slate-600 mb-1">TEAM KICK-OFF</div>
+                            <div class="text-2xl font-black text-slate-900">€395</div>
+                            <div class="text-[10px] text-slate-500 mb-3">1,5 uur · Tot 12 personen</div>
+                            <ul class="space-y-1 text-[11px] text-slate-600">
+                                <li>✓ Masterclass basistechniek &amp; spin</li>
+                                <li>✓ King of the Court toernooitje</li>
+                                <li>✓ Professioneel materiaal inbegrepen</li>
+                                <li>✓ Op kantoor of sportlocatie</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="bg-gradient-to-b from-orange-950/30 to-tt-card p-4 rounded-xl border-2 border-tt-orange flex flex-col justify-between relative">
+                    <div class="bg-orange-50/70 p-4 rounded-xl border-2 border-tt-orange shadow-md flex flex-col justify-between relative">
                         <div class="absolute -top-2.5 right-3 bg-tt-orange text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Flagship</div>
+                        <img src="images/icon-trophy.png" alt="Trofee" class="brand-icon-sm absolute top-3 right-3">
                         <div>
-                            <div class="font-montserrat text-xs font-bold text-tt-orange mb-1">COMPANY BATTLE</div>
-                            <div class="text-2xl font-black text-white">€745</div>
-                            <div class="text-[10px] text-gray-400 mb-3">2,5 uur · Tot 12 personen</div>
-                            <ul class="space-y-1 text-[11px] text-gray-300">
-                                <li>• Complete clinic + trickshots</li>
-                                <li>• Volledig verzorgd toernooi</li>
-                                <li>• Wisseltrofee &amp; medailles</li>
-                                <li>• Optioneel: borrel arrangement</li>
+                            <div class="font-montserrat text-xs font-bold text-tt-orange-dark mb-1">COMPANY BATTLE</div>
+                            <div class="text-2xl font-black text-tt-orange-dark">€745</div>
+                            <div class="text-[10px] text-slate-500 mb-3">2,5 uur · Tot 12 personen</div>
+                            <ul class="space-y-1 text-[11px] text-slate-700">
+                                <li>✓ Complete clinic + trickshots Edward</li>
+                                <li>✓ Volledig verzorgd toernooi</li>
+                                <li>✓ Officiële wisseltrofee &amp; medailles</li>
+                                <li>✓ Optioneel: borrel arrangement</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border flex flex-col justify-between">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between relative">
+                        <img src="images/icon-heartbeat.png" alt="Vitaliteit" class="brand-icon-sm absolute top-3 right-3">
                         <div>
-                            <div class="font-montserrat text-xs font-bold text-gray-300 mb-1">VITALITEIT &amp; MAATWERK</div>
-                            <div class="text-2xl font-black text-white">Op Maat</div>
-                            <div class="text-[10px] text-gray-400 mb-3">12+ pers. / Meerdaags</div>
-                            <ul class="space-y-1 text-[11px] text-gray-300">
-                                <li>• Vitaliteitsweken op kantoor</li>
-                                <li>• Meerdere trainers &amp; tafels</li>
-                                <li>• Jaarlange bedrijfscompetitie</li>
-                                <li>• Volledig op maat gemaakt</li>
+                            <div class="font-montserrat text-xs font-bold text-slate-600 mb-1">VITALITEIT &amp; MAATWERK</div>
+                            <div class="text-2xl font-black text-slate-900">Op Maat</div>
+                            <div class="text-[10px] text-slate-500 mb-3">12+ pers. / Meerdaags</div>
+                            <ul class="space-y-1 text-[11px] text-slate-600">
+                                <li>✓ Vitaliteitsweken op de werkvloer</li>
+                                <li>✓ Meerdere trainers &amp; tafels</li>
+                                <li>✓ Jaarlange bedrijfscompetitie</li>
+                                <li>✓ Volledig op maat gemaakt</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 4 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 5: WAAROM TAFELTENNIS? -->
             <div class="slide-pane" data-slide="5">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">De Psychologie &amp; Sport</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Waarom Tafeltennis? De Ultieme Teamformule</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">De Psychologie &amp; Sport</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Waarom Tafeltennis? De Ultieme Teamformule</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <div class="text-xl mb-1">🏓</div>
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">100% INCLUSIEF &amp; GELIJKWAARDIG</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Geen fysiek overwicht vereist: stagiair en directielid staan direct op gelijk niveau tegenover elkaar aan tafel.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-3.5 items-start">
+                        <img src="images/icon-location.png" alt="Inclusief" class="brand-icon-sm shrink-0 mt-0.5">
+                        <div>
+                            <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">100% INCLUSIEF &amp; GELIJKWAARDIG</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Geen fysiek overwicht vereist: stagiair en directielid staan direct op gelijk niveau tegenover elkaar aan tafel.</p>
+                        </div>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <div class="text-xl mb-1">⚡</div>
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">SCHAKEN OP TOPSNELHEID</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Activeert reflexen, hand-oogcoördinatie en breinplasticiteit. De ideale doorbreking van langdurig beeldschermwerk.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-3.5 items-start">
+                        <img src="images/icon-heartbeat.png" alt="Brein" class="brand-icon-sm shrink-0 mt-0.5">
+                        <div>
+                            <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">SCHAKEN OP TOPSNELHEID</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Activeert reflexen, hand-oogcoördinatie en breinplasticiteit. De ideale doorbreking van langdurig beeldschermwerk.</p>
+                        </div>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <div class="text-xl mb-1">🏆</div>
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">DIRECT LACHEN &amp; RIVALITEIT</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Binnen 2 minuten ontstaan er rally's, spectaculaire punten en hilarische missers. Gegarandeerd positieve teamenergie.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-3.5 items-start">
+                        <img src="images/icon-trophy.png" alt="Plezier" class="brand-icon-sm shrink-0 mt-0.5">
+                        <div>
+                            <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">DIRECT LACHEN &amp; RIVALITEIT</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Binnen 2 minuten ontstaan er spannende rally's, spectaculaire punten en hilarische missers. Gegarandeerd energie.</p>
+                        </div>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <div class="text-xl mb-1">🛡️</div>
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">VOLLEDIG ZONDER BLESSURES</h3>
-                        <p class="text-xs text-gray-300 leading-relaxed">Veilige binnensport zonder fysiek contact. Iedereen kan zorgeloos meedoen in normale vrijetijdskleding of sportoutfit.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-3.5 items-start">
+                        <img src="images/icon-shield.png" alt="Veiligheid" class="brand-icon-sm shrink-0 mt-0.5">
+                        <div>
+                            <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">VOLLEDIG ZONDER BLESSURES</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Veilige binnensport zonder fysiek contact. Iedereen kan zorgeloos meedoen in normale vrijetijdskleding of sportoutfit.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 5 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 6: DOELGROEPEN -->
             <div class="slide-pane" data-slide="6">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Doelgroepsegmentatie</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Voor Wie? Vier Primaire Klantsegmenten</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Doelgroepsegmentatie</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Voor Wie? Vier Primaire Klantsegmenten</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">1. MKB &amp; TECH/IT BEDRIJVEN</h3>
-                        <p class="text-[11px] text-gray-400 mb-2">10 - 75 medewerkers · Hoge schermtijd</p>
-                        <p class="text-xs text-gray-300">Jong, informeel team dat een actieve vrijdagmiddag of kwartaalafsluiting zoekt. Vaak al een tafeltennistafel aanwezig op kantoor.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">1. MKB &amp; TECH/IT BEDRIJVEN</h3>
+                        <p class="text-[11px] text-slate-400 mb-2">10 - 75 medewerkers · Hoge schermtijd</p>
+                        <p class="text-xs text-slate-600">Jong, informeel team dat een actieve vrijdagmiddag of kwartaalafsluiting zoekt. Vaak al een tafel aanwezig op kantoor.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">2. CORPORATES &amp; ZORG/FINANCIEEL</h3>
-                        <p class="text-[11px] text-gray-400 mb-2">Afdelingen van 12 - 50 personen</p>
-                        <p class="text-xs text-gray-300">Focus op vitaliteitsweken en duurzame inzetbaarheid. WKR-budget beschikbaar voor teambuilding. Boeken 'Company Battle' of maatwerk.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">2. CORPORATES &amp; ZORG/FINANCIEEL</h3>
+                        <p class="text-[11px] text-slate-400 mb-2">Afdelingen van 12 - 50 personen</p>
+                        <p class="text-xs text-slate-600">Focus op vitaliteitsweken en duurzame inzetbaarheid. WKR-budget beschikbaar voor teambuilding.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">3. EVENEMENTENBUREAUS &amp; LOCATIES</h3>
-                        <p class="text-[11px] text-gray-400 mb-2">B2B Partners &amp; Heidagen</p>
-                        <p class="text-xs text-gray-300">Zoeken een originele, interactieve break voor heidagen. TT Clinics als vaste sportieve partner met terugkerende boekingen.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">3. EVENEMENTENBUREAUS &amp; LOCATIES</h3>
+                        <p class="text-[11px] text-slate-400 mb-2">B2B Partners &amp; Heidagen</p>
+                        <p class="text-xs text-slate-600">Zoeken een originele, interactieve break voor heidagen. TT Clinics als vaste sportieve partner.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">4. ONDERNEMERSCLUBS &amp; NETWERKEN</h3>
-                        <p class="text-[11px] text-gray-400 mb-2">20 - 60 ondernemers</p>
-                        <p class="text-xs text-gray-300">Informele netwerkavond met toernooielement. Lachen en netwerken in één dynamisch format met directe leadgeneratie.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">4. ONDERNEMERSCLUBS &amp; NETWERKEN</h3>
+                        <p class="text-[11px] text-slate-400 mb-2">20 - 60 ondernemers</p>
+                        <p class="text-xs text-slate-600">Informele netwerkavond met toernooielement. Lachen en netwerken in één dynamisch format met leads.</p>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 6 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 7: VERDIENMODEL -->
             <div class="slide-pane" data-slide="7">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Financieel Model</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Verdienmodel: Drie Gezonde Inkomstenstromen</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Financieel Model</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Verdienmodel: Drie Gezonde Inkomstenstromen</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-3 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <h3 class="font-montserrat text-xs font-bold text-tt-orange mb-1">1. DIRECTE CLINIC OMZET</h3>
-                        <p class="text-[10px] text-gray-400 mb-3">De Kernmotor</p>
-                        <ul class="space-y-1.5 text-xs text-gray-300">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
+                        <img src="images/icon-trophy.png" alt="Omzet" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-xs font-bold text-tt-orange-dark mb-1">1. DIRECTE CLINIC OMZET</h3>
+                        <p class="text-[10px] text-slate-500 mb-3">De Kernmotor</p>
+                        <ul class="space-y-1.5 text-xs text-slate-600">
                             <li>• Vaste pakketprijzen (€395 - €745)</li>
-                            <li>• <strong>Hoge brutomarge (80-85%):</strong> materiaal is al aanwezig</li>
-                            <li>• Extra trainer bij >12 pers. (+€250-€350)</li>
+                            <li>• <strong>Hoge brutomarge (80-85%):</strong> materiaal is reeds aanwezig</li>
+                            <li>• Extra trainer bij &gt;12 pers. (+€250-€350)</li>
                         </ul>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-white">
-                        <h3 class="font-montserrat text-xs font-bold text-white mb-1">2. UPSELLS &amp; ARRANGEMENTEN</h3>
-                        <p class="text-[10px] text-gray-400 mb-3">Hogere Orderwaarde</p>
-                        <ul class="space-y-1.5 text-xs text-gray-300">
-                            <li>• Borrel &amp; bittergarnituur arrangement (+€25-€45 p.p.)</li>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 relative">
+                        <img src="images/icon-location.png" alt="Upsells" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-xs font-bold text-slate-800 mb-1">2. UPSELLS &amp; ARRANGEMENTEN</h3>
+                        <p class="text-[10px] text-slate-500 mb-3">Hogere Orderwaarde</p>
+                        <ul class="space-y-1.5 text-xs text-slate-600">
+                            <li>• Borrel &amp; bittergarnituur (+€25-€45 p.p.)</li>
                             <li>• Batjes met bedrijfslogo bedrukt</li>
                             <li>• Professionele aftermovie &amp; fotoreportage</li>
                         </ul>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border border-t-2 border-t-tt-orange">
-                        <h3 class="font-montserrat text-xs font-bold text-tt-orange mb-1">3. BEDRIJFSCOMPETITIES</h3>
-                        <p class="text-[10px] text-gray-400 mb-3">Terugkerende Omzet</p>
-                        <ul class="space-y-1.5 text-xs text-gray-300">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
+                        <img src="images/icon-chart.png" alt="Competitie" class="brand-icon-sm absolute top-3 right-3">
+                        <h3 class="font-montserrat text-xs font-bold text-tt-orange-dark mb-1">3. BEDRIJFSCOMPETITIES</h3>
+                        <p class="text-[10px] text-slate-500 mb-3">Terugkerende Omzet</p>
+                        <ul class="space-y-1.5 text-xs text-slate-600">
                             <li>• 4 kwartaalcompetities per jaar</li>
                             <li>• Maandelijkse vitaliteitsclinic</li>
                             <li>• Voorspelbare cashflow &amp; vaste accounts</li>
                         </ul>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 7 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 8: MARKETING & GO-TO-MARKET -->
             <div class="slide-pane" data-slide="8">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Commerciële Strategie</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Marketing &amp; Go-To-Market: Hoe Werven We Klanten?</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Commerciële Strategie</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Marketing &amp; Go-To-Market: Hoe Werven We Klanten?</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">WEBSITE &amp; B2B SEO</h3>
-                        <p class="text-xs text-gray-300">Sterke positie op 'bedrijfsuitje tafeltennis', 'sportieve teamclinic'. Snelle online offerte-aanvraag en overtuigende toernooivideo's.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">WEBSITE &amp; B2B SEO</h3>
+                        <p class="text-xs text-slate-600">Sterke positie op 'bedrijfsuitje tafeltennis', 'sportieve teamclinic'. Snelle online offerte-aanvraag en video's.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">LINKEDIN CONTENT MARKETING</h3>
-                        <p class="text-xs text-gray-300">Korte video-reels van clinics: sfeer, tricks en juichende collega's. Gerichte outreach naar HR- en Office Managers.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">LINKEDIN CONTENT MARKETING</h3>
+                        <p class="text-xs text-slate-600">Korte video-reels van clinics: actie, tricks en juichende collega's. Gerichte outreach naar HR- en Office Managers.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">VLIEGWIEL EFFECT</h3>
-                        <p class="text-xs text-gray-300">Elke deelnemer aan een clinic is een potentiële ambassadeur die TT Clinics meeneemt naar andere afdelingen of bedrijven.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">VLIEGWIEL EFFECT</h3>
+                        <p class="text-xs text-slate-600">Elke deelnemer aan een clinic is een potentiële ambassadeur die TT Clinics meeneemt naar andere afdelingen of bedrijven.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-white mb-1">PARTNERSHIPS MET LOCATIES</h3>
-                        <p class="text-xs text-gray-300">Samenwerking met tafeltennisverenigingen, sportcentra en vergaderlocaties voor complete dagarrangementen.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-slate-800 mb-1">PARTNERSHIPS MET LOCATIES</h3>
+                        <p class="text-xs text-slate-600">Samenwerking met tafeltennisverenigingen, sportcentra en vergaderlocaties voor complete dagarrangementen.</p>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 8 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 9: OPERATIE & LOGISTIEK -->
             <div class="slide-pane" data-slide="9">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Operatie &amp; Uitvoering</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Operationele Uitrusting &amp; Schaalbare Logistiek</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Operatie &amp; Uitvoering</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Operationele Uitrusting &amp; Schaalbare Logistiek</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">PROFESSIONELE UITRUSTING</h3>
-                        <p class="text-xs text-gray-300">Mobiele ITTF-wedstrijdtafels, professionele rubbers voor controle &amp; spin, 3-sterren ballen en gepersonaliseerde wisseltrofeeën.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">PROFESSIONELE UITRUSTING</h3>
+                        <p class="text-xs text-slate-600">Mobiele ITTF-wedstrijdtafels, professionele rubbers voor controle &amp; spin, 3-sterren ballen en wisseltrofeeën.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">LOCATIE FLEXIBILITEIT</h3>
-                        <p class="text-xs text-gray-300">Op kantoor: wij bouwen elke kantine in 20 minuten om tot toernooiarena. Of op sportlocatie inclusief kleedkamers en afsluitende borrel.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">LOCATIE FLEXIBILITEIT</h3>
+                        <p class="text-xs text-slate-600">Op kantoor: wij bouwen elke kantine in 20 minuten om tot toernooiarena. Of op sportlocatie incl. horeca/borrel.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">SCHAALBAAR TRAINERSMODEL</h3>
-                        <p class="text-xs text-gray-300">Edward Westhoff als hoofdtrainer en vast gezicht, aangevuld met een pool van ervaren competitiespelers voor grotere groepen.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">SCHAALBAAR TRAINERSMODEL</h3>
+                        <p class="text-xs text-slate-600">Edward Westhoff als hoofdtrainer en vast gezicht, aangevuld met een pool van ervaren competitiespelers voor grote groepen.</p>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <h3 class="font-montserrat text-sm font-bold text-tt-orange mb-1">COMPLETE ONTZORGING</h3>
-                        <p class="text-xs text-gray-300">Van offerte binnen 24 uur, complete toernooileiding met muziek en microfoon, tot professionele prijsuitreiking en nazorg.</p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-montserrat text-sm font-bold text-tt-orange-dark mb-1">COMPLETE ONTZORGING</h3>
+                        <p class="text-xs text-slate-600">Van offerte binnen 24 uur, toernooileiding met muziek, tot professionele prijsuitreiking en foto-nazorg.</p>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 9 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 10: FINANCIËLE ROADMAP -->
             <div class="slide-pane" data-slide="10">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Groeipad &amp; Doelen</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Financiële Roadmap &amp; Mijlpalen 2026 - 2028</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Groeipad &amp; Doelen</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Financiële Roadmap &amp; Mijlpalen 2026 - 2028</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-3 gap-4 my-auto py-2">
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <div class="text-xs font-bold text-tt-orange mb-1">FASE 1: 2026</div>
-                        <div class="font-montserrat text-sm font-bold text-white">Fundament &amp; Tractie</div>
-                        <div class="text-lg font-black text-tt-orange mt-1 mb-2">€25k - €35k</div>
-                        <ul class="space-y-1 text-[11px] text-gray-300">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative">
+                        <img src="images/icon-location.png" alt="Fase 1" class="brand-icon-sm absolute top-3 right-3">
+                        <div class="text-xs font-bold text-slate-500 mb-1">FASE 1: 2026</div>
+                        <div class="font-montserrat text-sm font-bold text-slate-800">Fundament &amp; Tractie</div>
+                        <div class="text-lg font-black text-tt-orange-dark mt-1 mb-2">€25k - €35k</div>
+                        <ul class="space-y-1 text-[11px] text-slate-600">
                             <li>✓ 40 - 50 clinics verzorgen</li>
                             <li>✓ Eerste 5 vaste accounts</li>
                             <li>✓ Focus op Randstad / Midden-NL</li>
                             <li>✓ Klantscore &gt; 9.0</li>
                         </ul>
                     </div>
-                    <div class="bg-gradient-to-b from-orange-950/30 to-tt-card p-4 rounded-xl border-2 border-tt-orange">
-                        <div class="text-xs font-bold text-tt-orange mb-1">FASE 2: 2027</div>
-                        <div class="font-montserrat text-sm font-bold text-white">Opschaling &amp; Abonnement</div>
+                    <div class="bg-orange-50/70 p-4 rounded-xl border-2 border-tt-orange shadow-md relative">
+                        <img src="images/icon-chart.png" alt="Fase 2" class="brand-icon-sm absolute top-3 right-3">
+                        <div class="text-xs font-bold text-tt-orange-dark mb-1">FASE 2: 2027</div>
+                        <div class="font-montserrat text-sm font-bold text-slate-900">Opschaling &amp; Abonnement</div>
                         <div class="text-lg font-black text-tt-orange mt-1 mb-2">€60k - €75k</div>
-                        <ul class="space-y-1 text-[11px] text-gray-300">
+                        <ul class="space-y-1 text-[11px] text-slate-700">
                             <li>✓ 80 - 100 clinics per jaar</li>
                             <li>✓ Terugkerende competities</li>
                             <li>✓ 2e trainer voor piekdagen</li>
                             <li>✓ 3 landelijke bureaupartners</li>
                         </ul>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border">
-                        <div class="text-xs font-bold text-tt-orange mb-1">FASE 3: 2028</div>
-                        <div class="font-montserrat text-sm font-bold text-white">Landelijke Autoriteit</div>
-                        <div class="text-lg font-black text-tt-orange mt-1 mb-2">€100.000+</div>
-                        <ul class="space-y-1 text-[11px] text-gray-300">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative">
+                        <img src="images/icon-trophy.png" alt="Fase 3" class="brand-icon-sm absolute top-3 right-3">
+                        <div class="text-xs font-bold text-slate-500 mb-1">FASE 3: 2028</div>
+                        <div class="font-montserrat text-sm font-bold text-slate-800">Landelijke Autoriteit</div>
+                        <div class="text-lg font-black text-tt-orange-dark mt-1 mb-2">€100.000+</div>
+                        <ul class="space-y-1 text-[11px] text-slate-600">
                             <li>✓ 150+ clinics per jaar</li>
                             <li>✓ 20+ vaste corporate accounts</li>
                             <li>✓ Landelijke trainerspool</li>
@@ -494,45 +540,45 @@
                         </ul>
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 10 / 11</span>
                 </div>
             </div>
 
             <!-- SLIDE 11: CONCLUSIE & CONTACT -->
             <div class="slide-pane" data-slide="11">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-3">
+                <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
-                        <div class="text-xs uppercase font-bold text-tt-orange tracking-wider">Conclusie &amp; Samenwerking</div>
-                        <h2 class="font-montserrat text-2xl font-black italic text-white">Klaar Voor Meer Energie Op De Werkvloer?</h2>
+                        <div class="text-xs uppercase font-bold text-tt-orange-dark tracking-wider">Conclusie &amp; Samenwerking</div>
+                        <h2 class="font-montserrat text-2xl font-black italic text-slate-900">Klaar Voor Meer Energie Op De Werkvloer?</h2>
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-8 w-auto">
                 </div>
                 <div class="grid grid-cols-3 gap-5 my-auto py-2">
-                    <div class="col-span-2 bg-tt-card p-4 rounded-xl border border-tt-border flex gap-4 items-center">
-                        <img src="images/hero-photo.jpg" alt="Edward Westhoff" class="w-24 h-24 rounded-xl object-cover shrink-0 border border-tt-orange">
+                    <div class="col-span-2 bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-center">
+                        <img src="images/hero-photo.jpg" alt="Edward Westhoff" class="w-24 h-24 rounded-xl object-cover shrink-0 border border-orange-200 shadow">
                         <div>
-                            <h3 class="font-montserrat text-base font-black italic text-white">EDWARD WESTHOFF</h3>
-                            <div class="text-xs font-bold text-tt-orange mb-2">Oprichter &amp; Hoofdtrainer · TT Clinics</div>
-                            <p class="text-xs text-gray-300 italic mb-2 leading-relaxed">"TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden clubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit."</p>
-                            <div class="text-[10px] text-gray-400 font-semibold">★ 15+ Jaren Ervaring  ·  ★ 500+ Spelers Gecoacht</div>
+                            <h3 class="font-montserrat text-base font-black italic text-slate-900">EDWARD WESTHOFF</h3>
+                            <div class="text-xs font-bold text-tt-orange-dark mb-2">Oprichter &amp; Hoofdtrainer · TT Clinics</div>
+                            <p class="text-xs text-slate-600 italic mb-2 leading-relaxed">"TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden clubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit."</p>
+                            <div class="text-[10px] text-slate-500 font-semibold">★ 15+ Jaren Ervaring  ·  ★ 500+ Spelers Gecoacht</div>
                         </div>
                     </div>
-                    <div class="bg-tt-card p-4 rounded-xl border border-tt-border flex flex-col justify-between items-center text-center">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between items-center text-center">
                         <div>
-                            <div class="font-montserrat text-xs font-bold text-white mb-2">DIRECT CONTACT</div>
-                            <div class="text-xs text-gray-300 space-y-1 mb-2">
+                            <div class="font-montserrat text-xs font-bold text-slate-800 mb-2">DIRECT CONTACT</div>
+                            <div class="text-xs text-slate-600 space-y-1 mb-2">
                                 <div>✉️ info@ttclinics.nl</div>
                                 <div>📞 06 - 12345678</div>
                                 <div>🌐 www.ttclinics.nl</div>
                             </div>
                         </div>
-                        <img src="images/qr-ttclinics.png" alt="Scan QR code" class="w-16 h-16 bg-white p-1 rounded-lg">
+                        <img src="images/qr-ttclinics.png" alt="Scan QR code" class="w-16 h-16 bg-white p-1 rounded-lg border border-slate-200 shadow-sm">
                     </div>
                 </div>
-                <div class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-800">
-                    <span>TT Clinics · Bedrijfsplan 2026-2028</span>
+                <div class="flex justify-between items-center text-xs text-slate-400 pt-2 border-t border-slate-200">
+                    <span>TT Clinics · Bedrijfsplan 2026-2028 · Edward Westhoff</span>
                     <span>Slide 11 / 11</span>
                 </div>
             </div>
@@ -543,19 +589,19 @@
 
         <!-- Player Controls -->
         <div class="flex items-center justify-between w-full max-w-4xl mt-5 px-4">
-            <button id="prevBtn" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white text-xs sm:text-sm font-semibold py-2 px-4 rounded-lg border border-gray-700 transition-all">
+            <button id="prevBtn" class="flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold py-2 px-4 rounded-lg border border-slate-300 shadow-sm transition-all">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7m0 0l7-7"></path></svg>
                 <span>Vorige Slide</span>
             </button>
 
             <!-- Indicator Dots & Counter -->
             <div class="flex items-center gap-2">
-                <span id="slideCounter" class="text-xs font-bold text-gray-300 font-mono">1 / 11</span>
-                <span class="text-xs text-gray-500">·</span>
-                <span class="text-xs text-gray-500 hidden sm:inline">(Gebruik pijltoetsen ← / → op toetsenbord)</span>
+                <span id="slideCounter" class="text-xs font-bold text-slate-700 font-mono">1 / 11</span>
+                <span class="text-xs text-slate-400">·</span>
+                <span class="text-xs text-slate-500 hidden sm:inline">(Gebruik pijltoetsen ← / → op toetsenbord)</span>
             </div>
 
-            <button id="nextBtn" class="flex items-center gap-2 bg-tt-orange hover:bg-orange-600 text-white text-xs sm:text-sm font-bold py-2 px-4 rounded-lg shadow-lg hover:shadow-orange-500/25 transition-all">
+            <button id="nextBtn" class="flex items-center gap-2 bg-tt-orange hover:bg-tt-orange-dark text-white text-xs sm:text-sm font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-orange-500/25 transition-all">
                 <span>Volgende Slide</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7m0 0l-7 7"></path></svg>
             </button>
@@ -564,7 +610,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full text-center text-xs text-gray-500 py-3 border-t border-gray-800/60 mt-4">
+    <footer class="w-full text-center text-xs text-slate-500 py-3 border-t border-slate-200 mt-4">
         &copy; 2026 TT Clinics · Bedrijfsplan 2026-2028 · Opgesteld voor Edward Westhoff
     </footer>
 
