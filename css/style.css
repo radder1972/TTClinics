@@ -9,11 +9,12 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Hero Section Background (vervang de URL door een echte foto) */
+/* Hero Section Background met batje en oranje bal */
 .hero-bg {
-    background-image: url('../images/hero-photo.jpg');
-    background-position: center 30%;
-    filter: grayscale(40%) contrast(125%) brightness(0.7);
+    background-image: url('../images/hero-batje.jpg');
+    background-position: 75% center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* Vloeiende scroll voor anker links */
