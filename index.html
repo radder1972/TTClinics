@@ -45,6 +45,25 @@
 
 </head>
 <body class="bg-white dark:bg-gray-900 text-tt-black dark:text-gray-100 font-inter transition-colors duration-300 table-pattern">
+    <!-- Herbruikbare scherpe swoosh-lijnen uit het logo -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="ttg-o" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF6B00" stop-opacity="0"/><stop offset=".55" stop-color="#FF6B00" stop-opacity=".9"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+            <linearGradient id="ttg-l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF9A4D" stop-opacity="0"/><stop offset="1" stop-color="#FF9A4D"/></linearGradient>
+            <linearGradient id="ttg-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7A7A7A" stop-opacity="0"/><stop offset="1" stop-color="#7A7A7A"/></linearGradient>
+            <symbol id="tt-streaks" viewBox="0 0 200 100">
+                <path d="M0,82 L196,8 L176,30 Z" fill="url(#ttg-o)"/>
+                <path d="M22,98 L184,44 L170,56 Z" fill="url(#ttg-l)"/>
+                <path d="M8,58 L150,6 L136,20 Z" fill="url(#ttg-g)"/>
+                <path d="M70,100 L200,64 L186,74 Z" fill="url(#ttg-o)" opacity=".7"/>
+            </symbol>
+            <symbol id="tt-streak-sm" viewBox="0 0 60 24">
+                <path d="M0,20 L58,2 L50,10 Z" fill="url(#ttg-o)"/>
+                <path d="M10,24 L54,12 L48,17 Z" fill="url(#ttg-g)"/>
+            </symbol>
+        </defs>
+    </svg>
+
     
 
     
@@ -83,18 +102,14 @@
     <div class="header-swoosh-wrap">
         <header class="hero-section header-swoosh relative bg-tt-black dark:bg-black overflow-hidden pt-8">
             <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-20"></div>
+            <svg class="absolute right-[18%] -top-4 h-[130%] w-[45%] opacity-25 z-10 pointer-events-none" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
             
             <div class="container mx-auto px-4 relative z-20 flex flex-col md:flex-row items-center justify-between">
                 <div class="flex-1 text-left md:pl-8">
                     <h1 class="font-montserrat text-2xl md:text-3xl font-black text-white italic uppercase tracking-tight relative mb-2 inline-block whitespace-nowrap">
                         Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
                         <!-- SVG Swoosh Ball flying under the text -->
-                        <div class="absolute -bottom-6 left-0 w-48 h-8">
-                            <svg viewBox="0 0 200 40" fill="none" class="w-full h-full text-tt-orange animate-pulse">
-                                <path d="M10,20 Q80,5 150,20" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4" opacity="0.5"/>
-                                <path d="M20,25 Q90,10 160,25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6" opacity="0.3"/>
-                            </svg>
-                        </div>
+                        <svg class="absolute -bottom-6 left-0 w-56 h-7" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     </h1>
                 </div>
                 
@@ -112,12 +127,12 @@
     <!-- Diensten / Features -->
     <section class="py-20 bg-white/90 dark:bg-gray-900/90 relative transition-colors duration-300">
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="font-montserrat text-4xl font-black text-center italic mb-16 uppercase">Wat wij <span class="text-tt-orange">bieden</span></h2>
+            <h2 class="font-montserrat text-4xl font-black text-center italic mb-16 uppercase"><svg class="inline-block w-12 h-6 mr-3 -mt-2 align-middle" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>Wat wij <span class="text-tt-orange">bieden</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 <!-- Dynamic Card 1 -->
                 <div class="feature-card relative bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:border p-8 shadow-md hover:shadow-xl transition-all overflow-hidden group" style="border-radius: 0 40px 0 40px;">
-                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-tt-orange opacity-20 rounded-full group-hover:scale-150 transition-transform duration-500 ease-in-out"></div>
+                    <svg class="absolute -right-6 -top-1 w-44 h-20 opacity-40 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-1 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     <div class="absolute right-0 top-0 w-16 h-16 border-t-4 border-r-4 border-tt-orange rounded-tr-[40px]"></div>
                     <h3 class="font-montserrat text-2xl font-black italic mb-4 relative z-10">Techniek <br><span class="text-tt-orange">Training</span></h3>
                     <p class="text-gray-600 dark:text-gray-300 relative z-10">Leer de perfecte slagen, voetenwerk en basistechnieken van ervaren trainers.</p>
@@ -125,7 +140,7 @@
                 
                 <!-- Dynamic Card 2 -->
                 <div class="feature-card relative bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:border text-tt-black dark:text-white p-8 shadow-md hover:shadow-xl transition-all overflow-hidden group" style="border-radius: 40px 0 40px 0; border-bottom: 4px solid #FF6B00;">
-                    <div class="absolute -left-10 -bottom-10 w-32 h-32 bg-tt-orange opacity-20 rounded-full group-hover:scale-150 transition-transform duration-500 ease-in-out"></div>
+                    <svg class="absolute -left-6 -bottom-2 w-44 h-20 opacity-40 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-1 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     <div class="absolute left-0 bottom-0 w-16 h-16 border-b-4 border-l-4 border-tt-orange rounded-bl-[40px]"></div>
                     <h3 class="font-montserrat text-2xl font-black italic mb-4 relative z-10">Tactisch <br><span class="text-tt-orange">Inzicht</span></h3>
                     <p class="text-gray-600 dark:text-gray-300 relative z-10">Begrijp het spel beter, leer wedstrijden lezen en ontwikkel je eigen winnende strategieën.</p>
@@ -133,7 +148,7 @@
                 
                 <!-- Dynamic Card 3 -->
                 <div class="feature-card relative bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:border p-8 shadow-md hover:shadow-xl transition-all overflow-hidden group" style="border-radius: 0 40px 0 40px;">
-                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-tt-orange opacity-20 rounded-full group-hover:scale-150 transition-transform duration-500 ease-in-out"></div>
+                    <svg class="absolute -right-6 -top-1 w-44 h-20 opacity-40 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-1 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     <div class="absolute right-0 top-0 w-16 h-16 border-t-4 border-r-4 border-tt-orange rounded-tr-[40px]"></div>
                     <h3 class="font-montserrat text-2xl font-black italic mb-4 relative z-10">Voor Elk <br><span class="text-tt-orange">Niveau</span></h3>
                     <p class="text-gray-600 dark:text-gray-300 relative z-10">Van beginners tot gevorderden, onze clinics worden op maat gemaakt voor jouw speelsterkte.</p>
@@ -148,10 +163,11 @@
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2 relative">
                     <div class="absolute inset-0 bg-tt-orange rounded-2xl transform translate-x-4 translate-y-4"></div>
+                    <svg class="absolute -left-14 -bottom-10 w-64 h-32 z-20 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     <img src="images/hero-photo.jpg" alt="Edward Westhoff - Oprichter" class="relative z-10 rounded-2xl shadow-xl w-full object-cover" style="max-height: 600px;">
                 </div>
                 <div class="md:w-1/2">
-                    <h2 class="font-montserrat text-4xl font-black italic mb-2 uppercase">Over <span class="text-tt-orange">Ons</span></h2>
+                    <h2 class="font-montserrat text-4xl font-black italic mb-2 uppercase"><svg class="inline-block w-12 h-6 mr-3 -mt-2 align-middle" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>Over <span class="text-tt-orange">Ons</span></h2>
                     <h3 class="text-xl font-bold text-gray-500 mb-6">Ontmoet de trainer</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                         Welkom bij TT Clinics! Mijn naam is Edward Westhoff, oprichter en hoofdtrainer. Met jarenlange ervaring in de tafeltenniswereld, zowel als speler en als coach, help ik je graag om het maximale uit je spel te halen.
@@ -177,7 +193,7 @@
     <!-- Prijzen / Tarieven -->
     <section id="prijzen" class="py-20 bg-gray-50/80 dark:bg-gray-800/80 backdrop-blur-sm slant-top">
         <div class="container mx-auto px-4">
-            <h2 class="font-montserrat text-4xl font-black text-center italic mb-16 uppercase">Tarieven & <span class="text-tt-orange">Pakketten</span></h2>
+            <h2 class="font-montserrat text-4xl font-black text-center italic mb-16 uppercase"><svg class="inline-block w-12 h-6 mr-3 -mt-2 align-middle" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>Tarieven & <span class="text-tt-orange">Pakketten</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Basis Clinic -->
@@ -269,8 +285,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-tt-black text-white py-12 border-t-8 border-tt-orange slant-top-footer">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer class="relative overflow-hidden bg-tt-black text-white py-12 border-t-8 border-tt-orange slant-top-footer">
+        <svg class="absolute right-0 bottom-0 w-[28rem] h-48 opacity-20 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             <div>
                 <div class="font-montserrat text-3xl font-black italic mb-4 flex items-center gap-3 tracking-tighter">
                     <img src="images/logo.jpg" alt="TT Clinics Logo" class="h-10 w-auto bg-white p-1 rounded-lg dark:bg-white">
