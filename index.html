@@ -91,6 +91,15 @@
     <rect x="8" y="16" width="2" height="6" rx="1" transform="rotate(-45 9 19)" fill="currentColor" stroke="none" />
 </svg>
 </button></li>
+                <li><button id="soundToggle" class="ml-2 p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center text-tt-black dark:text-white" title="Geluid aan/uit">
+                    <svg id="soundIconOff" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                    </svg>
+                    <svg id="soundIconOn" class="w-5 h-5 hidden text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    </svg>
+                </button></li>
             </ul>
         </div>
     </nav>
@@ -372,6 +381,83 @@
             setInterval(draw, 50); // 20 fps, lekker lichtgewicht
         })();
     </script>
+
+    <!-- Web Audio API tafeltennis stuitergeluid -->
+    <script>
+        (function() {
+            let audioCtx = null;
+            let soundEnabled = false;
+
+            function initAudio() {
+                if (!audioCtx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContext) {
+                        audioCtx = new AudioContext();
+                    }
+                }
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            }
+
+            // Realistisch pingpongbal 'tok/tik' stuitergeluid
+            function playPingPongSound(volume = 0.16) {
+                if (!soundEnabled || !audioCtx) return;
+                try {
+                    const now = audioCtx.currentTime;
+
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(960 + (Math.random() * 30 - 15), now);
+                    osc.frequency.exponentialRampToValueAtTime(460, now + 0.035);
+
+                    gain.gain.setValueAtTime(volume, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+
+                    const filter = audioCtx.createBiquadFilter();
+                    filter.type = 'bandpass';
+                    filter.frequency.setValueAtTime(1150, now);
+                    filter.Q.setValueAtTime(3.5, now);
+
+                    osc.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } catch(e) {}
+            }
+
+            const soundToggle = document.getElementById('soundToggle');
+            const soundIconOn = document.getElementById('soundIconOn');
+            const soundIconOff = document.getElementById('soundIconOff');
+
+            if (soundToggle) {
+                soundToggle.addEventListener('click', () => {
+                    initAudio();
+                    soundEnabled = !soundEnabled;
+                    if (soundIconOn && soundIconOff) {
+                        soundIconOn.classList.toggle('hidden', !soundEnabled);
+                        soundIconOff.classList.toggle('hidden', soundEnabled);
+                    }
+                    if (soundEnabled) {
+                        playPingPongSound(0.25);
+                    }
+                });
+            }
+
+            // Koppel geluid aan de bounce cyclus (elke 0.7s stuitert de bal)
+            const ball = document.querySelector('.tt-ball');
+            if (ball) {
+                ball.addEventListener('animationiteration', () => {
+                    playPingPongSound(0.15);
+                });
+            }
+        })();
+    </script>
+
 </body>
 
 </html>
