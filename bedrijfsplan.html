@@ -47,25 +47,25 @@
         /* 16:9 Presentatie Aspect Ratio Container (Wit Thema) */
         .slide-stage {
             width: 100%;
-            max-width: 1180px;
+            max-width: 1140px;
             aspect-ratio: 16 / 9;
             position: relative;
             background: #FFFFFF;
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid #CBD5E1;
-            box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 107, 0, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(255, 107, 0, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        /* Ruime binnenmarges: content veel meer naar binnen */
+        /* ROYALE BINNENMARGES: content veel meer naar binnen gecentreerd */
         .slide-pane {
             display: none;
             width: 100%;
             height: 100%;
-            padding: 2.8rem 4rem;
+            padding: 2.8rem 4.5rem;
             flex-direction: column;
             justify-content: space-between;
             background: #FFFFFF;
@@ -74,7 +74,7 @@
 
         @media (min-width: 1024px) {
             .slide-pane {
-                padding: 3.2rem 4.8rem;
+                padding: 3.2rem 5.2rem;
             }
         }
 
@@ -97,14 +97,46 @@
             background: #FF6B00;
         }
 
-        .brand-icon-sm {
-            width: 36px;
-            height: 36px;
-            object-fit: contain;
+        /* Officiële website badge stijl */
+        .web-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8533 50%, #FFA04D 100%);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 18px rgba(255, 107, 0, 0.3);
+            flex-shrink: 0;
+        }
+        .web-badge svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2.2;
         }
     </style>
 </head>
 <body class="p-4 sm:p-6 flex flex-col items-center justify-between min-h-screen">
+
+    <!-- Herbruikbare scherpe swoosh-lijnen uit het TT Clinics logo (exact van website) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="ttg-o" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF6B00" stop-opacity="0"/><stop offset=".55" stop-color="#FF6B00" stop-opacity=".9"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+            <linearGradient id="ttg-l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF9A4D" stop-opacity="0"/><stop offset="1" stop-color="#FF9A4D"/></linearGradient>
+            <linearGradient id="ttg-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7A7A7A" stop-opacity="0"/><stop offset="1" stop-color="#7A7A7A"/></linearGradient>
+            <symbol id="tt-streaks" viewBox="0 0 200 100">
+                <path d="M0,82 L196,8 L176,30 Z" fill="url(#ttg-o)"/>
+                <path d="M22,98 L184,44 L170,56 Z" fill="url(#ttg-l)"/>
+                <path d="M8,58 L150,6 L136,20 Z" fill="url(#ttg-g)"/>
+                <path d="M70,100 L200,64 L186,74 Z" fill="url(#ttg-o)" opacity=".7"/>
+            </symbol>
+            <symbol id="tt-streak-sm" viewBox="0 0 60 24">
+                <path d="M0,20 L58,2 L50,10 Z" fill="url(#ttg-o)"/>
+                <path d="M10,24 L54,12 L48,17 Z" fill="url(#ttg-g)"/>
+            </symbol>
+        </defs>
+    </svg>
 
     <!-- Top Bar Navigation -->
     <header class="w-full max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 mb-2 border-b border-slate-200">
@@ -145,7 +177,7 @@
                     <span class="text-xs sm:text-sm uppercase font-bold text-tt-orange-dark tracking-widest bg-orange-50 px-4 py-1.5 rounded-full border border-orange-200">★ Bedrijfsplan 2026 - 2028</span>
                 </div>
 
-                <div class="my-auto py-3 relative z-10">
+                <div class="my-auto py-4 relative z-10">
                     <h1 class="font-montserrat text-4xl sm:text-5xl md:text-6xl font-black italic tracking-tight text-slate-900 mb-3">
                         DYNAMIEK &amp; <span class="text-tt-orange">SNELHEID</span>
                     </h1>
@@ -156,8 +188,10 @@
 
                 <div class="flex justify-between items-center text-sm text-slate-500 border-t border-slate-200 pt-3 relative z-10">
                     <div>Oprichter &amp; Hoofdtrainer: <strong class="text-slate-800 text-base">Edward Westhoff</strong></div>
-                    <div class="flex items-center gap-3">
-                        <img src="images/icon-trophy.png" alt="Trofee" class="w-7 h-7 object-contain">
+                    <div class="flex items-center gap-2">
+                        <div class="web-badge" style="width: 28px; height: 28px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                        </div>
                         <span class="text-tt-orange-dark font-mono font-bold text-base">www.ttclinics.nl</span>
                     </div>
                 </div>
@@ -173,25 +207,56 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
-                        <img src="images/icon-trophy.png" alt="Trofee" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1.5">HET CONCEPT</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pr-10">Energieke tafeltennisclinics en bedrijfsuitjes voor MKB en corporate teams. Binnen 5 minuten ontstaat er plezier, gezonde rivaliteit en maximale teamdynamiek.</p>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark">HET CONCEPT</h3>
+                            <div class="flex items-center gap-2">
+                                <div class="web-badge">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                                </div>
+                                <svg class="w-10 h-4 opacity-50 shrink-0" viewBox="0 0 60 24"><use href="#tt-streak-sm"/></svg>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Energieke tafeltennisclinics en bedrijfsuitjes voor MKB en corporate teams. Binnen 5 minuten ontstaat er plezier, gezonde rivaliteit en maximale teamdynamiek.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 relative">
-                        <img src="images/icon-heartbeat.png" alt="Vitaliteit" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">DE MISSIE</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pr-10">Teams verbinden, beeldschermmoeheid doorbreken en vitaliteit bevorderen met 'schaken op topsnelheid'. Fysiek én mentaal de ultieme breinfitness.</p>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800">DE MISSIE</h3>
+                            <div class="flex items-center gap-2">
+                                <div class="web-badge">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                </div>
+                                <svg class="w-10 h-4 opacity-50 shrink-0" viewBox="0 0 60 24"><use href="#tt-streak-sm"/></svg>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Teams verbinden, beeldschermmoeheid doorbreken en vitaliteit bevorderen met 'schaken op topsnelheid'. Fysiek én mentaal de ultieme breinfitness.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
-                        <img src="images/icon-location.png" alt="Locatie" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1.5">DE OORSPRONG</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pr-10">Wat begon als een bescheiden clubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit en teambuilding.</p>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark">DE OORSPRONG</h3>
+                            <div class="flex items-center gap-2">
+                                <div class="web-badge">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                                <svg class="w-10 h-4 opacity-50 shrink-0" viewBox="0 0 60 24"><use href="#tt-streak-sm"/></svg>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Wat begon als een bescheiden clubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit en teambuilding.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 relative">
-                        <img src="images/icon-chart.png" alt="Groei" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">DE AMBITIE</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pr-10">Binnen 3 jaar uitgroeien tot de toonaangevende vitaliteitspartner in Nederland voor actieve bedrijfsevenementen met 100+ clinics per jaar.</p>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800">DE AMBITIE</h3>
+                            <div class="flex items-center gap-2">
+                                <div class="web-badge">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                                </div>
+                                <svg class="w-10 h-4 opacity-50 shrink-0" viewBox="0 0 60 24"><use href="#tt-streak-sm"/></svg>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Binnen 3 jaar uitgroeien tot de toonaangevende vitaliteitspartner in Nederland voor actieve bedrijfsevenementen met 100+ clinics per jaar.</p>
                     </div>
                 </div>
                 <div class="flex justify-between items-center text-xs sm:text-sm text-slate-400 pt-2 border-t border-slate-200">
@@ -210,9 +275,13 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-6 my-auto py-2">
-                    <div class="bg-red-50/70 p-5 rounded-xl border border-red-200 border-t-4 border-t-red-500 relative">
-                        <img src="images/icon-shield.png" alt="Schild" class="brand-icon-sm absolute top-4 right-4 opacity-80">
-                        <h3 class="font-montserrat text-base sm:text-lg font-bold text-red-700 mb-3">HET PROBLEEM OP DE WERKVLOER</h3>
+                    <div class="bg-red-50/70 p-5 rounded-2xl border border-red-200 border-t-4 border-t-red-500 relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-montserrat text-base sm:text-lg font-bold text-red-700">HET PROBLEEM OP DE WERKVLOER</h3>
+                            <div class="web-badge" style="background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); box-shadow: 0 6px 14px rgba(220, 38, 38, 0.25);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                            </div>
+                        </div>
                         <ul class="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
                             <li>✕ <strong>Schermmoeheid &amp; Zitgedrag:</strong> Medewerkers zitten 8-10u stil; energie daalt.</li>
                             <li>✕ <strong>Vervreemding door Hybride:</strong> Minder spontane verbinding tussen collega's.</li>
@@ -220,9 +289,13 @@
                             <li>✕ <strong>Uitsluiting bij Sport:</strong> Padel of zeskamp sluit collega's uit op conditie.</li>
                         </ul>
                     </div>
-                    <div class="bg-orange-50/70 p-5 rounded-xl border border-orange-200 border-t-4 border-t-tt-orange relative">
-                        <img src="images/icon-trophy.png" alt="Kans" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-3">DE KANS VOOR TT CLINICS</h3>
+                    <div class="bg-orange-50/70 p-5 rounded-2xl border border-orange-200 border-t-4 border-t-tt-orange relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark">DE KANS VOOR TT CLINICS</h3>
+                            <div class="web-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                            </div>
+                        </div>
                         <ul class="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
                             <li>✓ <strong>Groeiend WKR-Budget:</strong> Werkgevers investeren fors in preventieve vitaliteit.</li>
                             <li>✓ <strong>Tafeltennis Herwaardering:</strong> Populair spel, nu professioneel ingezet.</li>
@@ -247,10 +320,14 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-3 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between relative">
-                        <img src="images/icon-location.png" alt="Locatie" class="brand-icon-sm absolute top-4 right-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between relative">
                         <div>
-                            <div class="font-montserrat text-xs sm:text-sm font-bold text-slate-600 mb-1">TEAM KICK-OFF</div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="font-montserrat text-xs sm:text-sm font-bold text-slate-600">TEAM KICK-OFF</div>
+                                <div class="web-badge" style="width:36px; height:36px;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                            </div>
                             <div class="text-3xl font-black text-slate-900">€395</div>
                             <div class="text-xs text-slate-500 mb-3">1,5 uur · Tot 12 personen</div>
                             <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-snug">
@@ -261,11 +338,16 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="bg-orange-50/70 p-5 rounded-xl border-2 border-tt-orange shadow-md flex flex-col justify-between relative">
+
+                    <div class="bg-orange-50/70 p-5 rounded-2xl border-2 border-tt-orange shadow-md flex flex-col justify-between relative">
                         <div class="absolute -top-3 right-4 bg-tt-orange text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Flagship</div>
-                        <img src="images/icon-trophy.png" alt="Trofee" class="brand-icon-sm absolute top-4 right-4">
                         <div>
-                            <div class="font-montserrat text-xs sm:text-sm font-bold text-tt-orange-dark mb-1">COMPANY BATTLE</div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="font-montserrat text-xs sm:text-sm font-bold text-tt-orange-dark">COMPANY BATTLE</div>
+                                <div class="web-badge" style="width:36px; height:36px;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                                </div>
+                            </div>
                             <div class="text-3xl font-black text-tt-orange-dark">€745</div>
                             <div class="text-xs text-slate-500 mb-3">2,5 uur · Tot 12 personen</div>
                             <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 leading-snug">
@@ -276,10 +358,15 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between relative">
-                        <img src="images/icon-heartbeat.png" alt="Vitaliteit" class="brand-icon-sm absolute top-4 right-4">
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between relative">
                         <div>
-                            <div class="font-montserrat text-xs sm:text-sm font-bold text-slate-600 mb-1">VITALITEIT &amp; MAATWERK</div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="font-montserrat text-xs sm:text-sm font-bold text-slate-600">VITALITEIT &amp; MAATWERK</div>
+                                <div class="web-badge" style="width:36px; height:36px;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                </div>
+                            </div>
                             <div class="text-3xl font-black text-slate-900">Op Maat</div>
                             <div class="text-xs text-slate-500 mb-3">12+ pers. / Meerdaags</div>
                             <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-snug">
@@ -307,29 +394,37 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
-                        <img src="images/icon-location.png" alt="Inclusief" class="brand-icon-sm shrink-0 mt-0.5">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
+                        <div class="web-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
                         <div>
                             <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">100% INCLUSIEF &amp; GELIJKWAARDIG</h3>
                             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Geen fysiek overwicht vereist: stagiair en directielid staan direct op gelijk niveau tegenover elkaar aan tafel.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
-                        <img src="images/icon-heartbeat.png" alt="Brein" class="brand-icon-sm shrink-0 mt-0.5">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
+                        <div class="web-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
                         <div>
                             <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">SCHAKEN OP TOPSNELHEID</h3>
                             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Activeert reflexen, hand-oogcoördinatie en breinplasticiteit. De ideale doorbreking van langdurig beeldschermwerk.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
-                        <img src="images/icon-trophy.png" alt="Plezier" class="brand-icon-sm shrink-0 mt-0.5">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
+                        <div class="web-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                        </div>
                         <div>
                             <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">DIRECT LACHEN &amp; RIVALITEIT</h3>
                             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Binnen 2 minuten ontstaan er spannende rally's, spectaculaire punten en hilarische missers. Gegarandeerd positieve energie.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
-                        <img src="images/icon-shield.png" alt="Veiligheid" class="brand-icon-sm shrink-0 mt-0.5">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-4 items-start">
+                        <div class="web-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
                         <div>
                             <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">VOLLEDIG ZONDER BLESSURES</h3>
                             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Veilige binnensport zonder fysiek contact. Iedereen kan zorgeloos meedoen in normale vrijetijdskleding of sportoutfit.</p>
@@ -352,22 +447,22 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1">1. MKB &amp; TECH/IT BEDRIJVEN</h3>
                         <p class="text-xs text-slate-400 mb-2">10 - 75 medewerkers · Hoge schermtijd</p>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Jong, informeel team dat een actieve vrijdagmiddag of kwartaalafsluiting zoekt. Vaak al een tafel aanwezig op kantoor.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1">2. CORPORATES &amp; ZORG/FINANCIEEL</h3>
                         <p class="text-xs text-slate-400 mb-2">Afdelingen van 12 - 50 personen</p>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Focus op vitaliteitsweken en duurzame inzetbaarheid. WKR-budget beschikbaar voor effectieve teamontwikkeling.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1">3. EVENEMENTENBUREAUS &amp; LOCATIES</h3>
                         <p class="text-xs text-slate-400 mb-2">B2B Partners &amp; Heidagen</p>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Zoeken een originele, interactieve break voor heidagen. TT Clinics als vaste sportieve partner met terugkerende boekingen.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1">4. ONDERNEMERSCLUBS &amp; NETWERKEN</h3>
                         <p class="text-xs text-slate-400 mb-2">20 - 60 ondernemers</p>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Informele netwerkavond met toernooielement. Lachen en netwerken in één dynamisch format met directe leadgeneratie.</p>
@@ -389,9 +484,13 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-3 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
-                        <img src="images/icon-trophy.png" alt="Omzet" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-sm sm:text-base font-bold text-tt-orange-dark mb-1">1. DIRECTE CLINIC OMZET</h3>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-montserrat text-sm sm:text-base font-bold text-tt-orange-dark">1. DIRECTE CLINIC OMZET</h3>
+                            <div class="web-badge" style="width:34px; height:34px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                            </div>
+                        </div>
                         <p class="text-xs text-slate-500 mb-3">De Kernmotor</p>
                         <ul class="space-y-2 text-xs sm:text-sm text-slate-600 leading-snug">
                             <li>• Vaste pakketprijzen (€395 - €745)</li>
@@ -399,9 +498,14 @@
                             <li>• Extra trainer bij &gt;12 pers. (+€250-€350)</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700 relative">
-                        <img src="images/icon-location.png" alt="Upsells" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-sm sm:text-base font-bold text-slate-800 mb-1">2. UPSELLS &amp; ARRANGEMENTEN</h3>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-slate-700">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-montserrat text-sm sm:text-base font-bold text-slate-800">2. UPSELLS &amp; ARRANGEMENTEN</h3>
+                            <div class="web-badge" style="width:34px; height:34px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                        </div>
                         <p class="text-xs text-slate-500 mb-3">Hogere Orderwaarde</p>
                         <ul class="space-y-2 text-xs sm:text-sm text-slate-600 leading-snug">
                             <li>• Borrel &amp; bittergarnituur (+€25-€45 p.p.)</li>
@@ -409,9 +513,14 @@
                             <li>• Professionele aftermovie &amp; fotoreportage</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange relative">
-                        <img src="images/icon-chart.png" alt="Competitie" class="brand-icon-sm absolute top-4 right-4">
-                        <h3 class="font-montserrat text-sm sm:text-base font-bold text-tt-orange-dark mb-1">3. BEDRIJFSCOMPETITIES</h3>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-montserrat text-sm sm:text-base font-bold text-tt-orange-dark">3. BEDRIJFSCOMPETITIES</h3>
+                            <div class="web-badge" style="width:34px; height:34px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                            </div>
+                        </div>
                         <p class="text-xs text-slate-500 mb-3">Terugkerende Omzet</p>
                         <ul class="space-y-2 text-xs sm:text-sm text-slate-600 leading-snug">
                             <li>• 4 kwartaalcompetities per jaar</li>
@@ -436,19 +545,19 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">WEBSITE &amp; B2B SEO</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Sterke positie op 'bedrijfsuitje tafeltennis', 'sportieve teamclinic'. Snelle online offerte-aanvraag en video's.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">LINKEDIN CONTENT MARKETING</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Korte video-reels van clinics: actie, tricks en juichende collega's. Gerichte outreach naar HR- en Office Managers.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">VLIEGWIEL EFFECT</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Elke deelnemer aan een clinic is een potentiële ambassadeur die TT Clinics meeneemt naar andere afdelingen of bedrijven.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-slate-800 mb-1.5">PARTNERSHIPS MET LOCATIES</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Samenwerking met tafeltennisverenigingen, sportcentra en vergaderlocaties voor complete dagarrangementen.</p>
                     </div>
@@ -469,19 +578,19 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-2 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1.5">PROFESSIONELE UITRUSTING</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Mobiele ITTF-wedstrijdtafels, professionele rubbers voor controle &amp; spin, 3-sterren ballen en wisseltrofeeën.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1.5">LOCATIE FLEXIBILITEIT</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Op kantoor: wij bouwen elke kantine in 20 minuten om tot toernooiarena. Of op sportlocatie incl. horeca/borrel.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1.5">SCHAALBAAR TRAINERSMODEL</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Edward Westhoff als hoofdtrainer en vast gezicht, aangevuld met een pool van ervaren competitiespelers voor grote groepen.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-montserrat text-base sm:text-lg font-bold text-tt-orange-dark mb-1.5">COMPLETE ONTZORGING</h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Van offerte binnen 24 uur, toernooileiding met muziek, tot professionele prijsuitreiking en foto-nazorg.</p>
                     </div>
@@ -502,11 +611,15 @@
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
                 <div class="grid grid-cols-3 gap-5 my-auto py-2">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
-                        <img src="images/icon-location.png" alt="Fase 1" class="brand-icon-sm absolute top-4 right-4">
-                        <div class="text-xs font-bold text-slate-500 mb-1">FASE 1: 2026</div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="text-xs font-bold text-slate-500">FASE 1: 2026</div>
+                            <div class="web-badge" style="width:34px; height:34px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                        </div>
                         <div class="font-montserrat text-base font-bold text-slate-800">Fundament &amp; Tractie</div>
-                        <div class="text-xl font-black text-tt-orange-dark mt-1 mb-2">€25k - €35k</div>
+                        <div class="text-2xl font-black text-tt-orange-dark mt-1 mb-2">€25k - €35k</div>
                         <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-snug">
                             <li>✓ 40 - 50 clinics verzorgen</li>
                             <li>✓ Eerste 5 vaste accounts</li>
@@ -514,11 +627,16 @@
                             <li>✓ Klantscore &gt; 9.0</li>
                         </ul>
                     </div>
-                    <div class="bg-orange-50/70 p-5 rounded-xl border-2 border-tt-orange shadow-md relative">
-                        <img src="images/icon-chart.png" alt="Fase 2" class="brand-icon-sm absolute top-4 right-4">
-                        <div class="text-xs font-bold text-tt-orange-dark mb-1">FASE 2: 2027</div>
+
+                    <div class="bg-orange-50/70 p-5 rounded-2xl border-2 border-tt-orange shadow-md relative">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="text-xs font-bold text-tt-orange-dark">FASE 2: 2027</div>
+                            <div class="web-badge" style="width:34px; height:34px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                            </div>
+                        </div>
                         <div class="font-montserrat text-base font-bold text-slate-900">Opschaling &amp; Abonnement</div>
-                        <div class="text-xl font-black text-tt-orange mt-1 mb-2">€60k - €75k</div>
+                        <div class="text-2xl font-black text-tt-orange mt-1 mb-2">€60k - €75k</div>
                         <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 leading-snug">
                             <li>✓ 80 - 100 clinics per jaar</li>
                             <li>✓ Terugkerende competities</li>
@@ -526,11 +644,16 @@
                             <li>✓ 3 landelijke bureaupartners</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative">
-                        <img src="images/icon-trophy.png" alt="Fase 3" class="brand-icon-sm absolute top-4 right-4">
-                        <div class="text-xs font-bold text-slate-500 mb-1">FASE 3: 2028</div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="text-xs font-bold text-slate-500">FASE 3: 2028</div>
+                            <div class="web-badge" style="width:34px; height:34px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                            </div>
+                        </div>
                         <div class="font-montserrat text-base font-bold text-slate-800">Landelijke Autoriteit</div>
-                        <div class="text-xl font-black text-tt-orange-dark mt-1 mb-2">€100.000+</div>
+                        <div class="text-2xl font-black text-tt-orange-dark mt-1 mb-2">€100.000+</div>
                         <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-snug">
                             <li>✓ 150+ clinics per jaar</li>
                             <li>✓ 20+ vaste corporate accounts</li>
@@ -545,7 +668,7 @@
                 </div>
             </div>
 
-            <!-- SLIDE 11: CONCLUSIE & CONTACT -->
+            <!-- SLIDE 11: CONCLUSIE & CONTACT (GROTE FOTO & GROTE TEKST) -->
             <div class="slide-pane" data-slide="11">
                 <div class="flex justify-between items-start border-b border-slate-200 pb-3">
                     <div>
@@ -554,26 +677,33 @@
                     </div>
                     <img src="images/logo-transparent.png" alt="TT Clinics" class="h-9 w-auto">
                 </div>
-                <div class="grid grid-cols-3 gap-5 my-auto py-2">
-                    <div class="col-span-2 bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex gap-5 items-center">
-                        <img src="images/hero-photo.jpg" alt="Edward Westhoff" class="w-28 h-28 rounded-xl object-cover shrink-0 border border-orange-200 shadow">
-                        <div>
-                            <h3 class="font-montserrat text-lg font-black italic text-slate-900">EDWARD WESTHOFF</h3>
-                            <div class="text-xs sm:text-sm font-bold text-tt-orange-dark mb-2">Oprichter &amp; Hoofdtrainer · TT Clinics</div>
-                            <p class="text-xs sm:text-sm text-slate-600 italic mb-2 leading-relaxed">"TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden clubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit."</p>
-                            <div class="text-xs text-slate-500 font-semibold">★ 15+ Jaren Ervaring  ·  ★ 500+ Spelers Gecoacht</div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between items-center text-center">
-                        <div>
-                            <div class="font-montserrat text-sm font-bold text-slate-800 mb-2">DIRECT CONTACT</div>
-                            <div class="text-xs sm:text-sm text-slate-600 space-y-1 mb-2">
-                                <div>✉️ info@ttclinics.nl</div>
-                                <div>📞 06 - 12345678</div>
-                                <div>🌐 www.ttclinics.nl</div>
+                <div class="grid grid-cols-3 gap-6 my-auto py-2 items-stretch">
+                    <!-- Linker kaart met GROTE PROMINENTE FOTO EDWARD -->
+                    <div class="col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm border-t-4 border-t-tt-orange flex flex-col sm:flex-row gap-6 items-center">
+                        <img src="images/hero-photo.jpg" alt="Edward Westhoff" class="w-44 h-44 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-2xl object-cover shrink-0 border-2 border-orange-300 shadow-xl">
+                        <div class="flex-1">
+                            <h3 class="font-montserrat text-2xl sm:text-3xl font-black italic text-slate-900 leading-tight">EDWARD WESTHOFF</h3>
+                            <div class="text-sm sm:text-base font-bold text-tt-orange-dark mt-0.5 mb-3">Oprichter &amp; Hoofdtrainer · TT Clinics</div>
+                            <p class="text-xs sm:text-sm text-slate-600 italic mb-4 leading-relaxed">
+                                "TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden clubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit en teambuilding. Tafeltennis is dé manier om laagdrempelig in beweging te komen en als team onvergetelijk plezier te maken."
+                            </p>
+                            <div class="text-xs sm:text-sm text-slate-700 font-bold bg-orange-50/80 px-3 py-1.5 rounded-lg border border-orange-200/60 inline-block">
+                                ★ 15+ Jaren Ervaring &nbsp;·&nbsp; ★ 500+ Spelers Gecoacht
                             </div>
                         </div>
-                        <img src="images/qr-ttclinics.png" alt="Scan QR code" class="w-18 h-18 bg-white p-1 rounded-lg border border-slate-200 shadow-sm">
+                    </div>
+
+                    <!-- Rechter kaart: Direct Contact -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between items-center text-center">
+                        <div>
+                            <div class="font-montserrat text-base sm:text-lg font-black text-slate-900 mb-3">DIRECT CONTACT</div>
+                            <div class="text-sm sm:text-base text-slate-700 space-y-2 mb-3 font-medium">
+                                <div class="flex items-center justify-center gap-2"><span>✉️</span> <strong class="text-slate-900">info@ttclinics.nl</strong></div>
+                                <div class="flex items-center justify-center gap-2"><span>📞</span> <strong class="text-slate-900">06 - 12345678</strong></div>
+                                <div class="flex items-center justify-center gap-2"><span>🌐</span> <strong class="text-tt-orange-dark">www.ttclinics.nl</strong></div>
+                            </div>
+                        </div>
+                        <img src="images/qr-ttclinics.png" alt="Scan QR code" class="w-24 h-24 sm:w-28 sm:h-28 bg-white p-2 rounded-xl border border-slate-200 shadow-sm">
                     </div>
                 </div>
                 <div class="flex justify-between items-center text-xs sm:text-sm text-slate-400 pt-2 border-t border-slate-200">
