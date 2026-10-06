@@ -137,20 +137,20 @@
     <div class="max-w-6xl mx-auto px-4 relative pointer-events-none" style="margin-top: -0.5rem; margin-bottom: -5rem; z-index: 25;">
         <div class="tt-balls-container inline-block select-none" title="TT Clinics Tafeltennisballen">
             <div class="relative w-56 h-36 sm:w-64 sm:h-40">
-                <!-- Schaduw op de vloer/tafel -->
-                <div class="absolute bottom-1 left-3 w-36 h-8 bg-black/15 rounded-full blur-md transform scale-y-75"></div>
-                <div class="absolute bottom-3 left-28 w-32 h-7 bg-black/15 rounded-full blur-md transform scale-y-75"></div>
+                <!-- Schaduw op dezelfde basislijn (bottom-1) -->
+                <div class="tt-shadow-back absolute bottom-1 left-28 w-28 h-6 bg-black rounded-full blur-sm transform scale-y-75"></div>
+                <div class="tt-shadow-front absolute bottom-1 left-2 w-34 h-7 bg-black rounded-full blur-sm transform scale-y-75 z-10"></div>
 
-                <!-- Achterste balletje (iets rechts & hoger) -->
-                <div class="tt-sphere tt-sphere-back absolute right-4 top-2 w-24 h-24 sm:w-28 sm:h-28 flex flex-col items-center justify-center p-3">
-                    <img src="images/logo-sticker.png" alt="TT Clinics" class="w-12 sm:w-14 h-auto opacity-90 drop-shadow-sm filter contrast-105 pointer-events-auto">
+                <!-- Achterste balletje (rust op dezelfde basislijn bottom-2, z-5) -->
+                <div class="tt-sphere tt-sphere-back absolute left-28 bottom-2 w-24 h-24 sm:w-26 sm:h-26 flex flex-col items-center justify-center p-3 z-5">
+                    <img src="images/logo-sticker.png" alt="TT Clinics" class="w-11 sm:w-13 h-auto opacity-90 drop-shadow-sm filter contrast-105 pointer-events-auto">
                     <div class="text-[10px] sm:text-[11px] font-black text-tt-black tracking-tighter italic -mt-0.5 opacity-85">TT CLINICS</div>
                     <div class="flex gap-0.5 text-[9px] sm:text-[10px] text-tt-orange -mt-0.5">★★★</div>
                 </div>
 
-                <!-- Voorste balletje (links & lager, deels overlappend) -->
-                <div class="tt-sphere tt-sphere-front absolute left-2 top-5 w-28 h-28 sm:w-32 sm:h-32 flex flex-col items-center justify-center p-3.5">
-                    <img src="images/logo-sticker.png" alt="TT Clinics" class="w-14 sm:w-16 h-auto opacity-95 drop-shadow-sm filter contrast-105 pointer-events-auto">
+                <!-- Voorste balletje (rust op dezelfde basislijn bottom-2, overlapt deels op de voorgrond z-20) -->
+                <div class="tt-sphere tt-sphere-front absolute left-2 bottom-2 w-28 h-28 sm:w-30 sm:h-30 flex flex-col items-center justify-center p-3.5 z-20">
+                    <img src="images/logo-sticker.png" alt="TT Clinics" class="w-13 sm:w-15 h-auto opacity-95 drop-shadow-sm filter contrast-105 pointer-events-auto">
                     <div class="text-[11px] sm:text-[12px] font-black text-tt-black tracking-tighter italic -mt-0.5 opacity-90">TT CLINICS</div>
                     <div class="flex gap-0.5 text-[10px] sm:text-[11px] text-tt-orange -mt-0.5">★★★</div>
                 </div>
