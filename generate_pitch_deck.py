@@ -64,6 +64,11 @@ ICON_MAIL = os.path.join(BASE_DIR, "images/icon-mail.png")
 ICON_PHONE = os.path.join(BASE_DIR, "images/icon-phone.png")
 ICON_WEB = os.path.join(BASE_DIR, "images/icon-web.png")
 
+# Officiële Merklogo Lockups (Groter & met aanduiding TT Clinics)
+LOGO_LOCKUP_HEADER = os.path.join(BASE_DIR, "images/logo-lockup-header.png")
+LOGO_LOCKUP_COVER = os.path.join(BASE_DIR, "images/logo-lockup-cover.png")
+
+
 
 def set_slide_background(slide, use_canvas=False):
     """Zet een strakke witte achtergrond met de kenmerkende TT Oranje accentbalk onderaan."""
@@ -83,13 +88,15 @@ def set_slide_background(slide, use_canvas=False):
     accent_bar.line.fill.background()
 
 def add_header(slide, category_text, title_text, slide_num=None):
-    """Voegt een consistente professionele header toe met ruime marges en grotere typografie."""
-    # Logo rechtsboven (binnen de rechtermarge)
-    if os.path.exists(IMG_LOGO):
-        slide.shapes.add_picture(IMG_LOGO, Inches(10.0), Inches(0.48), height=Inches(0.75))
+    """Voegt een consistente professionele header toe met ruime marges en groter merklogo met TT Clinics aanduiding."""
+    # Groter logo met duidelijke TT Clinics aanduiding rechtsboven
+    if os.path.exists(LOGO_LOCKUP_HEADER):
+        slide.shapes.add_picture(LOGO_LOCKUP_HEADER, Inches(9.25), Inches(0.42), height=Inches(0.85))
+    elif os.path.exists(IMG_LOGO):
+        slide.shapes.add_picture(IMG_LOGO, Inches(10.0), Inches(0.48), height=Inches(0.80))
     
     # Category tag
-    tag_box = slide.shapes.add_textbox(MARGIN_LEFT, Inches(0.48), Inches(8.0), Inches(0.35))
+    tag_box = slide.shapes.add_textbox(MARGIN_LEFT, Inches(0.48), Inches(7.2), Inches(0.35))
     tf = tag_box.text_frame
     tf.word_wrap = True
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
@@ -100,8 +107,8 @@ def add_header(slide, category_text, title_text, slide_num=None):
     p.font.bold = True
     p.font.color.rgb = C_ORANGE_DARK
     
-    # Slide Titel (aanzienlijk groter)
-    title_box = slide.shapes.add_textbox(MARGIN_LEFT, Inches(0.82), Inches(8.3), Inches(0.8))
+    # Slide Titel (aanzienlijk groter, met voldoende ruimte voor het logo)
+    title_box = slide.shapes.add_textbox(MARGIN_LEFT, Inches(0.82), Inches(7.3), Inches(0.8))
     tf2 = title_box.text_frame
     tf2.word_wrap = True
     tf2.margin_left = tf2.margin_top = tf2.margin_right = tf2.margin_bottom = 0
@@ -169,8 +176,10 @@ glow.fill.solid()
 glow.fill.fore_color.rgb = RGBColor(255, 245, 238)
 glow.line.fill.background()
 
-# Logo groot (ruime linkermarge van 1.9 inch)
-if os.path.exists(IMG_LOGO):
+# Logo groot met aanduiding TT Clinics (ruime linkermarge van 1.9 inch)
+if os.path.exists(LOGO_LOCKUP_COVER):
+    slide1.shapes.add_picture(LOGO_LOCKUP_COVER, Inches(1.9), Inches(0.92), height=Inches(1.65))
+elif os.path.exists(IMG_LOGO):
     slide1.shapes.add_picture(IMG_LOGO, Inches(1.9), Inches(1.1), height=Inches(1.4))
 
 # Badge
