@@ -27,3 +27,40 @@ html {
 .btn-primary:active {
     transform: scale(0.95);
 }
+
+/* Dynamische Sectie Overgangen */
+.slant-top {
+    clip-path: polygon(0 4vw, 100% 0, 100% 100%, 0 100%);
+    margin-top: -4vw;
+    padding-top: calc(5rem + 4vw);
+}
+
+.slant-top-footer {
+    clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%);
+    margin-top: -4vw;
+    padding-top: calc(3rem + 4vw);
+}
+
+/* Knoppen met Snelheid (Hover Sweep) */
+.btn-speed {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-speed::after {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: -150%; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+}
+
+.btn-speed:hover::after {
+    left: 150%;
+}
