@@ -28,7 +28,7 @@
             }
         }
     </script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23FF6B00'/></svg>">
+    <link rel="icon" type="image/svg+xml" id="ttFavicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='b' cx='35%25' cy='30%25' r='60%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='30%25' stop-color='%23ff9a4d'/%3E%3Cstop offset='70%25' stop-color='%23ff6b00'/%3E%3Cstop offset='100%25' stop-color='%23d95a00'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cellipse cx='16' cy='28' rx='7' ry='2' fill='%23000000' opacity='0.3'%3E%3Canimate attributeName='rx' values='7;3.5;7' dur='0.7s' repeatCount='indefinite'/%3E%3Canimate attributeName='opacity' values='0.35;0.12;0.35' dur='0.7s' repeatCount='indefinite'/%3E%3C/ellipse%3E%3Ccircle cx='16' cy='12' r='8' fill='url(%23b)'%3E%3Canimate attributeName='cy' values='20;8;20' dur='0.7s' repeatCount='indefinite' calcMode='spline' keySplines='0.1 0.8 0.3 1; 0.7 0 0.9 0.2' keyTimes='0;0.5;1'/%3E%3Canimate attributeName='r' values='7.2;8;7.2' dur='0.7s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E"><circle cx='50' cy='50' r='40' fill='%23FF6B00'/></svg>">
     <script>
         tailwind.config.darkMode = 'class';
     </script>
@@ -71,8 +71,7 @@
     <nav class="bg-white dark:bg-gray-900 text-tt-black dark:text-white p-4 sticky top-0 z-50 shadow-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div class="container mx-auto flex justify-between items-center">
             <div class="logo font-montserrat text-3xl font-black italic flex items-center gap-3 tracking-tighter relative group cursor-pointer">
-                <img src="images/logo.jpg" alt="TT Clinics Logo" class="h-16 w-auto dark:bg-white dark:p-1 dark:rounded-xl mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-300">
-                <div class="absolute w-3 h-3 bg-tt-orange rounded-full top-2 left-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-12 group-hover:-translate-y-6 group-hover:scale-150 transition-all duration-500 ease-out z-10"></div>
+                <img src="images/logo.jpg" alt="TT Clinics Logo" class="h-16 w-auto dark:bg-white dark:p-1 dark:rounded-xl mix-blend-multiply dark:mix-blend-normal ">
                 <div class="text-tt-black dark:text-white dark:text-white"><span class="text-tt-orange">TT</span> CLINICS</div>
             </div>
             <ul class="flex space-x-6 font-semibold items-center">
@@ -106,8 +105,8 @@
             
             <div class="container mx-auto px-4 relative z-20 flex flex-col md:flex-row items-center justify-between">
                 <div class="flex-1 text-left md:pl-8">
-                    <h1 class="font-montserrat text-2xl md:text-3xl font-black text-white italic uppercase tracking-tight relative mb-2 inline-block whitespace-nowrap">
-                        Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
+                    <h1 class="font-montserrat text-2xl md:text-3xl font-black text-white italic tracking-tight relative mb-2 inline-block whitespace-nowrap">
+                        <span class="lowercase">dynamiek</span> &amp; <span class="text-tt-orange uppercase">SNELHEID</span>
                         <!-- SVG Swoosh Ball flying under the text -->
                         <svg class="absolute -bottom-6 left-0 w-56 h-7" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     </h1>
@@ -200,40 +199,42 @@
                 <div class="bg-white dark:bg-gray-900 dark:border-gray-700 p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow text-center flex flex-col">
                     <h3 class="font-montserrat text-2xl font-bold mb-2">Basis Clinic</h3>
                     <p class="text-gray-500 dark:text-gray-400 mb-6">Perfect voor beginners</p>
-                    <div class="text-4xl font-black text-tt-black mb-6">€45<span class="text-lg text-gray-500 font-normal">/uur</span></div>
+                    <div class="text-4xl font-black text-tt-black dark:text-white mb-6">€45<span class="text-lg text-gray-500 font-normal">/uur</span></div>
                     <ul class="text-left space-y-3 mb-8 flex-1">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Basistechniek aanleren</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Voetenwerk training</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Incl. materiaal</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Basistechniek aanleren</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Voetenwerk training</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Incl. materiaal</li>
                     </ul>
                     <a href="#contact" class="block w-full bg-tt-black hover:bg-gray-800 text-white font-bold py-3 rounded-full transition-colors btn-speed">Kies Basis</a>
                 </div>
                 
-                <!-- Pro Clinic -->
-                <div class="bg-tt-black text-white p-8 rounded-xl shadow-xl transform md:-translate-y-4 relative flex flex-col border-t-4 border-tt-orange">
-                    <div class="absolute top-0 right-0 bg-tt-orange text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase">Populair</div>
-                    <h3 class="font-montserrat text-2xl font-bold mb-2">Pro Clinic</h3>
-                    <p class="text-gray-400 mb-6">Voor competitie spelers</p>
-                    <div class="text-4xl font-black text-white mb-6">€65<span class="text-lg text-gray-400 font-normal">/uur</span></div>
-                    <ul class="text-left space-y-3 mb-8 flex-1">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Geavanceerde slagen</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Tactische analyse</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Video feedback</li>
+                <!-- Groep Clinic (uitgelicht in het midden) -->
+                <div class="relative overflow-hidden bg-tt-black dark:bg-black text-white p-8 rounded-xl shadow-2xl md:scale-105 md:-translate-y-2 z-10 flex flex-col text-center border-t-4 border-tt-orange ring-2 ring-tt-orange/40">
+                    <svg class="absolute -right-8 -top-2 w-48 h-24 opacity-40 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="absolute top-0 right-0 bg-tt-orange text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide">Meest gekozen</div>
+                    <h3 class="font-montserrat text-2xl font-black italic mb-2 relative">Groep <span class="text-tt-orange">Clinic</span></h3>
+                    <p class="text-gray-400 mb-6 relative">Bedrijven, verenigingen &amp; teams</p>
+                    <div class="text-5xl font-black text-white mb-6 relative">€150<span class="text-lg text-gray-400 font-normal">/sessie</span></div>
+                    <ul class="text-left space-y-3 mb-8 flex-1 relative">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Max 10 personen</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Teambuilding focus</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Gezelligheidstoernooi</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Materiaal &amp; trainer inbegrepen</li>
                     </ul>
-                    <a href="#contact" class="block w-full bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 rounded-full transition-colors text-center btn-speed">Kies Pro</a>
+                    <a href="#contact" class="block w-full bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 rounded-full transition-colors text-center btn-speed relative">Vraag Groep Clinic aan</a>
                 </div>
                 
-                <!-- Groep Clinic -->
+                <!-- Pro Clinic -->
                 <div class="bg-white dark:bg-gray-900 dark:border-gray-700 p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow text-center flex flex-col">
-                    <h3 class="font-montserrat text-2xl font-bold mb-2">Groep Clinic</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mb-6">Bedrijven & verenigingen</p>
-                    <div class="text-4xl font-black text-tt-black mb-6">€150<span class="text-lg text-gray-500 font-normal">/sessie</span></div>
+                    <h3 class="font-montserrat text-2xl font-bold mb-2">Pro Clinic</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">Voor competitiespelers</p>
+                    <div class="text-4xl font-black text-tt-black dark:text-white mb-6">€65<span class="text-lg text-gray-500 font-normal">/uur</span></div>
                     <ul class="text-left space-y-3 mb-8 flex-1">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Max 10 personen</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Teambuilding focus</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Gezelligheidstoernooi</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Geavanceerde slagen</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Tactische analyse</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Video feedback</li>
                     </ul>
-                    <a href="#contact" class="block w-full bg-tt-black hover:bg-gray-800 text-white font-bold py-3 rounded-full transition-colors btn-speed">Vraag aan</a>
+                    <a href="#contact" class="block w-full bg-tt-black hover:bg-gray-800 text-white font-bold py-3 rounded-full transition-colors btn-speed">Kies Pro</a>
                 </div>
             </div>
         </div>
@@ -244,7 +245,7 @@
         <div class="container mx-auto px-4 max-w-5xl">
             <div class="bg-white dark:bg-gray-800 dark:border-gray-700 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-gray-100">
                 <div class="md:w-2/5 bg-tt-orange p-10 text-white flex flex-col justify-center">
-                    <img src="images/logo-sticker.png" alt="TT Clinics logo" class="w-32 h-auto mb-6 -ml-2 drop-shadow-lg hover:-rotate-6 hover:scale-105 transition-transform duration-300">
+                    <img src="images/logo-sticker.png" alt="TT Clinics logo" class="w-32 h-auto mb-6 -ml-2 drop-shadow-lg ">
                     <h3 class="font-montserrat text-3xl font-black italic mb-6">Zet de eerste <span class="text-tt-black dark:text-white">stap</span></h3>
                     <p class="mb-8 opacity-90">Klaar om je spel naar het volgende niveau te tillen? Vul het formulier in en we nemen zo snel mogelijk contact op.</p>
                     <div class="space-y-4 font-semibold">
@@ -291,7 +292,7 @@
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             <div>
                 <div class="font-montserrat text-3xl font-black italic mb-4 flex items-center gap-3 tracking-tighter">
-                    <img src="images/logo-sticker.png" alt="TT Clinics Logo" class="h-14 w-auto hover:-rotate-6 hover:scale-105 transition-transform duration-300">
+                    <img src="images/logo-sticker.png" alt="TT Clinics Logo" class="h-14 w-auto ">
                     <div><span class="text-tt-orange">TT</span> CLINICS</div>
                 </div>
                 <p class="text-tt-grey">Professionele tafeltennis clinics voor spelers die willen groeien in dynamiek en snelheid.</p>
@@ -321,6 +322,55 @@
         toggleBtn.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
         });
+    </script>
+
+    <!-- Dynamisch stuiterend favicon script -->
+    <script>
+        (function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32;
+            canvas.height = 32;
+            const ctx = canvas.getContext('2d');
+            const favicon = document.getElementById('ttFavicon') || document.querySelector("link[rel*='icon']");
+            if (!ctx || !favicon) return;
+
+            let t = 0;
+            function draw() {
+                t += 0.08;
+                ctx.clearRect(0, 0, 32, 32);
+
+                // Parabool-achtige stuit
+                const bounce = Math.abs(Math.sin(t)); // 0 (laag) .. 1 (hoog)
+                const y = 22 - bounce * 14;           // y van 22 (grond) tot 8 (top)
+                const squish = (1 - bounce);          // bij neerkomen een beetje squashen
+
+                // Slagschaduw op de grond
+                const shadowRx = 6 - bounce * 2.5;
+                const shadowAlpha = 0.35 - bounce * 0.2;
+                ctx.beginPath();
+                ctx.ellipse(16, 27, Math.max(2, shadowRx), 1.8, 0, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0,0,0,${shadowAlpha})`;
+                ctx.fill();
+
+                // Pingpongballetje
+                const rx = 6.5 + squish * 1.2;
+                const ry = 6.5 - squish * 1.0;
+                ctx.beginPath();
+                ctx.ellipse(16, y, rx, ry, 0, 0, Math.PI * 2);
+
+                // Oranje 3D gradient
+                const grad = ctx.createRadialGradient(14, y - 2, 0.5, 16, y, 7);
+                grad.addColorStop(0, '#ffffff');
+                grad.addColorStop(0.3, '#ff9a4d');
+                grad.addColorStop(0.7, '#ff6b00');
+                grad.addColorStop(1, '#d95a00');
+                ctx.fillStyle = grad;
+                ctx.fill();
+
+                favicon.href = canvas.toDataURL('image/png');
+            }
+            setInterval(draw, 50); // 20 fps, lekker lichtgewicht
+        })();
     </script>
 </body>
 
