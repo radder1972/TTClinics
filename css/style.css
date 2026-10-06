@@ -70,9 +70,46 @@ html {
 .header-swoosh-wrap {
     background: #FF6B00;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 4vw));
-    margin-bottom: 2rem;
 }
 .header-swoosh {
     padding-bottom: calc(4vw + 2.5rem);
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), 0 calc(100% - 4vw));
+}
+
+/* Stuiterend pingpongballetje over de schuine rand */
+.header-outer {
+    position: relative;
+    margin-bottom: 2rem;
+}
+.tt-ball-track {
+    position: absolute;
+    z-index: 30;
+    pointer-events: none;
+    animation: tt-ball-travel 7s linear infinite;
+}
+.tt-ball {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff 0 18%, #FF8A33 30%, #FF6B00 60%, #D95A00 100%);
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    transform: translateX(-50%);
+    animation: tt-ball-bounce .7s infinite;
+}
+/* Volgt de schuine rand: links 4vw hoog, rechts 14px (bovenkant oranje wig) */
+@keyframes tt-ball-travel {
+    0%   { left: 2%;  bottom: calc(4vw * 0.98 + 14px * 0.02); opacity: 0; }
+    6%   { opacity: 1; }
+    94%  { opacity: 1; }
+    100% { left: 98%; bottom: calc(4vw * 0.02 + 14px * 0.98); opacity: 0; }
+}
+@keyframes tt-ball-bounce {
+    0%   { transform: translate(-50%, 0) scale(1.15, .85); animation-timing-function: cubic-bezier(.2,.7,.4,1); }
+    10%  { transform: translate(-50%, -4px) scale(1); }
+    50%  { transform: translate(-50%, -46px) scale(1); animation-timing-function: cubic-bezier(.6,0,.8,.3); }
+    100% { transform: translate(-50%, 0) scale(1.15, .85); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .tt-ball-track, .tt-ball { animation: none; }
+    .tt-ball-track { display: none; }
 }
