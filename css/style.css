@@ -118,75 +118,11 @@ html {
 section[id] { scroll-margin-top: 110px; }
 
 
-/* Twee 3D tafeltennisballetjes die onafhankelijk stuiteren op dezelfde basislijn */
+/* Twee 3D tafeltennisballetjes die stil liggen op de basislijn */
 .tt-sphere {
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f4f4 35%, #e0e0e0 70%, #b8b8b8 100%);
-    box-shadow: inset -4px -6px 12px rgba(0,0,0,0.18),
-                inset 3px 3px 6px rgba(255,255,255,0.9),
-                0 14px 20px -6px rgba(0,0,0,0.22);
-}
-
-/* Voorste (grotere) balletje */
-.tt-sphere-front {
-    animation: tt-bounce-front 1.25s cubic-bezier(0.28, 0.84, 0.42, 1) infinite alternate;
-}
-
-.tt-shadow-front {
-    animation: tt-shadow-front 1.25s cubic-bezier(0.28, 0.84, 0.42, 1) infinite alternate;
-}
-
-@keyframes tt-bounce-front {
-    0% {
-        transform: translateY(0) scale(1.05, 0.95) rotate(-3deg);
-    }
-    12% {
-        transform: translateY(-4px) scale(1, 1) rotate(-1deg);
-    }
-    100% {
-        transform: translateY(-24px) scale(0.98, 1.02) rotate(4deg);
-    }
-}
-
-@keyframes tt-shadow-front {
-    0% {
-        transform: scale(1.1);
-        opacity: 0.22;
-    }
-    100% {
-        transform: scale(0.72);
-        opacity: 0.08;
-    }
-}
-
-/* Achterste (iets kleinere) balletje - ander ritme & timing zodat ze los van elkaar bewegen */
-.tt-sphere-back {
-    animation: tt-bounce-back 1.55s cubic-bezier(0.28, 0.84, 0.42, 1) 0.35s infinite alternate;
-}
-
-.tt-shadow-back {
-    animation: tt-shadow-back 1.55s cubic-bezier(0.28, 0.84, 0.42, 1) 0.35s infinite alternate;
-}
-
-@keyframes tt-bounce-back {
-    0% {
-        transform: translateY(0) scale(1.04, 0.96) rotate(3deg);
-    }
-    12% {
-        transform: translateY(-3px) scale(1, 1) rotate(1deg);
-    }
-    100% {
-        transform: translateY(-28px) scale(0.98, 1.02) rotate(-5deg);
-    }
-}
-
-@keyframes tt-shadow-back {
-    0% {
-        transform: scale(1.1);
-        opacity: 0.22;
-    }
-    100% {
-        transform: scale(0.68);
-        opacity: 0.07;
-    }
+    background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f7f7f7 35%, #e2e2e2 70%, #b8b8b8 100%);
+    box-shadow: inset -5px -7px 14px rgba(0,0,0,0.18),
+                inset 3px 3px 6px rgba(255,255,255,0.95),
+                0 16px 24px -6px rgba(0,0,0,0.28);
 }
