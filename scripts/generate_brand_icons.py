@@ -22,17 +22,13 @@ WHITE_TRANS = (255, 255, 255, 120)
 TRANSPARENT = (0, 0, 0, 0)
 
 def create_badge_base():
-    """Maakt de oranje cirkel-badge met zachte glans."""
+    """Maakt de strakke oranje cirkel-badge zonder storende schittering, passend bij de TT Clinics huisstijl."""
     img = Image.new("RGBA", (SIZE, SIZE), TRANSPARENT)
     draw = ImageDraw.Draw(img)
     
-    # Oranje cirkel
+    # Oranje cirkel - strak en egaal TT Oranje
     pad = 32
     draw.ellipse([pad, pad, SIZE - pad, SIZE - pad], fill=ORANGE)
-    
-    # Specular highlight (bovenkant glans)
-    glaze_box = [pad + 60, pad + 20, SIZE - pad - 60, pad + 110]
-    draw.ellipse(glaze_box, fill=WHITE_TRANS)
     
     return img
 
@@ -178,12 +174,16 @@ def make_chart_icon():
     # Staaf 3
     draw.rectangle([c_x + bar_w * 0.5 + gap, c_y - 100, c_x + bar_w * 1.5 + gap, c_y + 90], fill=WHITE)
     
-    # Pijl omhoog schuin
-    arrow_pts = [
-        (c_x - bar_w * 1.5 - gap, c_y - 10),
-        (c_x + bar_w * 1.5 + gap + 25, c_y - 125)
+    # Pijl omhoog schuin (strak wit)
+    tip_x, tip_y = c_x + bar_w * 1.5 + gap + 15, c_y - 120
+    draw.line([(c_x - bar_w * 1.5 - gap, c_y - 10), (tip_x, tip_y)], fill=WHITE, width=14)
+    # Pijlpunt
+    arrow_head = [
+        (tip_x + 5, tip_y - 20),
+        (tip_x - 32, tip_y - 6),
+        (tip_x - 4, tip_y + 24)
     ]
-    draw.line(arrow_pts, fill=ORANGE_LIGHT, width=12)
+    draw.polygon(arrow_head, fill=WHITE)
     
     img = img.resize((256, 256), Image.Resampling.LANCZOS)
     path = os.path.join(OUTPUT_DIR, "icon-chart.png")
