@@ -113,3 +113,6 @@ html {
     .tt-ball-track, .tt-ball { animation: none; }
     .tt-ball-track { display: none; }
 }
+
+/* Ankerlinks niet onder de sticky menubalk laten verdwijnen */
+section[id] { scroll-margin-top: 110px; }

@@ -44,7 +44,7 @@
     </style>
 
 </head>
-<body class="bg-white dark:bg-gray-900 text-tt-black dark:text-gray-100 font-inter transition-colors duration-300 table-pattern">
+<body class="bg-white dark:bg-gray-900 text-tt-black dark:text-gray-100 font-inter transition-colors duration-300 table-pattern" id="top">
     <!-- Herbruikbare scherpe swoosh-lijnen uit het logo -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
         <defs>
@@ -76,10 +76,10 @@
                 <div class="text-tt-black dark:text-white dark:text-white"><span class="text-tt-orange">TT</span> CLINICS</div>
             </div>
             <ul class="flex space-x-6 font-semibold items-center">
-                <li><a href="#" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><circle cx="12" cy="14" r="2.5" fill="currentColor" stroke="none" /></svg> Home</a></li>
-                <li><a href="#" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors transform group-hover:rotate-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg> Clinics</a></li>
-                <li><a href="#" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
-                <li><a href="#" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
+                <li><a href="#top" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><circle cx="12" cy="14" r="2.5" fill="currentColor" stroke="none" /></svg> Home</a></li>
+                <li><a href="#clinics" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors transform group-hover:rotate-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg> Clinics</a></li>
+                <li><a href="#over-ons" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
+                <li><a href="#contact" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
                 <li><button id="themeToggle" class="ml-4 p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center">
 <svg id="iconLight" class="w-5 h-5 hidden dark:block text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" title="Light Mode">
     <!-- Glowing Ping Pong Ball (Sun) -->
@@ -125,7 +125,7 @@
     </div>
 
     <!-- Diensten / Features -->
-    <section class="py-20 bg-white/90 dark:bg-gray-900/90 relative transition-colors duration-300">
+    <section id="clinics" class="py-20 bg-white/90 dark:bg-gray-900/90 relative transition-colors duration-300">
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="font-montserrat text-4xl font-black text-center italic mb-16 uppercase"><svg class="inline-block w-12 h-6 mr-3 -mt-2 align-middle" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>Wat wij <span class="text-tt-orange">bieden</span></h2>
             
@@ -299,9 +299,11 @@
             <div>
                 <h4 class="font-montserrat text-xl font-bold mb-4 text-white">Navigatie</h4>
                 <ul class="space-y-2 text-tt-grey">
-                    <li><a href="#" class="hover:text-tt-orange transition-colors">Home</a></li>
-                    <li><a href="#" class="hover:text-tt-orange transition-colors">Clinics</a></li>
-                    <li><a href="#" class="hover:text-tt-orange transition-colors">Over Ons</a></li>
+                    <li><a href="#top" class="hover:text-tt-orange transition-colors">Home</a></li>
+                    <li><a href="#clinics" class="hover:text-tt-orange transition-colors">Clinics</a></li>
+                    <li><a href="#over-ons" class="hover:text-tt-orange transition-colors">Over Ons</a></li>
+                    <li><a href="#prijzen" class="hover:text-tt-orange transition-colors">Tarieven</a></li>
+                    <li><a href="#contact" class="hover:text-tt-orange transition-colors">Contact</a></li>
                 </ul>
             </div>
             <div>
