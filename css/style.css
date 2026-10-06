@@ -116,3 +116,43 @@ html {
 
 /* Ankerlinks niet onder de sticky menubalk laten verdwijnen */
 section[id] { scroll-margin-top: 110px; }
+
+
+/* Twee 3D tafeltennisballetjes met logo & animatie */
+.tt-balls-container {
+    animation: tt-balls-float 4.5s ease-in-out infinite;
+}
+
+@keyframes tt-balls-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(1.5deg);
+    }
+}
+
+.tt-sphere {
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f4f4 35%, #e0e0e0 70%, #b8b8b8 100%);
+    box-shadow: inset -4px -6px 12px rgba(0,0,0,0.18),
+                inset 3px 3px 6px rgba(255,255,255,0.9),
+                0 14px 20px -6px rgba(0,0,0,0.22);
+}
+
+.tt-sphere-front {
+    animation: tt-ball-spin 8s ease-in-out infinite alternate;
+}
+
+.tt-sphere-back {
+    animation: tt-ball-spin 7s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes tt-ball-spin {
+    0% {
+        transform: rotate(-6deg);
+    }
+    100% {
+        transform: rotate(6deg);
+    }
+}
