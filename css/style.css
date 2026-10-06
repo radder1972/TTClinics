@@ -64,3 +64,11 @@ html {
 .btn-speed:hover::after {
     left: 150%;
 }
+
+/* Top Header Slant */
+.slant-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3vw), 0 100%);
+}
+.slant-bottom-inner {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3vw), 0 100%);
+}
