@@ -38,13 +38,12 @@
         :root {
             --card-w: 85mm;
             --card-h: 55mm;
-            /* Scherm weergave ratio (geschaald voor haarscherpe preview) */
             --preview-scale: 1.35;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #0F0F12;
+            background: #0B0B0E;
             color: #ffffff;
             min-height: 100vh;
         }
@@ -55,7 +54,7 @@
             border-radius: 12px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7), 0 0 1px 1px rgba(255,255,255,0.08);
+            box-shadow: 0 20px 45px -15px rgba(0,0,0,0.8), 0 0 1px 1px rgba(255,255,255,0.08);
             user-select: none;
             flex-shrink: 0;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
@@ -63,7 +62,7 @@
 
         .biz-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 28px 50px -15px rgba(255,107,0,0.25), 0 0 1px 1px rgba(255,107,0,0.3);
+            box-shadow: 0 28px 55px -15px rgba(255,107,0,0.3), 0 0 1px 1px rgba(255,107,0,0.35);
         }
 
         /* 3D Flip Card Container */
@@ -85,14 +84,6 @@
             transform: rotateY(180deg);
         }
 
-        /* Diagonale dynamische swoosh hoek */
-        .swoosh-bg {
-            clip-path: polygon(100% 0, 100% 100%, 55% 100%, 75% 0);
-        }
-        .swoosh-subtle {
-            clip-path: polygon(0 0, 35% 0, 15% 100%, 0 100%);
-        }
-
         /* Print weergave: EXACT 85mm x 55mm met snijtekens */
         @media print {
             body {
@@ -107,7 +98,7 @@
             .print-sheet {
                 display: flex !important;
                 flex-direction: column !important;
-                gap: 20mm !important;
+                gap: 15mm !important;
                 align-items: center !important;
                 justify-content: center !important;
                 padding: 15mm 0 !important;
@@ -129,8 +120,37 @@
 </head>
 <body class="p-4 sm:p-8 flex flex-col items-center justify-between">
 
+    <!-- Herbruikbare dynamische swoosh-vectoren uit het logo -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="ttg-o" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#FF6B00" stop-opacity="0"/>
+                <stop offset=".45" stop-color="#FF6B00" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#FF6B00"/>
+            </linearGradient>
+            <linearGradient id="ttg-l" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#FF9A4D" stop-opacity="0"/>
+                <stop offset="1" stop-color="#FF9A4D"/>
+            </linearGradient>
+            <linearGradient id="ttg-g" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#7A7A7A" stop-opacity="0"/>
+                <stop offset="1" stop-color="#7A7A7A"/>
+            </linearGradient>
+            <symbol id="tt-streaks" viewBox="0 0 200 100">
+                <path d="M0,82 L196,8 L176,30 Z" fill="url(#ttg-o)"/>
+                <path d="M22,98 L184,44 L170,56 Z" fill="url(#ttg-l)"/>
+                <path d="M8,58 L150,6 L136,20 Z" fill="url(#ttg-g)"/>
+                <path d="M70,100 L200,64 L186,74 Z" fill="url(#ttg-o)" opacity=".8"/>
+            </symbol>
+            <symbol id="tt-streak-sm" viewBox="0 0 60 24">
+                <path d="M0,20 L58,2 L50,10 Z" fill="url(#ttg-o)"/>
+                <path d="M10,24 L54,12 L48,17 Z" fill="url(#ttg-g)"/>
+            </symbol>
+        </defs>
+    </svg>
+
     <!-- Top Navigation / Controls (Niet zichtbaar bij printen) -->
-    <header class="w-full max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 mb-4 border-b border-gray-800 no-print">
+    <header class="w-full max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 mb-4 border-b border-gray-800/80 no-print">
         <a href="index.html" class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group">
             <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-tt-orange transition-colors">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -164,25 +184,27 @@
                 Visitekaartje <span class="text-tt-orange">Edward Westhoff</span>
             </h1>
             <p class="text-gray-400 text-sm max-w-md mx-auto">
-                Officieel dubbelzijdig visitekaartje voor <strong class="text-white">TT Clinics</strong>. Klik op de kaart om te draaien tussen voor- en achterkant.
+                Ontwerp met dynamische signature swooshes uit de TT Clinics identiteit. Klik op het kaartje om soepel te draaien.
             </p>
         </div>
 
-        <!-- 3D Interactive Flip Card Preview (Voor interactief bekijken op scherm) -->
+        <!-- 3D Interactive Flip Card Preview -->
         <div class="flip-container no-print cursor-pointer mb-12" id="cardFlipTrigger" title="Klik om kaartje om te draaien">
             <div id="cardFlipper" class="flip-inner relative" style="width: calc(var(--card-w) * var(--preview-scale)); height: calc(var(--card-h) * var(--preview-scale));">
                 
                 <!-- FRONT SIDE (Interactief) -->
                 <div class="flip-front absolute inset-0">
-                    <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
-                        <!-- Oranje dynamische decoratie strepen rechtsboven -->
-                        <div class="absolute -right-8 -top-8 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
-                        <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-tt-orange/10 to-transparent pointer-events-none"></div>
-                        <div class="absolute -right-4 top-0 w-32 h-full bg-gradient-to-bl from-tt-orange via-orange-600 to-transparent opacity-20 transform -skew-x-12 pointer-events-none"></div>
-                        <div class="absolute right-14 top-0 w-1.5 h-full bg-tt-orange/40 transform -skew-x-12 pointer-events-none"></div>
-                        <div class="absolute right-20 top-0 w-0.5 h-full bg-white/20 transform -skew-x-12 pointer-events-none"></div>
+                    <div class="biz-card bg-gradient-to-br from-[#1E1E22] via-[#141417] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                        <!-- Swoosh 1: Grote achtergrond swoosh rechtsboven diagonaal -->
+                        <svg class="absolute -right-12 -top-8 w-72 h-36 opacity-35 pointer-events-none transform rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        
+                        <!-- Swoosh 2: Subtiele swoosh linksonder in de hoek -->
+                        <svg class="absolute -left-12 -bottom-10 w-56 h-28 opacity-25 pointer-events-none transform -rotate-12 scale-x-[-1]" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        
+                        <!-- Oranje rand-accent links -->
+                        <div class="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-tt-orange via-orange-500 to-amber-500"></div>
 
-                        <!-- Header op kaartje: Logo & Slogan -->
+                        <!-- Header op kaartje: Logo, swoosh & slogan -->
                         <div class="relative z-10 flex items-start justify-between">
                             <div class="flex items-center gap-3">
                                 <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-10 sm:h-12 w-auto drop-shadow-md">
@@ -194,25 +216,34 @@
                                 </div>
                             </div>
                             
-                            <!-- Drie oranje sterretjes subtiel -->
-                            <div class="flex items-center gap-1 text-tt-orange text-xs">
-                                ★★★
+                            <!-- Kleine mini-swoosh rechtsboven bij de sterren -->
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-8 h-3 opacity-75" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <span class="text-tt-orange text-xs">★★★</span>
                             </div>
                         </div>
 
-                        <!-- Center: Naam & Titel -->
-                        <div class="relative z-10 my-auto py-2">
-                            <h2 class="font-montserrat text-2xl sm:text-3xl font-black italic tracking-tight text-white leading-tight">
-                                Edward <span class="text-tt-orange">Westhoff</span>
-                            </h2>
-                            <div class="inline-flex items-center gap-2 mt-1 px-2.5 py-0.5 rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange text-[10px] sm:text-xs font-bold uppercase tracking-wider">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange"></span>
-                                Oprichter &amp; Hoofdtrainer
+                        <!-- Center: Naam met prominente swoosh eronder & Titel -->
+                        <div class="relative z-10 my-auto py-1">
+                            <div class="relative inline-block">
+                                <h2 class="font-montserrat text-2xl sm:text-3xl font-black italic tracking-tight text-white leading-none">
+                                    Edward <span class="text-tt-orange">Westhoff</span>
+                                </h2>
+                                <!-- Swoosh 3: Vliegende swoosh direct onder de naam -->
+                                <svg class="w-44 sm:w-52 h-4 sm:h-5 mt-1 -mb-1 opacity-90 filter drop-shadow-sm" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                            </div>
+                            
+                            <div class="flex items-center gap-2 mt-2">
+                                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-tt-orange animate-pulse"></span>
+                                    Oprichter &amp; Hoofdtrainer
+                                </div>
+                                <svg class="w-10 h-3.5 opacity-60" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                             </div>
                         </div>
 
-                        <!-- Footer op kaartje: Contactgegevens -->
-                        <div class="relative z-10 grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] sm:text-xs text-gray-300 border-t border-gray-800/80 pt-3">
+                        <!-- Footer op kaartje: Contactgegevens met subtiele scheidingslijn -->
+                        <div class="relative z-10 grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] sm:text-xs text-gray-300 border-t border-gray-800/90 pt-3">
                             <div class="flex items-center gap-2">
                                 <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                                 <span class="font-medium text-white">06 - 12345678</span>
@@ -235,49 +266,58 @@
 
                 <!-- BACK SIDE (Interactief) -->
                 <div class="flip-back absolute inset-0">
-                    <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
-                        <!-- Oranje achtergrond gloed -->
-                        <div class="absolute -left-10 -bottom-10 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="biz-card bg-gradient-to-br from-[#1E1E22] via-[#141417] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                        <!-- Swoosh 1: Grote diagonale dynamic streak over de hele achterkant -->
+                        <svg class="absolute -right-8 -top-8 w-80 h-40 opacity-40 pointer-events-none transform -rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        
+                        <!-- Swoosh 2: Swoosh onderaan links -->
+                        <svg class="absolute -left-16 -bottom-10 w-64 h-32 opacity-30 pointer-events-none transform rotate-12" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        
                         <div class="absolute left-0 top-0 w-2 h-full bg-tt-orange"></div>
 
-                        <!-- Bovenste rij: Tagline & clinics opsomming -->
+                        <!-- Bovenste rij: Tagline & clinics opsomming met swoosh -->
                         <div class="relative z-10 flex items-start justify-between">
                             <div>
-                                <h3 class="font-montserrat text-lg sm:text-xl font-black italic uppercase tracking-tight text-white">
+                                <h3 class="font-montserrat text-lg sm:text-xl font-black italic uppercase tracking-tight text-white leading-none">
                                     Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
                                 </h3>
-                                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Tafeltennis clinics &amp; bedrijfsuitjes</p>
+                                <!-- Swoosh 3: Ondersteunende swoosh onder slogan -->
+                                <svg class="w-36 h-3.5 mt-1 -mb-1 opacity-80" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-1">Tafeltennis clinics &amp; bedrijfsuitjes</p>
                             </div>
-                            <img src="images/logo-sticker.png" alt="TT Clinics" class="h-8 w-auto">
+                            <img src="images/logo-sticker.png" alt="TT Clinics" class="h-8 w-auto drop-shadow-sm">
                         </div>
 
-                        <!-- Midden: Drie kernactiviteiten + QR code -->
+                        <!-- Midden: Drie kernactiviteiten met mini-swooshes ipv gewone bullets + QR code -->
                         <div class="relative z-10 flex items-center justify-between gap-4 my-auto py-1">
                             <ul class="space-y-2 text-[11px] sm:text-xs">
-                                <li class="flex items-center gap-2 text-gray-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                <li class="flex items-center text-gray-200">
+                                    <svg class="w-8 h-3.5 mr-2 shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                                     <span><strong>Company Tournament:</strong> clinics &amp; toernooi</span>
                                 </li>
-                                <li class="flex items-center gap-2 text-gray-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                <li class="flex items-center text-gray-200">
+                                    <svg class="w-8 h-3.5 mr-2 shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                                     <span><strong>Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
                                 </li>
-                                <li class="flex items-center gap-2 text-gray-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
-                                    <span><strong>Op Locatie:</strong> bedrijfskantine of sporthal</span>
+                                <li class="flex items-center text-gray-200">
+                                    <svg class="w-8 h-3.5 mr-2 shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                    <span><strong>Op Locatie:</strong> bedrijfskantine of zaal</span>
                                 </li>
                             </ul>
 
-                            <!-- QR Code naar website -->
-                            <div class="flex flex-col items-center bg-white p-2 rounded-xl shadow-lg border-2 border-tt-orange shrink-0">
+                            <!-- QR Code naar website met subtiele swoosh-accent eromheen -->
+                            <div class="relative flex flex-col items-center bg-white p-2 rounded-xl shadow-lg border-2 border-tt-orange shrink-0">
                                 <img src="images/qr-ttclinics.svg" alt="Scan QR code voor TT Clinics" class="w-14 h-14 sm:w-16 sm:h-16">
                                 <span class="text-[8px] font-black uppercase text-tt-black tracking-tighter mt-0.5">Scan &amp; Boek</span>
                             </div>
                         </div>
 
-                        <!-- Footer: Website link & call to action -->
-                        <div class="relative z-10 flex items-center justify-between border-t border-gray-800/80 pt-2.5 text-[10px] text-gray-400">
-                            <div>Tot 12 personen per clinic · Maatwerk mogelijk</div>
+                        <!-- Footer: Website link & call to action met kleine swoosh -->
+                        <div class="relative z-10 flex items-center justify-between border-t border-gray-800/90 pt-2.5 text-[10px] text-gray-400">
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-6 h-2.5 opacity-60" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <span>Tot 12 personen per clinic · Maatwerk mogelijk</span>
+                            </div>
                             <div class="text-tt-orange font-bold font-mono">www.ttclinics.nl</div>
                         </div>
                     </div>
@@ -296,18 +336,16 @@
             <span id="sideIndicator" class="text-tt-orange font-semibold">Zijde: Voorzijde</span>
         </div>
 
-        <!-- PRINTBARE SHEET (Beide zijden netjes onder elkaar voor direct afdrukken) -->
+        <!-- PRINTBARE SHEET (Beide zijden voor afdrukken) -->
         <div class="print-sheet w-full flex flex-col md:flex-row items-center justify-center gap-8">
             
             <!-- VASTE VOORZIJDE (Static Print/Inspect) -->
             <div class="flex flex-col items-center">
-                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 no-print">Voorzijde</span>
-                <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
-                    <div class="absolute -right-8 -top-8 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
-                    <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-tt-orange/10 to-transparent pointer-events-none"></div>
-                    <div class="absolute -right-4 top-0 w-32 h-full bg-gradient-to-bl from-tt-orange via-orange-600 to-transparent opacity-20 transform -skew-x-12 pointer-events-none"></div>
-                    <div class="absolute right-14 top-0 w-1.5 h-full bg-tt-orange/40 transform -skew-x-12 pointer-events-none"></div>
-                    <div class="absolute right-20 top-0 w-0.5 h-full bg-white/20 transform -skew-x-12 pointer-events-none"></div>
+                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 no-print">Voorzijde (Printklaar 85×55mm)</span>
+                <div class="biz-card bg-gradient-to-br from-[#1E1E22] via-[#141417] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                    <svg class="absolute -right-12 -top-8 w-72 h-36 opacity-35 pointer-events-none transform rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <svg class="absolute -left-12 -bottom-10 w-56 h-28 opacity-25 pointer-events-none transform -rotate-12 scale-x-[-1]" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-tt-orange via-orange-500 to-amber-500"></div>
 
                     <!-- Header -->
                     <div class="relative z-10 flex items-start justify-between">
@@ -320,22 +358,31 @@
                                 <div class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">Het sportieve bedrijfsuitje</div>
                             </div>
                         </div>
-                        <div class="flex items-center gap-1 text-tt-orange text-xs">★★★</div>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-8 h-3 opacity-75" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                            <span class="text-tt-orange text-xs">★★★</span>
+                        </div>
                     </div>
 
-                    <!-- Center: Edward Westhoff -->
-                    <div class="relative z-10 my-auto py-2">
-                        <h2 class="font-montserrat text-2xl sm:text-3xl font-black italic tracking-tight text-white leading-tight">
-                            Edward <span class="text-tt-orange">Westhoff</span>
-                        </h2>
-                        <div class="inline-flex items-center gap-2 mt-1 px-2.5 py-0.5 rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange text-[10px] sm:text-xs font-bold uppercase tracking-wider">
-                            <span class="w-1.5 h-1.5 rounded-full bg-tt-orange"></span>
-                            Oprichter &amp; Hoofdtrainer
+                    <!-- Center: Edward Westhoff met swoosh -->
+                    <div class="relative z-10 my-auto py-1">
+                        <div class="relative inline-block">
+                            <h2 class="font-montserrat text-2xl sm:text-3xl font-black italic tracking-tight text-white leading-none">
+                                Edward <span class="text-tt-orange">Westhoff</span>
+                            </h2>
+                            <svg class="w-44 sm:w-52 h-4 sm:h-5 mt-1 -mb-1 opacity-90 filter drop-shadow-sm" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        </div>
+                        <div class="flex items-center gap-2 mt-2">
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange animate-pulse"></span>
+                                Oprichter &amp; Hoofdtrainer
+                            </div>
+                            <svg class="w-10 h-3.5 opacity-60" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                         </div>
                     </div>
 
                     <!-- Contact -->
-                    <div class="relative z-10 grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] sm:text-xs text-gray-300 border-t border-gray-800/80 pt-3">
+                    <div class="relative z-10 grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] sm:text-xs text-gray-300 border-t border-gray-800/90 pt-3">
                         <div class="flex items-center gap-2">
                             <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                             <span class="font-medium text-white">06 - 12345678</span>
@@ -358,48 +405,53 @@
 
             <!-- VASTE ACHTERZIJDE (Static Print/Inspect) -->
             <div class="flex flex-col items-center">
-                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 no-print">Achterzijde</span>
-                <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
-                    <div class="absolute -left-10 -bottom-10 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
+                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 no-print">Achterzijde (Printklaar 85×55mm)</span>
+                <div class="biz-card bg-gradient-to-br from-[#1E1E22] via-[#141417] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                    <svg class="absolute -right-8 -top-8 w-80 h-40 opacity-40 pointer-events-none transform -rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <svg class="absolute -left-16 -bottom-10 w-64 h-32 opacity-30 pointer-events-none transform rotate-12" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     <div class="absolute left-0 top-0 w-2 h-full bg-tt-orange"></div>
 
                     <!-- Header -->
                     <div class="relative z-10 flex items-start justify-between">
                         <div>
-                            <h3 class="font-montserrat text-lg sm:text-xl font-black italic uppercase tracking-tight text-white">
+                            <h3 class="font-montserrat text-lg sm:text-xl font-black italic uppercase tracking-tight text-white leading-none">
                                 Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
                             </h3>
-                            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Tafeltennis clinics &amp; bedrijfsuitjes</p>
+                            <svg class="w-36 h-3.5 mt-1 -mb-1 opacity-80" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-1">Tafeltennis clinics &amp; bedrijfsuitjes</p>
                         </div>
-                        <img src="images/logo-sticker.png" alt="TT Clinics" class="h-8 w-auto">
+                        <img src="images/logo-sticker.png" alt="TT Clinics" class="h-8 w-auto drop-shadow-sm">
                     </div>
 
-                    <!-- Kernactiviteiten + QR -->
+                    <!-- Kernactiviteiten met swooshes + QR -->
                     <div class="relative z-10 flex items-center justify-between gap-4 my-auto py-1">
                         <ul class="space-y-2 text-[11px] sm:text-xs">
-                            <li class="flex items-center gap-2 text-gray-200">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                            <li class="flex items-center text-gray-200">
+                                <svg class="w-8 h-3.5 mr-2 shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                                 <span><strong>Company Tournament:</strong> clinics &amp; toernooi</span>
                             </li>
-                            <li class="flex items-center gap-2 text-gray-200">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                            <li class="flex items-center text-gray-200">
+                                <svg class="w-8 h-3.5 mr-2 shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                                 <span><strong>Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
                             </li>
-                            <li class="flex items-center gap-2 text-gray-200">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
-                                <span><strong>Op Locatie:</strong> bedrijfskantine of sporthal</span>
+                            <li class="flex items-center text-gray-200">
+                                <svg class="w-8 h-3.5 mr-2 shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <span><strong>Op Locatie:</strong> bedrijfskantine of zaal</span>
                             </li>
                         </ul>
 
-                        <div class="flex flex-col items-center bg-white p-2 rounded-xl shadow-lg border-2 border-tt-orange shrink-0">
+                        <div class="relative flex flex-col items-center bg-white p-2 rounded-xl shadow-lg border-2 border-tt-orange shrink-0">
                             <img src="images/qr-ttclinics.svg" alt="Scan QR code voor TT Clinics" class="w-14 h-14 sm:w-16 sm:h-16">
                             <span class="text-[8px] font-black uppercase text-tt-black tracking-tighter mt-0.5">Scan &amp; Boek</span>
                         </div>
                     </div>
 
                     <!-- Footer -->
-                    <div class="relative z-10 flex items-center justify-between border-t border-gray-800/80 pt-2.5 text-[10px] text-gray-400">
-                        <div>Tot 12 personen per clinic · Maatwerk mogelijk</div>
+                    <div class="relative z-10 flex items-center justify-between border-t border-gray-800/90 pt-2.5 text-[10px] text-gray-400">
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-6 h-2.5 opacity-60" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                            <span>Tot 12 personen per clinic · Maatwerk mogelijk</span>
+                        </div>
                         <div class="text-tt-orange font-bold font-mono">www.ttclinics.nl</div>
                     </div>
                 </div>
