@@ -36,9 +36,10 @@ html {
 }
 
 .slant-top-footer {
-    clip-path: polygon(0 0, 100% 7vw, 100% 100%, 0 100%);
-    margin-top: -10rem;
-    padding-top: calc(9rem + 4vw);
+    clip-path: polygon(0 0, 100% 6vw, 100% 100%, 0 100%);
+    margin-top: -11rem;
+    padding-top: calc(16rem + 3vw);
+    padding-bottom: 5rem;
 }
 
 /* Knoppen met Snelheid (Hover Sweep) */
