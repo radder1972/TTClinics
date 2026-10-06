@@ -60,6 +60,10 @@ ICON_HEARTBEAT = os.path.join(BASE_DIR, "images/icon-heartbeat.png")
 ICON_LOCATION = os.path.join(BASE_DIR, "images/icon-location.png")
 ICON_SHIELD = os.path.join(BASE_DIR, "images/icon-shield.png")
 ICON_CHART = os.path.join(BASE_DIR, "images/icon-chart.png")
+ICON_MAIL = os.path.join(BASE_DIR, "images/icon-mail.png")
+ICON_PHONE = os.path.join(BASE_DIR, "images/icon-phone.png")
+ICON_WEB = os.path.join(BASE_DIR, "images/icon-web.png")
+
 
 def set_slide_background(slide, use_canvas=False):
     """Zet een strakke witte achtergrond met de kenmerkende TT Oranje accentbalk onderaan."""
@@ -910,32 +914,41 @@ p_exp.space_before = Pt(14)
 # Rechter kaart: Direct Contact & QR
 right_x11 = MARGIN_LEFT + left_w11 + gap11
 add_card(slide11, right_x11, Inches(1.95), right_w11, col_h_3, bg_color=C_CARD, border_color=C_CARD_BORDER, top_accent=C_ORANGE)
-tb_info = slide11.shapes.add_textbox(right_x11 + Inches(0.28), Inches(2.2), right_w11 - Inches(0.56), col_h_3 - Inches(0.4))
-tf_info = tb_info.text_frame
-tf_info.word_wrap = True
-tf_info.margin_left = tf_info.margin_top = 0
 
-p = tf_info.paragraphs[0]
+tb_head = slide11.shapes.add_textbox(right_x11 + Inches(0.25), Inches(2.15), right_w11 - Inches(0.5), Inches(0.4))
+tf_head = tb_head.text_frame
+tf_head.word_wrap = True
+tf_head.margin_left = tf_head.margin_top = 0
+p = tf_head.paragraphs[0]
 p.text = "DIRECT CONTACT"
 p.font.name = FONT_HEAD
-p.font.size = Pt(16)
+p.font.size = Pt(15)
 p.font.bold = True
 p.font.color.rgb = C_TEXT_TITLE
 
-info_items = [
-    ("E-mail:", "info@ttclinics.nl"),
-    ("Telefoon:", "06 - 12345678"),
-    ("Website:", "www.ttclinics.nl"),
-    ("Locaties:", "Kantoor & sportzalen"),
+contact_rows = [
+    (ICON_MAIL, "info@ttclinics.nl", C_TEXT_TITLE),
+    (ICON_PHONE, "06 - 12345678", C_TEXT_TITLE),
+    (ICON_WEB, "www.ttclinics.nl", C_ORANGE_DARK),
 ]
 
-for label, val in info_items:
-    p_i = tf_info.add_paragraph()
-    p_i.text = f"{label} {val}"
-    p_i.font.name = FONT_BODY
-    p_i.font.size = Pt(12)
-    p_i.font.color.rgb = C_TEXT_BODY
-    p_i.space_before = Pt(6)
+for i, (icon_path, val, text_color) in enumerate(contact_rows):
+    y_row = Inches(2.65) + i * Inches(0.58)
+    
+    # Official brand icon badge
+    if os.path.exists(icon_path):
+        slide11.shapes.add_picture(icon_path, right_x11 + Inches(0.28), y_row, width=Inches(0.42))
+        
+    tb_row = slide11.shapes.add_textbox(right_x11 + Inches(0.82), y_row + Inches(0.04), right_w11 - Inches(0.9), Inches(0.38))
+    tf_row = tb_row.text_frame
+    tf_row.word_wrap = True
+    tf_row.margin_left = tf_row.margin_top = 0
+    p_r = tf_row.paragraphs[0]
+    p_r.text = val
+    p_r.font.name = FONT_HEAD
+    p_r.font.size = Pt(12)
+    p_r.font.bold = True
+    p_r.font.color.rgb = text_color
 
 # QR code afbeelding
 if os.path.exists(IMG_QR):
