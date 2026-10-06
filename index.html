@@ -77,23 +77,36 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-section relative bg-tt-grey overflow-hidden">
-        <div class="absolute inset-0 bg-tt-black/80 z-10"></div>
-        <div class="hero-bg absolute inset-0 bg-cover bg-center"></div>
-        
-        <div class="container mx-auto px-4 py-32 relative z-20 flex flex-col items-center text-center">
-            <h1 class="font-montserrat text-5xl md:text-7xl font-black text-white italic mb-4 uppercase tracking-tight">
-                Dynamiek & <span class="text-tt-orange">Snelheid</span>
-            </h1>
-            <p class="text-xl text-gray-200 max-w-2xl mb-8 font-light">
-                Verbeter je tafeltennis skills met professionele clinics voor alle niveaus. Ontdek de kracht van techniek en tactiek.
-            </p>
-            <a href="#contact" class="btn-primary btn-speed bg-tt-orange hover:bg-orange-600 text-white text-lg font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
-                Boek een Clinic
-            </a>
-        </div>
-    </header>
+        <!-- Hero Banner / Booking Label -->
+    <div class="header-swoosh-wrap">
+        <header class="hero-section header-swoosh relative bg-tt-black dark:bg-black overflow-hidden pt-8 pb-16">
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-20"></div>
+            
+            <div class="container mx-auto px-4 relative z-20 flex flex-col md:flex-row items-center justify-between">
+                <div class="flex-1 text-left md:pl-8">
+                    <h1 class="font-montserrat text-3xl md:text-5xl font-black text-white italic uppercase tracking-tight relative mb-2 inline-block">
+                        Dynamiek & <br/><span class="text-tt-orange">Snelheid</span>
+                        <!-- SVG Swoosh Ball flying under the text -->
+                        <div class="absolute -bottom-6 left-0 w-48 h-8">
+                            <svg viewBox="0 0 200 40" fill="none" class="w-full h-full text-tt-orange animate-pulse">
+                                <path d="M10,20 Q80,5 150,20" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4" opacity="0.5"/>
+                                <path d="M20,25 Q90,10 160,25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6" opacity="0.3"/>
+                                <circle cx="170" cy="22" r="10" fill="currentColor"/>
+                                <circle cx="173" cy="19" r="3" fill="white" opacity="0.9"/>
+                            </svg>
+                        </div>
+                    </h1>
+                </div>
+                
+                <div class="mt-12 md:mt-0 mr-0 md:mr-8">
+                    <a href="#contact" class="btn-speed bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg flex items-center text-lg">
+                        Boek een Clinic
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+    </div>
 
     <!-- Diensten / Features -->
     <section class="py-20 bg-white/90 dark:bg-gray-900/90 relative transition-colors duration-300">

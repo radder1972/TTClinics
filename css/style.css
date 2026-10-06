@@ -65,10 +65,13 @@ html {
     left: 150%;
 }
 
-/* Top Header Slant */
-.slant-bottom {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3vw), 0 100%);
+
+/* Header: diagonale streep (parallel aan de footer) met oranje accent */
+.header-swoosh-wrap {
+    background: #FF6B00;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 4vw));
+    margin-bottom: 2rem;
 }
-.slant-bottom-inner {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3vw), 0 100%);
+.header-swoosh {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 0 calc(100% - 4vw - 8px));
 }
