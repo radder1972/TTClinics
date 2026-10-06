@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitekaartje - Edward Westhoff | TT Clinics</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900;900i&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tt-orange': '#FF6B00',
+                        'tt-orange-light': '#FF8A33',
+                        'tt-black': '#1E1E1E',
+                        'tt-dark': '#141414',
+                        'tt-grey': '#A0A0A0',
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="icon" type="image/svg+xml" href="images/qr-ttclinics.svg">
+
+    <style>
+        /* Kaart afmetingen: Standaard Europees formaat 85mm x 55mm */
+        :root {
+            --card-w: 85mm;
+            --card-h: 55mm;
+            /* Scherm weergave ratio (geschaald voor haarscherpe preview) */
+            --preview-scale: 1.35;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0F0F12;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .biz-card {
+            width: calc(var(--card-w) * var(--preview-scale));
+            height: calc(var(--card-h) * var(--preview-scale));
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7), 0 0 1px 1px rgba(255,255,255,0.08);
+            user-select: none;
+            flex-shrink: 0;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+        }
+
+        .biz-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 50px -15px rgba(255,107,0,0.25), 0 0 1px 1px rgba(255,107,0,0.3);
+        }
+
+        /* 3D Flip Card Container */
+        .flip-container {
+            perspective: 1200px;
+        }
+        .flip-inner {
+            transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .flip-front, .flip-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Diagonale dynamische swoosh hoek */
+        .swoosh-bg {
+            clip-path: polygon(100% 0, 100% 100%, 55% 100%, 75% 0);
+        }
+        .swoosh-subtle {
+            clip-path: polygon(0 0, 35% 0, 15% 100%, 0 100%);
+        }
+
+        /* Print weergave: EXACT 85mm x 55mm met snijtekens */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-sheet {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20mm !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 15mm 0 !important;
+                page-break-after: always;
+            }
+            .biz-card {
+                width: 85mm !important;
+                height: 55mm !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                border: 0.2mm solid #ddd !important;
+                page-break-inside: avoid !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 flex flex-col items-center justify-between">
+
+    <!-- Top Navigation / Controls (Niet zichtbaar bij printen) -->
+    <header class="w-full max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 mb-4 border-b border-gray-800 no-print">
+        <a href="index.html" class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group">
+            <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-tt-orange transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </div>
+            <span class="font-bold text-sm">Terug naar website</span>
+        </a>
+
+        <div class="flex items-center gap-2">
+            <span class="text-xs uppercase tracking-wider font-semibold text-gray-400 mr-2">Visitekaartje</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-tt-orange/20 text-tt-orange border border-tt-orange/30">85 × 55 mm</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button id="flipBtn" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white text-xs sm:text-sm font-semibold py-2 px-3.5 rounded-lg border border-gray-700 transition-all">
+                <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                <span>Draai kaart om</span>
+            </button>
+            <button onclick="window.print()" class="flex items-center gap-2 bg-tt-orange hover:bg-orange-600 text-white text-xs sm:text-sm font-bold py-2 px-4 rounded-lg shadow-lg hover:shadow-orange-500/20 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                <span>Print / Opslaan als PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Showcase Area -->
+    <main class="w-full max-w-5xl mx-auto flex flex-col items-center justify-center my-auto py-6">
+        
+        <!-- Titel & Instructie -->
+        <div class="text-center mb-8 no-print">
+            <h1 class="font-montserrat text-3xl sm:text-4xl font-black italic tracking-tight text-white uppercase mb-2">
+                Visitekaartje <span class="text-tt-orange">Edward Westhoff</span>
+            </h1>
+            <p class="text-gray-400 text-sm max-w-md mx-auto">
+                Officieel dubbelzijdig visitekaartje voor <strong class="text-white">TT Clinics</strong>. Klik op de kaart om te draaien tussen voor- en achterkant.
+            </p>
+        </div>
+
+        <!-- 3D Interactive Flip Card Preview (Voor interactief bekijken op scherm) -->
+        <div class="flip-container no-print cursor-pointer mb-12" id="cardFlipTrigger" title="Klik om kaartje om te draaien">
+            <div id="cardFlipper" class="flip-inner relative" style="width: calc(var(--card-w) * var(--preview-scale)); height: calc(var(--card-h) * var(--preview-scale));">
+                
+                <!-- FRONT SIDE (Interactief) -->
+                <div class="flip-front absolute inset-0">
+                    <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                        <!-- Oranje dynamische decoratie strepen rechtsboven -->
+                        <div class="absolute -right-8 -top-8 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
+                        <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-tt-orange/10 to-transparent pointer-events-none"></div>
+                        <div class="absolute -right-4 top-0 w-32 h-full bg-gradient-to-bl from-tt-orange via-orange-600 to-transparent opacity-20 transform -skew-x-12 pointer-events-none"></div>
+                        <div class="absolute right-14 top-0 w-1.5 h-full bg-tt-orange/40 transform -skew-x-12 pointer-events-none"></div>
+                        <div class="absolute right-20 top-0 w-0.5 h-full bg-white/20 transform -skew-x-12 pointer-events-none"></div>
+
+                        <!-- Header op kaartje: Logo & Slogan -->
+                        <div class="relative z-10 flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-10 sm:h-12 w-auto drop-shadow-md">
+                                <div>
+                                    <div class="font-montserrat font-black italic tracking-tighter text-lg sm:text-xl leading-none">
+                                        <span class="text-tt-orange">TT</span> CLINICS
+                                    </div>
+                                    <div class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">Het sportieve bedrijfsuitje</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Drie oranje sterretjes subtiel -->
+                            <div class="flex items-center gap-1 text-tt-orange text-xs">
+                                ★★★
+                            </div>
+                        </div>
+
+                        <!-- Center: Naam & Titel -->
+                        <div class="relative z-10 my-auto py-2">
+                            <h2 class="font-montserrat text-2xl sm:text-3xl font-black italic tracking-tight text-white leading-tight">
+                                Edward <span class="text-tt-orange">Westhoff</span>
+                            </h2>
+                            <div class="inline-flex items-center gap-2 mt-1 px-2.5 py-0.5 rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange"></span>
+                                Oprichter &amp; Hoofdtrainer
+                            </div>
+                        </div>
+
+                        <!-- Footer op kaartje: Contactgegevens -->
+                        <div class="relative z-10 grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] sm:text-xs text-gray-300 border-t border-gray-800/80 pt-3">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                <span class="font-medium text-white">06 - 12345678</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                <span>info@ttclinics.nl</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                                <span class="text-white font-semibold">www.ttclinics.nl</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span>Heel Nederland</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BACK SIDE (Interactief) -->
+                <div class="flip-back absolute inset-0">
+                    <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                        <!-- Oranje achtergrond gloed -->
+                        <div class="absolute -left-10 -bottom-10 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
+                        <div class="absolute left-0 top-0 w-2 h-full bg-tt-orange"></div>
+
+                        <!-- Bovenste rij: Tagline & clinics opsomming -->
+                        <div class="relative z-10 flex items-start justify-between">
+                            <div>
+                                <h3 class="font-montserrat text-lg sm:text-xl font-black italic uppercase tracking-tight text-white">
+                                    Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
+                                </h3>
+                                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Tafeltennis clinics &amp; bedrijfsuitjes</p>
+                            </div>
+                            <img src="images/logo-sticker.png" alt="TT Clinics" class="h-8 w-auto">
+                        </div>
+
+                        <!-- Midden: Drie kernactiviteiten + QR code -->
+                        <div class="relative z-10 flex items-center justify-between gap-4 my-auto py-1">
+                            <ul class="space-y-2 text-[11px] sm:text-xs">
+                                <li class="flex items-center gap-2 text-gray-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                    <span><strong>Company Tournament:</strong> clinics &amp; toernooi</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-gray-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                    <span><strong>Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-gray-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                    <span><strong>Op Locatie:</strong> bedrijfskantine of sporthal</span>
+                                </li>
+                            </ul>
+
+                            <!-- QR Code naar website -->
+                            <div class="flex flex-col items-center bg-white p-2 rounded-xl shadow-lg border-2 border-tt-orange shrink-0">
+                                <img src="images/qr-ttclinics.svg" alt="Scan QR code voor TT Clinics" class="w-14 h-14 sm:w-16 sm:h-16">
+                                <span class="text-[8px] font-black uppercase text-tt-black tracking-tighter mt-0.5">Scan &amp; Boek</span>
+                            </div>
+                        </div>
+
+                        <!-- Footer: Website link & call to action -->
+                        <div class="relative z-10 flex items-center justify-between border-t border-gray-800/80 pt-2.5 text-[10px] text-gray-400">
+                            <div>Tot 12 personen per clinic · Maatwerk mogelijk</div>
+                            <div class="text-tt-orange font-bold font-mono">www.ttclinics.nl</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Indicatie knop onder de preview -->
+        <div class="flex items-center justify-center gap-4 text-xs text-gray-400 no-print mb-14">
+            <span class="inline-flex items-center gap-1.5">
+                <kbd class="px-2 py-1 bg-gray-800 text-gray-300 rounded border border-gray-700 font-mono text-[10px]">Klik op kaart</kbd>
+                om om te draaien
+            </span>
+            <span>·</span>
+            <span id="sideIndicator" class="text-tt-orange font-semibold">Zijde: Voorzijde</span>
+        </div>
+
+        <!-- PRINTBARE SHEET (Beide zijden netjes onder elkaar voor direct afdrukken) -->
+        <div class="print-sheet w-full flex flex-col md:flex-row items-center justify-center gap-8">
+            
+            <!-- VASTE VOORZIJDE (Static Print/Inspect) -->
+            <div class="flex flex-col items-center">
+                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 no-print">Voorzijde</span>
+                <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                    <div class="absolute -right-8 -top-8 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-tt-orange/10 to-transparent pointer-events-none"></div>
+                    <div class="absolute -right-4 top-0 w-32 h-full bg-gradient-to-bl from-tt-orange via-orange-600 to-transparent opacity-20 transform -skew-x-12 pointer-events-none"></div>
+                    <div class="absolute right-14 top-0 w-1.5 h-full bg-tt-orange/40 transform -skew-x-12 pointer-events-none"></div>
+                    <div class="absolute right-20 top-0 w-0.5 h-full bg-white/20 transform -skew-x-12 pointer-events-none"></div>
+
+                    <!-- Header -->
+                    <div class="relative z-10 flex items-start justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-10 sm:h-12 w-auto drop-shadow-md">
+                            <div>
+                                <div class="font-montserrat font-black italic tracking-tighter text-lg sm:text-xl leading-none">
+                                    <span class="text-tt-orange">TT</span> CLINICS
+                                </div>
+                                <div class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">Het sportieve bedrijfsuitje</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 text-tt-orange text-xs">★★★</div>
+                    </div>
+
+                    <!-- Center: Edward Westhoff -->
+                    <div class="relative z-10 my-auto py-2">
+                        <h2 class="font-montserrat text-2xl sm:text-3xl font-black italic tracking-tight text-white leading-tight">
+                            Edward <span class="text-tt-orange">Westhoff</span>
+                        </h2>
+                        <div class="inline-flex items-center gap-2 mt-1 px-2.5 py-0.5 rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                            <span class="w-1.5 h-1.5 rounded-full bg-tt-orange"></span>
+                            Oprichter &amp; Hoofdtrainer
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="relative z-10 grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] sm:text-xs text-gray-300 border-t border-gray-800/80 pt-3">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span class="font-medium text-white">06 - 12345678</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>info@ttclinics.nl</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                            <span class="text-white font-semibold">www.ttclinics.nl</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>Heel Nederland</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VASTE ACHTERZIJDE (Static Print/Inspect) -->
+            <div class="flex flex-col items-center">
+                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 no-print">Achterzijde</span>
+                <div class="biz-card bg-gradient-to-br from-[#1C1C1F] via-[#141416] to-[#0A0A0C] text-white p-6 sm:p-7 flex flex-col justify-between">
+                    <div class="absolute -left-10 -bottom-10 w-44 h-44 bg-tt-orange/15 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="absolute left-0 top-0 w-2 h-full bg-tt-orange"></div>
+
+                    <!-- Header -->
+                    <div class="relative z-10 flex items-start justify-between">
+                        <div>
+                            <h3 class="font-montserrat text-lg sm:text-xl font-black italic uppercase tracking-tight text-white">
+                                Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
+                            </h3>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Tafeltennis clinics &amp; bedrijfsuitjes</p>
+                        </div>
+                        <img src="images/logo-sticker.png" alt="TT Clinics" class="h-8 w-auto">
+                    </div>
+
+                    <!-- Kernactiviteiten + QR -->
+                    <div class="relative z-10 flex items-center justify-between gap-4 my-auto py-1">
+                        <ul class="space-y-2 text-[11px] sm:text-xs">
+                            <li class="flex items-center gap-2 text-gray-200">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                <span><strong>Company Tournament:</strong> clinics &amp; toernooi</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-200">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                <span><strong>Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-200">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tt-orange shrink-0"></span>
+                                <span><strong>Op Locatie:</strong> bedrijfskantine of sporthal</span>
+                            </li>
+                        </ul>
+
+                        <div class="flex flex-col items-center bg-white p-2 rounded-xl shadow-lg border-2 border-tt-orange shrink-0">
+                            <img src="images/qr-ttclinics.svg" alt="Scan QR code voor TT Clinics" class="w-14 h-14 sm:w-16 sm:h-16">
+                            <span class="text-[8px] font-black uppercase text-tt-black tracking-tighter mt-0.5">Scan &amp; Boek</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="relative z-10 flex items-center justify-between border-t border-gray-800/80 pt-2.5 text-[10px] text-gray-400">
+                        <div>Tot 12 personen per clinic · Maatwerk mogelijk</div>
+                        <div class="text-tt-orange font-bold font-mono">www.ttclinics.nl</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Download VCF vCard contactbestand knop -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4 no-print">
+            <button id="downloadVCard" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold py-2 px-4 rounded-full border border-gray-700 transition-all hover:text-white">
+                <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <span>Download vCard Contactbestand (.vcf)</span>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full text-center text-xs text-gray-500 py-6 border-t border-gray-800/60 mt-12 no-print">
+        &copy; 2026 TT Clinics · Ontwerp visitekaartje Edward Westhoff · 85×55 mm standaard drukklaar
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        const cardFlipper = document.getElementById('cardFlipper');
+        const flipBtn = document.getElementById('flipBtn');
+        const cardFlipTrigger = document.getElementById('cardFlipTrigger');
+        const sideIndicator = document.getElementById('sideIndicator');
+
+        let isFlipped = false;
+
+        function toggleFlip() {
+            isFlipped = !isFlipped;
+            if (isFlipped) {
+                cardFlipper.classList.add('is-flipped');
+                sideIndicator.textContent = 'Zijde: Achterzijde (Scan & Clinics)';
+            } else {
+                cardFlipper.classList.remove('is-flipped');
+                sideIndicator.textContent = 'Zijde: Voorzijde (Contact & Functie)';
+            }
+        }
+
+        if (cardFlipTrigger) cardFlipTrigger.addEventListener('click', toggleFlip);
+        if (flipBtn) flipBtn.addEventListener('click', toggleFlip);
+
+        // vCard generator & download
+        document.getElementById('downloadVCard').addEventListener('click', () => {
+            const vCardData = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                'N:Westhoff;Edward;;;',
+                'FN:Edward Westhoff',
+                'ORG:TT Clinics',
+                'TITLE:Oprichter & Hoofdtrainer',
+                'TEL;TYPE=CELL,VOICE:+31612345678',
+                'EMAIL;TYPE=INTERNET,WORK:info@ttclinics.nl',
+                'URL:https://www.ttclinics.nl',
+                'NOTE:Het sportieve bedrijfsuitje & tafeltennis clinics voor vitale teams.',
+                'END:VCARD'
+            ].join('\r\n');
+
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Edward_Westhoff_TTClinics.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>
