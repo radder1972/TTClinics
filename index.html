@@ -173,54 +173,75 @@
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="font-montserrat text-4xl font-black text-center italic mb-6 uppercase"><svg class="inline-block w-12 h-6 mr-3 -mt-2 align-middle" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>Wat wij <span class="text-tt-orange">bieden</span></h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Card 1: Company Tournament (Trophy Icon) -->
-                <div class="feature-card relative bg-white dark:bg-gray-800 rounded-2xl border-t-4 border-t-tt-orange border-x border-b border-gray-100 dark:border-gray-700/60 p-8 shadow-lg shadow-gray-200/50 dark:shadow-none hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group flex flex-col justify-between">
-                    <svg class="absolute -right-6 -bottom-6 w-36 h-20 opacity-15 dark:opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                    <div>
-                        <!-- Minimalist Trophy Icon -->
-                        <div class="w-14 h-14 rounded-xl bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 flex items-center justify-center text-tt-orange mb-6 group-hover:scale-110 group-hover:bg-tt-orange group-hover:text-white transition-all duration-300 shadow-sm">
-                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
-                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-                                <path d="M4 22h16"/>
-                                <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/>
-                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
-                            </svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Dynamic Card 1: Company Tournament -->
+                <div class="feature-card relative bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:border p-8 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col justify-between" style="border-radius: 0 40px 0 40px;">
+                    <!-- Originele dynamische swoosh rechtsboven -->
+                    <svg class="absolute -right-6 -top-1 w-44 h-20 opacity-40 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-1 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="absolute right-0 top-0 w-16 h-16 border-t-4 border-r-4 border-tt-orange rounded-tr-[40px]"></div>
+                    
+                    <div class="relative z-10">
+                        <!-- Dynamische TT-bal met Trofee en speedline -->
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-tt-orange via-orange-500 to-amber-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/30 transform -rotate-6 group-hover:rotate-6 group-hover:scale-110 transition-all duration-300 relative">
+                                <div class="absolute top-1.5 left-2 w-3.5 h-2 bg-white/45 rounded-full blur-[0.5px]"></div>
+                                <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                                    <path d="M4 22h16"/>
+                                    <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/>
+                                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+                                </svg>
+                            </div>
+                            <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                         </div>
-                        <h3 class="font-montserrat text-2xl font-black italic mb-3 text-tt-black dark:text-white">Company <br><span class="text-tt-orange">Tournament</span></h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">Na een energieke masterclass basistechniek en spin spelen jullie een dynamisch toernooi vol plezier, rivaliteit en teamspirit.</p>
+                        <h3 class="font-montserrat text-2xl font-black italic mb-4 relative z-10 text-tt-black dark:text-white">Company <br><span class="text-tt-orange">Tournament</span></h3>
+                        <p class="text-gray-600 dark:text-gray-300 relative z-10 text-sm sm:text-base leading-relaxed">Na een energieke masterclass basistechniek en spin spelen jullie een dynamisch toernooi vol plezier, rivaliteit en teamspirit.</p>
                     </div>
                 </div>
                 
-                <!-- Card 2: Vitaliteit & Breinfitness (Heartbeat / Pulse Icon) -->
-                <div class="feature-card relative bg-white dark:bg-gray-800 rounded-2xl border-t-4 border-t-tt-orange border-x border-b border-gray-100 dark:border-gray-700/60 p-8 shadow-lg shadow-gray-200/50 dark:shadow-none hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group flex flex-col justify-between">
-                    <svg class="absolute -right-6 -bottom-6 w-36 h-20 opacity-15 dark:opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                    <div>
-                        <!-- Minimalist Pulse / Heartbeat Icon -->
-                        <div class="w-14 h-14 rounded-xl bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 flex items-center justify-center text-tt-orange mb-6 group-hover:scale-110 group-hover:bg-tt-orange group-hover:text-white transition-all duration-300 shadow-sm">
-                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                            </svg>
+                <!-- Dynamic Card 2: Vitaliteit & Focus -->
+                <div class="feature-card relative bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:border text-tt-black dark:text-white p-8 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col justify-between" style="border-radius: 40px 0 40px 0; border-bottom: 4px solid #FF6B00;">
+                    <!-- Originele dynamische swoosh linksonder -->
+                    <svg class="absolute -left-6 -bottom-2 w-44 h-20 opacity-40 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-1 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="absolute left-0 bottom-0 w-16 h-16 border-b-4 border-l-4 border-tt-orange rounded-bl-[40px]"></div>
+                    
+                    <div class="relative z-10">
+                        <!-- Dynamische TT-bal met Hartslag/Pulse en speedline -->
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-tt-orange via-orange-500 to-amber-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/30 transform rotate-6 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-300 relative">
+                                <div class="absolute top-1.5 left-2 w-3.5 h-2 bg-white/45 rounded-full blur-[0.5px]"></div>
+                                <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                </svg>
+                            </div>
+                            <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                         </div>
-                        <h3 class="font-montserrat text-2xl font-black italic mb-3 text-tt-black dark:text-white">Vitaliteit &amp; <br><span class="text-tt-orange">Breinfitness</span></h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">Tafeltennis is 'schaken op topsnelheid'. Ideaal om schermmoeheid te doorbreken, focus te herladen en samen vitaal in beweging te zijn.</p>
+                        <h3 class="font-montserrat text-2xl font-black italic mb-4 relative z-10 text-tt-black dark:text-white">Vitaliteit &amp; <br><span class="text-tt-orange">Breinfitness</span></h3>
+                        <p class="text-gray-600 dark:text-gray-300 relative z-10 text-sm sm:text-base leading-relaxed">Tafeltennis is 'schaken op topsnelheid'. Ideaal om schermmoeheid te doorbreken, focus te herladen en samen vitaal in beweging te zijn.</p>
                     </div>
                 </div>
                 
-                <!-- Card 3: Op Locatie of Sportaccommodatie (Location Pin Icon) -->
-                <div class="feature-card relative bg-white dark:bg-gray-800 rounded-2xl border-t-4 border-t-tt-orange border-x border-b border-gray-100 dark:border-gray-700/60 p-8 shadow-lg shadow-gray-200/50 dark:shadow-none hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group flex flex-col justify-between">
-                    <svg class="absolute -right-6 -bottom-6 w-36 h-20 opacity-15 dark:opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                    <div>
-                        <!-- Minimalist Location Pin Icon -->
-                        <div class="w-14 h-14 rounded-xl bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 flex items-center justify-center text-tt-orange mb-6 group-hover:scale-110 group-hover:bg-tt-orange group-hover:text-white transition-all duration-300 shadow-sm">
-                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
+                <!-- Dynamic Card 3: Flexibele Locatie -->
+                <div class="feature-card relative bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:border p-8 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col justify-between" style="border-radius: 0 40px 0 40px;">
+                    <!-- Originele dynamische swoosh rechtsboven -->
+                    <svg class="absolute -right-6 -top-1 w-44 h-20 opacity-40 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-1 transition-all duration-500 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="absolute right-0 top-0 w-16 h-16 border-t-4 border-r-4 border-tt-orange rounded-tr-[40px]"></div>
+                    
+                    <div class="relative z-10">
+                        <!-- Dynamische TT-bal met Locatie Pin en speedline -->
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-tt-orange via-orange-500 to-amber-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/30 transform -rotate-6 group-hover:rotate-6 group-hover:scale-110 transition-all duration-300 relative">
+                                <div class="absolute top-1.5 left-2 w-3.5 h-2 bg-white/45 rounded-full blur-[0.5px]"></div>
+                                <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                         </div>
-                        <h3 class="font-montserrat text-2xl font-black italic mb-3 text-tt-black dark:text-white">Op Locatie <br><span class="text-tt-orange">of Sportzaal</span></h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">Wij komen naar jullie bedrijfskantine met tafels &amp; materiaal, of ontvangen jullie in een professionele zaal inclusief afsluitende borrel.</p>
+                        <h3 class="font-montserrat text-2xl font-black italic mb-4 relative z-10 text-tt-black dark:text-white">Op Locatie <br><span class="text-tt-orange">of Sportaccommodatie</span></h3>
+                        <p class="text-gray-600 dark:text-gray-300 relative z-10 text-sm sm:text-base leading-relaxed">Wij komen naar jullie bedrijfskantine met materiaal &amp; clinics, of ontvangen jullie in een professionele zaal inclusief afsluitende borrel.</p>
                     </div>
                 </div>
             </div>
