@@ -84,17 +84,22 @@ for name, svg_content in ICONS.items():
     width: 216px;
     height: 216px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #FF6B00 0%, #FF8533 50%, #FFA04D 100%);
-    box-shadow: 0 12px 28px rgba(255, 107, 0, 0.35);
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fff0e6 16%, #ff8a33 38%, #ff6b00 70%, #b83d00 100%);
+    box-shadow: 0 16px 36px rgba(255, 107, 0, 0.4),
+                inset -6px -9px 18px rgba(130, 40, 0, 0.55),
+                inset 6px 6px 14px rgba(255, 255, 255, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: none !important;
   }}
   svg {{
-    width: 116px;
-    height: 116px;
+    width: 114px;
+    height: 114px;
     display: block;
     color: white;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+    transform: none !important;
   }}
 </style>
 </head>

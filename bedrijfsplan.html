@@ -97,23 +97,28 @@
             background: #FF6B00;
         }
 
-        /* Officiële website badge stijl */
+        /* Officiële website 3D bal badge stijl (identiek aan de stuiterende bal, 100% recht) */
         .web-badge {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FF6B00 0%, #FF8533 50%, #FFA04D 100%);
+            background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fff0e6 16%, #ff8a33 38%, #ff6b00 70%, #b83d00 100%);
             color: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 18px rgba(255, 107, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.35),
+                        inset -2px -3px 6px rgba(130, 40, 0, 0.55),
+                        inset 2px 2px 5px rgba(255, 255, 255, 0.85);
             flex-shrink: 0;
+            transform: none !important;
         }
         .web-badge svg {
             width: 22px;
             height: 22px;
             stroke-width: 2.2;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+            transform: none !important;
         }
     </style>
 </head>

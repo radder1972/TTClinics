@@ -149,6 +149,35 @@ html {
 /* Ankerlinks niet onder de sticky menubalk laten verdwijnen */
 section[id] { scroll-margin-top: 110px; }
 
+/* 3D Tafeltennisbal Icoon Badge (identiek spiegeleffect aan de stuiterende bal, 100% recht) */
+.tt-icon-ball {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fff0e6 16%, #ff8a33 38%, #ff6b00 70%, #b83d00 100%);
+    box-shadow: 0 8px 22px rgba(255, 107, 0, 0.35),
+                inset -2px -3px 6px rgba(130, 40, 0, 0.55),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+    position: relative;
+    transform: none !important;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+.tt-icon-ball svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+    transform: none !important;
+}
+.group:hover .tt-icon-ball {
+    transform: scale(1.08) !important;
+    box-shadow: 0 12px 28px rgba(255, 107, 0, 0.45),
+                inset -2px -3px 6px rgba(130, 40, 0, 0.55),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.85);
+}
+
 
 /* Twee 3D tafeltennisballetjes die stil liggen op de basislijn */
 .tt-sphere {
