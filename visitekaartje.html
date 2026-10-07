@@ -48,15 +48,16 @@
             min-height: 100vh;
         }
 
-        /* De Visitekaart: Exact 85mm x 55mm opgemaakt */
+        /* De Visitekaart: Exact 85mm x 55mm opgemaakt (Strak Wit Bedrijfsontwerp) */
         .biz-card {
             width: var(--card-w);
             height: var(--card-h);
             box-sizing: border-box;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #1F1F24 0%, #151518 50%, #0C0C0E 100%);
-            color: #ffffff;
+            background: #FFFFFF;
+            color: #0F172A;
+            border: 0.25mm solid #E2E8F0;
             padding: 4.5mm 5.5mm;
             display: flex;
             flex-direction: column;
@@ -73,11 +74,11 @@
                 transform: scale(var(--screen-scale));
                 transform-origin: center center;
                 border-radius: 3.5mm;
-                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);
+                box-shadow: 0 20px 45px -10px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.06);
                 transition: box-shadow 0.3s ease;
             }
             .screen-scaled-card:hover {
-                box-shadow: 0 30px 60px -12px rgba(255,107,0,0.35), 0 0 0 1px rgba(255,107,0,0.4);
+                box-shadow: 0 25px 55px -10px rgba(255,107,0,0.3), 0 0 0 1px rgba(255,107,0,0.35);
             }
             .flip-container {
                 width: calc(var(--card-w) * var(--screen-scale));
@@ -148,7 +149,7 @@
             /* Dunne professionele snijtekens (crop marks) om exact langs de rand te kunnen snijden */
             .crop-mark {
                 position: absolute;
-                border-color: #888888;
+                border-color: #94A3B8;
                 border-style: solid;
                 border-width: 0;
             }
@@ -167,7 +168,9 @@
                 border-radius: 0 !important;
                 box-shadow: none !important;
                 transform: none !important;
-                border: 0.2mm solid rgba(255,255,255,0.2) !important;
+                border: 0.2mm solid #CBD5E1 !important;
+                background: #FFFFFF !important;
+                color: #0F172A !important;
             }
         }
     </style>
@@ -246,119 +249,124 @@
         <div class="flip-container no-print cursor-pointer mb-10" id="cardFlipTrigger" title="Klik om kaartje om te draaien">
             <div id="cardFlipper" class="flip-inner relative">
                 
-                <!-- FRONT SIDE (3D Preview) -->
+                <!-- FRONT SIDE (3D Preview - Strak Wit) -->
                 <div class="flip-front">
                     <div class="biz-card screen-scaled-card">
                         <!-- Swooshes -->
-                        <svg class="absolute -right-[12mm] -top-[8mm] w-[50mm] h-[25mm] opacity-35 pointer-events-none transform rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                        <svg class="absolute -left-[10mm] -bottom-[8mm] w-[40mm] h-[20mm] opacity-25 pointer-events-none transform -rotate-12 scale-x-[-1]" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -right-[12mm] -top-[8mm] w-[50mm] h-[25mm] opacity-30 pointer-events-none transform rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -left-[10mm] -bottom-[8mm] w-[40mm] h-[20mm] opacity-20 pointer-events-none transform -rotate-12 scale-x-[-1]" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                         <div class="absolute left-0 top-0 w-[1.5mm] h-full bg-gradient-to-b from-tt-orange via-orange-500 to-amber-500"></div>
 
                         <!-- Header: Logo, swoosh & slogan -->
                         <div class="relative z-10 flex items-start justify-between">
-                            <div class="flex items-center gap-[2.5mm]">
-                                <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-[7.5mm] w-auto drop-shadow-md">
+                            <div class="flex items-center gap-[2.8mm]">
+                                <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-[9.5mm] w-auto filter drop-shadow-sm shrink-0">
                                 <div>
-                                    <div class="font-montserrat font-black italic tracking-tighter card-logo-text leading-none">
+                                    <div class="font-montserrat font-black italic tracking-tighter card-logo-text leading-none text-slate-900">
                                         <span class="text-tt-orange">TT</span> CLINICS
                                     </div>
-                                    <div class="card-sub-text uppercase text-gray-400 font-semibold mt-[0.5mm]">Het sportieve bedrijfsuitje</div>
+                                    <div class="card-sub-text uppercase text-slate-500 font-bold mt-[0.6mm]">Het sportieve bedrijfsuitje</div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-[1mm]">
-                                <svg class="w-[6mm] h-[2.5mm] opacity-80" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                <span class="text-tt-orange text-[7pt] font-black leading-none">★★★</span>
+                                <svg class="w-[6mm] h-[2.5mm] opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <span class="text-tt-orange text-[7.5pt] font-black leading-none">★★★</span>
                             </div>
                         </div>
 
                         <!-- Center: Naam met swoosh & Functie -->
                         <div class="relative z-10 my-auto py-[1mm]">
                             <div class="relative inline-block">
-                                <h2 class="font-montserrat card-name font-black italic tracking-tight text-white">
+                                <h2 class="font-montserrat card-name font-black italic tracking-tight text-slate-900">
                                     Edward <span class="text-tt-orange">Westhoff</span>
                                 </h2>
                                 <svg class="w-[38mm] h-[2mm] mt-[0.6mm] -mb-[0.5mm] opacity-90 filter drop-shadow-sm" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
                             </div>
                             
                             <div class="flex items-center gap-[1.5mm] mt-[1.5mm]">
-                                <div class="inline-flex items-center gap-[1mm] px-[2.2mm] py-[0.8mm] rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange card-badge font-bold uppercase">
+                                <div class="inline-flex items-center gap-[1.2mm] px-[2.4mm] py-[0.8mm] rounded-full bg-orange-50 border border-orange-200 text-tt-orange-dark card-badge font-bold uppercase shadow-sm">
                                     <span class="w-[1.2mm] h-[1.2mm] rounded-full bg-tt-orange"></span>
                                     Oprichter &amp; Hoofdtrainer
                                 </div>
-                                <svg class="w-[7mm] h-[2.5mm] opacity-65" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <svg class="w-[7mm] h-[2.5mm] opacity-75" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                             </div>
                         </div>
 
                         <!-- Footer: Contactgegevens (Geen overflow!) -->
-                        <div class="relative z-10 grid grid-cols-2 gap-x-[3mm] gap-y-[1mm] card-contact-text text-gray-200 border-t border-gray-800/90 pt-[1.8mm]">
+                        <div class="relative z-10 grid grid-cols-2 gap-x-[3mm] gap-y-[1.2mm] card-contact-text text-slate-700 border-t border-slate-200 pt-[1.8mm]">
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                                <span class="font-semibold text-white">06 - 12345678</span>
+                                <span class="font-bold text-slate-900">06 - 12345678</span>
                             </div>
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                <span>info@ttclinics.nl</span>
+                                <span class="font-medium text-slate-700">info@ttclinics.nl</span>
                             </div>
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-                                <span class="text-white font-semibold">www.ttclinics.nl</span>
+                                <span class="text-tt-orange-dark font-bold">www.ttclinics.nl</span>
                             </div>
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <span>Heel Nederland</span>
+                                <span class="text-slate-700">Heel Nederland</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- BACK SIDE (3D Preview) -->
+                <!-- BACK SIDE (3D Preview - Strak Wit) -->
                 <div class="flip-back">
                     <div class="biz-card screen-scaled-card">
                         <!-- Swooshes -->
-                        <svg class="absolute -right-[10mm] -top-[6mm] w-[55mm] h-[26mm] opacity-40 pointer-events-none transform -rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                        <svg class="absolute -left-[12mm] -bottom-[8mm] w-[45mm] h-[22mm] opacity-30 pointer-events-none transform rotate-12" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -right-[10mm] -top-[6mm] w-[55mm] h-[26mm] opacity-30 pointer-events-none transform -rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -left-[12mm] -bottom-[8mm] w-[45mm] h-[22mm] opacity-25 pointer-events-none transform rotate-12" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                         <div class="absolute left-0 top-0 w-[1.5mm] h-full bg-tt-orange"></div>
 
                         <!-- Header -->
                         <div class="relative z-10 flex items-start justify-between">
                             <div>
-                                <h3 class="font-montserrat card-headline font-black italic uppercase tracking-tight text-white leading-none">
+                                <h3 class="font-montserrat card-headline font-black italic uppercase tracking-tight text-slate-900 leading-none">
                                     Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
                                 </h3>
-                                <svg class="w-[28mm] h-[1.8mm] mt-[0.5mm] -mb-[0.3mm] opacity-80" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                                <p class="card-sub-text uppercase text-gray-400 font-semibold mt-[0.6mm]">Tafeltennis clinics &amp; bedrijfsuitjes</p>
+                                <svg class="w-[28mm] h-[1.8mm] mt-[0.5mm] -mb-[0.3mm] opacity-90" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                                <p class="card-sub-text uppercase text-slate-500 font-bold mt-[0.6mm]">Tafeltennis clinics &amp; bedrijfsuitjes</p>
                             </div>
-                            <img src="images/logo-sticker.png" alt="TT Clinics" class="h-[6.5mm] w-auto drop-shadow-sm">
+                            <div class="flex items-center gap-[2mm]">
+                                <img src="images/logo-transparent.png" alt="TT Clinics" class="h-[9mm] w-auto filter drop-shadow-sm shrink-0">
+                                <div class="font-montserrat font-black italic tracking-tighter text-[8pt] leading-none text-slate-900">
+                                    <span class="text-tt-orange">TT</span> CLINICS
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Midden: 3 Clinics met swooshes + QR code -->
                         <div class="relative z-10 flex items-center justify-between gap-[2mm] my-auto py-[1mm]">
-                            <ul class="space-y-[1.2mm] text-gray-200">
+                            <ul class="space-y-[1.2mm] text-slate-700">
                                 <li class="flex items-center card-bullet-text">
                                     <svg class="w-[5mm] h-[2.2mm] mr-[1.5mm] shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                    <span><strong>Company Tournament:</strong> masterclass &amp; toernooi</span>
+                                    <span><strong class="text-slate-900">Company Tournament:</strong> masterclass &amp; toernooi</span>
                                 </li>
                                 <li class="flex items-center card-bullet-text">
                                     <svg class="w-[5mm] h-[2.2mm] mr-[1.5mm] shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                    <span><strong>Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
+                                    <span><strong class="text-slate-900">Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
                                 </li>
                                 <li class="flex items-center card-bullet-text">
                                     <svg class="w-[5mm] h-[2.2mm] mr-[1.5mm] shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                    <span><strong>Op Locatie:</strong> bedrijfskantine of zaal</span>
+                                    <span><strong class="text-slate-900">Op Locatie:</strong> bedrijfskantine of zaal</span>
                                 </li>
                             </ul>
 
                             <!-- QR Code naar website -->
-                            <div class="relative flex flex-col items-center bg-white p-[1.2mm] rounded-[2mm] shadow-lg border-[0.4mm] border-tt-orange shrink-0">
+                            <div class="relative flex flex-col items-center bg-white p-[1.2mm] rounded-[2mm] shadow-md border-[0.4mm] border-tt-orange shrink-0">
                                 <img src="images/qr-ttclinics.svg" alt="Scan QR code voor TT Clinics" class="w-[14mm] h-[14mm]">
-                                <span class="text-[4.5pt] font-black uppercase text-tt-black tracking-tighter mt-[0.3mm]">Scan &amp; Boek</span>
+                                <span class="text-[4.5pt] font-black uppercase text-slate-900 tracking-tighter mt-[0.3mm]">Scan &amp; Boek</span>
                             </div>
                         </div>
 
                         <!-- Footer -->
-                        <div class="relative z-10 flex items-center justify-between border-t border-gray-800/90 pt-[1.5mm] card-footer-text text-gray-400">
+                        <div class="relative z-10 flex items-center justify-between border-t border-slate-200 pt-[1.5mm] card-footer-text text-slate-500">
                             <div class="flex items-center gap-[1mm]">
-                                <svg class="w-[4mm] h-[1.8mm] opacity-65" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <svg class="w-[4mm] h-[1.8mm] opacity-75" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                                 <span>Tot 12 personen per clinic · Maatwerk</span>
                             </div>
                             <div class="text-tt-orange font-bold font-mono text-[5.2pt]">www.ttclinics.nl</div>
@@ -394,62 +402,62 @@
 
                     <div class="biz-card">
                         <!-- Swooshes -->
-                        <svg class="absolute -right-[12mm] -top-[8mm] w-[50mm] h-[25mm] opacity-35 pointer-events-none transform rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                        <svg class="absolute -left-[10mm] -bottom-[8mm] w-[40mm] h-[20mm] opacity-25 pointer-events-none transform -rotate-12 scale-x-[-1]" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -right-[12mm] -top-[8mm] w-[50mm] h-[25mm] opacity-30 pointer-events-none transform rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -left-[10mm] -bottom-[8mm] w-[40mm] h-[20mm] opacity-20 pointer-events-none transform -rotate-12 scale-x-[-1]" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                         <div class="absolute left-0 top-0 w-[1.5mm] h-full bg-gradient-to-b from-tt-orange via-orange-500 to-amber-500"></div>
 
                         <!-- Header -->
                         <div class="relative z-10 flex items-start justify-between">
-                            <div class="flex items-center gap-[2.5mm]">
-                                <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-[7.5mm] w-auto drop-shadow-md">
+                            <div class="flex items-center gap-[2.8mm]">
+                                <img src="images/logo-transparent.png" alt="TT Clinics Logo" class="h-[9.5mm] w-auto filter drop-shadow-sm shrink-0">
                                 <div>
-                                    <div class="font-montserrat font-black italic tracking-tighter card-logo-text leading-none">
+                                    <div class="font-montserrat font-black italic tracking-tighter card-logo-text leading-none text-slate-900">
                                         <span class="text-tt-orange">TT</span> CLINICS
                                     </div>
-                                    <div class="card-sub-text uppercase text-gray-400 font-semibold mt-[0.5mm]">Het sportieve bedrijfsuitje</div>
+                                    <div class="card-sub-text uppercase text-slate-500 font-bold mt-[0.6mm]">Het sportieve bedrijfsuitje</div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-[1mm]">
-                                <svg class="w-[6mm] h-[2.5mm] opacity-80" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                <span class="text-tt-orange text-[7pt] font-black leading-none">★★★</span>
+                                <svg class="w-[6mm] h-[2.5mm] opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <span class="text-tt-orange text-[7.5pt] font-black leading-none">★★★</span>
                             </div>
                         </div>
 
                         <!-- Center: Naam met swoosh & Functie -->
                         <div class="relative z-10 my-auto py-[1mm]">
                             <div class="relative inline-block">
-                                <h2 class="font-montserrat card-name font-black italic tracking-tight text-white">
+                                <h2 class="font-montserrat card-name font-black italic tracking-tight text-slate-900">
                                     Edward <span class="text-tt-orange">Westhoff</span>
                                 </h2>
                                 <svg class="w-[38mm] h-[2mm] mt-[0.6mm] -mb-[0.5mm] opacity-90 filter drop-shadow-sm" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
                             </div>
                             
                             <div class="flex items-center gap-[1.5mm] mt-[1.5mm]">
-                                <div class="inline-flex items-center gap-[1mm] px-[2.2mm] py-[0.8mm] rounded-full bg-tt-orange/20 border border-tt-orange/40 text-tt-orange card-badge font-bold uppercase">
+                                <div class="inline-flex items-center gap-[1.2mm] px-[2.4mm] py-[0.8mm] rounded-full bg-orange-50 border border-orange-200 text-tt-orange-dark card-badge font-bold uppercase shadow-sm">
                                     <span class="w-[1.2mm] h-[1.2mm] rounded-full bg-tt-orange"></span>
                                     Oprichter &amp; Hoofdtrainer
                                 </div>
-                                <svg class="w-[7mm] h-[2.5mm] opacity-65" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <svg class="w-[7mm] h-[2.5mm] opacity-75" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                             </div>
                         </div>
 
                         <!-- Footer: Contactgegevens -->
-                        <div class="relative z-10 grid grid-cols-2 gap-x-[3mm] gap-y-[1mm] card-contact-text text-gray-200 border-t border-gray-800/90 pt-[1.8mm]">
+                        <div class="relative z-10 grid grid-cols-2 gap-x-[3mm] gap-y-[1.2mm] card-contact-text text-slate-700 border-t border-slate-200 pt-[1.8mm]">
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                                <span class="font-semibold text-white">06 - 12345678</span>
+                                <span class="font-bold text-slate-900">06 - 12345678</span>
                             </div>
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                <span>info@ttclinics.nl</span>
+                                <span class="font-medium text-slate-700">info@ttclinics.nl</span>
                             </div>
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-                                <span class="text-white font-semibold">www.ttclinics.nl</span>
+                                <span class="text-tt-orange-dark font-bold">www.ttclinics.nl</span>
                             </div>
                             <div class="flex items-center gap-[1.5mm]">
                                 <svg class="w-[2.8mm] h-[2.8mm] text-tt-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <span>Heel Nederland</span>
+                                <span class="text-slate-700">Heel Nederland</span>
                             </div>
                         </div>
                     </div>
@@ -468,50 +476,55 @@
 
                     <div class="biz-card">
                         <!-- Swooshes -->
-                        <svg class="absolute -right-[10mm] -top-[6mm] w-[55mm] h-[26mm] opacity-40 pointer-events-none transform -rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                        <svg class="absolute -left-[12mm] -bottom-[8mm] w-[45mm] h-[22mm] opacity-30 pointer-events-none transform rotate-12" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -right-[10mm] -top-[6mm] w-[55mm] h-[26mm] opacity-30 pointer-events-none transform -rotate-6" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                        <svg class="absolute -left-[12mm] -bottom-[8mm] w-[45mm] h-[22mm] opacity-25 pointer-events-none transform rotate-12" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                         <div class="absolute left-0 top-0 w-[1.5mm] h-full bg-tt-orange"></div>
 
                         <!-- Header -->
                         <div class="relative z-10 flex items-start justify-between">
                             <div>
-                                <h3 class="font-montserrat card-headline font-black italic uppercase tracking-tight text-white leading-none">
+                                <h3 class="font-montserrat card-headline font-black italic uppercase tracking-tight text-slate-900 leading-none">
                                     Dynamiek &amp; <span class="text-tt-orange">Snelheid</span>
                                 </h3>
-                                <svg class="w-[28mm] h-[1.8mm] mt-[0.5mm] -mb-[0.3mm] opacity-80" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                                <p class="card-sub-text uppercase text-gray-400 font-semibold mt-[0.6mm]">Tafeltennis clinics &amp; bedrijfsuitjes</p>
+                                <svg class="w-[28mm] h-[1.8mm] mt-[0.5mm] -mb-[0.3mm] opacity-90" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                                <p class="card-sub-text uppercase text-slate-500 font-bold mt-[0.6mm]">Tafeltennis clinics &amp; bedrijfsuitjes</p>
                             </div>
-                            <img src="images/logo-sticker.png" alt="TT Clinics" class="h-[6.5mm] w-auto drop-shadow-sm">
+                            <div class="flex items-center gap-[2mm]">
+                                <img src="images/logo-transparent.png" alt="TT Clinics" class="h-[9mm] w-auto filter drop-shadow-sm shrink-0">
+                                <div class="font-montserrat font-black italic tracking-tighter text-[8pt] leading-none text-slate-900">
+                                    <span class="text-tt-orange">TT</span> CLINICS
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Midden: 3 Clinics met swooshes + QR code -->
                         <div class="relative z-10 flex items-center justify-between gap-[2mm] my-auto py-[1mm]">
-                            <ul class="space-y-[1.2mm] text-gray-200">
+                            <ul class="space-y-[1.2mm] text-slate-700">
                                 <li class="flex items-center card-bullet-text">
                                     <svg class="w-[5mm] h-[2.2mm] mr-[1.5mm] shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                    <span><strong>Company Tournament:</strong> masterclass &amp; toernooi</span>
+                                    <span><strong class="text-slate-900">Company Tournament:</strong> masterclass &amp; toernooi</span>
                                 </li>
                                 <li class="flex items-center card-bullet-text">
                                     <svg class="w-[5mm] h-[2.2mm] mr-[1.5mm] shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                    <span><strong>Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
+                                    <span><strong class="text-slate-900">Vitaliteit &amp; Focus:</strong> energie op kantoor</span>
                                 </li>
                                 <li class="flex items-center card-bullet-text">
                                     <svg class="w-[5mm] h-[2.2mm] mr-[1.5mm] shrink-0 opacity-90" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
-                                    <span><strong>Op Locatie:</strong> bedrijfskantine of zaal</span>
+                                    <span><strong class="text-slate-900">Op Locatie:</strong> bedrijfskantine of zaal</span>
                                 </li>
                             </ul>
 
                             <!-- QR Code naar website -->
-                            <div class="relative flex flex-col items-center bg-white p-[1.2mm] rounded-[2mm] shadow-lg border-[0.4mm] border-tt-orange shrink-0">
+                            <div class="relative flex flex-col items-center bg-white p-[1.2mm] rounded-[2mm] shadow-md border-[0.4mm] border-tt-orange shrink-0">
                                 <img src="images/qr-ttclinics.svg" alt="Scan QR code voor TT Clinics" class="w-[14mm] h-[14mm]">
-                                <span class="text-[4.5pt] font-black uppercase text-tt-black tracking-tighter mt-[0.3mm]">Scan &amp; Boek</span>
+                                <span class="text-[4.5pt] font-black uppercase text-slate-900 tracking-tighter mt-[0.3mm]">Scan &amp; Boek</span>
                             </div>
                         </div>
 
                         <!-- Footer -->
-                        <div class="relative z-10 flex items-center justify-between border-t border-gray-800/90 pt-[1.5mm] card-footer-text text-gray-400">
+                        <div class="relative z-10 flex items-center justify-between border-t border-slate-200 pt-[1.5mm] card-footer-text text-slate-500">
                             <div class="flex items-center gap-[1mm]">
-                                <svg class="w-[4mm] h-[1.8mm] opacity-65" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
+                                <svg class="w-[4mm] h-[1.8mm] opacity-75" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                                 <span>Tot 12 personen per clinic · Maatwerk</span>
                             </div>
                             <div class="text-tt-orange font-bold font-mono text-[5.2pt]">www.ttclinics.nl</div>
