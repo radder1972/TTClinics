@@ -88,15 +88,41 @@ html {
     pointer-events: none;
     animation: tt-ball-travel 7s linear infinite;
 }
-.tt-ball {
-    width: 16px;
-    height: 16px;
+.tt-ball-shadow {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 28px;
+    height: 7px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #fff 0 18%, #FF8A33 30%, #FF6B00 60%, #D95A00 100%);
-    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 72%);
+    transform: translateX(-50%);
+    animation: tt-ball-shadow-pulse .7s infinite;
+}
+.tt-ball {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fff0e6 16%, #ff8a33 38%, #ff6b00 70%, #b83d00 100%);
+    box-shadow: 0 5px 14px rgba(0,0,0,.4),
+                inset -2px -3px 6px rgba(130, 40, 0, 0.55),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.85);
+    transform-origin: 50% 100%;
     transform: translateX(-50%);
     animation: tt-ball-bounce .7s infinite;
 }
+
+@media (min-width: 768px) {
+    .tt-ball {
+        width: 36px;
+        height: 36px;
+    }
+    .tt-ball-shadow {
+        width: 34px;
+        height: 9px;
+    }
+}
+
 /* Volgt de schuine rand: links 4vw hoog, rechts 14px (bovenkant oranje wig) */
 @keyframes tt-ball-travel {
     0%   { left: 2%;  bottom: calc(4vw * 0.98 + 14px * 0.02); opacity: 0; }
@@ -106,12 +132,17 @@ html {
 }
 @keyframes tt-ball-bounce {
     0%   { transform: translate(-50%, 0) scale(1.15, .85); animation-timing-function: cubic-bezier(.2,.7,.4,1); }
-    10%  { transform: translate(-50%, -4px) scale(1); }
-    50%  { transform: translate(-50%, -46px) scale(1); animation-timing-function: cubic-bezier(.6,0,.8,.3); }
+    10%  { transform: translate(-50%, -6px) scale(1, 1); }
+    50%  { transform: translate(-50%, -68px) scale(1, 1); animation-timing-function: cubic-bezier(.6,0,.8,.3); }
     100% { transform: translate(-50%, 0) scale(1.15, .85); }
 }
+@keyframes tt-ball-shadow-pulse {
+    0%   { transform: translateX(-50%) scale(1.15, 1.15); opacity: 0.55; }
+    50%  { transform: translateX(-50%) scale(0.4, 0.4); opacity: 0.12; }
+    100% { transform: translateX(-50%) scale(1.15, 1.15); opacity: 0.55; }
+}
 @media (prefers-reduced-motion: reduce) {
-    .tt-ball-track, .tt-ball { animation: none; }
+    .tt-ball-track, .tt-ball, .tt-ball-shadow { animation: none; }
     .tt-ball-track { display: none; }
 }
 
