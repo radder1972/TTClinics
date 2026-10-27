@@ -28,9 +28,9 @@ let scenes: [SceneDef] = [
     ),
     SceneDef(
         imagePath: "images/story-2-bettine.jpg",
-        tag: "SCÈNE 2 · DE SAMENWERKING",
-        title: "Edward & Bettine Vriesekoop slaan de handen ineen",
-        subtitle: "Ontmoeting met een Legende",
+        tag: "SCÈNE 2 · DE SAMENWERKING [TOP SECRET]",
+        title: "Edward & [PIEP! 🔇 ████████] slaan de handen ineen",
+        subtitle: "Ontmoeting met een [GECENSUREERDE] Legende",
         duration: 16.90 + 0.8
     ),
     SceneDef(
