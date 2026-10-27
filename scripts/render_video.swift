@@ -28,10 +28,10 @@ let scenes: [SceneDef] = [
     ),
     SceneDef(
         imagePath: "images/story-2-bettine.jpg",
-        tag: "SCÈNE 2 · DE SAMENWERKING (DOSSIER AFGESCHERMD)",
-        title: "Edward & [Identiteit Afgeschermd] slaan de handen ineen",
-        subtitle: "Ontmoeting met een Tafeltennislegende",
-        duration: 16.90 + 0.8
+        tag: "SCÈNE 2 · DE SAMENWERKING (GECENSUREERD)",
+        title: "Edward & [Gecensureerd] slaan de handen ineen",
+        subtitle: "Ontmoeting met een 10-voudig Kampioene",
+        duration: 15.83 + 0.8
     ),
     SceneDef(
         imagePath: "images/story-3-concept.jpg",
