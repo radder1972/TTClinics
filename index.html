@@ -428,89 +428,95 @@
             <!-- Review Cards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 <!-- Review 1: Tech / FinTech -->
-                <div class="relative bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div class="absolute top-6 right-6 text-gray-200 dark:text-gray-700 pointer-events-none group-hover:text-tt-orange/20 transition-colors">
-                        <svg class="w-12 h-12 fill-current" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-                    </div>
-                    
+                <div class="relative bg-gray-50 dark:bg-gray-800 p-5 sm:p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                     <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-tt-orange border border-orange-200 dark:border-orange-800">Company Battle</span>
-                            <div class="flex text-amber-400 text-sm">★★★★★</div>
+                        <!-- Grote foto met batje en sportzaal -->
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-5 shadow-sm bg-gray-200 dark:bg-gray-700">
+                            <img src="images/review-mark.jpg" alt="Mark van Dijk met tafeltennisbatje in sportzaal" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-tt-orange text-white shadow-md">Company Battle</span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h4 class="font-montserrat font-black text-lg text-white leading-tight drop-shadow-sm">Mark van Dijk</h4>
+                                <p class="text-xs text-orange-200 font-medium drop-shadow-sm">Lead Developer · FinTech Solutions</p>
+                            </div>
                         </div>
-                        <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic mb-6">
-                            &ldquo;Wat een waanzinnige energie! Even helemaal weg van de beeldschermen en sprintdeadlines. De gezonde rivaliteit barstte direct los en Edward wist met zijn humor en tactische tips zelfs de grootste sceptici fanatiek aan het batje te krijgen. Maanden later hebben we het er bij het koffiezetapparaat nog over.&rdquo;
-                        </p>
-                    </div>
 
-                    <div class="pt-4 border-t border-gray-200/60 dark:border-gray-700/60 flex items-center gap-3.5 relative z-10">
-                        <img src="images/review-mark.jpg" alt="Mark van Dijk met tafeltennisbatje in sportzaal" class="w-13 h-13 sm:w-14 sm:h-14 rounded-full object-cover ring-2 ring-tt-orange shadow-md shrink-0 group-hover:scale-105 transition-transform duration-300">
-                        <div class="min-w-0">
-                            <h4 class="font-montserrat font-bold text-sm text-tt-black dark:text-white truncate">Mark van Dijk</h4>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 truncate">Lead Developer · FinTech Solutions</p>
-                            <span class="inline-flex items-center text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
+                        <!-- Sterren & Verificatie -->
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-amber-400 text-base">★★★★★</div>
+                            <span class="inline-flex items-center text-[10px] sm:text-[11px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Geverifieerde clinic
                             </span>
                         </div>
+
+                        <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic">
+                            &ldquo;Wat een waanzinnige energie! Even helemaal weg van de beeldschermen en sprintdeadlines. De gezonde rivaliteit barstte direct los en Edward wist met zijn humor en tactische tips zelfs de grootste sceptici fanatiek aan het batje te krijgen. Maanden later hebben we het er bij het koffiezetapparaat nog over.&rdquo;
+                        </p>
                     </div>
                 </div>
 
                 <!-- Review 2: Vitaliteit & HR (Uitgelicht / Meest gekozen variant) -->
-                <div class="relative bg-gradient-to-b from-orange-50/70 to-white dark:from-gray-800 dark:to-gray-800/90 p-6 sm:p-8 rounded-2xl border-2 border-tt-orange shadow-xl md:-translate-y-2 flex flex-col justify-between group">
-                    <div class="absolute -top-3 right-6 bg-tt-orange text-white text-[10px] font-black uppercase tracking-wider px-3 py-0.5 rounded-full shadow-md">
-                        Vitaliteitsdag
-                    </div>
-                    <div class="absolute top-6 right-6 text-tt-orange/15 pointer-events-none group-hover:text-tt-orange/30 transition-colors">
-                        <svg class="w-12 h-12 fill-current" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-                    </div>
-
+                <div class="relative bg-gradient-to-b from-orange-50/70 to-white dark:from-gray-800 dark:to-gray-800/90 p-5 sm:p-6 rounded-2xl border-2 border-tt-orange shadow-xl md:-translate-y-2 flex flex-col justify-between group">
                     <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-tt-orange text-white">Vitaliteit &amp; Focus</span>
-                            <div class="flex text-amber-400 text-sm">★★★★★</div>
+                        <!-- Grote foto met batje en sportzaal -->
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-5 shadow-md bg-gray-200 dark:bg-gray-700">
+                            <img src="images/review-sophie.jpg" alt="Sophie van den Berg met tafeltennisbatje en bal in sportzaal" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-tt-orange text-white shadow-md">Vitaliteit &amp; Focus</span>
+                            </div>
+                            <div class="absolute top-3 right-3 bg-white/90 dark:bg-gray-900/90 text-tt-orange text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md backdrop-blur-sm">
+                                Vitaliteitsdag
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h4 class="font-montserrat font-black text-lg text-white leading-tight drop-shadow-sm">Sophie van den Berg</h4>
+                                <p class="text-xs text-orange-200 font-medium drop-shadow-sm">HR &amp; People Manager · Nexus Consultancy</p>
+                            </div>
                         </div>
-                        <p class="text-gray-800 dark:text-gray-100 text-sm sm:text-base leading-relaxed italic mb-6 font-medium">
-                            &ldquo;Precies de verfrissende impuls die onze vitaliteitsweek nodig had! Tafeltennis is echt schaken op topsnelheid: je hoofd leegmaken, lachen en tegelijkertijd je reactievermogen en focus aanscherpen. Zowel de fitte fanatiekelingen als minder actieve collega's deden vol overgave mee.&rdquo;
-                        </p>
-                    </div>
 
-                    <div class="pt-4 border-t border-orange-200/60 dark:border-gray-700/60 flex items-center gap-3.5 relative z-10">
-                        <img src="images/review-sophie.jpg" alt="Sophie van den Berg met tafeltennisbatje en bal in sportzaal" class="w-13 h-13 sm:w-14 sm:h-14 rounded-full object-cover ring-2 ring-tt-orange shadow-md shrink-0 group-hover:scale-105 transition-transform duration-300">
-                        <div class="min-w-0">
-                            <h4 class="font-montserrat font-bold text-sm text-tt-black dark:text-white truncate">Sophie van den Berg</h4>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 truncate">HR &amp; People Manager · Nexus Consultancy</p>
-                            <span class="inline-flex items-center text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
+                        <!-- Sterren & Verificatie -->
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-amber-400 text-base">★★★★★</div>
+                            <span class="inline-flex items-center text-[10px] sm:text-[11px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Geverifieerde clinic
                             </span>
                         </div>
+
+                        <p class="text-gray-800 dark:text-gray-100 text-sm sm:text-base leading-relaxed italic font-medium">
+                            &ldquo;Precies de verfrissende impuls die onze vitaliteitsweek nodig had! Tafeltennis is echt schaken op topsnelheid: je hoofd leegmaken, lachen en tegelijkertijd je reactievermogen en focus aanscherpen. Zowel de fitte fanatiekelingen als minder actieve collega's deden vol overgave mee.&rdquo;
+                        </p>
                     </div>
                 </div>
 
                 <!-- Review 3: Zakelijke Dienstverlening -->
-                <div class="relative bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div class="absolute top-6 right-6 text-gray-200 dark:text-gray-700 pointer-events-none group-hover:text-tt-orange/20 transition-colors">
-                        <svg class="w-12 h-12 fill-current" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-                    </div>
-
+                <div class="relative bg-gray-50 dark:bg-gray-800 p-5 sm:p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                     <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-tt-orange border border-orange-200 dark:border-orange-800">Team Kick-off</span>
-                            <div class="flex text-amber-400 text-sm">★★★★★</div>
+                        <!-- Grote foto met batje en sportzaal -->
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-5 shadow-sm bg-gray-200 dark:bg-gray-700">
+                            <img src="images/review-jeroen.jpg" alt="Jeroen Bakker met tafeltennisbatje in sportzaal" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-tt-orange text-white shadow-md">Team Kick-off</span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h4 class="font-montserrat font-black text-lg text-white leading-tight drop-shadow-sm">Jeroen Bakker</h4>
+                                <p class="text-xs text-orange-200 font-medium drop-shadow-sm">Managing Partner · Bakker &amp; Partners</p>
+                            </div>
                         </div>
-                        <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic mb-6">
-                            &ldquo;De ideale mix tussen serieuze coaching in effectballen en voetenwerk, gevolgd door een zinderend toernooi. De officiële TT Clinics wisselbokaal staat nu te pronken op onze directietafel! Een van de leukste en best georganiseerde teamuitjes die we als maatschap hebben gehad.&rdquo;
-                        </p>
-                    </div>
 
-                    <div class="pt-4 border-t border-gray-200/60 dark:border-gray-700/60 flex items-center gap-3.5 relative z-10">
-                        <img src="images/review-jeroen.jpg" alt="Jeroen Bakker met tafeltennisbatje in sportzaal" class="w-13 h-13 sm:w-14 sm:h-14 rounded-full object-cover ring-2 ring-tt-orange shadow-md shrink-0 group-hover:scale-105 transition-transform duration-300">
-                        <div class="min-w-0">
-                            <h4 class="font-montserrat font-bold text-sm text-tt-black dark:text-white truncate">Jeroen Bakker</h4>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 truncate">Managing Partner · Bakker &amp; Partners</p>
-                            <span class="inline-flex items-center text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
+                        <!-- Sterren & Verificatie -->
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-amber-400 text-base">★★★★★</div>
+                            <span class="inline-flex items-center text-[10px] sm:text-[11px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Geverifieerde clinic
                             </span>
                         </div>
+
+                        <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic">
+                            &ldquo;De ideale mix tussen serieuze coaching in effectballen en voetenwerk, gevolgd door een zinderend toernooi. De officiële TT Clinics wisselbokaal staat nu te pronken op onze directietafel! Een van de leukste en best georganiseerde teamuitjes die we als maatschap hebben gehad.&rdquo;
+                        </p>
                     </div>
                 </div>
             </div>
