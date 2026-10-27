@@ -31,7 +31,7 @@ let scenes: [SceneDef] = [
         tag: "SCÈNE 2 · DE SAMENWERKING (GECENSUREERD)",
         title: "Edward & [Gecensureerd] slaan de handen ineen",
         subtitle: "Ontmoeting met een 10-voudig Kampioene",
-        duration: 15.83 + 0.8
+        duration: 16.90 + 0.8
     ),
     SceneDef(
         imagePath: "images/story-3-concept.jpg",
