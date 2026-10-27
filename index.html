@@ -280,31 +280,62 @@
                         </div>
                     </div>
 
-                    <!-- Rechter kolom: Echte foto van de speelzaal van TTV The Victory -->
-                    <div class="lg:col-span-5">
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/80 dark:border-gray-700 aspect-[4/3] group">
-                            <img src="images/zaal-the-victory.jpg" alt="Zaal van tafeltennisvereniging The Victory in Weesp met 6 wedstrijdtafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <!-- Rechter kolom: Interactieve Slideshow van de zaal van TTV The Victory -->
+                    <div class="lg:col-span-5 flex flex-col justify-center">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/80 dark:border-gray-700 aspect-[4/3] group bg-black select-none"
+                             onmouseenter="stopZaalAutoPlay()" onmouseleave="startZaalAutoPlay()">
                             
-                            <!-- Bovenin: badge -->
-                            <div class="absolute top-3 left-3 bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 shadow flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                Onze Vaste Speelzaal
+                            <!-- Hoofdafbeelding met fade transitie -->
+                            <img id="zaalSlideImg" src="images/zaal-overzicht.jpg" alt="Zaal van TTV The Victory Weesp met 6 wedstrijdtafels" class="w-full h-full object-cover transition-opacity duration-200 ease-in-out">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
+
+                            <!-- Pijlen links en rechts -->
+                            <button type="button" onclick="prevZaalSlide()" class="absolute left-2.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-tt-orange text-white p-2 rounded-full backdrop-blur-xs transition-all shadow-md focus:outline-none cursor-pointer z-10" aria-label="Vorige foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                            </button>
+                            <button type="button" onclick="nextZaalSlide()" class="absolute right-2.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-tt-orange text-white p-2 rounded-full backdrop-blur-xs transition-all shadow-md focus:outline-none cursor-pointer z-10" aria-label="Volgende foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+
+                            <!-- Bovenin: statusbadge links & teller rechts -->
+                            <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
+                                <div class="bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 shadow flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span id="zaalSlideBadge">Speelzaal Overzicht</span>
+                                </div>
+                                <div id="zaalSlideCounter" class="bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-2.5 py-1 rounded-full border border-white/20 shadow">
+                                    1 / 5
+                                </div>
                             </div>
 
-                            <!-- Onderin: bijschrift met specificaties -->
-                            <div class="absolute bottom-3 left-3 right-3 text-white">
-                                <div class="font-montserrat font-black text-sm sm:text-base italic uppercase tracking-tight">
-                                    TTV The Victory · Weesp
+                            <!-- Onderin: bijschrift met titel en specificaties -->
+                            <div class="absolute bottom-3 left-3 right-3 text-white pointer-events-none z-10">
+                                <div id="zaalSlideTitle" class="font-montserrat font-black text-sm sm:text-base italic uppercase tracking-tight drop-shadow">
+                                    Speelzaal TTV The Victory · Weesp
                                 </div>
-                                <div class="text-xs text-gray-300 flex items-center gap-2 mt-0.5 font-medium">
-                                    <span>6+ Wedstrijdtafels</span>
-                                    <span>•</span>
-                                    <span>Parketvloer</span>
-                                    <span>•</span>
-                                    <span>Clubbar</span>
+                                <div id="zaalSlideDesc" class="text-xs text-gray-200 mt-0.5 font-medium drop-shadow truncate">
+                                    6+ Donic Wedstrijdtafels • Parketvloer • Ruime opzet
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- 5 Klikbare Thumbnails onder de slideshow -->
+                        <div class="flex items-center justify-center gap-2 mt-3">
+                            <button type="button" id="zaalThumb-0" onclick="showZaalSlide(0)" class="w-10 sm:w-12 h-8 sm:h-9 rounded-lg overflow-hidden border-2 border-tt-orange shadow-md opacity-100 transition-all scale-105 cursor-pointer" title="Speelzaal Overzicht">
+                                <img src="images/zaal-overzicht.jpg" alt="Overzicht" class="w-full h-full object-cover">
+                            </button>
+                            <button type="button" id="zaalThumb-1" onclick="showZaalSlide(1)" class="w-10 sm:w-12 h-8 sm:h-9 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600 opacity-60 hover:opacity-100 transition-all cursor-pointer" title="Middenperspectief">
+                                <img src="images/zaal-perspectief.jpg" alt="Middenperspectief" class="w-full h-full object-cover">
+                            </button>
+                            <button type="button" id="zaalThumb-2" onclick="showZaalSlide(2)" class="w-10 sm:w-12 h-8 sm:h-9 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600 opacity-60 hover:opacity-100 transition-all cursor-pointer" title="Toernooiopstelling">
+                                <img src="images/zaal-toernooi.jpg" alt="Toernooiopstelling" class="w-full h-full object-cover">
+                            </button>
+                            <button type="button" id="zaalThumb-3" onclick="showZaalSlide(3)" class="w-10 sm:w-12 h-8 sm:h-9 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600 opacity-60 hover:opacity-100 transition-all cursor-pointer" title="Clubbar van The Victory">
+                                <img src="images/zaal-bar-kantine.jpg" alt="Clubbar" class="w-full h-full object-cover">
+                            </button>
+                            <button type="button" id="zaalThumb-4" onclick="showZaalSlide(4)" class="w-10 sm:w-12 h-8 sm:h-9 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600 opacity-60 hover:opacity-100 transition-all cursor-pointer" title="Donic Wedstrijdtafels">
+                                <img src="images/zaal-tafels.jpg" alt="Wedstrijdtafels" class="w-full h-full object-cover">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1359,6 +1390,114 @@
                 });
             });
         }
+    </script>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT VOOR ZAAL SLIDESHOW TTV THE VICTORY -->
+    <!-- ========================================== -->
+    <script>
+        (function() {
+            const zaalSlides = [
+                {
+                    src: 'images/zaal-overzicht.jpg',
+                    title: 'Speelzaal TTV The Victory · Weesp',
+                    desc: '6+ Donic Wedstrijdtafels • Parketvloer • Ruime opzet',
+                    badge: 'Speelzaal Overzicht'
+                },
+                {
+                    src: 'images/zaal-perspectief.jpg',
+                    title: 'Wedstrijdarena · Middenlijn',
+                    desc: 'Symmetrisch opgesteld voor toernooien en masterclasses',
+                    badge: 'Middenperspectief'
+                },
+                {
+                    src: 'images/zaal-toernooi.jpg',
+                    title: 'Competitie & Toernooi Opstelling',
+                    desc: 'Inclusief rode court barriers en officiële scoreborden',
+                    badge: 'Toernooiopstelling'
+                },
+                {
+                    src: 'images/zaal-bar-kantine.jpg',
+                    title: 'Gezellige Clubbar van The Victory',
+                    desc: 'Sfeervolle bar & kantine voor naborrel en bittergarnituur',
+                    badge: 'Clubbar & Kantine'
+                },
+                {
+                    src: 'images/zaal-tafels.jpg',
+                    title: 'Officiële Donic Persson 25 Tafels',
+                    desc: 'ITTF goedgekeurde toernooitafels met perfecte stuit',
+                    badge: 'Donic Materiaal'
+                }
+            ];
+
+            let currentZaalSlide = 0;
+            let zaalSlideInterval = null;
+
+            window.showZaalSlide = function(index) {
+                if (index < 0) index = zaalSlides.length - 1;
+                if (index >= zaalSlides.length) index = 0;
+                currentZaalSlide = index;
+
+                const slide = zaalSlides[index];
+                const imgEl = document.getElementById('zaalSlideImg');
+                const titleEl = document.getElementById('zaalSlideTitle');
+                const descEl = document.getElementById('zaalSlideDesc');
+                const counterEl = document.getElementById('zaalSlideCounter');
+                const badgeEl = document.getElementById('zaalSlideBadge');
+
+                if (imgEl) {
+                    imgEl.style.opacity = '0.35';
+                    setTimeout(() => {
+                        imgEl.src = slide.src;
+                        imgEl.style.opacity = '1';
+                    }, 120);
+                }
+                if (titleEl) titleEl.textContent = slide.title;
+                if (descEl) descEl.textContent = slide.desc;
+                if (counterEl) counterEl.textContent = `${index + 1} / ${zaalSlides.length}`;
+                if (badgeEl) badgeEl.textContent = slide.badge;
+
+                // Update thumbnails active state
+                for (let i = 0; i < zaalSlides.length; i++) {
+                    const thumb = document.getElementById(`zaalThumb-${i}`);
+                    if (thumb) {
+                        if (i === index) {
+                            thumb.className = 'w-10 sm:w-12 h-8 sm:h-9 rounded-lg overflow-hidden border-2 border-tt-orange shadow-md opacity-100 transition-all scale-105 cursor-pointer';
+                        } else {
+                            thumb.className = 'w-10 sm:w-12 h-8 sm:h-9 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600 opacity-60 hover:opacity-100 transition-all cursor-pointer';
+                        }
+                    }
+                }
+            };
+
+            window.nextZaalSlide = function() {
+                window.showZaalSlide(currentZaalSlide + 1);
+            };
+
+            window.prevZaalSlide = function() {
+                window.showZaalSlide(currentZaalSlide - 1);
+            };
+
+            window.startZaalAutoPlay = function() {
+                window.stopZaalAutoPlay();
+                zaalSlideInterval = setInterval(() => {
+                    window.nextZaalSlide();
+                }, 4500);
+            };
+
+            window.stopZaalAutoPlay = function() {
+                if (zaalSlideInterval) {
+                    clearInterval(zaalSlideInterval);
+                    zaalSlideInterval = null;
+                }
+            };
+
+            // Start auto play when page loads
+            document.addEventListener('DOMContentLoaded', () => {
+                window.startZaalAutoPlay();
+            });
+            window.startZaalAutoPlay();
+        })();
     </script>
 
     <!-- Dynamisch stuiterend favicon script -->
