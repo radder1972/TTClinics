@@ -1133,7 +1133,7 @@
                 storyImg.src = sc.image;
 
                 setTimeout(() => {
-                    storyImg.style.transition = 'transform 7500ms ease-out';
+                    storyImg.style.transition = 'transform 20000ms ease-out';
                     storyImg.classList.remove('scale-100');
                     storyImg.classList.add('scale-110');
                 }, 50);
@@ -1158,7 +1158,12 @@
                     if (i < currentScene) {
                         bar.style.width = '100%';
                     } else if (i === currentScene) {
-                        const pct = Math.min(100, (sceneProgress / sceneDurationMs) * 100);
+                        let pct = 0;
+                        if (currentAudioEl && currentAudioEl.duration && !isNaN(currentAudioEl.duration) && currentAudioEl.duration > 0) {
+                            pct = Math.min(100, (currentAudioEl.currentTime / currentAudioEl.duration) * 100);
+                        } else {
+                            pct = Math.min(100, (sceneProgress / sceneDurationMs) * 100);
+                        }
                         bar.style.width = `${pct}%`;
                     } else {
                         bar.style.width = '0%';
@@ -1171,8 +1176,8 @@
                 sceneProgress += tickMs;
                 updateProgressBars();
 
-                // Als voice-over niet aanstaat, gaan we op tijd door
-                if (!voiceOverEnabled && sceneProgress >= sceneDurationMs) {
+                // Als voice-over niet aanstaat of audio ontbreekt, gaan we op fallback tijd door
+                if ((!voiceOverEnabled || !currentAudioEl) && sceneProgress >= sceneDurationMs) {
                     if (currentScene < scenes.length - 1) {
                         showScene(currentScene + 1);
                     } else {
@@ -1190,7 +1195,13 @@
                 if (!storyInterval) {
                     storyInterval = setInterval(tick, tickMs);
                 }
-                speakCurrentScene();
+                if (currentAudioEl && currentAudioEl.paused && currentAudioEl.currentTime > 0) {
+                    currentAudioEl.play().catch(() => {});
+                } else if ('speechSynthesis' in window && window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                } else {
+                    speakCurrentScene();
+                }
             }
 
             function pause() {
@@ -1203,7 +1214,12 @@
                     clearInterval(storyInterval);
                     storyInterval = null;
                 }
-                stopAudio();
+                if (currentAudioEl && !currentAudioEl.paused) {
+                    try { currentAudioEl.pause(); } catch(e) {}
+                }
+                if ('speechSynthesis' in window && window.speechSynthesis.speaking) {
+                    try { window.speechSynthesis.pause(); } catch(e) {}
+                }
             }
 
             function togglePlay() {

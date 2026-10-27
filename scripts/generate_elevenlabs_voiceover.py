@@ -15,6 +15,7 @@ import os
 import sys
 import json
 import urllib.request
+import ssl
 import argparse
 
 # 4 scènes met zorgvuldig afgestemde pauzes en intonatie
@@ -96,8 +97,9 @@ def generate_voiceover(api_key: str, voice_id: str = DEFAULT_VOICE_ID):
             method="POST"
         )
 
+        ctx = ssl._create_unverified_context()
         try:
-            with urllib.request.urlopen(req) as resp:
+            with urllib.request.urlopen(req, context=ctx) as resp:
                 audio_bytes = resp.read()
                 out_path = sc["filename"]
                 with open(out_path, "wb") as f:
