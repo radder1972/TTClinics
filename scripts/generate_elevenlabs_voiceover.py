@@ -19,12 +19,15 @@ import ssl
 import argparse
 
 # 4 scènes met zorgvuldig afgestemde pauzes en intonatie
+# Fonetische aanpassingen voor harde Nederlandse G:
+# - "gymzaal" -> "gimzaal" (voorkomt Engelse "djim", garandeert harde Nederlandse G)
+# - "topsportlegende" -> "topsportlechende" (voorkomt zachte Franse zj, garandeert harde Nederlandse G)
 SCENES = [
     {
         "filename": "audio/story-1-woensdag.mp3",
         "title": "Scène 1: De Woensdagochtend",
         "text": (
-            "Het begon allemaal op een vroege woensdagochtend in een bescheiden gymzaal. "
+            "Het begon allemaal op een vroege woensdagochtend in een bescheiden gimzaal. "
             "Edward Westhoff zette in alle vroegte de tafels en ballen klaar. "
             "Wat begon als een gezellige training, liet al snel zien wat tafeltennis écht teweegbrengt: "
             "ongekende energie, plezier en focus."
@@ -35,7 +38,7 @@ SCENES = [
         "title": "Scène 2: De Ontmoeting met Bettine",
         "text": (
             "Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk definitief over. "
-            "Als topsportlegende wist Bettine als geen ander hoe je mensen in beweging krijgt. "
+            "Als topsportlechende wist Bettine als geen ander hoe je mensen in beweging krijgt. "
             "Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen."
         )
     },
