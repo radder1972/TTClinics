@@ -865,6 +865,11 @@
                     </div>
 
                     <div class="flex items-center gap-2">
+                        <!-- Voice-over toggle knop -->
+                        <button type="button" id="storyVoiceBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all cursor-pointer border border-white/10" title="Voice-over vertelling aan- of uitzetten">
+                            <svg class="w-4 h-4 text-tt-orange shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+                            <span class="text-xs">Voice-over: <strong id="voiceStatusText" class="text-orange-400 font-bold">Aan</strong></span>
+                        </button>
                         <button type="button" id="storyPlayPauseBtn" class="p-2 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer" title="Afspelen / Pauzeren">
                             <svg id="storyPlayIcon" class="w-5 h-5 hidden fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             <svg id="storyPauseIcon" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -942,28 +947,32 @@
                     tag: 'Scène 1 · De Oorsprong',
                     year: 'De Woensdagochtend',
                     title: 'Het begon in een bescheiden gymzaal',
-                    text: 'Edward Westhoff zette op de vroege woensdagochtend de tafels klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis teweegbrengt: ongekende energie, plezier en focus.'
+                    text: 'Edward Westhoff zette op de vroege woensdagochtend de tafels klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis teweegbrengt: ongekende energie, plezier en focus.',
+                    voiceText: 'Het begon allemaal op een vroege woensdagochtend in een bescheiden gymzaal. Edward Westhoff zette in alle vroegte de tafels en ballen klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis écht teweegbrengt: ongekende energie, plezier en focus.'
                 },
                 {
                     image: 'images/story-2-bettine.jpg',
                     tag: 'Scène 2 · De Samenwerking',
                     year: 'Ontmoeting met een Legende',
                     title: 'Edward & Bettine Vriesekoop slaan de handen ineen',
-                    text: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk over. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen.'
+                    text: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk over. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen.',
+                    voiceText: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk over. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsport-vitaliteit naar het bedrijfsleven te brengen.'
                 },
                 {
                     image: 'images/story-3-concept.jpg',
                     tag: 'Scène 3 · De Formule',
                     year: 'Schaken op Topsnelheid',
                     title: 'Het unieke TT Clinics concept ontstaat',
-                    text: 'Aan de rand van de tafeltennis-tafel ontwikkelden Edward en Bettine de clinic-formule: een masterclass in spin en techniek, gekoppeld aan een zinderend King of the Court toernooi voor vitale teams.'
+                    text: 'Aan de rand van de tafeltennis-tafel ontwikkelden Edward en Bettine de clinic-formule: een masterclass in spin en techniek, gekoppeld aan een zinderend King of the Court toernooi voor vitale teams.',
+                    voiceText: 'Aan de rand van de tafeltennis-tafel ontwikkelden ze samen de unieke clinic-formule: Schaken op topsnelheid. Geen saaie theorielessen, maar een energieke masterclass en een zinderend King of the Court toernooi voor vitale teams.'
                 },
                 {
                     image: 'images/story-4-lancering.jpg',
                     tag: 'Scène 4 · De Officiële Lancering',
                     year: 'De Start van TT Clinics',
                     title: 'De geboorte van hét sportieve bedrijfsuitje',
-                    text: 'Met de eerste wisselbokaal en de kenmerkende TT Clinics batjes was het merk officieel gelanceerd. Vandaag de dag brengen Edward en zijn team dezelfde energie en teamspirit naar bedrijven door heel Nederland!'
+                    text: 'Met de eerste wisselbokaal en de kenmerkende TT Clinics batjes was het merk officieel gelanceerd. Vandaag de dag brengen Edward en zijn team dezelfde energie en teamspirit naar bedrijven door heel Nederland!',
+                    voiceText: 'En zo werd TT Clinics geboren! Met de allereerste wisselbokaal en professionele batjes werd het officiële startsein gegeven. Vandaag de dag brengen Edward en zijn team dezelfde energie en teamspirit naar bedrijven door heel Nederland!'
                 }
             ];
 
@@ -971,7 +980,9 @@
             let isPlaying = false;
             let sceneProgress = 0;
             let storyInterval = null;
-            const sceneDurationMs = 6500;
+            let voiceOverEnabled = true;
+            let currentUtterance = null;
+            const sceneDurationMs = 7500;
             const tickMs = 50;
 
             const modal = document.getElementById('storyModal');
@@ -985,6 +996,8 @@
             const subtitleTitle = document.getElementById('storySubtitleTitle');
             const subtitleText = document.getElementById('storySubtitleText');
             const endOverlay = document.getElementById('storyEndOverlay');
+            const storyVoiceBtn = document.getElementById('storyVoiceBtn');
+            const voiceStatusText = document.getElementById('voiceStatusText');
 
             const openBtn1 = document.getElementById('openStoryModalBtn');
             const openBtn2 = document.getElementById('openStoryModalBtnText');
@@ -993,6 +1006,53 @@
             const nextBtn = document.getElementById('storyNextBtn');
             const replayBtn = document.getElementById('storyReplayBtn');
             const ctaBtn = document.getElementById('storyCtaBtn');
+
+            // Web Speech API Voice-Over
+            function speakCurrentScene() {
+                if (!('speechSynthesis' in window)) return;
+                try {
+                    window.speechSynthesis.cancel();
+                } catch(e) {}
+
+                if (!voiceOverEnabled || !isPlaying) return;
+
+                const sc = scenes[currentScene];
+                const textToSpeak = sc.voiceText || sc.text;
+
+                const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = 'nl-NL';
+                utterance.rate = 0.95;
+                utterance.pitch = 1.0;
+
+                const voices = window.speechSynthesis.getVoices();
+                const nlVoice = voices.find(v => v.lang === 'nl-NL' || v.lang.startsWith('nl'));
+                if (nlVoice) {
+                    utterance.voice = nlVoice;
+                }
+
+                utterance.onend = function() {
+                    if (!isPlaying) return;
+                    setTimeout(() => {
+                        if (!isPlaying) return;
+                        if (currentScene < scenes.length - 1) {
+                            showScene(currentScene + 1);
+                        } else {
+                            showEnd();
+                        }
+                    }, 1200);
+                };
+
+                currentUtterance = utterance;
+                window.speechSynthesis.speak(utterance);
+            }
+
+            function stopSpeech() {
+                if ('speechSynthesis' in window) {
+                    try {
+                        window.speechSynthesis.cancel();
+                    } catch(e) {}
+                }
+            }
 
             function showScene(idx) {
                 if (idx < 0) idx = 0;
@@ -1015,7 +1075,7 @@
                 storyImg.src = sc.image;
 
                 setTimeout(() => {
-                    storyImg.style.transition = 'transform 7000ms ease-out';
+                    storyImg.style.transition = 'transform 7500ms ease-out';
                     storyImg.classList.remove('scale-100');
                     storyImg.classList.add('scale-110');
                 }, 50);
@@ -1027,6 +1087,10 @@
                 subtitleText.textContent = sc.text;
 
                 updateProgressBars();
+
+                if (isPlaying) {
+                    speakCurrentScene();
+                }
             }
 
             function updateProgressBars() {
@@ -1049,7 +1113,8 @@
                 sceneProgress += tickMs;
                 updateProgressBars();
 
-                if (sceneProgress >= sceneDurationMs) {
+                // Als voice-over niet aanstaat, gaan we op tijd door
+                if (!voiceOverEnabled && sceneProgress >= sceneDurationMs) {
                     if (currentScene < scenes.length - 1) {
                         showScene(currentScene + 1);
                     } else {
@@ -1067,6 +1132,7 @@
                 if (!storyInterval) {
                     storyInterval = setInterval(tick, tickMs);
                 }
+                speakCurrentScene();
             }
 
             function pause() {
@@ -1079,6 +1145,7 @@
                     clearInterval(storyInterval);
                     storyInterval = null;
                 }
+                stopSpeech();
             }
 
             function togglePlay() {
@@ -1091,6 +1158,7 @@
 
             function showEnd() {
                 pause();
+                stopSpeech();
                 for (let i = 0; i < scenes.length; i++) {
                     const bar = document.getElementById(`storyProg${i}`);
                     if (bar) bar.style.width = '100%';
@@ -1111,9 +1179,27 @@
             function closeModal() {
                 if (!modal) return;
                 pause();
+                stopSpeech();
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
                 document.body.style.overflow = '';
+            }
+
+            // Voice-over toggle
+            if (storyVoiceBtn && voiceStatusText) {
+                storyVoiceBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    voiceOverEnabled = !voiceOverEnabled;
+                    if (voiceOverEnabled) {
+                        voiceStatusText.textContent = 'Aan';
+                        voiceStatusText.className = 'text-orange-400 font-bold';
+                        if (isPlaying) speakCurrentScene();
+                    } else {
+                        voiceStatusText.textContent = 'Uit';
+                        voiceStatusText.className = 'text-gray-400 font-normal';
+                        stopSpeech();
+                    }
+                });
             }
 
             if (openBtn1) openBtn1.addEventListener('click', openModal);
@@ -1177,6 +1263,13 @@
                     }
                 }
             });
+
+            // Zorg dat stemmen geladen worden
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.onvoiceschanged = () => {
+                    window.speechSynthesis.getVoices();
+                };
+            }
         })();
     </script>
 
