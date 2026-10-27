@@ -267,14 +267,14 @@
                             </div>
                         </div>
 
-                        <!-- Actieknoppen direct onder specificaties -->
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://wa.me/31611618060?text=Hallo%20Edward,%20ik%20wil%20graag%20meedoen%20met%20de%20woensdagochtend%20tafeltennis%20bij%20The%20Victory!" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 px-5 rounded-full shadow-md hover:shadow-orange-500/25 transition-all transform hover:scale-105 text-sm sm:text-base text-center">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        <!-- Compacte, stijlvolle actieknoppen -->
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <a href="https://wa.me/31611618060?text=Hallo%20Edward,%20ik%20wil%20graag%20meedoen%20met%20de%20woensdagochtend%20tafeltennis%20bij%20The%20Victory!" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-tt-orange hover:bg-orange-600 text-white font-bold py-2 px-3.5 rounded-xl text-xs sm:text-sm shadow-xs hover:shadow-md transition-all hover:scale-102">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                                 <span>Aanmelden via WhatsApp</span>
                             </a>
-                            <button type="button" onclick="prefillContactForWednesday()" class="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-750 text-tt-black dark:text-white font-bold py-3 px-5 rounded-full border border-gray-300 dark:border-gray-600 shadow-sm transition-all transform hover:scale-105 text-sm sm:text-base text-center cursor-pointer">
-                                <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <button type="button" onclick="prefillContactForWednesday()" class="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700/60 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 font-semibold py-2 px-3.5 rounded-xl text-xs sm:text-sm transition-all hover:scale-102 cursor-pointer shadow-xs">
+                                <svg class="w-3.5 h-3.5 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                                 <span>Aanmelden via Formulier</span>
                             </button>
                         </div>
@@ -301,7 +301,7 @@
                             <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
                                 <div class="bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 shadow flex items-center gap-1.5">
                                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                    <span id="zaalSlideBadge">Speelzaal Overzicht</span>
+                                    <span id="zaalSlideBadge">Speelzaal</span>
                                 </div>
                                 <div id="zaalSlideCounter" class="bg-black/75 backdrop-blur-xs text-white text-[11px] font-bold px-2.5 py-1 rounded-full border border-white/20 shadow">
                                     1 / 5
@@ -310,11 +310,11 @@
 
                             <!-- Onderin: bijschrift met titel en specificaties -->
                             <div class="absolute bottom-3 left-3 right-3 text-white pointer-events-none z-10">
-                                <div id="zaalSlideTitle" class="font-montserrat font-black text-sm sm:text-base italic uppercase tracking-tight drop-shadow">
-                                    Speelzaal TTV The Victory · Weesp
+                                <div id="zaalSlideTitle" class="font-montserrat font-black text-sm italic uppercase tracking-tight drop-shadow">
+                                    Speelzaal The Victory
                                 </div>
                                 <div id="zaalSlideDesc" class="text-xs text-gray-200 mt-0.5 font-medium drop-shadow truncate">
-                                    6+ Donic Wedstrijdtafels • Parketvloer • Ruime opzet
+                                    6+ Wedstrijdtafels • Parketvloer
                                 </div>
                             </div>
                         </div>
@@ -1400,33 +1400,33 @@
             const zaalSlides = [
                 {
                     src: 'images/zaal-overzicht.jpg',
-                    title: 'Speelzaal TTV The Victory · Weesp',
-                    desc: '6+ Donic Wedstrijdtafels • Parketvloer • Ruime opzet',
-                    badge: 'Speelzaal Overzicht'
+                    title: 'Speelzaal The Victory',
+                    desc: '6+ Wedstrijdtafels • Parketvloer',
+                    badge: 'Speelzaal'
                 },
                 {
                     src: 'images/zaal-perspectief.jpg',
-                    title: 'Wedstrijdarena · Middenlijn',
-                    desc: 'Symmetrisch opgesteld voor toernooien en masterclasses',
-                    badge: 'Middenperspectief'
+                    title: 'Middenperspectief Arena',
+                    desc: 'Strakke symmetrische opzet',
+                    badge: 'Middenlijn'
                 },
                 {
                     src: 'images/zaal-toernooi.jpg',
-                    title: 'Competitie & Toernooi Opstelling',
-                    desc: 'Inclusief rode court barriers en officiële scoreborden',
-                    badge: 'Toernooiopstelling'
+                    title: 'Toernooiopstelling',
+                    desc: 'Met barriers & scoreborden',
+                    badge: 'Competitie'
                 },
                 {
                     src: 'images/zaal-bar-kantine.jpg',
-                    title: 'Gezellige Clubbar van The Victory',
-                    desc: 'Sfeervolle bar & kantine voor naborrel en bittergarnituur',
-                    badge: 'Clubbar & Kantine'
+                    title: 'Clubbar The Victory',
+                    desc: 'Voor een gezellige naborrel',
+                    badge: 'Clubbar'
                 },
                 {
                     src: 'images/zaal-tafels.jpg',
-                    title: 'Officiële Donic Persson 25 Tafels',
-                    desc: 'ITTF goedgekeurde toernooitafels met perfecte stuit',
-                    badge: 'Donic Materiaal'
+                    title: 'Donic Wedstrijdtafels',
+                    desc: 'ITTF toernooimateriaal',
+                    badge: 'Donic Tafels'
                 }
             ];
 
