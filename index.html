@@ -1074,7 +1074,9 @@
                 utterance.pitch = 1.0;
 
                 const voices = window.speechSynthesis.getVoices();
-                const nlVoice = voices.find(v => v.lang === 'nl-NL' || v.lang.startsWith('nl'));
+                // Zoek bij voorkeur een heldere vrouwelijke Nederlandse stem (zoals Claire, Ellen, Laura)
+                const nlFemale = voices.find(v => (v.lang === 'nl-NL' || v.lang.startsWith('nl')) && (v.name.includes('Claire') || v.name.includes('Ellen') || v.name.includes('Laura') || v.name.toLowerCase().includes('female')));
+                const nlVoice = nlFemale || voices.find(v => v.lang === 'nl-NL' || v.lang.startsWith('nl'));
                 if (nlVoice) {
                     utterance.voice = nlVoice;
                 }

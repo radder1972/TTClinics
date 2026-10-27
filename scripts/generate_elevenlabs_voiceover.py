@@ -57,12 +57,12 @@ SCENES = [
     }
 ]
 
-# Populaire warme, documentaire ElevenLabs stemmen met eleven_multilingual_v2
-DEFAULT_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb"  # George (warm, diep, filmisch)
-# Alternatieven:
-# "pNInz6obpgDQGcFmaJgB" (Adam)
-# "onwK4e9ZLuTAKqWW03F9" (Daniel)
-# "N2lVS1w4EtoT3dr4eOWO" (Callum)
+# Populaire warme, professionele vrouwelijke ElevenLabs stemmen met eleven_multilingual_v2:
+# - "EXAVITQu4vr4xnSDxMaL" (Sarah - warm, professioneel, helder, perfect voor documentaires)
+# - "21m00Tcm4TlvDq8ikWAM" (Rachel - rustig, authentiek, empathisch)
+# - "pFZP5JQG7iQjIQuC4Bku" (Lily - fluwelig, warm)
+# - "Xb7hH8MSUJpSbSDYk0k2" (Alice - helder, zakelijk en enthousiast)
+DEFAULT_VOICE_ID = "EXAVITQu4vr4xnSDxMaL"  # Sarah (Nederlandse vrouwelijke vertelstem)
 
 def generate_voiceover(api_key: str, voice_id: str = DEFAULT_VOICE_ID):
     os.makedirs("audio", exist_ok=True)
