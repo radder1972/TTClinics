@@ -944,6 +944,7 @@
             const scenes = [
                 {
                     image: 'images/story-1-woensdag.jpg',
+                    audio: 'audio/story-1-woensdag.mp3',
                     tag: 'Scène 1 · De Oorsprong',
                     year: 'De Woensdagochtend',
                     title: 'Het begon in een bescheiden gymzaal',
@@ -952,22 +953,25 @@
                 },
                 {
                     image: 'images/story-2-bettine.jpg',
+                    audio: 'audio/story-2-bettine.mp3',
                     tag: 'Scène 2 · De Samenwerking',
                     year: 'Ontmoeting met een Legende',
                     title: 'Edward & Bettine Vriesekoop slaan de handen ineen',
                     text: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk over. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen.',
-                    voiceText: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk over. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsport-vitaliteit naar het bedrijfsleven te brengen.'
+                    voiceText: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk definitief over. Als topsportlegende wist Bettine als geen ander hoe je mensen in beweging krijgt. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen.'
                 },
                 {
                     image: 'images/story-3-concept.jpg',
+                    audio: 'audio/story-3-concept.mp3',
                     tag: 'Scène 3 · De Formule',
                     year: 'Schaken op Topsnelheid',
                     title: 'Het unieke TT Clinics concept ontstaat',
                     text: 'Aan de rand van de tafeltennis-tafel ontwikkelden Edward en Bettine de clinic-formule: een masterclass in spin en techniek, gekoppeld aan een zinderend King of the Court toernooi voor vitale teams.',
-                    voiceText: 'Aan de rand van de tafeltennis-tafel ontwikkelden ze samen de unieke clinic-formule: Schaken op topsnelheid. Geen saaie theorielessen, maar een energieke masterclass en een zinderend King of the Court toernooi voor vitale teams.'
+                    voiceText: 'Aan de rand van de tafeltennis-tafel ontwikkelden ze samen de unieke clinic-formule: Schaken op topsnelheid. Geen saaie theorielessen, maar een energieke masterclass in effectballen, gekoppeld aan een zinderend King of the Court toernooi voor vitale teams.'
                 },
                 {
                     image: 'images/story-4-lancering.jpg',
+                    audio: 'audio/story-4-lancering.mp3',
                     tag: 'Scène 4 · De Officiële Lancering',
                     year: 'De Start van TT Clinics',
                     title: 'De geboorte van hét sportieve bedrijfsuitje',
@@ -982,6 +986,7 @@
             let storyInterval = null;
             let voiceOverEnabled = true;
             let currentUtterance = null;
+            let currentAudioEl = null;
             const sceneDurationMs = 7500;
             const tickMs = 50;
 
@@ -1007,8 +1012,52 @@
             const replayBtn = document.getElementById('storyReplayBtn');
             const ctaBtn = document.getElementById('storyCtaBtn');
 
-            // Web Speech API Voice-Over
+            // Speelt studio ElevenLabs audio (indien aanwezig) of valt naadloos terug op Web Speech API
             function speakCurrentScene() {
+                stopAudio();
+                if (!voiceOverEnabled || !isPlaying) return;
+
+                const sc = scenes[currentScene];
+
+                if (sc.audio) {
+                    const audio = new Audio(sc.audio);
+                    currentAudioEl = audio;
+
+                    let hasPlayed = false;
+                    audio.addEventListener('playing', () => {
+                        hasPlayed = true;
+                    });
+
+                    audio.addEventListener('ended', () => {
+                        if (!isPlaying) return;
+                        setTimeout(() => {
+                            if (!isPlaying) return;
+                            if (currentScene < scenes.length - 1) {
+                                showScene(currentScene + 1);
+                            } else {
+                                showEnd();
+                            }
+                        }, 1000);
+                    });
+
+                    audio.addEventListener('error', () => {
+                        if (!hasPlayed) {
+                            speakWebSpeech();
+                        }
+                    });
+
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {
+                            speakWebSpeech();
+                        });
+                    }
+                } else {
+                    speakWebSpeech();
+                }
+            }
+
+            function speakWebSpeech() {
                 if (!('speechSynthesis' in window)) return;
                 try {
                     window.speechSynthesis.cancel();
@@ -1046,7 +1095,14 @@
                 window.speechSynthesis.speak(utterance);
             }
 
-            function stopSpeech() {
+            function stopAudio() {
+                if (currentAudioEl) {
+                    try {
+                        currentAudioEl.pause();
+                        currentAudioEl.currentTime = 0;
+                    } catch(e) {}
+                    currentAudioEl = null;
+                }
                 if ('speechSynthesis' in window) {
                     try {
                         window.speechSynthesis.cancel();
@@ -1145,7 +1201,7 @@
                     clearInterval(storyInterval);
                     storyInterval = null;
                 }
-                stopSpeech();
+                stopAudio();
             }
 
             function togglePlay() {
@@ -1158,7 +1214,7 @@
 
             function showEnd() {
                 pause();
-                stopSpeech();
+                stopAudio();
                 for (let i = 0; i < scenes.length; i++) {
                     const bar = document.getElementById(`storyProg${i}`);
                     if (bar) bar.style.width = '100%';
@@ -1179,7 +1235,7 @@
             function closeModal() {
                 if (!modal) return;
                 pause();
-                stopSpeech();
+                stopAudio();
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
                 document.body.style.overflow = '';
@@ -1197,7 +1253,7 @@
                     } else {
                         voiceStatusText.textContent = 'Uit';
                         voiceStatusText.className = 'text-gray-400 font-normal';
-                        stopSpeech();
+                        stopAudio();
                     }
                 });
             }
