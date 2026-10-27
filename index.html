@@ -293,7 +293,23 @@
                 <div class="md:w-1/2 relative w-full">
                     <div class="absolute inset-0 bg-tt-orange rounded-2xl transform translate-x-2 translate-y-2 sm:translate-x-4 sm:translate-y-4"></div>
                     <svg class="hidden sm:block absolute -left-14 -bottom-10 w-64 h-32 z-20 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
-                    <img src="images/hero-photo.jpg" alt="Edward Westhoff - Oprichter" class="relative z-10 rounded-2xl shadow-xl w-full object-cover" style="max-height: 600px;">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-xl">
+                        <img src="images/hero-photo.jpg" alt="Edward Westhoff - Oprichter" class="w-full object-cover" style="max-height: 600px;">
+                        
+                        <!-- Video trigger overlay knop over foto -->
+                        <button type="button" id="openStoryModalBtn" class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 z-20 bg-gray-900/90 hover:bg-black text-white p-3 sm:p-3.5 rounded-xl backdrop-blur-md border border-white/20 shadow-2xl flex items-center gap-3 sm:gap-4 group transition-all transform hover:scale-[1.02] text-left cursor-pointer">
+                            <div class="w-12 h-12 rounded-full bg-tt-orange text-white flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform ring-4 ring-orange-500/30">
+                                <svg class="w-5 h-5 ml-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-orange-400 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span> Korte Ontstaansfilm (1 min)
+                                </div>
+                                <div class="font-montserrat font-extrabold text-sm sm:text-base text-white truncate">De Oprichting met Bettine Vriesekoop</div>
+                                <div class="text-xs text-gray-300 truncate">Bekijk het unieke verhaal in 4 filmische scènes ▶</div>
+                            </div>
+                        </button>
+                    </div>
                 </div>
                 <div class="md:w-1/2">
                     <h3 class="text-2xl font-black italic mb-6 text-tt-black dark:text-white flex items-center gap-2">
@@ -301,11 +317,19 @@
                         Ontmoet de trainer
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                        Welkom! Mijn naam is Edward Westhoff. TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden en vooral gezellig tafeltennisclubje op de woensdagmorgen, is inmiddels uitgegroeid tot een professionele partner voor bedrijfsvitaliteit en teambuilding.
+                        Welkom! Mijn naam is Edward Westhoff. TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden tafeltennisclubje op de woensdagmorgen, kreeg vleugels toen tweevoudig Europees kampioene <strong>Bettine Vriesekoop</strong> en ik de handen ineen sloegen om de kracht van tafeltennis naar het bedrijfsleven te brengen.
                     </p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                        De schaal is veranderd, maar de kernwaarde is precies hetzelfde gebleven: tafeltennis is dé manier om laagdrempelig in beweging te komen, de zinnen te verzetten en als team onvergetelijk plezier te maken.
+                    <p class="text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+                        Samen ontwikkelden we de unieke formule: tafeltennis als 'schaken op topsnelheid'. Dé manier om laagdrempelig in beweging te komen, de zinnen te verzetten en als team onvergetelijk plezier te maken.
                     </p>
+
+                    <!-- Knop om ontstaansfilm te openen -->
+                    <div class="mb-6">
+                        <button type="button" id="openStoryModalBtnText" class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-tt-orange hover:bg-orange-200 dark:hover:bg-orange-900/60 font-bold text-sm transition-all cursor-pointer border border-orange-200 dark:border-orange-800 shadow-sm hover:scale-[1.02]">
+                            <svg class="w-4 h-4 fill-current text-tt-orange" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Bekijk de ontstaansfilm met Bettine Vriesekoop (1 min)</span>
+                        </button>
+                    </div>
                     <div class="flex items-center gap-4 mb-8">
                         <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-xl text-center flex-1 border border-gray-200/50 dark:border-gray-700/60 shadow-sm">
                             <div class="text-3xl font-black text-tt-black dark:text-white">15+</div>
@@ -811,6 +835,348 @@
                     playPingPongSound(0.15);
                 });
             }
+        })();
+    </script>
+
+    <!-- Modal: Ontstaansfilm TT Clinics met Bettine Vriesekoop -->
+    <div id="storyModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 backdrop-blur-xl p-2 sm:p-4 md:p-6 transition-all duration-300">
+        <div class="relative w-full max-w-4xl bg-gray-950 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl flex flex-col">
+            <!-- Top Bar: Progress bars & Header controls -->
+            <div class="p-3 sm:p-4 bg-gradient-to-b from-black/95 to-transparent z-30">
+                <!-- 4 Segmented Progress Bars (Instagram / Netflix Stories style) -->
+                <div class="grid grid-cols-4 gap-2 mb-3">
+                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg0" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
+                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg1" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
+                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg2" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
+                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg3" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
+                </div>
+
+                <!-- Header info & Close -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-tt-orange flex items-center justify-center font-black text-white text-xs shadow-md">TT</div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-montserrat font-bold text-white text-xs sm:text-sm">De Oprichting van TT Clinics</h4>
+                                <span class="text-[10px] bg-tt-orange/20 text-orange-400 font-bold px-2 py-0.5 rounded-full border border-orange-500/30 hidden sm:inline">Met Bettine Vriesekoop</span>
+                            </div>
+                            <p id="storySceneIndicator" class="text-[11px] text-gray-400">Scène 1 van 4 · De Woensdagochtend</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="storyPlayPauseBtn" class="p-2 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer" title="Afspelen / Pauzeren">
+                            <svg id="storyPlayIcon" class="w-5 h-5 hidden fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <svg id="storyPauseIcon" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <button type="button" id="closeStoryModalBtn" class="p-2 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer" title="Sluiten (Esc)">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Canvas / Image Stage (16:9 ratio) -->
+            <div class="relative w-full aspect-video bg-black overflow-hidden flex items-center justify-center select-none">
+                <!-- Scene Image with Ken Burns animation -->
+                <img id="storyImage" src="images/story-1-woensdag.jpg" alt="TT Clinics Ontstaansverhaal" class="w-full h-full object-cover object-center transition-all duration-[7000ms] ease-out transform scale-100">
+                
+                <!-- Gradient Vignette -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 pointer-events-none"></div>
+
+                <!-- Click navigation areas (Left = Prev, Right = Next) -->
+                <button type="button" id="storyPrevBtn" class="absolute left-0 top-0 bottom-24 w-1/4 z-10 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-start pl-4 cursor-pointer text-white">
+                    <div class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-transform shadow-lg border border-white/10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </div>
+                </button>
+                <button type="button" id="storyNextBtn" class="absolute right-0 top-0 bottom-24 w-1/4 z-10 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-end pr-4 cursor-pointer text-white">
+                    <div class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-transform shadow-lg border border-white/10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </button>
+
+                <!-- Final Scene Victory Overlay (appears on scene 4 finish) -->
+                <div id="storyEndOverlay" class="absolute inset-0 bg-black/90 backdrop-blur-md z-30 hidden flex-col items-center justify-center text-center p-6">
+                    <div class="w-16 h-16 rounded-full bg-tt-orange/20 border-2 border-tt-orange flex items-center justify-center text-3xl mb-4 shadow-xl">
+                        🏆
+                    </div>
+                    <h3 class="font-montserrat text-2xl sm:text-3xl font-black text-white mb-2">Zo begon het TT Clinics avontuur!</h3>
+                    <p class="text-gray-300 text-sm sm:text-base max-w-lg mb-6 leading-relaxed">
+                        Van een inspirerende samenwerking met Europees kampioene Bettine Vriesekoop uitgegroeid tot dé vitaliteitsclinic voor vitale teams door heel Nederland.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-3">
+                        <a href="#contact" id="storyCtaBtn" class="btn-speed bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 px-7 rounded-full shadow-lg transition-transform hover:scale-105 text-sm sm:text-base">
+                            Vraag Jouw Team Clinic Aan
+                        </a>
+                        <button type="button" id="storyReplayBtn" class="px-5 py-3 rounded-full bg-gray-800 hover:bg-gray-700 text-white font-semibold text-sm transition-colors flex items-center gap-2 cursor-pointer border border-gray-700">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            Opnieuw afspelen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lower Third Subtitle / Narrative Box -->
+                <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-6 sm:right-6 z-20 pointer-events-none">
+                    <div class="bg-black/85 backdrop-blur-md p-3.5 sm:p-5 rounded-xl border border-white/10 shadow-2xl">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span id="storySubtitleTag" class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-tt-orange text-white">Scène 1 · De Oorsprong</span>
+                            <span class="text-xs text-orange-300 font-mono" id="storySubtitleYear">De Woensdagochtend</span>
+                        </div>
+                        <h3 id="storySubtitleTitle" class="font-montserrat font-bold text-white text-sm sm:text-lg mb-1 leading-snug">Het begon in een bescheiden gymzaal</h3>
+                        <p id="storySubtitleText" class="text-xs sm:text-sm text-gray-200 leading-relaxed">
+                            Edward Westhoff zette op de vroege woensdagochtend de tafels klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis teweegbrengt: ongekende energie, plezier en focus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ontstaansfilm Video Story Controller Script -->
+    <script>
+        (function() {
+            const scenes = [
+                {
+                    image: 'images/story-1-woensdag.jpg',
+                    tag: 'Scène 1 · De Oorsprong',
+                    year: 'De Woensdagochtend',
+                    title: 'Het begon in een bescheiden gymzaal',
+                    text: 'Edward Westhoff zette op de vroege woensdagochtend de tafels klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis teweegbrengt: ongekende energie, plezier en focus.'
+                },
+                {
+                    image: 'images/story-2-bettine.jpg',
+                    tag: 'Scène 2 · De Samenwerking',
+                    year: 'Ontmoeting met een Legende',
+                    title: 'Edward & Bettine Vriesekoop slaan de handen ineen',
+                    text: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk over. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen.'
+                },
+                {
+                    image: 'images/story-3-concept.jpg',
+                    tag: 'Scène 3 · De Formule',
+                    year: 'Schaken op Topsnelheid',
+                    title: 'Het unieke TT Clinics concept ontstaat',
+                    text: 'Aan de rand van de tafeltennis-tafel ontwikkelden Edward en Bettine de clinic-formule: een masterclass in spin en techniek, gekoppeld aan een zinderend King of the Court toernooi voor vitale teams.'
+                },
+                {
+                    image: 'images/story-4-lancering.jpg',
+                    tag: 'Scène 4 · De Officiële Lancering',
+                    year: 'De Start van TT Clinics',
+                    title: 'De geboorte van hét sportieve bedrijfsuitje',
+                    text: 'Met de eerste wisselbokaal en de kenmerkende TT Clinics batjes was het merk officieel gelanceerd. Vandaag de dag brengen Edward en zijn team dezelfde energie en teamspirit naar bedrijven door heel Nederland!'
+                }
+            ];
+
+            let currentScene = 0;
+            let isPlaying = false;
+            let sceneProgress = 0;
+            let storyInterval = null;
+            const sceneDurationMs = 6500;
+            const tickMs = 50;
+
+            const modal = document.getElementById('storyModal');
+            const storyImg = document.getElementById('storyImage');
+            const playPauseBtn = document.getElementById('storyPlayPauseBtn');
+            const playIcon = document.getElementById('storyPlayIcon');
+            const pauseIcon = document.getElementById('storyPauseIcon');
+            const sceneIndicator = document.getElementById('storySceneIndicator');
+            const subtitleTag = document.getElementById('storySubtitleTag');
+            const subtitleYear = document.getElementById('storySubtitleYear');
+            const subtitleTitle = document.getElementById('storySubtitleTitle');
+            const subtitleText = document.getElementById('storySubtitleText');
+            const endOverlay = document.getElementById('storyEndOverlay');
+
+            const openBtn1 = document.getElementById('openStoryModalBtn');
+            const openBtn2 = document.getElementById('openStoryModalBtnText');
+            const closeBtn = document.getElementById('closeStoryModalBtn');
+            const prevBtn = document.getElementById('storyPrevBtn');
+            const nextBtn = document.getElementById('storyNextBtn');
+            const replayBtn = document.getElementById('storyReplayBtn');
+            const ctaBtn = document.getElementById('storyCtaBtn');
+
+            function showScene(idx) {
+                if (idx < 0) idx = 0;
+                if (idx >= scenes.length) {
+                    showEnd();
+                    return;
+                }
+
+                currentScene = idx;
+                sceneProgress = 0;
+                endOverlay.classList.add('hidden');
+                endOverlay.classList.remove('flex');
+
+                const sc = scenes[currentScene];
+                
+                // Reset zoom effect voor Ken Burns
+                storyImg.style.transition = 'none';
+                storyImg.classList.remove('scale-110');
+                storyImg.classList.add('scale-100');
+                storyImg.src = sc.image;
+
+                setTimeout(() => {
+                    storyImg.style.transition = 'transform 7000ms ease-out';
+                    storyImg.classList.remove('scale-100');
+                    storyImg.classList.add('scale-110');
+                }, 50);
+
+                sceneIndicator.textContent = `Scène ${currentScene + 1} van ${scenes.length} · ${sc.year}`;
+                subtitleTag.textContent = sc.tag;
+                subtitleYear.textContent = sc.year;
+                subtitleTitle.textContent = sc.title;
+                subtitleText.textContent = sc.text;
+
+                updateProgressBars();
+            }
+
+            function updateProgressBars() {
+                for (let i = 0; i < scenes.length; i++) {
+                    const bar = document.getElementById(`storyProg${i}`);
+                    if (!bar) continue;
+                    if (i < currentScene) {
+                        bar.style.width = '100%';
+                    } else if (i === currentScene) {
+                        const pct = Math.min(100, (sceneProgress / sceneDurationMs) * 100);
+                        bar.style.width = `${pct}%`;
+                    } else {
+                        bar.style.width = '0%';
+                    }
+                }
+            }
+
+            function tick() {
+                if (!isPlaying) return;
+                sceneProgress += tickMs;
+                updateProgressBars();
+
+                if (sceneProgress >= sceneDurationMs) {
+                    if (currentScene < scenes.length - 1) {
+                        showScene(currentScene + 1);
+                    } else {
+                        showEnd();
+                    }
+                }
+            }
+
+            function play() {
+                isPlaying = true;
+                if (playIcon && pauseIcon) {
+                    playIcon.classList.add('hidden');
+                    pauseIcon.classList.remove('hidden');
+                }
+                if (!storyInterval) {
+                    storyInterval = setInterval(tick, tickMs);
+                }
+            }
+
+            function pause() {
+                isPlaying = false;
+                if (playIcon && pauseIcon) {
+                    playIcon.classList.remove('hidden');
+                    pauseIcon.classList.add('hidden');
+                }
+                if (storyInterval) {
+                    clearInterval(storyInterval);
+                    storyInterval = null;
+                }
+            }
+
+            function togglePlay() {
+                if (isPlaying) {
+                    pause();
+                } else {
+                    play();
+                }
+            }
+
+            function showEnd() {
+                pause();
+                for (let i = 0; i < scenes.length; i++) {
+                    const bar = document.getElementById(`storyProg${i}`);
+                    if (bar) bar.style.width = '100%';
+                }
+                endOverlay.classList.remove('hidden');
+                endOverlay.classList.add('flex');
+            }
+
+            function openModal() {
+                if (!modal) return;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                showScene(0);
+                play();
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                pause();
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+
+            if (openBtn1) openBtn1.addEventListener('click', openModal);
+            if (openBtn2) openBtn2.addEventListener('click', openModal);
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+            if (prevBtn) prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentScene > 0) {
+                    showScene(currentScene - 1);
+                } else {
+                    showScene(0);
+                }
+            });
+
+            if (nextBtn) nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentScene < scenes.length - 1) {
+                    showScene(currentScene + 1);
+                } else {
+                    showEnd();
+                }
+            });
+
+            if (playPauseBtn) playPauseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                togglePlay();
+            });
+
+            if (replayBtn) replayBtn.addEventListener('click', () => {
+                showScene(0);
+                play();
+            });
+
+            if (ctaBtn) ctaBtn.addEventListener('click', () => {
+                closeModal();
+            });
+
+            // Sluiten bij klik buiten de video box
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+
+            // Toetsenbord bediening (Esc, Spatie, Pijltjes)
+            window.addEventListener('keydown', (e) => {
+                if (modal && !modal.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeModal();
+                    if (e.key === ' ') {
+                        e.preventDefault();
+                        togglePlay();
+                    }
+                    if (e.key === 'ArrowLeft') {
+                        if (currentScene > 0) showScene(currentScene - 1);
+                    }
+                    if (e.key === 'ArrowRight') {
+                        if (currentScene < scenes.length - 1) showScene(currentScene + 1);
+                    }
+                }
+            });
         })();
     </script>
 
