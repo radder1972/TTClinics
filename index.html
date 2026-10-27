@@ -55,59 +55,69 @@
 
     <!-- Navbar -->
     <nav class="bg-white dark:bg-gray-900 text-tt-black dark:text-white sticky top-0 z-50 shadow-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="container mx-auto px-4 py-3 sm:py-4 flex justify-between items-center relative">
-            <a href="#top" class="logo font-montserrat text-xl sm:text-2xl md:text-3xl font-black italic flex items-center gap-2 sm:gap-3 tracking-tighter relative group cursor-pointer z-50">
-                <img src="images/logo-sticker.png" alt="TT Clinics Logo" class="h-20 sm:h-26 md:h-32 w-auto -my-6 sm:-my-8 md:-my-10 transform translate-y-4 sm:translate-y-5 md:translate-y-7 filter drop-shadow-xl transition-all duration-300 group-hover:scale-105 group-hover:-rotate-3 shrink-0">
-                <div class="text-tt-black dark:text-white select-none whitespace-nowrap"><span class="text-tt-orange">TT</span> CLINICS</div>
-            </a>
+        <div class="container mx-auto px-4">
+            <!-- Bovenste rij: Logo + Bedienen + CTA + Hamburger -->
+            <div class="flex justify-between items-center py-2 sm:py-2.5">
+                <a href="#top" class="logo font-montserrat text-xl sm:text-2xl font-black italic flex items-center gap-2 sm:gap-3 tracking-tighter relative group cursor-pointer z-20">
+                    <img src="images/logo-sticker.png" alt="TT Clinics Logo" class="h-12 sm:h-14 md:h-16 w-auto filter drop-shadow-md transition-all duration-300 group-hover:scale-105 group-hover:-rotate-2 shrink-0">
+                    <div class="text-tt-black dark:text-white select-none whitespace-nowrap"><span class="text-tt-orange">TT</span> CLINICS</div>
+                </a>
 
-            <!-- Desktop Nav Links -->
-            <ul class="hidden md:flex space-x-6 lg:space-x-8 font-semibold items-center text-sm lg:text-base">
-                <li><a href="#clinics" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg> Clinics</a></li>
-                <li><a href="#over-ons" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
-                <li><a href="#prijzen" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Tarieven</a></li>
-                <li><a href="#reviews" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
-                <li><a href="#shop" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white relative"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop <span class="ml-1 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
-                <li><a href="#contact" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
-            </ul>
+                <!-- Bedienen (Dark mode & Geluid & Cart) + Desktop CTA + Mobile Hamburger -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <div class="inline-flex items-center bg-gray-100 dark:bg-gray-800 p-1 rounded-full border border-gray-200 dark:border-gray-700 shadow-inner">
+                        <button id="themeToggle" class="p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center" title="Lichte / Donkere modus">
+                            <svg id="iconLight" class="w-4 h-4 hidden dark:block text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="5" fill="currentColor" stroke="none" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                            </svg>
+                            <svg id="iconDark" class="w-4 h-4 block dark:hidden text-tt-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 13.5A8.5 8.5 0 1 1 10.5 4a7.5 7.5 0 0 0 9.5 9.5z" fill="currentColor" stroke="none"/>
+                                <rect x="8" y="16" width="2" height="6" rx="1" transform="rotate(-45 9 19)" fill="currentColor" stroke="none" />
+                            </svg>
+                        </button>
+                        <span class="w-px h-3.5 bg-gray-300 dark:bg-gray-600 mx-0.5"></span>
+                        <button id="soundToggle" class="p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center text-tt-black dark:text-white" title="Tafeltennis stuitergeluid aan/uit">
+                            <svg id="soundIconOff" class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                            </svg>
+                            <svg id="soundIconOn" class="w-4 h-4 hidden text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                            </svg>
+                        </button>
+                        <span class="w-px h-3.5 bg-gray-300 dark:bg-gray-600 mx-0.5"></span>
+                        <button id="openCartBtn" onclick="toggleCartDrawer(true)" class="relative p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center text-tt-black dark:text-white" title="Winkelwagen openen" aria-label="Winkelwagen openen">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                            </svg>
+                            <span id="cartCountBadge" class="hidden absolute -top-1.5 -right-1.5 bg-tt-orange text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow">0</span>
+                        </button>
+                    </div>
 
-            <!-- Bedienen (Dark mode & Geluid) + Mobile Hamburger -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <div class="inline-flex items-center bg-gray-100 dark:bg-gray-800 p-1 rounded-full border border-gray-200 dark:border-gray-700 shadow-inner">
-                    <button id="themeToggle" class="p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center" title="Lichte / Donkere modus">
-                        <svg id="iconLight" class="w-4 h-4 hidden dark:block text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="5" fill="currentColor" stroke="none" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-                        </svg>
-                        <svg id="iconDark" class="w-4 h-4 block dark:hidden text-tt-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 13.5A8.5 8.5 0 1 1 10.5 4a7.5 7.5 0 0 0 9.5 9.5z" fill="currentColor" stroke="none"/>
-                            <rect x="8" y="16" width="2" height="6" rx="1" transform="rotate(-45 9 19)" fill="currentColor" stroke="none" />
-                        </svg>
-                    </button>
-                    <span class="w-px h-3.5 bg-gray-300 dark:bg-gray-600 mx-0.5"></span>
-                    <button id="soundToggle" class="p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center text-tt-black dark:text-white" title="Tafeltennis stuitergeluid aan/uit">
-                        <svg id="soundIconOff" class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                        </svg>
-                        <svg id="soundIconOn" class="w-4 h-4 hidden text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                        </svg>
-                    </button>
-                    <span class="w-px h-3.5 bg-gray-300 dark:bg-gray-600 mx-0.5"></span>
-                    <button id="openCartBtn" onclick="toggleCartDrawer(true)" class="relative p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center text-tt-black dark:text-white" title="Winkelwagen openen" aria-label="Winkelwagen openen">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-                        </svg>
-                        <span id="cartCountBadge" class="hidden absolute -top-1.5 -right-1.5 bg-tt-orange text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow">0</span>
+                    <!-- Directe Call to Action knop voor clinics (desktop) -->
+                    <a href="#contact" class="hidden sm:inline-flex bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider py-2 px-4 rounded-full shadow-sm hover:shadow transition-all whitespace-nowrap">
+                        Clinic Aanvragen
+                    </a>
+
+                    <!-- Hamburger Button voor mobiel -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-tt-black dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none" aria-label="Menu openen">
+                        <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
+            </div>
 
-                <!-- Hamburger Button voor mobiel -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-tt-black dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none" aria-label="Menu openen">
-                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
+            <!-- Onderste rij: Het Hoofdmenu (md+) direct onder het logo met alle ruimte -->
+            <div class="hidden md:flex justify-center items-center py-2 border-t border-gray-100 dark:border-gray-800/80">
+                <ul class="flex items-center space-x-6 lg:space-x-8 font-semibold text-xs sm:text-sm lg:text-base whitespace-nowrap">
+                    <li><a href="#clinics" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg> Clinics</a></li>
+                    <li><a href="#over-ons" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
+                    <li><a href="#prijzen" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Tarieven</a></li>
+                    <li><a href="#reviews" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
+                    <li><a href="#shop" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white relative"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop <span class="ml-1 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
+                    <li><a href="#contact" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
+                </ul>
             </div>
         </div>
 
