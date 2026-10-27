@@ -58,12 +58,10 @@ SCENES = [
     }
 ]
 
-# Populaire warme, professionele vrouwelijke ElevenLabs stemmen met eleven_multilingual_v2:
-# - "EXAVITQu4vr4xnSDxMaL" (Sarah - warm, professioneel, helder, perfect voor documentaires)
-# - "21m00Tcm4TlvDq8ikWAM" (Rachel - rustig, authentiek, empathisch)
-# - "pFZP5JQG7iQjIQuC4Bku" (Lily - fluwelig, warm)
-# - "Xb7hH8MSUJpSbSDYk0k2" (Alice - helder, zakelijk en enthousiast)
-DEFAULT_VOICE_ID = "EXAVITQu4vr4xnSDxMaL"  # Sarah (Nederlandse vrouwelijke vertelstem)
+# Populaire warme, professionele Vlaamse/Belgische ElevenLabs stemmen met eleven_multilingual_v2:
+# - "ANHrhmaFeVN0QJaa0PhL" (Petra Vlaams - warm, natuurlijk, helder met licht Belgisch/Vlaams accent)
+# - "o3Pmyfc3Ez1s2CJKuwJf" (Ben Praag - mannelijk, verhalend, podcaststijl met Vlaams accent)
+DEFAULT_VOICE_ID = "ANHrhmaFeVN0QJaa0PhL"  # Petra Vlaams (Licht Belgisch/Vlaams accent)
 
 def generate_voiceover(api_key: str, voice_id: str = DEFAULT_VOICE_ID):
     os.makedirs("audio", exist_ok=True)
