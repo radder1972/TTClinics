@@ -35,6 +35,45 @@
 
 
 
+    <style>
+        /* Subtiele misdaaddossier gearceerde censuurbalk in huisstijl */
+        .dossier-redacted {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            background: repeating-linear-gradient(
+                -45deg,
+                #18181b,
+                #18181b 3px,
+                #27272a 3px,
+                #27272a 6px
+            );
+            color: #d4d4d8;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.55rem;
+            border-radius: 3px;
+            border: 1px solid #3f3f46;
+            border-left: 2.5px solid #FF6B00;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.6);
+            user-select: all;
+        }
+        .dark .dossier-redacted {
+            background: repeating-linear-gradient(
+                -45deg,
+                #09090b,
+                #09090b 3px,
+                #18181b 3px,
+                #18181b 6px
+            );
+            color: #e4e4e7;
+            border-color: #27272a;
+            border-left-color: #FF6B00;
+        }
+    </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-tt-black dark:text-gray-100 font-inter transition-colors duration-300 overflow-x-hidden" id="top">
     <!-- Herbruikbare scherpe swoosh-lijnen uit het logo -->
@@ -312,7 +351,7 @@
                                 <div class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-orange-400 flex items-center gap-1.5">
                                     <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span> Korte Ontstaansfilm (1 min)
                                 </div>
-                                <div class="font-montserrat font-extrabold text-sm sm:text-base text-white truncate">De Oprichting met <span class="bg-black/90 text-white font-mono px-1.5 py-0.5 rounded text-xs border border-red-500/50 tracking-wider inline-flex items-center gap-1">[PIEP! 🔇 ████████]</span></div>
+                                <div class="font-montserrat font-extrabold text-sm sm:text-base text-white truncate">De Oprichting van TT Clinics · <span class="text-tt-orange font-mono text-xs">Dossier #01</span></div>
                                 <div class="text-xs text-gray-300 truncate">Bekijk het unieke verhaal in 4 filmische scènes ▶</div>
                             </div>
                         </button>
@@ -324,7 +363,7 @@
                         Ontmoet de trainer
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                        Welkom! Mijn naam is Edward Westhoff. TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden tafeltennisclubje op de woensdagmorgen, kreeg vleugels toen tweevoudig Europees kampioene <span class="censor-badge group cursor-pointer inline-flex items-center gap-1 bg-black text-white font-mono text-xs px-2 py-0.5 rounded border border-red-500/50 shadow-sm relative align-middle" title="Klik om de censorpiep te horen!" onclick="playCensorBleep()"><span class="text-red-400 font-bold">[PIEP! 🔇]</span><span class="tracking-widest">█████████████</span><span class="text-[10px] text-gray-400 font-sans italic hidden sm:inline">(advocaten kijken mee)</span></span> en ik de handen ineen sloegen om de kracht van tafeltennis naar het bedrijfsleven te brengen.
+                        Welkom! Mijn naam is Edward Westhoff. TT Clinics is het bewijs dat de mooiste dingen soms heel klein beginnen. Wat startte als een bescheiden tafeltennisclubje op de woensdagmorgen, kreeg vleugels toen tweevoudig Europees kampioene <span class="dossier-redacted" title="Dossier-identiteit afgeschermd">[IDENTITEIT AFGESCHERMD]</span> en ik de handen ineen sloegen om de kracht van tafeltennis naar het bedrijfsleven te brengen.
                     </p>
                     <p class="text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
                         Samen ontwikkelden we de unieke formule: tafeltennis als 'schaken op topsnelheid'. Dé manier om laagdrempelig in beweging te komen, de zinnen te verzetten en als team onvergetelijk plezier te maken.
@@ -334,7 +373,7 @@
                     <div class="mb-6">
                         <button type="button" id="openStoryModalBtnText" class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-tt-orange hover:bg-orange-200 dark:hover:bg-orange-900/60 font-bold text-sm transition-all cursor-pointer border border-orange-200 dark:border-orange-800 shadow-sm hover:scale-[1.02]">
                             <svg class="w-4 h-4 fill-current text-tt-orange" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            <span>Bekijk de ontstaansfilm met <span class="bg-black text-white font-mono px-1.5 py-0.5 rounded text-xs border border-red-500/50">[PIEP! 🔇] ████████</span> (1 min)</span>
+                            <span>Bekijk de ontstaansfilm (1 min)</span>
                         </button>
                     </div>
                     <div class="flex items-center gap-4 mb-8">
@@ -475,7 +514,13 @@
                         </div>
 
                         <!-- Sterren -->
-                        <div class="flex items-center mb-3 text-amber-400 text-base">★★★★★</div>
+                        <div class="flex items-center mb-3 text-tt-orange gap-0.5"><div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div></div>
 
                         <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic">
                             &ldquo;Wat een waanzinnige energie! Even helemaal weg van de beeldschermen en sprintdeadlines. De gezonde rivaliteit barstte direct los en Edward wist met zijn humor en tactische tips zelfs de grootste sceptici fanatiek aan het batje te krijgen. Maanden later hebben we het er bij het koffiezetapparaat nog over.&rdquo;
@@ -503,7 +548,13 @@
                         </div>
 
                         <!-- Sterren -->
-                        <div class="flex items-center mb-3 text-amber-400 text-base">★★★★★</div>
+                        <div class="flex items-center mb-3 text-tt-orange gap-0.5"><div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div></div>
 
                         <p class="text-gray-800 dark:text-gray-100 text-sm sm:text-base leading-relaxed italic font-medium">
                             &ldquo;Precies de verfrissende impuls die onze vitaliteitsweek nodig had! Tafeltennis is echt schaken op topsnelheid: je hoofd leegmaken, lachen en tegelijkertijd je reactievermogen en focus aanscherpen. Zowel de fitte fanatiekelingen als minder actieve collega's deden vol overgave mee.&rdquo;
@@ -532,7 +583,13 @@
                         </div>
 
                         <!-- Sterren -->
-                        <div class="flex items-center mb-3 text-amber-400 text-base">★★★★★</div>
+                        <div class="flex items-center mb-3 text-tt-orange gap-0.5"><div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div></div>
 
                         <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic">
                             &ldquo;De ideale mix tussen serieuze coaching in effectballen en voetenwerk, gevolgd door een zinderend toernooi. De officiële TT Clinics wisselbokaal staat nu te pronken op onze directietafel! Een van de leukste en best georganiseerde teamuitjes die we als maatschap hebben gehad.&rdquo;
@@ -573,7 +630,13 @@
                                     <p class="text-xs text-orange-200 font-medium drop-shadow-sm">Vaste prik op woensdag · Sportshal De Meer</p>
                                 </div>
                             </div>
-                            <div class="flex items-center mb-3 text-amber-400 text-base">★★★★★</div>
+                            <div class="flex items-center mb-3 text-tt-orange gap-0.5"><div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div></div>
                             <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic">
                                 &ldquo;Al ruim zes jaar mijn vaste prik op de vroege ochtend. Edward zorgt er elke week voor dat we met een brede glimlach én bezweet sportshirt de zaal uitlopen. De humor en sfeer aan de tafels zijn ongeëvenaard, maar vergis je niet: Ed leert je echt de perfecte topspin slaan!&rdquo;
                             </p>
@@ -597,7 +660,13 @@
                                     <p class="text-xs text-orange-200 font-medium drop-shadow-sm">Recreatieve speler · Woensdagochtend clubje</p>
                                 </div>
                             </div>
-                            <div class="flex items-center mb-3 text-amber-400 text-base">★★★★★</div>
+                            <div class="flex items-center mb-3 text-tt-orange gap-0.5"><div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div></div>
                             <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic">
                                 &ldquo;Geen woensdag is compleet zonder Ed! Even anderhalf uur alle werk- en gezinsstress van je afslaan en puur focussen op dat kleine balletje. Het enthousiasme van Edward werkt enorm aanstekelijk; van beginnend speler tot gevorderde, iedereen voelt zich direct thuis.&rdquo;
                             </p>
@@ -621,7 +690,13 @@
                                     <p class="text-xs text-orange-200 font-medium drop-shadow-sm">Vroege vogel · Woensdagochtend clubje</p>
                                 </div>
                             </div>
-                            <div class="flex items-center mb-3 text-amber-400 text-base">★★★★★</div>
+                            <div class="flex items-center mb-3 text-tt-orange gap-0.5"><div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div></div>
                             <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed italic">
                                 &ldquo;Om half negen de zaal in en direct die energie voelen. Je krijgt bij Ed de perfecte mix van pittige conditierally's en ontspannen gezelligheid. Na afloop nog even napraten met een goeie bak koffie — de beste sportieve start van de week die je kunt wensen.&rdquo;
                             </p>
@@ -754,7 +829,13 @@
                         <div class="flex items-center justify-between gap-2 mb-2">
                             <span class="text-xs font-bold uppercase tracking-wider text-tt-orange">Club Kleding & Teamwear</span>
                             <div class="flex items-center text-amber-400 text-xs font-bold">
-                                <span>★★★★★</span>
+                                <div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div>
                                 <span class="text-gray-500 dark:text-gray-400 ml-1.5 font-semibold">(4.9 • 38 reviews)</span>
                             </div>
                         </div>
@@ -840,11 +921,20 @@
                             </button>
                         </div>
 
-                        <!-- Zekerheden -->
-                        <div class="grid grid-cols-3 gap-2 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800 text-[11px] text-gray-500 dark:text-gray-400 text-center">
-                            <div>🚚 <strong>Gratis bezorging</strong> v.a. €50</div>
-                            <div>🔄 <strong>30 dagen</strong> gratis ruilen</div>
-                            <div>🛡️ <strong>Veilig betalen</strong> met iDEAL</div>
+                        <!-- Zekerheden in strakke huisstijl -->
+                        <div class="grid grid-cols-3 gap-2 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800 text-[11px] text-gray-600 dark:text-gray-300 text-center">
+                            <div class="p-2 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 flex flex-col items-center justify-center gap-1">
+                                <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a2 2 0 11-4 0m4 0h2m-6 0H5m14 0a2 2 0 11-4 0m4 0h1a1 1 0 001-1v-4.5a1 1 0 00-.293-.707l-3.5-3.5A1 1 0 0016.5 7H13"/></svg>
+                                <span><strong>Gratis bezorging</strong> v.a. €50</span>
+                            </div>
+                            <div class="p-2 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 flex flex-col items-center justify-center gap-1">
+                                <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                <span><strong>30 dagen</strong> gratis ruilen</span>
+                            </div>
+                            <div class="p-2 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 flex flex-col items-center justify-center gap-1">
+                                <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                <span><strong>Veilig betalen</strong> via iDEAL</span>
+                            </div>
                         </div>
 
                     </div>
@@ -874,7 +964,13 @@
                                 </span>
                             </div>
                             <div class="flex items-center text-amber-400 text-xs mb-1">
-                                <span>★★★★★</span>
+                                <div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div>
                                 <span class="text-gray-500 text-[11px] ml-1">(4.9)</span>
                             </div>
                             <h4 class="font-montserrat font-black text-lg text-tt-black dark:text-white uppercase italic mb-1">
@@ -906,7 +1002,13 @@
                                 </span>
                             </div>
                             <div class="flex items-center text-amber-400 text-xs mb-1">
-                                <span>★★★★★</span>
+                                <div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div>
                                 <span class="text-gray-500 text-[11px] ml-1">(4.8)</span>
                             </div>
                             <h4 class="font-montserrat font-black text-lg text-tt-black dark:text-white uppercase italic mb-1">
@@ -941,7 +1043,13 @@
                                 </span>
                             </div>
                             <div class="flex items-center text-amber-400 text-xs mb-1">
-                                <span>★★★★★</span>
+                                <div class="flex items-center gap-0.5 text-tt-orange">
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div>
                                 <span class="text-gray-500 text-[11px] ml-1">(5.0 • Meest gekozen)</span>
                             </div>
                             <h4 class="font-montserrat font-black text-lg text-tt-black dark:text-white uppercase italic mb-1">
@@ -1262,14 +1370,14 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <h4 class="font-montserrat font-bold text-white text-xs sm:text-sm">De Oprichting van TT Clinics</h4>
-                            <span class="text-[10px] bg-red-950/70 text-red-300 font-mono font-bold px-2.5 py-0.5 rounded-full border border-red-500/50 hidden sm:inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span> TOP SECRET · NAAM GECENSUREERD</span>
+                            <span class="text-[11px] bg-neutral-900 text-neutral-300 font-mono font-semibold px-2.5 py-0.5 rounded border border-neutral-700 hidden sm:inline-flex items-center gap-1.5 tracking-wider"><span class="w-1.5 h-1.5 rounded-full bg-tt-orange"></span> DOSSIER #01 · AFGESCHERMD</span>
                         </div>
                         <p class="text-[11px] text-gray-400">Officiële filmische documentaire (1 minuut) · Full HD 1080p MP4</p>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <a href="video/ttclinics-ontstaan.mp4" download="TT-Clinics-Ontstaan-GECENSUREERD.mp4" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all cursor-pointer border border-white/10" title="Download MP4 video">
+                    <a href="video/ttclinics-ontstaan.mp4" download="TT-Clinics-Ontstaansfilm-Dossier.mp4" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all cursor-pointer border border-white/10" title="Download MP4 video">
                         <svg class="w-3.5 h-3.5 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                         <span>Download MP4</span>
                     </a>
@@ -1288,12 +1396,12 @@
 
                 <!-- Final Scene Victory Overlay (appears on video finish) -->
                 <div id="storyEndOverlay" class="absolute inset-0 bg-black/90 backdrop-blur-md z-30 hidden flex-col items-center justify-center text-center p-6">
-                    <div class="w-16 h-16 rounded-full bg-tt-orange/20 border-2 border-tt-orange flex items-center justify-center text-3xl mb-4 shadow-xl">
-                        🏆
+                    <div class="w-16 h-16 rounded-2xl bg-orange-500/10 border border-tt-orange/40 flex items-center justify-center mb-4 shadow-xl">
+                        <svg class="w-8 h-8 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
                     </div>
                     <h3 class="font-montserrat text-2xl sm:text-3xl font-black text-white mb-2">Zo begon het TT Clinics avontuur!</h3>
                     <p class="text-gray-300 text-sm sm:text-base max-w-lg mb-6 leading-relaxed">
-                        Van een geheime ontmoeting met tweevoudig Europees kampioene <span class="bg-black text-white font-mono text-xs px-2 py-0.5 rounded border border-red-500/50 inline-block">[PIEP! 🔇 █████████████]</span> uitgegroeid tot dé vitaliteitsclinic voor vitale teams door heel Nederland.
+                        Van een samenwerking met tweevoudig Europees kampioene <span class="dossier-redacted">[IDENTITEIT AFGESCHERMD]</span> uitgegroeid tot dé vitaliteitsclinic voor vitale teams door heel Nederland.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center gap-3">
                         <a href="#contact" id="storyCtaBtn" class="btn-speed bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 px-7 rounded-full shadow-lg transition-transform hover:scale-105 text-sm sm:text-base">
@@ -1631,7 +1739,7 @@
                     quantity: selectedPolo.quantity
                 };
                 addItemToCartList(item);
-                showToast(`✅ ${item.title} (${item.variant}) toegevoegd!`);
+                showToast(`${item.title} (${item.variant}) toegevoegd aan winkelwagen`);
                 toggleCartDrawer(true);
             };
 
@@ -1645,7 +1753,7 @@
                     quantity: 1
                 };
                 addItemToCartList(item);
-                showToast(`✅ ${title} toegevoegd!`);
+                showToast(`${title} toegevoegd aan winkelwagen`);
                 toggleCartDrawer(true);
             };
 
@@ -1659,7 +1767,7 @@
                     quantity: 1
                 };
                 addItemToCartList(item);
-                showToast(`🎉 Complete Clinic Combi-Deal toegevoegd!`);
+                showToast(`Complete Clinic Combi-Deal toegevoegd aan winkelwagen`);
                 toggleCartDrawer(true);
             };
 
@@ -1745,7 +1853,7 @@
                     if (subtotal >= freeThreshold) {
                         freeBar.style.width = '100%';
                         freeBar.className = 'bg-emerald-500 h-full rounded-full transition-all duration-500';
-                        freeText.innerHTML = '🎉 <span class="text-emerald-600 dark:text-emerald-400 font-bold">Gratis verzending actief!</span>';
+                        freeText.innerHTML = '<span class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold"><svg class="w-3.5 h-3.5 inline-block text-emerald-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Gratis verzending actief</span>';
                         freePct.textContent = '100%';
                     } else {
                         const needed = freeThreshold - subtotal;
@@ -1900,39 +2008,7 @@
     </script>
 
 
-    <!-- Web Audio Censor Bleep Generator -->
-    <script>
-        window.playCensorBleep = function() {
-            try {
-                const AudioCtx = window.AudioContext || window.webkitAudioContext;
-                if (!AudioCtx) return;
-                const ctx = new AudioCtx();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
 
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(1000, ctx.currentTime); // Standard 1000Hz TV censor tone
-
-                gain.gain.setValueAtTime(0, ctx.currentTime);
-                gain.gain.linearRampToValueAtTime(0.35, ctx.currentTime + 0.02);
-                gain.gain.setValueAtTime(0.35, ctx.currentTime + 0.35);
-                gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.40);
-
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-
-                osc.start(ctx.currentTime);
-                osc.stop(ctx.currentTime + 0.42);
-
-                // Show fun little toast
-                const toast = document.createElement('div');
-                toast.className = 'fixed top-6 left-1/2 -translate-x-1/2 bg-red-950/90 text-red-200 border border-red-500/60 font-mono text-xs px-4 py-2 rounded-xl shadow-2xl z-50 flex items-center gap-2 animate-bounce';
-                toast.innerHTML = '<span>🤫 <strong>TOP SECRET:</strong> Deze identiteit is strikt geheimgehouden!</span>';
-                document.body.appendChild(toast);
-                setTimeout(() => toast.remove(), 2500);
-            } catch(e) {}
-        };
-    </script>
 
 </body>
 
