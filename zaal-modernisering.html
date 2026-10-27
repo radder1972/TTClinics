@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaalmodernisering The Victory Weesp · Boutique Arena Voorstel</title>
+    <meta name="description" content="Voorstel voor de modernisering van de clubaccommodatie van TTV The Victory Weesp door TT Clinics. Met behoud van karakter, 1:1 voor/na visualisaties en BOSA-subsidie.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900;900i&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'tt-orange': '#FF6B00',
+                        'tt-orange-dark': '#E05D00',
+                        'tt-orange-light': '#FF8A33',
+                        'tt-slate': '#0F172A',
+                        'tt-charcoal': '#1E2024',
+                        'tt-dark': '#111827',
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="icon" type="image/svg+xml" href="images/qr-ttclinics.svg">
+
+    <style>
+        /* Smooth slider styling */
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .before-after-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow: hidden;
+            width: 50%;
+        }
+
+        .before-after-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: #FF6B00;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            box-shadow: 0 0 12px rgba(255, 107, 0, 0.8);
+            z-index: 20;
+        }
+
+        .handle-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: #FF6B00;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 3px rgba(255,255,255,0.9);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .print-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-gray-100 font-inter antialiased selection:bg-tt-orange selection:text-white">
+
+    <!-- Top Status Banner -->
+    <div class="bg-gradient-to-r from-tt-orange to-orange-600 text-white text-xs sm:text-sm font-semibold py-2 px-4 text-center shadow-md">
+        <span>🏟️ Voorstel Clubmodernisering TTV The Victory Weesp &bull; Samenwerking TT Clinics</span>
+    </div>
+
+    <!-- Header / Navigatie -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-2.5 group">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-tt-orange to-orange-400 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                        <span class="text-white font-montserrat font-black text-base">TT</span>
+                    </div>
+                    <div>
+                        <span class="font-montserrat font-black text-lg text-white tracking-tight">TT CLINICS</span>
+                        <span class="text-[10px] text-gray-400 block -mt-1 font-mono tracking-widest">THE VICTORY WEESP</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <a href="index.html" class="text-xs sm:text-sm font-semibold text-gray-300 hover:text-white transition-colors flex items-center py-2 px-3 rounded-lg hover:bg-slate-800">
+                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    <span class="hidden sm:inline">Terug naar</span> Website
+                </a>
+                <a href="bedrijfsplan.html" class="text-xs sm:text-sm font-semibold text-gray-300 hover:text-white transition-colors py-2 px-3 rounded-lg hover:bg-slate-800 hidden md:inline-flex">
+                    Bedrijfsplan
+                </a>
+                <button onclick="window.print()" class="no-print bg-slate-800 hover:bg-slate-700 text-gray-200 text-xs sm:text-sm font-medium py-2 px-3.5 rounded-lg border border-slate-700 transition-colors flex items-center shadow-sm">
+                    <svg class="w-4 h-4 mr-1.5 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                    Print / PDF
+                </button>
+                <a href="#contact-voorstel" class="bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider py-2 px-4 rounded-xl shadow-lg transition-all hover:scale-105">
+                    Reageren
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900/60 to-slate-950 border-b border-slate-800/80">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#FF6B00_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+            <div class="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/20 text-orange-400 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-tt-orange animate-ping"></span>
+                <span>Initiatief TT Clinics &amp; TTV The Victory</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-montserrat font-black text-white tracking-tight leading-tight">
+                Moderniseringsvoorstel: <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-tt-orange via-orange-400 to-amber-300">
+                    Boutique Arena The Victory
+                </span>
+            </h1>
+
+            <p class="mt-5 text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Hoe we de vertrouwde clubaccommodatie aan de 's-Gravelandseweg met slimme, betaalbare ingrepen transformeren tot een professionele indoor tafeltennisarena — <strong>zonder het karakter, de mozaïekvloer of de gezellige clubziel te verliezen</strong>.
+            </p>
+
+            <!-- 4 Quick Stats / USP Badges -->
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+                <div class="bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 rounded-xl p-3 text-center">
+                    <div class="text-tt-orange font-bold text-lg font-montserrat">1:1 Behoud</div>
+                    <div class="text-xs text-gray-400">Originele houten vloer &amp; spanten</div>
+                </div>
+                <div class="bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 rounded-xl p-3 text-center">
+                    <div class="text-tt-orange font-bold text-lg font-montserrat">Tot 30%</div>
+                    <div class="text-xs text-gray-400">BOSA Rijkssubsidie op LED</div>
+                </div>
+                <div class="bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 rounded-xl p-3 text-center">
+                    <div class="text-tt-orange font-bold text-lg font-montserrat">Topcontrast</div>
+                    <div class="text-xs text-gray-400">Balletje véél beter zichtbaar</div>
+                </div>
+                <div class="bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 rounded-xl p-3 text-center">
+                    <div class="text-tt-orange font-bold text-lg font-montserrat">Win-Win</div>
+                    <div class="text-xs text-gray-400">Trots voor club &amp; clinic-succes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactieve Voor / Na Visualisaties Section -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <h2 class="text-2xl sm:text-3xl font-montserrat font-bold text-white tracking-tight">
+                    1:1 Vergelijk: Beweeg de Slider
+                </h2>
+                <p class="text-sm text-gray-400 mt-2">
+                    Sleep de oranje lijn over de foto om direct het verschil te zien tussen de huidige situatie en het moderniseringsvoorstel.
+                </p>
+            </div>
+
+            <!-- Tab Navigation for the 4 Shots -->
+            <div class="flex flex-wrap justify-center gap-2 mb-6 no-print">
+                <button onclick="switchShot(0)" id="tab-0" class="shot-tab active-tab bg-tt-orange text-white font-semibold text-xs sm:text-sm py-2 px-4 rounded-xl transition-all shadow-md">
+                    1. Zaal Overzicht (Entree)
+                </button>
+                <button onclick="switchShot(1)" id="tab-1" class="shot-tab bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 font-semibold text-xs sm:text-sm py-2 px-4 rounded-xl transition-all">
+                    2. Middenperspectief
+                </button>
+                <button onclick="switchShot(2)" id="tab-2" class="shot-tab bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 font-semibold text-xs sm:text-sm py-2 px-4 rounded-xl transition-all">
+                    3. Toernooizicht Arena
+                </button>
+                <button onclick="switchShot(3)" id="tab-3" class="shot-tab bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 font-semibold text-xs sm:text-sm py-2 px-4 rounded-xl transition-all">
+                    4. De Clubbar &amp; Toog
+                </button>
+            </div>
+
+            <!-- The Interactive Before/After Card -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 sm:p-5 shadow-2xl">
+                <!-- Info Bar Above Slider -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+                    <div>
+                        <h3 id="shot-title" class="font-montserrat font-bold text-base sm:text-lg text-white">
+                            Standpunt 1: Groothoek Entree over de Tafeltenniszaal
+                        </h3>
+                        <p id="shot-desc" class="text-xs sm:text-sm text-gray-400 mt-0.5">
+                            Van rommelige achterwanden en rode banners naar strakke eikenhouten akupanelen en matzwarte afzethekken met oranje details.
+                        </p>
+                    </div>
+
+                    <!-- Mode Toggles (Voor / Split / Na) -->
+                    <div class="flex items-center space-x-1.5 bg-slate-800 p-1 rounded-lg border border-slate-700/60 no-print">
+                        <button onclick="setSliderPercent(100)" class="text-[11px] font-semibold py-1 px-2.5 rounded text-gray-300 hover:text-white hover:bg-slate-700 transition-colors">
+                            Alleen Voor
+                        </button>
+                        <button onclick="setSliderPercent(50)" class="text-[11px] font-semibold py-1 px-2.5 rounded bg-tt-orange text-white shadow-sm transition-colors">
+                            Splitscreen
+                        </button>
+                        <button onclick="setSliderPercent(0)" class="text-[11px] font-semibold py-1 px-2.5 rounded text-gray-300 hover:text-white hover:bg-slate-700 transition-colors">
+                            Alleen Na
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slider Container -->
+                <div id="sliderWrapper" class="before-after-container rounded-xl aspect-[4/3] w-full max-h-[640px] bg-slate-950 cursor-ew-resize">
+                    <!-- 'NA' Image (Bottom layer) -->
+                    <img id="imgAfter" src="images/zaal-opgeflufft.jpg" alt="Zaal The Victory Gemoderniseerd (Na)" class="absolute inset-0 w-full h-full object-cover">
+                    <span class="absolute top-4 right-4 bg-slate-900/85 backdrop-blur-md border border-slate-700 text-white text-[11px] font-bold uppercase tracking-wider py-1 px-3 rounded-full pointer-events-none z-10">
+                        ✨ Na: Gemoderniseerd
+                    </span>
+
+                    <!-- 'VOOR' Image (Top cropped layer) -->
+                    <div id="overlayDiv" class="before-after-overlay">
+                        <img id="imgBefore" src="images/zaal-overzicht.jpg" alt="Zaal The Victory Huidige Situatie (Voor)" class="absolute top-0 left-0 w-full h-full object-cover max-w-none">
+                        <span class="absolute top-4 left-4 bg-slate-900/85 backdrop-blur-md border border-slate-700 text-gray-200 text-[11px] font-bold uppercase tracking-wider py-1 px-3 rounded-full pointer-events-none z-10">
+                            📷 Voor: Huidige Zaal
+                        </span>
+                    </div>
+
+                    <!-- Divider Handle -->
+                    <div id="sliderHandle" class="before-after-handle">
+                        <div class="handle-circle">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider explanation footer -->
+                <div class="mt-3 flex items-center justify-between text-[11px] text-gray-500">
+                    <span>💡 Tip: Sleep de slider met de muis of vinger van links naar rechts</span>
+                    <span id="shotCounter" class="font-mono text-gray-400">Standpunt 1 van 4</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wat Blijft 100% Intact vs Wat Wordt Aangepakt -->
+    <section class="py-12 bg-slate-900/50 border-y border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Behouden -->
+                <div class="bg-slate-900 border border-emerald-900/40 rounded-2xl p-6 relative overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-montserrat font-bold text-lg text-white">Wat Blijft 100% Intact?</h3>
+                            <p class="text-xs text-gray-400">Geen onnodige sloop, respect voor het cluberfgoed</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2.5 font-bold">✓</span>
+                            <span><strong>De mozaïek parketvloer:</strong> De geliefde hardhouten vloer blijft exact zoals hij is (heerlijke grip en veerkracht).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2.5 font-bold">✓</span>
+                            <span><strong>De Donic speeltafels &amp; opstelling:</strong> De vertrouwde dichte zaalindeling blijft perfect behouden voor maximale capaciteit.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2.5 font-bold">✓</span>
+                            <span><strong>De kapconstructie &amp; zwarte dakspanten:</strong> De karakteristieke nok en zichtbare balken blijven het industriële hart van het gebouw.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2.5 font-bold">✓</span>
+                            <span><strong>De clubbar &amp; vrijwilligers:</strong> De baropstelling, de vertrouwde gezichten en de gezellige nazit blijven de spil van de club.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Modernisering -->
+                <div class="bg-slate-900 border border-orange-900/40 rounded-2xl p-6 relative overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-tt-orange">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-montserrat font-bold text-lg text-white">Wat Wordt Gericht Opgeflufft?</h3>
+                            <p class="text-xs text-gray-400">Gefocust op rust, contrast, akoestiek en beleving</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-tt-orange mr-2.5 font-bold">→</span>
+                            <span><strong>Wandafwerking (Charcoal &amp; Hout):</strong> Vervang kille grijze muren door matte antraciet tinten en eikenhouten akupanelen.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-tt-orange mr-2.5 font-bold">→</span>
+                            <span><strong>Afzethekken (Court Barriers):</strong> Vervang verfrommelde rode stoffen zeilen door uniforme zwarte barriers met oranje clubbies.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-tt-orange mr-2.5 font-bold">→</span>
+                            <span><strong>Akoestiek &amp; Balcontrast:</strong> Sterk gedempte galm en een donkere achtergrond waardoor witte/oranje balletjes oplichten.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-tt-orange mr-2.5 font-bold">→</span>
+                            <span><strong>Subtiele Sfeerverlichting:</strong> Zwarte design pendellamp boven de toog en warme LED-accenten langs de spanten voor finales.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- De 5 Pijlers van het Plan -->
+    <section class="py-16 bg-slate-950">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold text-tt-orange uppercase tracking-widest font-mono">Doordacht Ontwerp</span>
+                <h2 class="text-2xl sm:text-3xl font-montserrat font-bold text-white tracking-tight mt-1">
+                    De 5 Pijlers van de Transformatie
+                </h2>
+                <p class="text-sm text-gray-400 mt-2">
+                    Elk onderdeel lost een concreet probleem op: van speelcomfort tot akoestische rust en professionele uitstraling.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Pijler 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
+                        01
+                    </div>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Wanden &amp; Balcontrast</h3>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+                        Matte antraciet wanden (<code class="text-orange-300 font-mono text-xs">#1e2024</code>) in plaats van kil grijs. Hierdoor steken witte en oranje wedstrijdballen maximaal af tijdens snelle rally's.
+                    </p>
+                    <div class="bg-slate-800/60 rounded-lg p-2.5 text-xs text-gray-400 border border-slate-700/50">
+                        ⚡ <strong>Direct effect:</strong> Betere reactiesnelheid voor clubspelers en clinic-deelnemers.
+                    </div>
+                </div>
+
+                <!-- Pijler 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
+                        02
+                    </div>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Akupanelen &amp; Akoestiek</h3>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+                        Verticale eikenhouten wandpanelen op gerecycled vilt dempen de schelle echo van harde batjesslagen en stemmen. Brengt direct de warme 'boutique gym' sfeer.
+                    </p>
+                    <div class="bg-slate-800/60 rounded-lg p-2.5 text-xs text-gray-400 border border-slate-700/50">
+                        🔊 <strong>Direct effect:</strong> Aanzienlijk minder galm in de zaal, rustiger voor coaches en toeschouwers.
+                    </div>
+                </div>
+
+                <!-- Pijler 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
+                        03
+                    </div>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Uniforme Court Barriers</h3>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+                        Weg met de bonte mix aan oude rode sponsorzeiltjes en hekjes. Strakke, matzwarte barriers met een subtiel clublogo en een verfijnde oranje bies geven rust en eenheid.
+                    </p>
+                    <div class="bg-slate-800/60 rounded-lg p-2.5 text-xs text-gray-400 border border-slate-700/50">
+                        🏆 <strong>Direct effect:</strong> Oogt direct als een officiële toernooilocatie op foto's en video's.
+                    </div>
+                </div>
+
+                <!-- Pijler 4 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
+                        04
+                    </div>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Smart Arena &amp; Verlichting</h3>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+                        Optie voor energiezuinige zwarte LED-lijnarmaturen (4000K, 700 Lux, flikkervrij) en een centraal display voor live Tournify toernooischema's en standen.
+                    </p>
+                    <div class="bg-slate-800/60 rounded-lg p-2.5 text-xs text-gray-400 border border-slate-700/50">
+                        💡 <strong>Direct effect:</strong> Forse stroombesparing en toernooisfeer bij de clinic-finales.
+                    </div>
+                </div>
+
+                <!-- Pijler 5 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors md:col-span-2">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
+                                05
+                            </div>
+                            <h3 class="font-montserrat font-bold text-lg text-white mb-2">Bar &amp; Hospitality ("De Skybox")</h3>
+                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+                                De karakteristieke houten bar van The Victory behouden we volledig, maar we voegen een zwarte designlamp toe, warm amber achtergrondlicht, en een smalle houten barplank langs het zaalvenster. Toeschouwers zitten zo 'front-row' met een biertje te genieten van de finales in de zaal.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/60 rounded-lg p-2.5 text-xs text-gray-400 border border-slate-700/50">
+                        🍻 <strong>Direct effect:</strong> Gezellige derde helft, hogere baromzet en trotse clubleden.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget, BOSA Subsidie & Gefaseerde Investering -->
+    <section class="py-16 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold text-tt-orange uppercase tracking-widest font-mono">Financieel Realistisch</span>
+                <h2 class="text-2xl sm:text-3xl font-montserrat font-bold text-white tracking-tight mt-1">
+                    Gefaseerd Stappenplan &amp; Subsidie
+                </h2>
+                <p class="text-sm text-gray-400 mt-2">
+                    We hoeven niet alles tegelijk te doen. Door te werken in 3 slimme fasen kan het project direct beginnen met een gezamenlijke clubklusdag.
+                </p>
+            </div>
+
+            <!-- BOSA Subsidie Banner Callout -->
+            <div class="bg-gradient-to-r from-orange-950/40 via-slate-900 to-orange-950/40 border border-orange-500/30 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-tt-orange/20 border border-tt-orange/40 flex items-center justify-center text-tt-orange shrink-0">
+                        <span class="text-2xl font-black font-montserrat">%</span>
+                    </div>
+                    <div>
+                        <h4 class="font-montserrat font-bold text-white text-base">BOSA-Subsidie: 20% tot 30% Rijkssubsidie</h4>
+                        <p class="text-xs text-gray-300 mt-0.5">
+                            Voor amateur-sportverenigingen vergoedt de landelijke BOSA-regeling (Bouw en Onderhoud Sportaccommodaties) tot 30% van verduurzamings- en renovatiekosten (zoals LED-verlichting en akoestiek).
+                        </p>
+                    </div>
+                </div>
+                <a href="https://www.dus-i.nl/subsidies/stimulering-bouw-en-onderhoud-sportaccommodaties" target="_blank" rel="noopener" class="no-print bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs py-2.5 px-4 rounded-xl border border-slate-700 whitespace-nowrap transition-colors flex items-center">
+                    BOSA Info bekijken ↗
+                </a>
+            </div>
+
+            <!-- Faserings Tabel -->
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/80 border-b border-slate-800 text-gray-400 font-mono text-xs uppercase tracking-wider">
+                                <th class="py-4 px-6">Fase</th>
+                                <th class="py-4 px-6">Wat pakken we aan?</th>
+                                <th class="py-4 px-6">Doorlooptijd</th>
+                                <th class="py-4 px-6 text-right">Geschat Budget</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 text-sm">
+                            <tr class="hover:bg-slate-900/40 transition-colors">
+                                <td class="py-4 px-6 font-montserrat font-bold text-white whitespace-nowrap">
+                                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2"></span>Fase 1: Quick Wins
+                                </td>
+                                <td class="py-4 px-6 text-gray-300">
+                                    Schilderwerk wanden in mat antraciet, subtiele TT-speedlines, strakke zwarte afzethekken (barriers) met clubopdruk.
+                                </td>
+                                <td class="py-4 px-6 text-gray-400 whitespace-nowrap">1 weekend (Club Klusdag)</td>
+                                <td class="py-4 px-6 text-right font-mono font-bold text-tt-orange whitespace-nowrap">€ 1.200 – € 2.200</td>
+                            </tr>
+                            <tr class="hover:bg-slate-900/40 transition-colors">
+                                <td class="py-4 px-6 font-montserrat font-bold text-white whitespace-nowrap">
+                                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 mr-2"></span>Fase 2: Akoestiek &amp; Bar
+                                </td>
+                                <td class="py-4 px-6 text-gray-300">
+                                    Akoestische eikenhouten akupanelen op achterwand, barplank met krukken langs het zaalvenster, zwarte vitrinekast voor trofeeën &amp; merchandise.
+                                </td>
+                                <td class="py-4 px-6 text-gray-400 whitespace-nowrap">2–3 dagen</td>
+                                <td class="py-4 px-6 text-right font-mono font-bold text-tt-orange whitespace-nowrap">€ 1.500 – € 2.800</td>
+                            </tr>
+                            <tr class="hover:bg-slate-900/40 transition-colors">
+                                <td class="py-4 px-6 font-montserrat font-bold text-white whitespace-nowrap">
+                                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-orange-500 mr-2"></span>Fase 3: Verlichting &amp; Tech
+                                </td>
+                                <td class="py-4 px-6 text-gray-300">
+                                    Energiezuinige zwarte LED-lijnen boven de tafels, sfeervolle dimbare oranje LED-lijnen langs dakspanten, 55" toernooischerm met Tournify koppeling.
+                                </td>
+                                <td class="py-4 px-6 text-gray-400 whitespace-nowrap">1 week (installateur)</td>
+                                <td class="py-4 px-6 text-right font-mono font-bold text-tt-orange whitespace-nowrap">€ 2.500 – € 4.500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-4 bg-slate-900/90 border-t border-slate-800 text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-2">
+                    <span>* Kosten kunnen mede worden gedragen via clinic-opbrengsten, sponsoring en gezamenlijke acties.</span>
+                    <span class="font-bold text-white">Na BOSA-subsidie: Tot 30% lagere netto investering</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Win-Win voor Vereniging & TT Clinics -->
+    <section class="py-16 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-tt-orange/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold text-tt-orange uppercase tracking-widest font-mono">De Win-Win Samenwerking</span>
+                    <h2 class="text-2xl sm:text-3xl font-montserrat font-black text-white tracking-tight mt-1 mb-4">
+                        Waarom dit voor álle clubleden een feest is
+                    </h2>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                        TTV The Victory beschikt over een schitterende eigen speelhal met historie. Met deze make-over versterken we de eigen identiteit en maken we de zaal aantrekkelijk voor nieuwe generaties en bedrijven.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-tt-orange/20 text-tt-orange flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Meer trots &amp; sfeer tijdens competitieavonden</h4>
+                                <p class="text-xs text-gray-400">Tegenstanders die binnenstappen in Weesp komen in een stijlvolle arena met topcontrast en warme clubbar.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-tt-orange/20 text-tt-orange flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Financiële impuls voor de clubkas</h4>
+                                <p class="text-xs text-gray-400">Elke bedrijfsclinic van TT Clinics genereert zaalhuur en baromzet voor TTV The Victory.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-tt-orange/20 text-tt-orange flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Gezellige klusdag verbindt de leden</h4>
+                                <p class="text-xs text-gray-400">Samen met leden, spelers en vrijwilligers de muren rollen onder het genot van koffie en een broodje kroket creëert direct saamhorigheid.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback & Contact Form / Reageren -->
+    <section id="contact-voorstel" class="py-16 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <span class="text-xs font-bold text-tt-orange uppercase tracking-widest font-mono">Bestuur &amp; Leden</span>
+            <h2 class="text-2xl sm:text-3xl font-montserrat font-bold text-white tracking-tight mt-1 mb-3">
+                Denk en praat mee over dit voorstel!
+            </h2>
+            <p class="text-sm text-gray-300 max-w-xl mx-auto mb-8">
+                Heb je ideeën, feedback of wil je meehelpen tijdens een eventuele klusdag? Laat het direct weten aan Matthias Radder of het bestuur van TTV The Victory.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:info@ttclinics.nl?subject=Reactie%20op%20Zaalmodernisering%20The%20Victory" class="bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold text-sm py-3 px-6 rounded-xl shadow-lg transition-all hover:scale-105 inline-flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Stuur je reactie per e-mail
+                </a>
+                <a href="index.html#contact" class="bg-slate-800 hover:bg-slate-700 text-gray-200 font-montserrat font-bold text-sm py-3 px-6 rounded-xl border border-slate-700 transition-all inline-flex items-center">
+                    Naar Contactformulier
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 text-xs text-gray-500 text-center">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 TT Clinics · In samenwerking met TTV The Victory Weesp · 's-Gravelandseweg 3a, 1381 HK Weesp
+            </div>
+            <div class="flex space-x-6">
+                <a href="index.html" class="hover:text-gray-300">Home</a>
+                <a href="bedrijfsplan.html" class="hover:text-gray-300">Bedrijfsplan</a>
+                <a href="visitekaartje.html" class="hover:text-gray-300">Contactkaart</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Before/After Slider JavaScript -->
+    <script>
+        const shots = [
+            {
+                title: "Standpunt 1: Groothoek Entree over de Tafeltenniszaal",
+                desc: "Vanaf de kopse ingang. Van rommelige achterwanden en rode banners naar strakke akoestische akupanelen, een matte antraciet achterwand en matzwarte clubbarriers.",
+                before: "images/zaal-overzicht.jpg",
+                after: "images/zaal-opgeflufft.jpg"
+            },
+            {
+                title: "Standpunt 2: Middenperspectief Langs de Wedstrijdtafels",
+                desc: "Symmetrisch zicht over de groene Donic tafels richting de bar. Met eikenhouten akupanelen, THE VICTORY wandlogo, warme barverlichting en behoud van de massieve mozaïekvloer.",
+                before: "images/zaal-perspectief.jpg",
+                after: "images/zaal-perspectief-opgeflufft.jpg"
+            },
+            {
+                title: "Standpunt 3: Competitie- & Toernooizicht (De Speelarena)",
+                desc: "Zicht over de volle speelzaal tijdens toernooien. Uniforme donkere barriers met TT-oranje bies, strakke achterwanden en geconcentreerd toernooilicht.",
+                before: "images/zaal-toernooi.jpg",
+                after: "images/zaal-toernooi-opgeflufft.jpg"
+            },
+            {
+                title: "Standpunt 4: De Gezellige Clubbar van The Victory",
+                desc: "De authentieke houten toog en clubleden blijven 1:1 behouden. Subtiel verrijkt met een zwarte minimalistische pendellamp, warme ambergloed en doorkijk naar de vernieuwde zaal.",
+                before: "images/zaal-bar-kantine.jpg",
+                after: "images/zaal-bar-opgeflufft.jpg"
+            }
+        ];
+
+        let currentShotIndex = 0;
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const overlayDiv = document.getElementById('overlayDiv');
+        const sliderHandle = document.getElementById('sliderHandle');
+        const imgBefore = document.getElementById('imgBefore');
+        const imgAfter = document.getElementById('imgAfter');
+        const shotTitle = document.getElementById('shotTitle') || document.getElementById('shot-title');
+        const shotDesc = document.getElementById('shotDesc') || document.getElementById('shot-desc');
+        const shotCounter = document.getElementById('shotCounter');
+
+        let isDragging = false;
+
+        function syncOverlayImageSize() {
+            if (sliderWrapper && imgBefore) {
+                imgBefore.style.width = sliderWrapper.offsetWidth + 'px';
+                imgBefore.style.height = sliderWrapper.offsetHeight + 'px';
+            }
+        }
+
+        window.addEventListener('resize', syncOverlayImageSize);
+        window.addEventListener('load', syncOverlayImageSize);
+
+        function setSliderPercent(percent) {
+            percent = Math.max(0, Math.min(100, percent));
+            overlayDiv.style.width = percent + '%';
+            sliderHandle.style.left = percent + '%';
+        }
+
+        function switchShot(index) {
+            currentShotIndex = index;
+            const shot = shots[index];
+
+            // Update images
+            imgBefore.src = shot.before;
+            imgAfter.src = shot.after;
+
+            // Wait for image or trigger size sync
+            syncOverlayImageSize();
+
+            // Update texts
+            shotTitle.textContent = shot.title;
+            shotDesc.textContent = shot.desc;
+            shotCounter.textContent = `Standpunt ${index + 1} van ${shots.length}`;
+
+            // Reset slider position to 50%
+            setSliderPercent(50);
+
+            // Update tab styles
+            for (let i = 0; i < shots.length; i++) {
+                const tab = document.getElementById(`tab-${i}`);
+                if (i === index) {
+                    tab.className = "shot-tab active-tab bg-tt-orange text-white font-semibold text-xs sm:text-sm py-2 px-4 rounded-xl transition-all shadow-md";
+                } else {
+                    tab.className = "shot-tab bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 font-semibold text-xs sm:text-sm py-2 px-4 rounded-xl transition-all";
+                }
+            }
+        }
+
+        // Dragging & Interaction logic
+        function updateSliderFromEvent(e) {
+            const rect = sliderWrapper.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const offsetX = clientX - rect.left;
+            const percent = (offsetX / rect.width) * 100;
+            setSliderPercent(percent);
+        }
+
+        sliderWrapper.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateSliderFromEvent(e);
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            updateSliderFromEvent(e);
+        });
+
+        // Touch support for mobile phones / tablets
+        sliderWrapper.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            updateSliderFromEvent(e);
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            updateSliderFromEvent(e);
+        }, { passive: true });
+
+        // Initialize with 50% split
+        setSliderPercent(50);
+        setTimeout(syncOverlayImageSize, 100);
+        setTimeout(syncOverlayImageSize, 500);
+    </script>
+</body>
+</html>
