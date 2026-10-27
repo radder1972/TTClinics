@@ -836,70 +836,41 @@
         })();
     </script>
 
-    <!-- Modal: Ontstaansfilm TT Clinics met Bettine Vriesekoop (ElevenLabs Audio Sync v1.4) -->
+    <!-- Modal: Ontstaansfilm TT Clinics (Ingesloten MP4 Video) -->
     <div id="storyModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 backdrop-blur-xl p-2 sm:p-4 md:p-6 transition-all duration-300">
         <div class="relative w-full max-w-4xl bg-gray-950 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl flex flex-col">
-            <!-- Top Bar: Progress bars & Header controls -->
-            <div class="p-3 sm:p-4 bg-gradient-to-b from-black/95 to-transparent z-30">
-                <!-- 4 Segmented Progress Bars (Instagram / Netflix Stories style) -->
-                <div class="grid grid-cols-4 gap-2 mb-3">
-                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg0" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
-                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg1" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
-                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg2" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
-                    <div class="h-1.5 bg-white/20 rounded-full overflow-hidden"><div id="storyProg3" class="h-full bg-tt-orange transition-all duration-100" style="width: 0%;"></div></div>
+            <!-- Top Bar: Header controls & Download -->
+            <div class="p-3 sm:p-4 bg-gradient-to-b from-black/95 to-black/80 z-30 flex items-center justify-between border-b border-gray-800/80">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-tt-orange flex items-center justify-center font-black text-white text-xs shadow-md">TT</div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h4 class="font-montserrat font-bold text-white text-xs sm:text-sm">De Oprichting van TT Clinics</h4>
+                            <span class="text-[10px] bg-tt-orange/20 text-orange-400 font-bold px-2 py-0.5 rounded-full border border-orange-500/30 hidden sm:inline">Met Bettine Vriesekoop</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400">Officiële filmische documentaire (1 minuut) · Full HD 1080p MP4</p>
+                    </div>
                 </div>
 
-                <!-- Header info & Close -->
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-tt-orange flex items-center justify-center font-black text-white text-xs shadow-md">TT</div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h4 class="font-montserrat font-bold text-white text-xs sm:text-sm">De Oprichting van TT Clinics</h4>
-                                <span class="text-[10px] bg-tt-orange/20 text-orange-400 font-bold px-2 py-0.5 rounded-full border border-orange-500/30 hidden sm:inline">Met Bettine Vriesekoop</span>
-                            </div>
-                            <p id="storySceneIndicator" class="text-[11px] text-gray-400">Scène 1 van 4 · De Woensdagochtend</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                        <!-- Voice-over toggle knop -->
-                        <button type="button" id="storyVoiceBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all cursor-pointer border border-white/10" title="Voice-over vertelling aan- of uitzetten">
-                            <svg class="w-4 h-4 text-tt-orange shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
-                            <span class="text-xs">Voice-over: <strong id="voiceStatusText" class="text-orange-400 font-bold">Aan</strong></span>
-                        </button>
-                        <button type="button" id="storyPlayPauseBtn" class="p-2 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer" title="Afspelen / Pauzeren">
-                            <svg id="storyPlayIcon" class="w-5 h-5 hidden fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            <svg id="storyPauseIcon" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                        </button>
-                        <button type="button" id="closeStoryModalBtn" class="p-2 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer" title="Sluiten (Esc)">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                        </button>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <a href="video/ttclinics-ontstaan.mp4" download="TT-Clinics-Ontstaan-Bettine-Vriesekoop.mp4" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all cursor-pointer border border-white/10" title="Download MP4 video">
+                        <svg class="w-3.5 h-3.5 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        <span>Download MP4</span>
+                    </a>
+                    <button type="button" id="closeStoryModalBtn" class="p-2 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer" title="Sluiten (Esc)">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
             </div>
 
-            <!-- Video Canvas / Image Stage (16:9 ratio) -->
-            <div class="relative w-full aspect-video bg-black overflow-hidden flex items-center justify-center select-none">
-                <!-- Scene Image with Ken Burns animation -->
-                <img id="storyImage" src="images/story-1-woensdag.jpg" alt="TT Clinics Ontstaansverhaal" class="w-full h-full object-cover object-center transition-all duration-[7000ms] ease-out transform scale-100">
-                
-                <!-- Gradient Vignette -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 pointer-events-none"></div>
+            <!-- Ingesloten MP4 Video Player (16:9 ratio) -->
+            <div class="relative w-full aspect-video bg-black flex items-center justify-center overflow-hidden">
+                <video id="storyVideo" class="w-full h-full object-contain" controls playsinline preload="metadata" poster="images/story-1-woensdag.jpg">
+                    <source src="video/ttclinics-ontstaan.mp4" type="video/mp4">
+                    Jouw browser ondersteunt geen ingesloten HTML5 video.
+                </video>
 
-                <!-- Click navigation areas (Left = Prev, Right = Next) -->
-                <button type="button" id="storyPrevBtn" class="absolute left-0 top-0 bottom-24 w-1/4 z-10 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-start pl-4 cursor-pointer text-white">
-                    <div class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-transform shadow-lg border border-white/10">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                    </div>
-                </button>
-                <button type="button" id="storyNextBtn" class="absolute right-0 top-0 bottom-24 w-1/4 z-10 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-end pr-4 cursor-pointer text-white">
-                    <div class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-transform shadow-lg border border-white/10">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </div>
-                </button>
-
-                <!-- Final Scene Victory Overlay (appears on scene 4 finish) -->
+                <!-- Final Scene Victory Overlay (appears on video finish) -->
                 <div id="storyEndOverlay" class="absolute inset-0 bg-black/90 backdrop-blur-md z-30 hidden flex-col items-center justify-center text-center p-6">
                     <div class="w-16 h-16 rounded-full bg-tt-orange/20 border-2 border-tt-orange flex items-center justify-center text-3xl mb-4 shadow-xl">
                         🏆
@@ -918,400 +889,77 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Lower Third Subtitle / Narrative Box -->
-                <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-6 sm:right-6 z-20 pointer-events-none">
-                    <div class="bg-black/85 backdrop-blur-md p-3.5 sm:p-5 rounded-xl border border-white/10 shadow-2xl">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span id="storySubtitleTag" class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-tt-orange text-white">Scène 1 · De Oorsprong</span>
-                            <span class="text-xs text-orange-300 font-mono" id="storySubtitleYear">De Woensdagochtend</span>
-                        </div>
-                        <h3 id="storySubtitleTitle" class="font-montserrat font-bold text-white text-sm sm:text-lg mb-1 leading-snug">Het begon in een bescheiden gymzaal</h3>
-                        <p id="storySubtitleText" class="text-xs sm:text-sm text-gray-200 leading-relaxed">
-                            Edward Westhoff zette op de vroege woensdagochtend de tafels klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis teweegbrengt: ongekende energie, plezier en focus.
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Ontstaansfilm Video Story Controller Script -->
+    <!-- Ontstaansfilm Video Controller Script -->
     <script>
         (function() {
-            const scenes = [
-                {
-                    image: 'images/story-1-woensdag.jpg',
-                    audio: 'audio/story-1-woensdag.mp3',
-                    tag: 'Scène 1 · De Oorsprong',
-                    year: 'De Woensdagochtend',
-                    title: 'Het begon in een bescheiden gymzaal',
-                    text: 'Edward Westhoff zette op de vroege woensdagochtend de tafels klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis teweegbrengt: ongekende energie, plezier en focus.',
-                    voiceText: 'Het begon allemaal op een vroege woensdagochtend in een bescheiden gimzaal. Edward Westhoff zette in alle vroegte de tafels en ballen klaar. Wat begon als een gezellige training, liet al snel zien wat tafeltennis écht teweegbrengt: ongekende energie, plezier en focus.'
-                },
-                {
-                    image: 'images/story-2-bettine.jpg',
-                    audio: 'audio/story-2-bettine.mp3',
-                    tag: 'Scène 2 · De Samenwerking',
-                    year: 'Ontmoeting met een Legende',
-                    title: 'Edward & Bettine Vriesekoop slaan de handen ineen',
-                    text: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk over. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen.',
-                    voiceText: 'Toen tweevoudig Europees kampioene Bettine Vriesekoop aansloot, sloeg de vonk definitief over. Als topsportlechende wist Bettine als geen ander hoe je mensen in beweging krijgt. Samen stonden ze aan de tafel en zagen ze de enorme kans om deze topsportvitaliteit naar het bedrijfsleven te brengen.'
-                },
-                {
-                    image: 'images/story-3-concept.jpg',
-                    audio: 'audio/story-3-concept.mp3',
-                    tag: 'Scène 3 · De Formule',
-                    year: 'Schaken op Topsnelheid',
-                    title: 'Het unieke TT Clinics concept ontstaat',
-                    text: 'Aan de rand van de tafeltennis-tafel ontwikkelden Edward en Bettine de clinic-formule: een masterclass in spin en techniek, gekoppeld aan een zinderend King of the Court toernooi voor vitale teams.',
-                    voiceText: 'Aan de rand van de tafeltennis-tafel ontwikkelden ze samen de unieke clinic-formule: Schaken op topsnelheid. Geen saaie theorielessen, maar een energieke masterclass in effectballen, gekoppeld aan een zinderend King of the Court toernooi voor vitale teams.'
-                },
-                {
-                    image: 'images/story-4-lancering.jpg',
-                    audio: 'audio/story-4-lancering.mp3',
-                    tag: 'Scène 4 · De Officiële Lancering',
-                    year: 'De Start van TT Clinics',
-                    title: 'De geboorte van hét sportieve bedrijfsuitje',
-                    text: 'Met de eerste wisselbokaal en de kenmerkende TT Clinics batjes was het merk officieel gelanceerd. Vandaag de dag brengen Edward en zijn team dezelfde energie en teamspirit naar bedrijven door heel Nederland!',
-                    voiceText: 'En zo werd TT Clinics geboren! Met de allereerste wisselbokaal en professionele batjes werd het officiële startsein gegeven. Vandaag de dag brengen Edward en zijn team dezelfde energie en teamspirit naar bedrijven door heel Nederland!'
-                }
-            ];
-
-            let currentScene = 0;
-            let isPlaying = false;
-            let sceneProgress = 0;
-            let storyInterval = null;
-            let voiceOverEnabled = true;
-            let currentUtterance = null;
-            let currentAudioEl = null;
-            const sceneDurationMs = 7500;
-            const tickMs = 50;
-
             const modal = document.getElementById('storyModal');
-            const storyImg = document.getElementById('storyImage');
-            const playPauseBtn = document.getElementById('storyPlayPauseBtn');
-            const playIcon = document.getElementById('storyPlayIcon');
-            const pauseIcon = document.getElementById('storyPauseIcon');
-            const sceneIndicator = document.getElementById('storySceneIndicator');
-            const subtitleTag = document.getElementById('storySubtitleTag');
-            const subtitleYear = document.getElementById('storySubtitleYear');
-            const subtitleTitle = document.getElementById('storySubtitleTitle');
-            const subtitleText = document.getElementById('storySubtitleText');
+            const video = document.getElementById('storyVideo');
             const endOverlay = document.getElementById('storyEndOverlay');
-            const storyVoiceBtn = document.getElementById('storyVoiceBtn');
-            const voiceStatusText = document.getElementById('voiceStatusText');
-
             const openBtn1 = document.getElementById('openStoryModalBtn');
             const openBtn2 = document.getElementById('openStoryModalBtnText');
             const closeBtn = document.getElementById('closeStoryModalBtn');
-            const prevBtn = document.getElementById('storyPrevBtn');
-            const nextBtn = document.getElementById('storyNextBtn');
             const replayBtn = document.getElementById('storyReplayBtn');
             const ctaBtn = document.getElementById('storyCtaBtn');
-
-            // Speelt studio ElevenLabs audio (indien aanwezig) of valt naadloos terug op Web Speech API
-            function speakCurrentScene() {
-                stopAudio();
-                if (!voiceOverEnabled || !isPlaying) return;
-
-                const sc = scenes[currentScene];
-
-                if (sc.audio) {
-                    const audio = new Audio(sc.audio);
-                    currentAudioEl = audio;
-
-                    let hasPlayed = false;
-                    audio.addEventListener('playing', () => {
-                        hasPlayed = true;
-                    });
-
-                    audio.addEventListener('ended', () => {
-                        if (!isPlaying) return;
-                        setTimeout(() => {
-                            if (!isPlaying) return;
-                            if (currentScene < scenes.length - 1) {
-                                showScene(currentScene + 1);
-                            } else {
-                                showEnd();
-                            }
-                        }, 1000);
-                    });
-
-                    audio.addEventListener('error', () => {
-                        if (!hasPlayed) {
-                            speakWebSpeech();
-                        }
-                    });
-
-                    const playPromise = audio.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(() => {
-                            speakWebSpeech();
-                        });
-                    }
-                } else {
-                    speakWebSpeech();
-                }
-            }
-
-            function speakWebSpeech() {
-                if (!('speechSynthesis' in window)) return;
-                try {
-                    window.speechSynthesis.cancel();
-                } catch(e) {}
-
-                if (!voiceOverEnabled || !isPlaying) return;
-
-                const sc = scenes[currentScene];
-                const textToSpeak = sc.voiceText || sc.text;
-
-                const utterance = new SpeechSynthesisUtterance(textToSpeak);
-                utterance.lang = 'nl-NL';
-                utterance.rate = 0.95;
-                utterance.pitch = 1.0;
-
-                const voices = window.speechSynthesis.getVoices();
-                // Zoek bij voorkeur een Vlaamse / Belgische stem (nl-BE) of heldere stem
-                const beVoice = voices.find(v => v.lang === 'nl-BE' || v.lang === 'nl_BE');
-                const nlFemale = voices.find(v => (v.lang === 'nl-NL' || v.lang.startsWith('nl')) && (v.name.includes('Claire') || v.name.includes('Ellen') || v.name.includes('Laura') || v.name.toLowerCase().includes('female')));
-                const nlVoice = beVoice || nlFemale || voices.find(v => v.lang === 'nl-NL' || v.lang.startsWith('nl'));
-                if (nlVoice) {
-                    utterance.voice = nlVoice;
-                }
-
-                utterance.onend = function() {
-                    if (!isPlaying) return;
-                    setTimeout(() => {
-                        if (!isPlaying) return;
-                        if (currentScene < scenes.length - 1) {
-                            showScene(currentScene + 1);
-                        } else {
-                            showEnd();
-                        }
-                    }, 1200);
-                };
-
-                currentUtterance = utterance;
-                window.speechSynthesis.speak(utterance);
-            }
-
-            function stopAudio() {
-                if (currentAudioEl) {
-                    try {
-                        currentAudioEl.pause();
-                        currentAudioEl.currentTime = 0;
-                    } catch(e) {}
-                    currentAudioEl = null;
-                }
-                if ('speechSynthesis' in window) {
-                    try {
-                        window.speechSynthesis.cancel();
-                    } catch(e) {}
-                }
-            }
-
-            function showScene(idx) {
-                if (idx < 0) idx = 0;
-                if (idx >= scenes.length) {
-                    showEnd();
-                    return;
-                }
-
-                currentScene = idx;
-                sceneProgress = 0;
-                endOverlay.classList.add('hidden');
-                endOverlay.classList.remove('flex');
-
-                const sc = scenes[currentScene];
-                
-                // Reset zoom effect voor Ken Burns
-                storyImg.style.transition = 'none';
-                storyImg.classList.remove('scale-110');
-                storyImg.classList.add('scale-100');
-                storyImg.src = sc.image;
-
-                setTimeout(() => {
-                    storyImg.style.transition = 'transform 25000ms ease-out';
-                    storyImg.classList.remove('scale-100');
-                    storyImg.classList.add('scale-110');
-                }, 50);
-
-                sceneIndicator.textContent = `Scène ${currentScene + 1} van ${scenes.length} · ${sc.year}`;
-                subtitleTag.textContent = sc.tag;
-                subtitleYear.textContent = sc.year;
-                subtitleTitle.textContent = sc.title;
-                subtitleText.textContent = sc.text;
-
-                updateProgressBars();
-
-                if (isPlaying) {
-                    speakCurrentScene();
-                }
-            }
-
-            function updateProgressBars() {
-                for (let i = 0; i < scenes.length; i++) {
-                    const bar = document.getElementById(`storyProg${i}`);
-                    if (!bar) continue;
-                    if (i < currentScene) {
-                        bar.style.width = '100%';
-                    } else if (i === currentScene) {
-                        let pct = 0;
-                        if (currentAudioEl && currentAudioEl.duration && !isNaN(currentAudioEl.duration) && currentAudioEl.duration > 0) {
-                            pct = Math.min(100, (currentAudioEl.currentTime / currentAudioEl.duration) * 100);
-                        } else {
-                            pct = Math.min(100, (sceneProgress / sceneDurationMs) * 100);
-                        }
-                        bar.style.width = `${pct}%`;
-                    } else {
-                        bar.style.width = '0%';
-                    }
-                }
-            }
-
-            function tick() {
-                if (!isPlaying) return;
-                sceneProgress += tickMs;
-                updateProgressBars();
-
-                // Als voice-over niet aanstaat of audio ontbreekt, gaan we op fallback tijd door
-                if ((!voiceOverEnabled || !currentAudioEl) && sceneProgress >= sceneDurationMs) {
-                    if (currentScene < scenes.length - 1) {
-                        showScene(currentScene + 1);
-                    } else {
-                        showEnd();
-                    }
-                }
-            }
-
-            function play() {
-                isPlaying = true;
-                if (playIcon && pauseIcon) {
-                    playIcon.classList.add('hidden');
-                    pauseIcon.classList.remove('hidden');
-                }
-                if (!storyInterval) {
-                    storyInterval = setInterval(tick, tickMs);
-                }
-                if (currentAudioEl && currentAudioEl.paused && currentAudioEl.currentTime > 0) {
-                    currentAudioEl.play().catch(() => {});
-                } else if ('speechSynthesis' in window && window.speechSynthesis.paused) {
-                    window.speechSynthesis.resume();
-                } else {
-                    speakCurrentScene();
-                }
-            }
-
-            function pause() {
-                isPlaying = false;
-                if (playIcon && pauseIcon) {
-                    playIcon.classList.remove('hidden');
-                    pauseIcon.classList.add('hidden');
-                }
-                if (storyInterval) {
-                    clearInterval(storyInterval);
-                    storyInterval = null;
-                }
-                if (currentAudioEl && !currentAudioEl.paused) {
-                    try { currentAudioEl.pause(); } catch(e) {}
-                }
-                if ('speechSynthesis' in window && window.speechSynthesis.speaking) {
-                    try { window.speechSynthesis.pause(); } catch(e) {}
-                }
-            }
-
-            function togglePlay() {
-                if (isPlaying) {
-                    pause();
-                } else {
-                    play();
-                }
-            }
-
-            function showEnd() {
-                pause();
-                stopAudio();
-                for (let i = 0; i < scenes.length; i++) {
-                    const bar = document.getElementById(`storyProg${i}`);
-                    if (bar) bar.style.width = '100%';
-                }
-                endOverlay.classList.remove('hidden');
-                endOverlay.classList.add('flex');
-            }
 
             function openModal() {
                 if (!modal) return;
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 document.body.style.overflow = 'hidden';
-                showScene(0);
-                play();
+                if (endOverlay) {
+                    endOverlay.classList.add('hidden');
+                    endOverlay.classList.remove('flex');
+                }
+                if (video) {
+                    video.currentTime = 0;
+                    video.play().catch(() => {});
+                }
             }
 
             function closeModal() {
                 if (!modal) return;
-                pause();
-                stopAudio();
+                if (video) video.pause();
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
                 document.body.style.overflow = '';
-            }
-
-            // Voice-over toggle
-            if (storyVoiceBtn && voiceStatusText) {
-                storyVoiceBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    voiceOverEnabled = !voiceOverEnabled;
-                    if (voiceOverEnabled) {
-                        voiceStatusText.textContent = 'Aan';
-                        voiceStatusText.className = 'text-orange-400 font-bold';
-                        if (isPlaying) speakCurrentScene();
-                    } else {
-                        voiceStatusText.textContent = 'Uit';
-                        voiceStatusText.className = 'text-gray-400 font-normal';
-                        stopAudio();
-                    }
-                });
             }
 
             if (openBtn1) openBtn1.addEventListener('click', openModal);
             if (openBtn2) openBtn2.addEventListener('click', openModal);
             if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-            if (prevBtn) prevBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (currentScene > 0) {
-                    showScene(currentScene - 1);
-                } else {
-                    showScene(0);
-                }
-            });
+            if (video) {
+                video.addEventListener('ended', () => {
+                    if (endOverlay) {
+                        endOverlay.classList.remove('hidden');
+                        endOverlay.classList.add('flex');
+                    }
+                });
+            }
 
-            if (nextBtn) nextBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (currentScene < scenes.length - 1) {
-                    showScene(currentScene + 1);
-                } else {
-                    showEnd();
-                }
-            });
+            if (replayBtn) {
+                replayBtn.addEventListener('click', () => {
+                    if (endOverlay) {
+                        endOverlay.classList.add('hidden');
+                        endOverlay.classList.remove('flex');
+                    }
+                    if (video) {
+                        video.currentTime = 0;
+                        video.play().catch(() => {});
+                    }
+                });
+            }
 
-            if (playPauseBtn) playPauseBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                togglePlay();
-            });
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', () => {
+                    closeModal();
+                });
+            }
 
-            if (replayBtn) replayBtn.addEventListener('click', () => {
-                showScene(0);
-                play();
-            });
-
-            if (ctaBtn) ctaBtn.addEventListener('click', () => {
-                closeModal();
-            });
-
-            // Sluiten bij klik buiten de video box
             if (modal) {
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) {
@@ -1320,29 +968,20 @@
                 });
             }
 
-            // Toetsenbord bediening (Esc, Spatie, Pijltjes)
             window.addEventListener('keydown', (e) => {
                 if (modal && !modal.classList.contains('hidden')) {
                     if (e.key === 'Escape') closeModal();
                     if (e.key === ' ') {
-                        e.preventDefault();
-                        togglePlay();
-                    }
-                    if (e.key === 'ArrowLeft') {
-                        if (currentScene > 0) showScene(currentScene - 1);
-                    }
-                    if (e.key === 'ArrowRight') {
-                        if (currentScene < scenes.length - 1) showScene(currentScene + 1);
+                        if (e.target.tagName !== 'VIDEO') {
+                            e.preventDefault();
+                            if (video) {
+                                if (video.paused) video.play();
+                                else video.pause();
+                            }
+                        }
                     }
                 }
             });
-
-            // Zorg dat stemmen geladen worden
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.onvoiceschanged = () => {
-                    window.speechSynthesis.getVoices();
-                };
-            }
         })();
     </script>
 
