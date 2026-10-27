@@ -34,7 +34,8 @@
             }
         }
     </script>
-    <link rel="icon" type="image/svg+xml" href="images/qr-ttclinics.svg">
+    <link rel="icon" type="image/svg+xml" id="ttFavicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='b' cx='35%25' cy='30%25' r='60%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='30%25' stop-color='%23ff9a4d'/%3E%3Cstop offset='70%25' stop-color='%23ff6b00'/%3E%3Cstop offset='100%25' stop-color='%23d95a00'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cellipse cx='16' cy='28' rx='7' ry='2' fill='%23000000' opacity='0.3'%3E%3Canimate attributeName='rx' values='7;3.5;7' dur='0.7s' repeatCount='indefinite'/%3E%3Canimate attributeName='opacity' values='0.35;0.12;0.35' dur='0.7s' repeatCount='indefinite'/%3E%3C/ellipse%3E%3Ccircle cx='16' cy='12' r='8' fill='url(%23b)'%3E%3Canimate attributeName='cy' values='20;8;20' dur='0.7s' repeatCount='indefinite' calcMode='spline' keySplines='0.1 0.8 0.3 1; 0.7 0 0.9 0.2' keyTimes='0;0.5;1'/%3E%3Canimate attributeName='r' values='7.2;8;7.2' dur='0.7s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
         /* Smooth slider styling */
@@ -72,17 +73,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
-            background: #FF6B00;
-            color: #ffffff;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
+            background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fff0e6 16%, #ff8a33 38%, #ff6b00 70%, #b83d00 100%);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset -2px -3px 6px rgba(130, 40, 0, 0.55), inset 2px 2px 5px rgba(255, 255, 255, 0.85);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 3px rgba(255,255,255,0.9);
+            color: #ffffff;
             font-size: 16px;
             font-weight: bold;
+            border: 2px solid rgba(255,255,255,0.9);
         }
 
         @media print {
@@ -94,9 +96,29 @@
 </head>
 <body class="bg-slate-950 text-gray-100 font-inter antialiased selection:bg-tt-orange selection:text-white">
 
+    <!-- Herbruikbare scherpe swoosh-lijnen uit het logo & custom icons -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="ttg-o" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF6B00" stop-opacity="0"/><stop offset=".55" stop-color="#FF6B00" stop-opacity=".9"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+            <linearGradient id="ttg-l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF9A4D" stop-opacity="0"/><stop offset="1" stop-color="#FF9A4D"/></linearGradient>
+            <linearGradient id="ttg-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7A7A7A" stop-opacity="0"/><stop offset="1" stop-color="#7A7A7A"/></linearGradient>
+            <symbol id="tt-streaks" viewBox="0 0 200 100">
+                <path d="M0,82 L196,8 L176,30 Z" fill="url(#ttg-o)"/>
+                <path d="M22,98 L184,44 L170,56 Z" fill="url(#ttg-l)"/>
+                <path d="M8,58 L150,6 L136,20 Z" fill="url(#ttg-g)"/>
+                <path d="M70,100 L200,64 L186,74 Z" fill="url(#ttg-o)" opacity=".7"/>
+            </symbol>
+            <symbol id="tt-streak-sm" viewBox="0 0 60 24">
+                <path d="M0,20 L58,2 L50,10 Z" fill="url(#ttg-o)"/>
+                <path d="M10,24 L54,12 L48,17 Z" fill="url(#ttg-g)"/>
+            </symbol>
+        </defs>
+    </svg>
+
     <!-- Top Status Banner -->
-    <div class="bg-gradient-to-r from-tt-orange to-orange-600 text-white text-xs sm:text-sm font-semibold py-2 px-4 text-center shadow-md">
-        <span>🏟️ Voorstel Clubmodernisering TTV The Victory Weesp &bull; Samenwerking TT Clinics</span>
+    <div class="bg-gradient-to-r from-tt-orange to-orange-600 text-white text-xs sm:text-sm font-semibold py-2 px-4 text-center shadow-md flex items-center justify-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg>
+        <span>Voorstel Clubmodernisering TTV The Victory Weesp &bull; Samenwerking TT Clinics</span>
     </div>
 
     <!-- Header / Navigatie -->
@@ -114,20 +136,22 @@
                 </a>
             </div>
 
-            <div class="flex items-center space-x-3 sm:space-x-4">
-                <a href="index.html" class="text-xs sm:text-sm font-semibold text-gray-300 hover:text-white transition-colors flex items-center py-2 px-3 rounded-lg hover:bg-slate-800">
-                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    <span class="hidden sm:inline">Terug naar</span> Website
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <a href="index.html" class="group text-xs sm:text-sm font-semibold text-gray-300 hover:text-tt-orange transition-colors flex items-center py-2 px-3 rounded-lg hover:bg-slate-800">
+                    <svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><circle cx="12" cy="14" r="2.5" fill="currentColor" stroke="none" /></svg>
+                    <span>Website</span>
                 </a>
-                <a href="bedrijfsplan.html" class="text-xs sm:text-sm font-semibold text-gray-300 hover:text-white transition-colors py-2 px-3 rounded-lg hover:bg-slate-800 hidden md:inline-flex">
-                    Bedrijfsplan
+                <a href="bedrijfsplan.html" class="group text-xs sm:text-sm font-semibold text-gray-300 hover:text-tt-orange transition-colors py-2 px-3 rounded-lg hover:bg-slate-800 hidden md:inline-flex items-center">
+                    <svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/><circle cx="15" cy="8" r="1.8" fill="currentColor" stroke="none" /></svg>
+                    <span>Bedrijfsplan</span>
                 </a>
-                <button onclick="window.print()" class="no-print bg-slate-800 hover:bg-slate-700 text-gray-200 text-xs sm:text-sm font-medium py-2 px-3.5 rounded-lg border border-slate-700 transition-colors flex items-center shadow-sm">
-                    <svg class="w-4 h-4 mr-1.5 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                    Print / PDF
+                <button onclick="window.print()" class="no-print bg-slate-800 hover:bg-slate-700 text-gray-200 text-xs sm:text-sm font-medium py-2 px-3 rounded-lg border border-slate-700 transition-colors flex items-center shadow-sm">
+                    <svg class="w-4 h-4 mr-1.5 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/><circle cx="18" cy="11" r="1" fill="currentColor" stroke="none"/></svg>
+                    <span class="hidden sm:inline">Print / </span>PDF
                 </button>
-                <a href="#contact-voorstel" class="bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider py-2 px-4 rounded-xl shadow-lg transition-all hover:scale-105">
-                    Reageren
+                <a href="#contact-voorstel" class="bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider py-2 px-3.5 rounded-xl shadow-lg transition-all hover:scale-105 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg>
+                    <span>Reageren</span>
                 </a>
             </div>
         </div>
@@ -135,11 +159,17 @@
 
     <!-- Hero Section -->
     <section class="relative pt-12 pb-16 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900/60 to-slate-950 border-b border-slate-800/80">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#FF6B00_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <!-- Achtergrond Dynamic Swooshes uit het TT Clinics logo -->
+        <svg class="absolute -right-12 -top-6 w-[28rem] h-56 opacity-25 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+        <svg class="absolute -left-12 -bottom-6 w-[24rem] h-48 opacity-20 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+        
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
             <div class="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/20 text-orange-400 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-6">
                 <span class="w-2 h-2 rounded-full bg-tt-orange animate-ping"></span>
-                <span>Initiatief TT Clinics &amp; TTV The Victory</span>
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg>
+                    Initiatief TT Clinics &amp; TTV The Victory
+                </span>
             </div>
             
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-montserrat font-black text-white tracking-tight leading-tight">
@@ -246,11 +276,12 @@
                         </span>
                     </div>
 
-                    <!-- Divider Handle -->
+                    <!-- Divider Handle met 3D TT-bal styling -->
                     <div id="sliderHandle" class="before-after-handle">
-                        <div class="handle-circle">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/>
+                        <div class="handle-circle" title="Sleep om te vergelijken">
+                            <svg class="w-6 h-6 text-white filter drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 12l-4 0m0 0l2.5-2.5M3 12l2.5 2.5m14-2.5l4 0m0 0l-2.5-2.5M21 12l-2.5 2.5"/>
+                                <circle cx="12" cy="12" r="3" fill="white" stroke="none"/>
                             </svg>
                         </div>
                     </div>
@@ -348,12 +379,19 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Pijler 1 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
-                        01
+                <!-- Pijler 1: Wanden & Balcontrast -->
+                <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 relative overflow-hidden">
+                    <svg class="absolute -right-6 -top-2 w-32 h-16 opacity-30 group-hover:opacity-80 group-hover:translate-x-1 transition-all duration-300 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="tt-icon-ball">
+                            <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/>
+                            </svg>
+                        </div>
+                        <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                     </div>
-                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Wanden &amp; Balcontrast</h3>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">01. Wanden &amp; Balcontrast</h3>
                     <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
                         Matte antraciet wanden (<code class="text-orange-300 font-mono text-xs">#1e2024</code>) in plaats van kil grijs. Hierdoor steken witte en oranje wedstrijdballen maximaal af tijdens snelle rally's.
                     </p>
@@ -362,12 +400,18 @@
                     </div>
                 </div>
 
-                <!-- Pijler 2 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
-                        02
+                <!-- Pijler 2: Akupanelen & Akoestiek -->
+                <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 relative overflow-hidden">
+                    <svg class="absolute -right-6 -top-2 w-32 h-16 opacity-30 group-hover:opacity-80 group-hover:translate-x-1 transition-all duration-300 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="tt-icon-ball">
+                            <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 10v4M7 7v10M11 4v16M15 7v10M19 10v4M22 12h-1"/>
+                            </svg>
+                        </div>
+                        <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                     </div>
-                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Akupanelen &amp; Akoestiek</h3>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">02. Akupanelen &amp; Akoestiek</h3>
                     <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
                         Verticale eikenhouten wandpanelen op gerecycled vilt dempen de schelle echo van harde batjesslagen en stemmen. Brengt direct de warme 'boutique gym' sfeer.
                     </p>
@@ -376,12 +420,19 @@
                     </div>
                 </div>
 
-                <!-- Pijler 3 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
-                        03
+                <!-- Pijler 3: Uniforme Court Barriers -->
+                <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 relative overflow-hidden">
+                    <svg class="absolute -right-6 -top-2 w-32 h-16 opacity-30 group-hover:opacity-80 group-hover:translate-x-1 transition-all duration-300 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="tt-icon-ball">
+                            <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="8" width="18" height="11" rx="2"/>
+                                <path d="M3 13h18M7 8v11M17 8v11M8 4l4-2 4 2"/>
+                            </svg>
+                        </div>
+                        <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                     </div>
-                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Uniforme Court Barriers</h3>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">03. Uniforme Court Barriers</h3>
                     <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
                         Weg met de bonte mix aan oude rode sponsorzeiltjes en hekjes. Strakke, matzwarte barriers met een subtiel clublogo en een verfijnde oranje bies geven rust en eenheid.
                     </p>
@@ -390,12 +441,19 @@
                     </div>
                 </div>
 
-                <!-- Pijler 4 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
-                        04
+                <!-- Pijler 4: Smart Arena & Verlichting -->
+                <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 relative overflow-hidden">
+                    <svg class="absolute -right-6 -top-2 w-32 h-16 opacity-30 group-hover:opacity-80 group-hover:translate-x-1 transition-all duration-300 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="tt-icon-ball">
+                            <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
+                                <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                     </div>
-                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">Smart Arena &amp; Verlichting</h3>
+                    <h3 class="font-montserrat font-bold text-lg text-white mb-2">04. Smart Arena &amp; Verlichting</h3>
                     <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
                         Optie voor energiezuinige zwarte LED-lijnarmaturen (4000K, 700 Lux, flikkervrij) en een centraal display voor live Tournify toernooischema's en standen.
                     </p>
@@ -404,14 +462,21 @@
                     </div>
                 </div>
 
-                <!-- Pijler 5 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors md:col-span-2">
+                <!-- Pijler 5: Bar & Hospitality -->
+                <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 md:col-span-2 relative overflow-hidden">
+                    <svg class="absolute -right-6 -top-2 w-44 h-24 opacity-30 group-hover:opacity-80 group-hover:translate-x-1 transition-all duration-300 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
                     <div class="flex items-start justify-between">
                         <div>
-                            <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-tt-orange mb-4 text-xl font-bold font-montserrat">
-                                05
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="tt-icon-ball">
+                                    <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M17 11h1a3 3 0 0 1 0 6h-1M7 11H6a3 3 0 0 0 0 6h1M5 7h14v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V7zM9 3v4M15 3v4"/>
+                                        <circle cx="12" cy="13" r="1.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                                <svg class="w-16 h-6 opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>
                             </div>
-                            <h3 class="font-montserrat font-bold text-lg text-white mb-2">Bar &amp; Hospitality ("De Skybox")</h3>
+                            <h3 class="font-montserrat font-bold text-lg text-white mb-2">05. Bar &amp; Hospitality ("De Skybox")</h3>
                             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
                                 De karakteristieke houten bar van The Victory behouden we volledig, maar we voegen een zwarte designlamp toe, warm amber achtergrondlicht, en een smalle houten barplank langs het zaalvenster. Toeschouwers zitten zo 'front-row' met een biertje te genieten van de finales in de zaal.
                             </p>
@@ -439,10 +504,11 @@
             </div>
 
             <!-- BOSA Subsidie Banner Callout -->
-            <div class="bg-gradient-to-r from-orange-950/40 via-slate-900 to-orange-950/40 border border-orange-500/30 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 rounded-xl bg-tt-orange/20 border border-tt-orange/40 flex items-center justify-center text-tt-orange shrink-0">
-                        <span class="text-2xl font-black font-montserrat">%</span>
+            <div class="relative overflow-hidden bg-gradient-to-r from-orange-950/40 via-slate-900 to-orange-950/40 border border-orange-500/30 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <svg class="absolute right-0 bottom-0 w-64 h-32 opacity-15 pointer-events-none" viewBox="0 0 200 100" aria-hidden="true"><use href="#tt-streaks"/></svg>
+                <div class="flex items-center space-x-4 relative z-10">
+                    <div class="tt-icon-ball">
+                        <span class="text-2xl font-black font-montserrat filter drop-shadow-sm">%</span>
                     </div>
                     <div>
                         <h4 class="font-montserrat font-bold text-white text-base">BOSA-Subsidie: 20% tot 30% Rijkssubsidie</h4>
@@ -451,7 +517,7 @@
                         </p>
                     </div>
                 </div>
-                <a href="https://www.dus-i.nl/subsidies/stimulering-bouw-en-onderhoud-sportaccommodaties" target="_blank" rel="noopener" class="no-print bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs py-2.5 px-4 rounded-xl border border-slate-700 whitespace-nowrap transition-colors flex items-center">
+                <a href="https://www.dus-i.nl/subsidies/stimulering-bouw-en-onderhoud-sportaccommodaties" target="_blank" rel="noopener" class="no-print bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs py-2.5 px-4 rounded-xl border border-slate-700 whitespace-nowrap transition-colors flex items-center relative z-10">
                     BOSA Info bekijken ↗
                 </a>
             </div>
@@ -525,28 +591,34 @@
                         TTV The Victory beschikt over een schitterende eigen speelhal met historie. Met deze make-over versterken we de eigen identiteit en maken we de zaal aantrekkelijk voor nieuwe generaties en bedrijven.
                     </p>
 
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-tt-orange/20 text-tt-orange flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
+                    <div class="space-y-5">
+                        <div class="flex items-start space-x-3.5">
+                            <div class="tt-icon-ball" style="width: 2.5rem; height: 2.5rem;">
+                                <span class="font-montserrat font-bold text-sm">1</span>
+                            </div>
                             <div>
                                 <h4 class="font-bold text-white text-sm">Meer trots &amp; sfeer tijdens competitieavonden</h4>
-                                <p class="text-xs text-gray-400">Tegenstanders die binnenstappen in Weesp komen in een stijlvolle arena met topcontrast en warme clubbar.</p>
+                                <p class="text-xs text-gray-400 mt-0.5">Tegenstanders die binnenstappen in Weesp komen in een stijlvolle arena met topcontrast en warme clubbar.</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-tt-orange/20 text-tt-orange flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
+                        <div class="flex items-start space-x-3.5">
+                            <div class="tt-icon-ball" style="width: 2.5rem; height: 2.5rem;">
+                                <span class="font-montserrat font-bold text-sm">2</span>
+                            </div>
                             <div>
                                 <h4 class="font-bold text-white text-sm">Financiële impuls voor de clubkas</h4>
-                                <p class="text-xs text-gray-400">Elke bedrijfsclinic van TT Clinics genereert zaalhuur en baromzet voor TTV The Victory.</p>
+                                <p class="text-xs text-gray-400 mt-0.5">Elke bedrijfsclinic van TT Clinics genereert zaalhuur en baromzet voor TTV The Victory.</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-tt-orange/20 text-tt-orange flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
+                        <div class="flex items-start space-x-3.5">
+                            <div class="tt-icon-ball" style="width: 2.5rem; height: 2.5rem;">
+                                <span class="font-montserrat font-bold text-sm">3</span>
+                            </div>
                             <div>
                                 <h4 class="font-bold text-white text-sm">Gezellige klusdag verbindt de leden</h4>
-                                <p class="text-xs text-gray-400">Samen met leden, spelers en vrijwilligers de muren rollen onder het genot van koffie en een broodje kroket creëert direct saamhorigheid.</p>
+                                <p class="text-xs text-gray-400 mt-0.5">Samen met leden, spelers en vrijwilligers de muren rollen onder het genot van koffie en een broodje kroket creëert direct saamhorigheid.</p>
                             </div>
                         </div>
                     </div>
