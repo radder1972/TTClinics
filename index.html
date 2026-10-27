@@ -804,17 +804,21 @@
                             </div>
                         </div>
 
-                        <!-- Miniaturen Selector (4 perspectieven / modellen) -->
-                        <div class="grid grid-cols-4 gap-2 sm:gap-3">
-                            <button type="button" onclick="selectPoloImage('images/polo-groen.jpg', 'Studio Detail', this)" class="polo-thumb active-thumb relative rounded-xl overflow-hidden border-2 border-tt-orange bg-gray-100 dark:bg-gray-800 aspect-square p-1 transition-all focus:outline-none">
-                                <img src="images/polo-groen.jpg" alt="Detail Flat-lay" class="w-full h-full object-contain">
-                                <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Detail</span>
+                        <!-- Miniaturen Selector (5 perspectieven / details / modellen) -->
+                        <div class="grid grid-cols-5 gap-2 sm:gap-2.5">
+                            <button type="button" onclick="selectPoloImage('images/polo-groen.jpg', 'Studio Overzicht', this)" class="polo-thumb active-thumb relative rounded-xl overflow-hidden border-2 border-tt-orange bg-gray-100 dark:bg-gray-800 aspect-square p-1 transition-all focus:outline-none">
+                                <img src="images/polo-groen.jpg" alt="Overzicht Polo" class="w-full h-full object-contain">
+                                <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Polo</span>
                             </button>
-                            <button type="button" onclick="selectPoloImage('images/shop-polo-heren.jpg', 'Heren Fit (Coach Edward)', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
+                            <button type="button" id="thumbDetailLogo" onclick="selectPoloImage('images/polo-detail-logo.jpg', 'Geborduurd Borstlogo', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
+                                <img src="images/polo-detail-logo.jpg" alt="Geborduurd Logo Detail" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Logo</span>
+                            </button>
+                            <button type="button" id="thumbHeren" onclick="selectPoloImage('images/shop-polo-heren.jpg', 'Heren Fit (Coach Edward)', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
                                 <img src="images/shop-polo-heren.jpg" alt="Heren Model" class="w-full h-full object-cover object-top" style="object-position: center top;">
                                 <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Heren</span>
                             </button>
-                            <button type="button" onclick="selectPoloImage('images/shop-polo-dames.jpg', 'Dames Fit (Topspeelster)', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
+                            <button type="button" id="thumbDames" onclick="selectPoloImage('images/shop-polo-dames.jpg', 'Dames Fit (Topspeelster)', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
                                 <img src="images/shop-polo-dames.jpg" alt="Dames Model" class="w-full h-full object-cover object-top" style="object-position: center top;">
                                 <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Dames</span>
                             </button>
@@ -854,7 +858,7 @@
                         </div>
 
                         <!-- Korte Specificaties -->
-                        <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                        <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-2 mb-4">
                             <li class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                                 <span><strong>Ademend QuickDry</strong> piqué-polyester voor optimaal vochttransport</span>
@@ -868,6 +872,26 @@
                                 <span>Kreukvrij, slijtvast en behoudt zijn diepgroene wedstrijdkleur</span>
                             </li>
                         </ul>
+
+                        <!-- Detail Highlight: Geborduurd Borstlogo (Interactief vergroten) -->
+                        <div onclick="selectPoloImage('images/polo-detail-logo.jpg', 'Geborduurd Borstlogo', document.getElementById('thumbDetailLogo'))" class="group/detail mb-6 p-2.5 rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700/80 hover:border-tt-orange dark:hover:border-tt-orange transition-all cursor-pointer flex items-center gap-3">
+                            <div class="relative w-14 h-14 rounded-xl overflow-hidden bg-gray-900 shrink-0 border border-gray-200 dark:border-gray-700 shadow-sm">
+                                <img src="images/polo-detail-logo.jpg" alt="Close-up van het geborduurde TT Clinics logo" class="w-full h-full object-cover group-hover/detail:scale-110 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-black/10 group-hover/detail:bg-transparent transition-colors"></div>
+                                <span class="absolute bottom-0.5 right-0.5 bg-black/70 text-white rounded p-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                </span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-1.5 mb-0.5">
+                                    <span class="text-[10px] font-black uppercase tracking-wider text-tt-orange">Detailweergave</span>
+                                    <span class="text-[10px] text-gray-400">· Klik om te vergroten</span>
+                                </div>
+                                <h4 class="text-xs font-bold text-tt-black dark:text-white truncate">Ambachtelijk Geborduurd Borstlogo</h4>
+                                <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-snug">Hoge stikseldichtheid in TT-oranje en helderwit garen.</p>
+                            </div>
+                            <svg class="w-4 h-4 text-gray-400 group-hover/detail:text-tt-orange group-hover/detail:translate-x-0.5 transition-all mr-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>
 
                         <!-- Pasvorm / Model Keuze (Heren vs Dames) -->
                         <div class="mb-5">
@@ -1690,11 +1714,16 @@
                     mainImg.style.opacity = '0.3';
                     setTimeout(() => {
                         mainImg.src = src;
+                        if (src.includes('detail-logo') || src.includes('shop-polo-')) {
+                            mainImg.className = 'w-full h-full object-cover transition-all duration-300 ease-out group-hover:scale-105';
+                        } else {
+                            mainImg.className = 'w-full h-full object-contain p-2 sm:p-4 transition-all duration-300 ease-out group-hover:scale-105';
+                        }
                         mainImg.style.opacity = '1';
                     }, 120);
                 }
                 if (badge && label) {
-                    badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> ${label}`;
+                    badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-tt-orange"></span> ${label}`;
                 }
                 // Highlight thumb
                 document.querySelectorAll('.polo-thumb').forEach(t => {
