@@ -34,6 +34,12 @@
         }
     </script>
     <link rel="icon" type="image/svg+xml" href="images/qr-ttclinics.svg">
+    <script>
+        // Portal Beveiliging: redirect naar het portaal als nog niet ingelogd
+        if (localStorage.getItem('ttc_portal_auth') !== 'true') {
+            window.location.href = 'portal.html?redirect=bedrijfsplan.html';
+        }
+    </script>
 
     <style>
         body {
@@ -145,12 +151,18 @@
 
     <!-- Top Bar Navigation -->
     <header class="w-full max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 mb-2 border-b border-slate-200">
-        <a href="index.html" class="flex items-center gap-3 text-slate-700 hover:text-tt-orange transition-colors group">
-            <div class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 flex items-center justify-center group-hover:bg-tt-orange group-hover:text-white transition-all">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            </div>
-            <span class="font-bold text-sm">Terug naar website</span>
-        </a>
+        <div class="flex items-center gap-3">
+            <a href="portal.html" class="flex items-center gap-2 text-slate-700 hover:text-tt-orange transition-colors group py-1 px-2.5 rounded-lg hover:bg-slate-100">
+                <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span class="font-bold text-sm">Portaal</span>
+            </a>
+            <a href="zaal-modernisering.html" class="hidden sm:flex items-center gap-1.5 text-xs text-slate-600 hover:text-tt-orange transition-colors py-1 px-2 rounded-lg hover:bg-slate-100">
+                <span>Zaalmodernisering</span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-800 transition-colors py-1 px-2 rounded-lg hover:bg-slate-100">
+                <span>Website</span>
+            </a>
+        </div>
 
         <div class="flex items-center gap-2">
             <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Presentatie</span>
