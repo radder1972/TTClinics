@@ -70,6 +70,7 @@
                 <li><a href="#over-ons" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
                 <li><a href="#prijzen" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Tarieven</a></li>
                 <li><a href="#reviews" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
+                <li><a href="#shop" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white relative"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop <span class="ml-1 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
                 <li><a href="#contact" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 inline-block group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
             </ul>
 
@@ -96,6 +97,13 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                         </svg>
                     </button>
+                    <span class="w-px h-3.5 bg-gray-300 dark:bg-gray-600 mx-0.5"></span>
+                    <button id="openCartBtn" onclick="toggleCartDrawer(true)" class="relative p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center text-tt-black dark:text-white" title="Winkelwagen openen" aria-label="Winkelwagen openen">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        <span id="cartCountBadge" class="hidden absolute -top-1.5 -right-1.5 bg-tt-orange text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow">0</span>
+                    </button>
                 </div>
 
                 <!-- Hamburger Button voor mobiel -->
@@ -113,6 +121,7 @@
                 <li><a href="#over-ons" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
                 <li><a href="#prijzen" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Tarieven</a></li>
                 <li><a href="#reviews" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
+                <li><a href="#shop" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><span class="flex items-center"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop & Merchandise</span><span class="px-2 py-0.5 text-xs font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
                 <li><a href="#contact" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
                 <li class="pt-2">
                     <a href="#contact" class="mobile-nav-link block text-center bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-full shadow-lg transition-colors">Vraag Team Clinic aan</a>
@@ -654,6 +663,339 @@
         </div>
     </section>
 
+
+    <!-- ========================================== -->
+    <!-- OFFICIËLE TT CLINICS SHOP & MERCHANDISE -->
+    <!-- ========================================== -->
+    <section id="shop" class="py-20 md:py-28 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
+        <!-- Achtergrond decoratieve streaks & glow -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-tt-orange/10 dark:bg-tt-orange/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        <svg class="absolute right-0 top-1/4 w-[36rem] h-72 opacity-15 dark:opacity-10 pointer-events-none transform rotate-12" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
+
+        <div class="container mx-auto px-4 max-w-6xl relative z-10">
+            <!-- Sectie Header -->
+            <div class="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/50 border border-orange-200 dark:border-orange-800 text-tt-orange text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    Officiële TT Clinics Gear
+                </div>
+                <h2 class="font-montserrat text-3xl sm:text-4xl md:text-5xl font-black italic uppercase text-tt-black dark:text-white tracking-tight mb-5">
+                    Speel In <span class="text-tt-orange">Stijl</span> & Comfort
+                </h2>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
+                    Ontworpen voor maximale bewegingsvrijheid, ademende prestaties en de authentieke TT Clinics clubuitstraling. Rechtstreeks van de trainingszaal naar jouw garderobe.
+                </p>
+            </div>
+
+            <!-- Spotlight Lookbook Banner -->
+            <div class="mb-14 rounded-3xl overflow-hidden shadow-2xl relative bg-gray-900 border border-gray-800 group">
+                <div class="relative h-64 sm:h-80 md:h-96 w-full overflow-hidden">
+                    <img src="images/shop-polo-duo.jpg" alt="TT Clinics trainers en topspelers in officiële polo" class="w-full h-full object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-10">
+                        <div class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-tt-orange mb-2">
+                            <span class="w-2 h-2 rounded-full bg-tt-orange animate-ping"></span>
+                            2026 Pro Capsule Collectie
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-montserrat font-black italic text-white uppercase tracking-tight max-w-2xl leading-snug">
+                            Gedragen door onze coaches & clinic-deelnemers
+                        </h3>
+                        <p class="text-sm sm:text-base text-gray-300 max-w-xl mt-2 line-clamp-2 sm:line-clamp-none font-medium">
+                            Ontdek de complete lijn: van onze iconische diepgroene QuickDry polo tot competitieklasse batjes en ITTF-gecertificeerde wedstrijdballen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hoofdproduct Showcase: De TT Clinics Performance Polo -->
+            <div class="bg-white dark:bg-gray-900 rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-800 mb-16 transition-colors duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    
+                    <!-- Linkerkolom: Interactieve Fotogalerij -->
+                    <div class="lg:col-span-7 flex flex-col gap-4">
+                        <!-- Hoofdfoto Display met Badge -->
+                        <div class="relative bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden aspect-[4/3] flex items-center justify-center border border-gray-200 dark:border-gray-700 group shadow-inner">
+                            <img id="poloGalleryMain" src="images/polo-groen.jpg" alt="TT Clinics Officiële Polo Groen" class="w-full h-full object-contain p-2 sm:p-4 transition-all duration-300 ease-out group-hover:scale-105">
+                            
+                            <span id="galleryBadge" class="absolute top-4 left-4 bg-tt-black/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Officiële Pasvorm
+                            </span>
+                            
+                            <div class="absolute bottom-4 right-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-300 shadow flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                <span>Klik op miniaturen</span>
+                            </div>
+                        </div>
+
+                        <!-- Miniaturen Selector (4 perspectieven / modellen) -->
+                        <div class="grid grid-cols-4 gap-2 sm:gap-3">
+                            <button type="button" onclick="selectPoloImage('images/polo-groen.jpg', 'Studio Detail', this)" class="polo-thumb active-thumb relative rounded-xl overflow-hidden border-2 border-tt-orange bg-gray-100 dark:bg-gray-800 aspect-square p-1 transition-all focus:outline-none">
+                                <img src="images/polo-groen.jpg" alt="Detail Flat-lay" class="w-full h-full object-contain">
+                                <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Detail</span>
+                            </button>
+                            <button type="button" onclick="selectPoloImage('images/shop-polo-heren.jpg', 'Heren Fit (Coach Edward)', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
+                                <img src="images/shop-polo-heren.jpg" alt="Heren Model" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Heren</span>
+                            </button>
+                            <button type="button" onclick="selectPoloImage('images/shop-polo-dames.jpg', 'Dames Fit (Topspeelster)', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
+                                <img src="images/shop-polo-dames.jpg" alt="Dames Model" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Dames</span>
+                            </button>
+                            <button type="button" onclick="selectPoloImage('images/shop-polo-duo.jpg', 'Actie in de Zaal', this)" class="polo-thumb relative rounded-xl overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 bg-gray-100 dark:bg-gray-800 aspect-square transition-all focus:outline-none">
+                                <img src="images/shop-polo-duo.jpg" alt="Duo Trainingszaal" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 inset-x-1 text-[10px] font-bold text-center bg-black/60 text-white rounded py-0.5 truncate hidden sm:block">Actie</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Rechterkolom: Product Configurator & Direct Bestellen -->
+                    <div class="lg:col-span-5 flex flex-col">
+                        <!-- Rating & Categorie -->
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-tt-orange">Club Kleding & Teamwear</span>
+                            <div class="flex items-center text-amber-400 text-xs font-bold">
+                                <span>★★★★★</span>
+                                <span class="text-gray-500 dark:text-gray-400 ml-1.5 font-semibold">(4.9 • 38 reviews)</span>
+                            </div>
+                        </div>
+
+                        <!-- Product Titel -->
+                        <h3 class="font-montserrat text-2xl sm:text-3xl font-black italic uppercase text-tt-black dark:text-white tracking-tight mb-3">
+                            TT Clinics Pro Polo <span class="text-tt-orange">2026</span>
+                        </h3>
+
+                        <!-- Prijs -->
+                        <div class="flex items-baseline gap-3 mb-5">
+                            <span class="text-3xl sm:text-4xl font-montserrat font-black text-tt-black dark:text-white">€49,95</span>
+                            <span class="text-xs font-semibold text-gray-500 dark:text-gray-400">incl. BTW • gratis verzending</span>
+                        </div>
+
+                        <!-- Korte Specificaties -->
+                        <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                <span><strong>Ademend QuickDry</strong> piqué-polyester voor optimaal vochttransport</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                <span><strong>Officieel geborduurd</strong> TT Clinics borstlogo met contrasterende kraag</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                <span>Kreukvrij, slijtvast en behoudt zijn diepgroene wedstrijdkleur</span>
+                            </li>
+                        </ul>
+
+                        <!-- Pasvorm / Model Keuze (Heren vs Dames) -->
+                        <div class="mb-5">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">Model / Pasvorm:</label>
+                                <span id="selectedModelLabel" class="text-xs font-semibold text-tt-orange">Heren (Classic Athletic Fit)</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button type="button" id="modelHerenBtn" onclick="selectPoloModel('Heren')" class="model-btn py-2.5 px-3 rounded-xl border-2 border-tt-orange bg-orange-50 dark:bg-orange-950/40 text-tt-black dark:text-white font-bold text-xs sm:text-sm text-center transition-all flex items-center justify-center gap-2 shadow-sm">
+                                    <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+                                    Heren Fit
+                                </button>
+                                <button type="button" id="modelDamesBtn" onclick="selectPoloModel('Dames')" class="model-btn py-2.5 px-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-bold text-xs sm:text-sm text-center hover:border-gray-400 dark:hover:border-gray-500 transition-all flex items-center justify-center gap-2 shadow-sm">
+                                    <svg class="w-4 h-4 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+                                    Dames Fit (Getailleerd)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Maat Selector -->
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">Kies Maat:</label>
+                                <span class="text-[11px] text-gray-500 dark:text-gray-400 font-medium">Normale Europese pasvorm</span>
+                            </div>
+                            <div class="grid grid-cols-5 gap-2" id="poloSizeGroup">
+                                <button type="button" onclick="selectPoloSize('S', this)" class="size-btn py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-bold text-gray-800 dark:text-gray-200 hover:border-tt-orange transition-all">S</button>
+                                <button type="button" onclick="selectPoloSize('M', this)" class="size-btn py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-bold text-gray-800 dark:text-gray-200 hover:border-tt-orange transition-all">M</button>
+                                <button type="button" onclick="selectPoloSize('L', this)" class="size-btn active-size py-2 rounded-lg border-2 border-tt-orange bg-orange-50 dark:bg-orange-950/40 text-xs font-black text-tt-orange transition-all">L</button>
+                                <button type="button" onclick="selectPoloSize('XL', this)" class="size-btn py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-bold text-gray-800 dark:text-gray-200 hover:border-tt-orange transition-all">XL</button>
+                                <button type="button" onclick="selectPoloSize('XXL', this)" class="size-btn py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-bold text-gray-800 dark:text-gray-200 hover:border-tt-orange transition-all">XXL</button>
+                            </div>
+                        </div>
+
+                        <!-- Voorraad & Bestelknop -->
+                        <div class="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-4">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Direct uit voorraad leverbaar • Vóór 22:00 besteld, morgen verzonden
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <!-- Aantal Stepper -->
+                            <div class="flex items-center border border-gray-300 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-800 p-1">
+                                <button type="button" onclick="adjustPoloQty(-1)" class="w-8 h-8 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-tt-orange font-bold text-base focus:outline-none">−</button>
+                                <span id="poloQtyDisplay" class="w-8 text-center font-bold text-sm text-tt-black dark:text-white">1</span>
+                                <button type="button" onclick="adjustPoloQty(1)" class="w-8 h-8 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-tt-orange font-bold text-base focus:outline-none">+</button>
+                            </div>
+
+                            <!-- In Winkelwagen Button -->
+                            <button type="button" onclick="addPoloToCart()" class="flex-1 bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-orange-500/30 transition-all flex items-center justify-center gap-2 group">
+                                <svg class="w-5 h-5 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                <span>In Winkelwagen</span>
+                            </button>
+                        </div>
+
+                        <!-- Zekerheden -->
+                        <div class="grid grid-cols-3 gap-2 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800 text-[11px] text-gray-500 dark:text-gray-400 text-center">
+                            <div>🚚 <strong>Gratis bezorging</strong> v.a. €50</div>
+                            <div>🔄 <strong>30 dagen</strong> gratis ruilen</div>
+                            <div>🛡️ <strong>Veilig betalen</strong> met iDEAL</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessoires & Voordeeldeals Grid (3 Kolommen) -->
+            <div class="mb-14">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h3 class="font-montserrat text-2xl sm:text-3xl font-black italic uppercase text-tt-black dark:text-white">
+                            Gear & <span class="text-tt-orange">Accessoires</span>
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">Maak je uitrusting compleet met officiële wedstrijdballen en clubbatjes.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                    
+                    <!-- Product 1: Wedstrijdballen 3-pack -->
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="relative rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-square mb-4 flex items-center justify-center">
+                                <img src="images/shop-ballen.jpg" alt="TT Clinics 3-Ster Wedstrijdballen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <span class="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 text-[10px] font-black uppercase tracking-wider text-tt-black dark:text-white px-2.5 py-1 rounded-full shadow">
+                                    ITTF 40+ 3-Ster
+                                </span>
+                            </div>
+                            <div class="flex items-center text-amber-400 text-xs mb-1">
+                                <span>★★★★★</span>
+                                <span class="text-gray-500 text-[11px] ml-1">(4.9)</span>
+                            </div>
+                            <h4 class="font-montserrat font-black text-lg text-tt-black dark:text-white uppercase italic mb-1">
+                                Pro Wedstrijdballen (3-pack)
+                            </h4>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                                3-Ster ITTF goedgekeurde toernooiballen met constante stuitcurve en officiële TT Clinics clubstempel.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-2xl font-montserrat font-black text-tt-black dark:text-white">€9,95</span>
+                                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">● Ruim op voorraad</span>
+                            </div>
+                            <button type="button" onclick="addToCartDirect('ballen', 'TT Clinics Pro Wedstrijdballen (3-pack)', 9.95, 'images/shop-ballen.jpg', 'Standaard 3-pack')" class="w-full bg-gray-100 dark:bg-gray-800 hover:bg-tt-orange hover:text-white dark:hover:bg-tt-orange text-tt-black dark:text-white font-bold py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                In Winkelwagen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: Clinic Master Batje -->
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="relative rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-square mb-4 flex items-center justify-center">
+                                <img src="images/shop-batje.jpg" alt="TT Clinics Clinic Master Batje" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <span class="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 text-[10px] font-black uppercase tracking-wider text-tt-black dark:text-white px-2.5 py-1 rounded-full shadow">
+                                    5-Laags Competitiehout
+                                </span>
+                            </div>
+                            <div class="flex items-center text-amber-400 text-xs mb-1">
+                                <span>★★★★★</span>
+                                <span class="text-gray-500 text-[11px] ml-1">(4.8)</span>
+                            </div>
+                            <h4 class="font-montserrat font-black text-lg text-tt-black dark:text-white uppercase italic mb-1">
+                                Clinic Master Batje
+                            </h4>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                                Uitgerust met 2.0mm tacky rubbers met hoge spin-controle en een ergonomisch holrond handvat voor clinic-comfort.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-2xl font-montserrat font-black text-tt-black dark:text-white">€34,95</span>
+                                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">● Ruim op voorraad</span>
+                            </div>
+                            <button type="button" onclick="addToCartDirect('batje', 'TT Clinics Clinic Master Batje', 34.95, 'images/shop-batje.jpg', 'Flared Grip')" class="w-full bg-gray-100 dark:bg-gray-800 hover:bg-tt-orange hover:text-white dark:hover:bg-tt-orange text-tt-black dark:text-white font-bold py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                In Winkelwagen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3: Complete Clinic Combi-Deal (Bestseller) -->
+                    <div class="bg-gradient-to-b from-orange-50/50 to-white dark:from-orange-950/20 dark:to-gray-900 rounded-2xl p-5 border-2 border-tt-orange shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between group relative">
+                        <span class="absolute -top-3 right-4 bg-tt-orange text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                            Bestseller • Bespaar €15,-
+                        </span>
+                        <div>
+                            <div class="relative rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-square mb-4 flex items-center justify-center">
+                                <img src="images/shop-polo-duo.jpg" alt="Complete Clinic Voordeelset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <span class="absolute bottom-3 left-3 bg-black/80 text-[10px] font-bold text-white px-2.5 py-1 rounded-full">
+                                    3-in-1 Voordeelpakket
+                                </span>
+                            </div>
+                            <div class="flex items-center text-amber-400 text-xs mb-1">
+                                <span>★★★★★</span>
+                                <span class="text-gray-500 text-[11px] ml-1">(5.0 • Meest gekozen)</span>
+                            </div>
+                            <h4 class="font-montserrat font-black text-lg text-tt-black dark:text-white uppercase italic mb-1">
+                                Complete Clinic Combi-Deal
+                            </h4>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                                Bevat: 1x TT Clinics Polo naar keuze + 1x Clinic Master Batje + 1x 3-Pack Wedstrijdballen. Direct speelklaar!
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex items-baseline justify-between mb-3">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-montserrat font-black text-tt-orange">€79,95</span>
+                                    <span class="text-xs text-gray-400 line-through">€94,85</span>
+                                </div>
+                                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">Gratis verzending</span>
+                            </div>
+                            <button type="button" onclick="addToCartCombiDeal()" class="w-full bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-orange-500/20">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                Claim Deze Voordeeldeal
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Teamwear & Bedrijfsbestellingen Callout Banner -->
+            <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-6 sm:p-10 border border-gray-700 shadow-xl text-white relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-orange-300 text-xs font-bold uppercase tracking-wider mb-3">
+                            <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><ellipse cx="19" cy="13" rx="2" ry="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3"/></svg>
+                            Bedrijfs- & Clubkleding op maat
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-montserrat font-black italic uppercase tracking-tight text-white mb-2">
+                            Met je hele team of bedrijf in matching polo's?
+                        </h3>
+                        <p class="text-sm text-gray-300 leading-relaxed font-normal">
+                            Vanaf 10 stuks leveren wij met aantrekkelijke staffelkorting (tot 25%) en optioneel jullie <strong>eigen bedrijfslogo</strong> geborduurd of gedrukt op de mouw of borst. Perfect te combineren met een bedrijfsuitje clinic!
+                        </p>
+                    </div>
+                    <div class="shrink-0 w-full md:w-auto">
+                        <a href="#contact" onclick="prefillContactForTeamwear()" class="block w-full md:w-auto text-center bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-orange-500/30 transition-all text-sm uppercase tracking-wider">
+                            Teamwear Offerte Aanvragen &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
     <!-- Contact Formulier -->
     <section id="contact" class="pt-20 pb-0 bg-transparent relative z-20 transition-colors duration-300">
         <div class="container mx-auto px-4 max-w-5xl">
@@ -1056,6 +1398,504 @@
                     }
                 }
             });
+        })();
+    </script>
+
+
+    <!-- ========================================== -->
+    <!-- SLIDE-OVER WINKELWAGEN DRAWER & OVERLAY -->
+    <!-- ========================================== -->
+    <div id="cartOverlay" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <aside id="cartDrawer" class="fixed top-0 right-0 bottom-0 w-full sm:w-[460px] bg-white dark:bg-gray-900 z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out border-l border-gray-200 dark:border-gray-800">
+        <!-- Header -->
+        <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between bg-gray-50/80 dark:bg-gray-850">
+            <div class="flex items-center gap-2.5">
+                <div class="p-2 bg-tt-orange/10 text-tt-orange rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-montserrat font-black text-lg text-tt-black dark:text-white uppercase italic">Jouw Winkelwagen</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400" id="cartHeaderSubtitle">0 artikelen geselecteerd</p>
+                </div>
+            </div>
+            <button type="button" onclick="toggleCartDrawer(false)" class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Winkelwagen sluiten">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Gratis verzending progress bar -->
+        <div class="px-5 py-3 bg-orange-50 dark:bg-orange-950/30 border-b border-orange-100 dark:border-orange-900/50">
+            <div class="flex justify-between items-center text-xs font-bold text-gray-700 dark:text-gray-200 mb-1.5">
+                <span id="freeShippingText">Nog €50,00 voor gratis verzending!</span>
+                <span id="freeShippingPercentage" class="text-tt-orange font-black">0%</span>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                <div id="freeShippingBar" class="bg-tt-orange h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Inhoud: Artikelen Lijst -->
+        <div class="flex-1 overflow-y-auto p-5 divide-y divide-gray-100 dark:divide-gray-800" id="cartItemsList">
+            <!-- Dynamisch gevuld door JS -->
+        </div>
+
+        <!-- Footer & Checkout Formulier -->
+        <div class="p-5 border-t border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-850">
+            <!-- Prijsoverzicht -->
+            <div class="space-y-1.5 text-xs text-gray-600 dark:text-gray-400 mb-4">
+                <div class="flex justify-between">
+                    <span>Subtotaal:</span>
+                    <span id="cartSubtotal" class="font-bold text-gray-800 dark:text-gray-200">€0,00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Verzendkosten:</span>
+                    <span id="cartShipping" class="font-bold text-gray-800 dark:text-gray-200">€4,95</span>
+                </div>
+                <div class="flex justify-between text-base font-montserrat font-black text-tt-black dark:text-white pt-2 border-t border-gray-200 dark:border-gray-700">
+                    <span>Totaal (incl. BTW):</span>
+                    <span id="cartTotal" class="text-tt-orange">€0,00</span>
+                </div>
+            </div>
+
+            <!-- Checkout Formulier (Inklapbaar) -->
+            <div id="checkoutFormSection" class="hidden space-y-3 mb-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                <h4 class="text-xs font-black uppercase tracking-wider text-gray-700 dark:text-gray-300">Bezorg- & Betaalgegevens</h4>
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" id="orderName" placeholder="Volledige naam *" class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:border-tt-orange">
+                    <input type="email" id="orderEmail" placeholder="E-mailadres *" class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:border-tt-orange">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" id="orderAddress" placeholder="Straat + huisnummer *" class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:border-tt-orange">
+                    <input type="text" id="orderCity" placeholder="Postcode + Plaats *" class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:border-tt-orange">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[11px] font-bold text-gray-600 dark:text-gray-400">Betaalmethode:</label>
+                    <select id="orderPaymentMethod" class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:border-tt-orange">
+                        <option value="ideal">iDEAL (Direct online afrekenen)</option>
+                        <option value="factuur">Bedrijfsfactuur (Achteraf 14 dgn)</option>
+                        <option value="creditcard">Creditcard / Apple Pay</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Actieknoppen -->
+            <div class="space-y-2">
+                <button type="button" id="proceedToCheckoutBtn" onclick="toggleCheckoutFields()" class="w-full bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span id="checkoutBtnText">Direct Bestellen</span>
+                </button>
+                <button type="button" onclick="toggleCartDrawer(false)" class="w-full py-2 text-xs font-semibold text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+                    Verder winkelen
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ========================================== -->
+    <!-- ORDER BEVESTIGING MODAL -->
+    <!-- ========================================== -->
+    <div id="orderSuccessModal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center border border-gray-200 dark:border-gray-800 shadow-2xl relative transform animate-in fade-in zoom-in-95 duration-200">
+            <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-emerald-500 shadow-inner">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-black italic uppercase text-tt-black dark:text-white mb-2">
+                Bedankt voor je Bestelling!
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+                Je bestelling is succesvol ontvangen en wordt gereedgemaakt voor verzending. We hebben een orderbevestiging gestuurd naar <strong id="successCustomerEmail" class="text-tt-orange">jouw e-mail</strong>.
+            </p>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-4 text-left mb-6 text-xs border border-gray-200 dark:border-gray-700">
+                <div class="flex justify-between py-1 border-b border-gray-200 dark:border-gray-700 font-semibold">
+                    <span class="text-gray-500">Ordernummer:</span>
+                    <span id="successOrderId" class="font-mono text-tt-orange font-bold">#TTC-2026-0000</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-200 dark:border-gray-700">
+                    <span class="text-gray-500">Verzendmethode:</span>
+                    <span class="font-semibold text-gray-800 dark:text-gray-200">PostNL Pakketservice (Track & Trace)</span>
+                </div>
+                <div class="flex justify-between py-1">
+                    <span class="text-gray-500">Verwachte levertijd:</span>
+                    <span class="font-semibold text-emerald-600 dark:text-emerald-400">1 - 2 werkdagen</span>
+                </div>
+            </div>
+            <button type="button" onclick="closeOrderSuccessModal()" class="w-full bg-tt-orange hover:bg-orange-600 text-white font-montserrat font-bold py-3.5 px-6 rounded-xl uppercase tracking-wider text-xs shadow-lg transition-all">
+                Sluiten & Terug Naar Website
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TOAST NOTIFICATIE CONTAINER -->
+    <!-- ========================================== -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT VOOR SHOP & WINKELWAGEN -->
+    <!-- ========================================== -->
+    <script>
+        // Shop & Winkelwagen State Management
+        (function() {
+            // Cart State
+            let cart = [];
+            try {
+                const saved = localStorage.getItem('ttclinics_cart');
+                if (saved) cart = JSON.parse(saved);
+            } catch (e) {
+                cart = [];
+            }
+
+            // Current Polo Config
+            let selectedPolo = {
+                model: 'Heren',
+                size: 'L',
+                quantity: 1,
+                price: 49.95,
+                image: 'images/polo-groen.jpg',
+                title: 'TT Clinics Pro Polo 2026'
+            };
+
+            // Expose globally for inline button handlers
+            window.selectPoloImage = function(src, label, btn) {
+                const mainImg = document.getElementById('poloGalleryMain');
+                const badge = document.getElementById('galleryBadge');
+                if (mainImg) {
+                    mainImg.style.opacity = '0.3';
+                    setTimeout(() => {
+                        mainImg.src = src;
+                        mainImg.style.opacity = '1';
+                    }, 120);
+                }
+                if (badge && label) {
+                    badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> ${label}`;
+                }
+                // Highlight thumb
+                document.querySelectorAll('.polo-thumb').forEach(t => {
+                    t.classList.remove('border-tt-orange', 'active-thumb');
+                    t.classList.add('border-transparent');
+                });
+                if (btn) {
+                    btn.classList.remove('border-transparent');
+                    btn.classList.add('border-tt-orange', 'active-thumb');
+                }
+            };
+
+            window.selectPoloModel = function(model) {
+                selectedPolo.model = model;
+                const herenBtn = document.getElementById('modelHerenBtn');
+                const damesBtn = document.getElementById('modelDamesBtn');
+                const label = document.getElementById('selectedModelLabel');
+
+                if (model === 'Heren') {
+                    if (label) label.textContent = 'Heren (Classic Athletic Fit)';
+                    herenBtn.className = 'model-btn py-2.5 px-3 rounded-xl border-2 border-tt-orange bg-orange-50 dark:bg-orange-950/40 text-tt-black dark:text-white font-bold text-xs sm:text-sm text-center transition-all flex items-center justify-center gap-2 shadow-sm';
+                    damesBtn.className = 'model-btn py-2.5 px-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-bold text-xs sm:text-sm text-center hover:border-gray-400 dark:hover:border-gray-500 transition-all flex items-center justify-center gap-2 shadow-sm';
+                    // Auto preview heren shot
+                    window.selectPoloImage('images/shop-polo-heren.jpg', 'Heren Fit (Coach Edward)');
+                } else {
+                    if (label) label.textContent = 'Dames Fit (Getailleerd Sport Model)';
+                    damesBtn.className = 'model-btn py-2.5 px-3 rounded-xl border-2 border-tt-orange bg-orange-50 dark:bg-orange-950/40 text-tt-black dark:text-white font-bold text-xs sm:text-sm text-center transition-all flex items-center justify-center gap-2 shadow-sm';
+                    herenBtn.className = 'model-btn py-2.5 px-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-bold text-xs sm:text-sm text-center hover:border-gray-400 dark:hover:border-gray-500 transition-all flex items-center justify-center gap-2 shadow-sm';
+                    // Auto preview dames shot
+                    window.selectPoloImage('images/shop-polo-dames.jpg', 'Dames Fit (Topspeelster)');
+                }
+            };
+
+            window.selectPoloSize = function(size, btn) {
+                selectedPolo.size = size;
+                document.querySelectorAll('#poloSizeGroup .size-btn').forEach(b => {
+                    b.className = 'size-btn py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-bold text-gray-800 dark:text-gray-200 hover:border-tt-orange transition-all';
+                });
+                if (btn) {
+                    btn.className = 'size-btn active-size py-2 rounded-lg border-2 border-tt-orange bg-orange-50 dark:bg-orange-950/40 text-xs font-black text-tt-orange transition-all';
+                }
+            };
+
+            window.adjustPoloQty = function(delta) {
+                let q = selectedPolo.quantity + delta;
+                if (q < 1) q = 1;
+                if (q > 25) q = 25;
+                selectedPolo.quantity = q;
+                const disp = document.getElementById('poloQtyDisplay');
+                if (disp) disp.textContent = q;
+            };
+
+            window.addPoloToCart = function() {
+                const item = {
+                    id: 'polo-' + selectedPolo.model.toLowerCase() + '-' + selectedPolo.size.toLowerCase(),
+                    title: selectedPolo.title,
+                    variant: selectedPolo.model + ' Fit • Maat ' + selectedPolo.size,
+                    price: selectedPolo.price,
+                    image: selectedPolo.model === 'Dames' ? 'images/shop-polo-dames.jpg' : 'images/shop-polo-heren.jpg',
+                    quantity: selectedPolo.quantity
+                };
+                addItemToCartList(item);
+                showToast(`✅ ${item.title} (${item.variant}) toegevoegd!`);
+                toggleCartDrawer(true);
+            };
+
+            window.addToCartDirect = function(id, title, price, image, variant) {
+                const item = {
+                    id: id,
+                    title: title,
+                    variant: variant,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                };
+                addItemToCartList(item);
+                showToast(`✅ ${title} toegevoegd!`);
+                toggleCartDrawer(true);
+            };
+
+            window.addToCartCombiDeal = function() {
+                const item = {
+                    id: 'combi-deal-' + selectedPolo.model.toLowerCase() + '-' + selectedPolo.size.toLowerCase(),
+                    title: 'Complete Clinic Combi-Deal',
+                    variant: 'Polo ' + selectedPolo.model + ' (' + selectedPolo.size + ') + Batje + 3-Pack Ballen',
+                    price: 79.95,
+                    image: 'images/shop-polo-duo.jpg',
+                    quantity: 1
+                };
+                addItemToCartList(item);
+                showToast(`🎉 Complete Clinic Combi-Deal toegevoegd!`);
+                toggleCartDrawer(true);
+            };
+
+            function addItemToCartList(newItem) {
+                const existingIndex = cart.findIndex(i => i.id === newItem.id);
+                if (existingIndex > -1) {
+                    cart[existingIndex].quantity += newItem.quantity;
+                } else {
+                    cart.push(newItem);
+                }
+                saveAndRenderCart();
+            }
+
+            window.updateItemQty = function(index, delta) {
+                if (!cart[index]) return;
+                cart[index].quantity += delta;
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+                saveAndRenderCart();
+            };
+
+            window.removeItem = function(index) {
+                if (cart[index]) {
+                    cart.splice(index, 1);
+                    saveAndRenderCart();
+                }
+            };
+
+            function saveAndRenderCart() {
+                try {
+                    localStorage.setItem('ttclinics_cart', JSON.stringify(cart));
+                } catch(e) {}
+                renderCartUI();
+            }
+
+            function renderCartUI() {
+                const list = document.getElementById('cartItemsList');
+                const badge = document.getElementById('cartCountBadge');
+                const subtitle = document.getElementById('cartHeaderSubtitle');
+                const subtotalEl = document.getElementById('cartSubtotal');
+                const shippingEl = document.getElementById('cartShipping');
+                const totalEl = document.getElementById('cartTotal');
+                const freeBar = document.getElementById('freeShippingBar');
+                const freeText = document.getElementById('freeShippingText');
+                const freePct = document.getElementById('freeShippingPercentage');
+
+                const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+                const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+                // Badge
+                if (badge) {
+                    if (totalItems > 0) {
+                        badge.textContent = totalItems;
+                        badge.classList.remove('hidden');
+                    } else {
+                        badge.classList.add('hidden');
+                    }
+                }
+
+                if (subtitle) {
+                    subtitle.textContent = `${totalItems} artikel${totalItems === 1 ? '' : 'en'} geselecteerd`;
+                }
+
+                // Shipping calculation (Gratis vanaf 50)
+                const freeThreshold = 50.0;
+                let shipping = subtotal > 0 ? (subtotal >= freeThreshold ? 0.0 : 4.95) : 0.0;
+                const total = subtotal + shipping;
+
+                if (subtotalEl) subtotalEl.textContent = `€${subtotal.toFixed(2).replace('.', ',')}`;
+                if (shippingEl) {
+                    shippingEl.textContent = subtotal === 0 ? '€0,00' : (shipping === 0 ? 'Gratis' : `€${shipping.toFixed(2).replace('.', ',')}`);
+                    if (shipping === 0 && subtotal > 0) {
+                        shippingEl.className = 'font-bold text-emerald-600 dark:text-emerald-400';
+                    } else {
+                        shippingEl.className = 'font-bold text-gray-800 dark:text-gray-200';
+                    }
+                }
+                if (totalEl) totalEl.textContent = `€${total.toFixed(2).replace('.', ',')}`;
+
+                // Free shipping progress bar
+                if (freeBar && freeText && freePct) {
+                    if (subtotal >= freeThreshold) {
+                        freeBar.style.width = '100%';
+                        freeBar.className = 'bg-emerald-500 h-full rounded-full transition-all duration-500';
+                        freeText.innerHTML = '🎉 <span class="text-emerald-600 dark:text-emerald-400 font-bold">Gratis verzending actief!</span>';
+                        freePct.textContent = '100%';
+                    } else {
+                        const needed = freeThreshold - subtotal;
+                        const pct = Math.min(100, Math.round((subtotal / freeThreshold) * 100));
+                        freeBar.style.width = pct + '%';
+                        freeBar.className = 'bg-tt-orange h-full rounded-full transition-all duration-500';
+                        freeText.textContent = `Nog €${needed.toFixed(2).replace('.', ',')} voor gratis verzending!`;
+                        freePct.textContent = pct + '%';
+                    }
+                }
+
+                // Render list
+                if (!list) return;
+                if (cart.length === 0) {
+                    list.innerHTML = `
+                        <div class="py-12 text-center">
+                            <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3 text-gray-400">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                            </div>
+                            <h4 class="font-bold text-gray-700 dark:text-gray-300 text-sm mb-1">Je winkelwagen is nog leeg</h4>
+                            <p class="text-xs text-gray-500 mb-4">Ontdek de TT Clinics kleding en speelattributen.</p>
+                            <button type="button" onclick="toggleCartDrawer(false)" class="text-xs font-bold text-tt-orange hover:underline">Ga naar de Shop &rarr;</button>
+                        </div>
+                    `;
+                    const checkoutBtn = document.getElementById('proceedToCheckoutBtn');
+                    if (checkoutBtn) checkoutBtn.disabled = true;
+                    return;
+                }
+
+                const checkoutBtn = document.getElementById('proceedToCheckoutBtn');
+                if (checkoutBtn) checkoutBtn.disabled = false;
+
+                list.innerHTML = cart.map((item, idx) => `
+                    <div class="py-3 flex items-center gap-3">
+                        <img src="${item.image}" alt="${item.title}" class="w-14 h-14 rounded-xl object-cover bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <h5 class="text-xs font-bold text-gray-900 dark:text-white truncate">${item.title}</h5>
+                            <p class="text-[11px] text-gray-500 dark:text-gray-400 truncate">${item.variant}</p>
+                            <span class="text-xs font-black text-tt-orange">€${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
+                        </div>
+                        <div class="flex items-center border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 p-0.5 shrink-0">
+                            <button type="button" onclick="updateItemQty(${idx}, -1)" class="w-6 h-6 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300 hover:text-tt-orange">−</button>
+                            <span class="w-6 text-center text-xs font-bold text-gray-900 dark:text-white">${item.quantity}</span>
+                            <button type="button" onclick="updateItemQty(${idx}, 1)" class="w-6 h-6 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300 hover:text-tt-orange">+</button>
+                        </div>
+                        <button type="button" onclick="removeItem(${idx})" class="p-1.5 text-gray-400 hover:text-red-500 rounded-md transition-colors" title="Verwijderen">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            window.toggleCartDrawer = function(open) {
+                const drawer = document.getElementById('cartDrawer');
+                const overlay = document.getElementById('cartOverlay');
+                if (!drawer || !overlay) return;
+
+                if (open) {
+                    overlay.classList.remove('opacity-0', 'pointer-events-none');
+                    overlay.classList.add('opacity-100', 'pointer-events-auto');
+                    drawer.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                    overlay.classList.add('opacity-0', 'pointer-events-none');
+                    drawer.classList.add('translate-x-full');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            window.toggleCheckoutFields = function() {
+                const checkoutSec = document.getElementById('checkoutFormSection');
+                const btnText = document.getElementById('checkoutBtnText');
+                if (!checkoutSec) return;
+
+                if (checkoutSec.classList.contains('hidden')) {
+                    checkoutSec.classList.remove('hidden');
+                    if (btnText) btnText.textContent = 'Bevestig & Plaats Bestelling';
+                } else {
+                    // Submit order
+                    const name = document.getElementById('orderName')?.value.trim();
+                    const email = document.getElementById('orderEmail')?.value.trim();
+                    const address = document.getElementById('orderAddress')?.value.trim();
+                    const city = document.getElementById('orderCity')?.value.trim();
+
+                    if (!name || !email || !address || !city) {
+                        alert('Vul a.u.b. alle verplichte velden in (naam, e-mail, adres en postcode/plaats).');
+                        return;
+                    }
+
+                    // Complete order
+                    const orderId = '#TTC-2026-' + Math.floor(1000 + Math.random() * 9000);
+                    const emailEl = document.getElementById('successCustomerEmail');
+                    const orderIdEl = document.getElementById('successOrderId');
+                    if (emailEl) emailEl.textContent = email;
+                    if (orderIdEl) orderIdEl.textContent = orderId;
+
+                    // Clear cart
+                    cart = [];
+                    saveAndRenderCart();
+                    toggleCartDrawer(false);
+
+                    // Show success modal
+                    const modal = document.getElementById('orderSuccessModal');
+                    if (modal) {
+                        modal.classList.remove('hidden');
+                        modal.classList.add('flex');
+                    }
+                }
+            };
+
+            window.closeOrderSuccessModal = function() {
+                const modal = document.getElementById('orderSuccessModal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }
+            };
+
+            window.prefillContactForTeamwear = function() {
+                const msgField = document.getElementById('bericht');
+                if (msgField) {
+                    msgField.value = "Hallo Edward & TT Clinics,\n\nGraag ontvang ik een offerte op maat voor officiële TT Clinics teamwear (polo's met optioneel eigen bedrijfslogo) voor ongeveer ... personen.\n\nMet vriendelijke groet,";
+                }
+            };
+
+            function showToast(message) {
+                const container = document.getElementById('toastContainer');
+                if (!container) return;
+                const toast = document.createElement('div');
+                toast.className = 'bg-gray-900/95 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl border border-gray-700 flex items-center gap-2 transform translate-y-2 opacity-0 transition-all duration-300 pointer-events-auto';
+                toast.innerHTML = `<span>${message}</span>`;
+                container.appendChild(toast);
+
+                requestAnimationFrame(() => {
+                    toast.classList.remove('translate-y-2', 'opacity-0');
+                });
+
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3500);
+            }
+
+            // Initial render
+            document.addEventListener('DOMContentLoaded', () => {
+                renderCartUI();
+            });
+            // Also run immediately in case DOM is already ready
+            renderCartUI();
         })();
     </script>
 
