@@ -937,7 +937,7 @@ p.font.color.rgb = C_TEXT_TITLE
 
 contact_rows = [
     (ICON_MAIL, "info@ttclinics.nl", C_TEXT_TITLE),
-    (ICON_PHONE, "06 - 12345678", C_TEXT_TITLE),
+    (ICON_PHONE, "06 - 11618060", C_TEXT_TITLE),
     (ICON_WEB, "www.ttclinics.nl", C_ORANGE_DARK),
 ]
 

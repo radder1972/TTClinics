@@ -23,7 +23,7 @@ let scenes: [SceneDef] = [
         imagePath: "images/story-1-woensdag.jpg",
         tag: "SCÈNE 1 · DE OORSPRONG",
         title: "Het begon in een bescheiden gymzaal",
-        subtitle: "Sportshal De Meer · Woensdagochtend",
+        subtitle: "The Victory, Weesp · Woensdagochtend",
         duration: 15.91 + 0.8
     ),
     SceneDef(
