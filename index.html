@@ -33,7 +33,7 @@
         tailwind.config.darkMode = 'class';
     </script>
 </head>
-<body class="bg-white dark:bg-gray-900 text-tt-black dark:text-gray-100 font-inter transition-colors duration-300 overflow-x-hidden" id="top">
+<body class="bg-white dark:bg-gray-900 text-tt-black dark:text-gray-100 font-inter transition-colors duration-300 overflow-x-clip" id="top">
     <!-- Herbruikbare scherpe swoosh-lijnen uit het logo -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
         <defs>
@@ -211,7 +211,7 @@
     </div>
 
     <!-- Diensten / Features -->
-    <section id="clinics" class="pt-14 pb-20 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <section id="clinics" class="pt-16 md:pt-20 pb-16 md:pb-24 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
         <!-- Grote dynamische swoosh rechts op de achtergrond -->
         <svg class="absolute -right-24 -top-12 w-[34rem] h-72 opacity-20 dark:opacity-10 pointer-events-none transform rotate-6" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true">
             <use href="#tt-streaks"/>
@@ -496,7 +496,7 @@
     </section>
 
     <!-- Over Ons / De Trainer -->
-    <section id="over-ons" class="pt-20 pb-28 md:pb-36 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <section id="over-ons" class="pt-16 md:pt-20 pb-16 md:pb-24 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
         <!-- Grote dynamische swoosh links op de achtergrond in oranje/grijs -->
         <svg class="absolute -left-28 top-10 w-[38rem] h-80 opacity-20 dark:opacity-10 pointer-events-none transform -rotate-12 scale-x-[-1]" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true">
             <use href="#tt-streaks"/>
@@ -549,7 +549,7 @@
     </section>
 
     <!-- Prijzen / Tarieven -->
-    <section id="prijzen" class="pt-28 md:pt-40 pb-24 bg-gray-50 dark:bg-gray-800 relative overflow-hidden slant-top">
+    <section id="prijzen" class="pb-16 md:pb-24 bg-gray-50 dark:bg-gray-800 relative overflow-hidden slant-top">
         <!-- Grote dynamische swoosh rechtsboven op de prijzensectie -->
         <svg class="absolute -right-32 top-8 w-[42rem] h-96 opacity-25 dark:opacity-15 pointer-events-none transform -rotate-6" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true">
             <use href="#tt-streaks"/>
@@ -646,7 +646,7 @@
     </section>
 
     <!-- Reviews / Ervaringen van Teams -->
-    <section id="reviews" class="py-20 md:py-28 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <section id="reviews" class="pt-16 md:pt-20 pb-16 md:pb-24 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
         <!-- Dynamische decoratieve swoosh linksboven en rechtsonder -->
         <svg class="absolute -left-28 top-8 w-[38rem] h-80 opacity-20 dark:opacity-10 pointer-events-none transform -rotate-6 scale-x-[-1]" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
         <svg class="absolute -right-28 bottom-4 w-[38rem] h-80 opacity-20 dark:opacity-10 pointer-events-none transform rotate-6" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
@@ -928,7 +928,7 @@
     <!-- ========================================== -->
     <!-- OFFICIËLE TT CLINICS SHOP & MERCHANDISE -->
     <!-- ========================================== -->
-    <section id="shop" class="py-20 md:py-28 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
+    <section id="shop" class="pt-16 md:pt-20 pb-16 md:pb-24 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
         <!-- Achtergrond decoratieve streaks & glow -->
         <div class="absolute -top-32 -left-32 w-96 h-96 bg-tt-orange/10 dark:bg-tt-orange/5 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -1344,7 +1344,7 @@
 
 
     <!-- Contact Formulier -->
-    <section id="contact" class="pt-20 pb-0 bg-transparent relative z-20 transition-colors duration-300">
+    <section id="contact" class="pt-16 md:pt-20 pb-0 bg-transparent relative z-20 transition-colors duration-300">
         <div class="container mx-auto px-4 max-w-5xl">
             <h2 class="font-montserrat text-3xl sm:text-4xl font-black text-center italic mb-10 sm:mb-12 uppercase text-tt-black dark:text-white">
                 <svg class="inline-block w-10 sm:w-12 h-5 sm:h-6 mr-2 sm:mr-3 -mt-2 align-middle" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>Neem <span class="text-tt-orange">Contact</span> Op
@@ -1465,6 +1465,18 @@
     </footer>
 
     <script>
+        // Exacte hoogte van de sticky navigatiebalk dynamisch koppelen aan CSS scroll-margin
+        function syncNavbarHeight() {
+            const nav = document.querySelector('nav');
+            if (nav) {
+                document.documentElement.style.setProperty('--navbar-height', `${nav.offsetHeight}px`);
+            }
+        }
+        window.addEventListener('resize', syncNavbarHeight);
+        window.addEventListener('load', syncNavbarHeight);
+        document.addEventListener('DOMContentLoaded', syncNavbarHeight);
+        syncNavbarHeight();
+
         const toggleBtn = document.getElementById('themeToggle');
         if (toggleBtn) {
             toggleBtn.addEventListener('click', () => {

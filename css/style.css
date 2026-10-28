@@ -32,7 +32,12 @@ html {
 .slant-top {
     clip-path: polygon(0 4vw, 100% 0, 100% 100%, 0 100%);
     margin-top: -4vw;
-    padding-top: calc(5rem + 4vw);
+    padding-top: calc(4rem + 4vw);
+}
+@media (min-width: 768px) {
+    .slant-top {
+        padding-top: calc(5rem + 4vw);
+    }
 }
 
 .slant-top-footer {
@@ -146,8 +151,30 @@ html {
     .tt-ball-track { display: none; }
 }
 
-/* Ankerlinks niet onder de sticky menubalk laten verdwijnen */
-section[id] { scroll-margin-top: 110px; }
+/* Responsive menubalk hoogte voor naadloze ankerlinks */
+:root {
+    --navbar-height: 82px;
+}
+@media (min-width: 768px) {
+    :root {
+        --navbar-height: 152px;
+    }
+}
+@media (min-width: 1024px) {
+    :root {
+        --navbar-height: 212px;
+    }
+}
+
+/* Ankerlinks landen exact en consistent onder de sticky menubalk */
+section[id], div[id].anchor-target {
+    scroll-margin-top: var(--navbar-height);
+}
+
+/* Sectie Prijzen heeft een schuine overgang (-4vw); compenseer voor exact identieke witruimte */
+#prijzen {
+    scroll-margin-top: calc(var(--navbar-height) - 4vw);
+}
 
 /* 3D Tafeltennisbal Icoon Badge (identiek spiegeleffect aan de stuiterende bal, 100% recht) */
 .tt-icon-ball {
