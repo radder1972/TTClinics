@@ -92,8 +92,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                             </svg>
                         </button>
-                        <span class="w-px h-3.5 bg-gray-300 dark:bg-gray-600 mx-0.5"></span>
-                        <button id="openCartBtn" onclick="toggleCartDrawer(true)" class="relative p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors flex items-center justify-center text-tt-black dark:text-white" title="Winkelwagen openen" aria-label="Winkelwagen openen">
+                        <span id="cartDivider" class="hidden w-px h-3.5 bg-gray-300 dark:bg-gray-600 mx-0.5"></span>
+                        <button id="openCartBtn" onclick="toggleCartDrawer(true)" class="hidden relative p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors items-center justify-center text-tt-black dark:text-white" title="Winkelwagen openen" aria-label="Winkelwagen openen">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                             </svg>
@@ -120,9 +120,9 @@
                     <li><a href="#clinics" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg> Clinics</a></li>
                     <li><a href="#over-ons" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
                     <li><a href="#prijzen" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Tarieven</a></li>
-                    <li><a href="#reviews" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
+                    <li id="navReviewsDesktop" class="hidden"><a href="#reviews" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
                     <li><a href="#contact" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
-                    <li><a href="#shop" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white relative"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop <span class="ml-1 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
+                    <li id="navShopDesktop" class="hidden"><a href="#shop" class="group flex items-center hover:text-tt-orange transition-colors text-tt-black dark:text-white relative"><svg class="w-4 h-4 mr-1.5 shrink-0 group-hover:text-tt-orange transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop <span class="ml-1 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
                 </ul>
             </div>
         </div>
@@ -133,9 +133,9 @@
                 <li><a href="#clinics" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="10.5" y="15" width="3" height="7" rx="1" /><ellipse cx="12" cy="9" rx="5" ry="6" /><circle cx="19" cy="5" r="2" fill="currentColor" stroke="none" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 6h-2M15 3l-1.5 1.5" /></svg> Clinics</a></li>
                 <li><a href="#over-ons" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><ellipse cx="19" cy="13" rx="2" ry="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M19 16v3" /></svg> Over Ons</a></li>
                 <li><a href="#prijzen" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Tarieven</a></li>
-                <li><a href="#reviews" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
+                <li id="navReviewsMobile" class="hidden"><a href="#reviews" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</a></li>
                 <li><a href="#contact" class="mobile-nav-link flex items-center py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9 6 9-6" /><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" /></svg> Contact</a></li>
-                <li><a href="#shop" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><span class="flex items-center"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop & Merchandise</span><span class="px-2 py-0.5 text-xs font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
+                <li id="navShopMobile" class="hidden"><a href="#shop" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-tt-orange transition-colors text-tt-black dark:text-white"><span class="flex items-center"><svg class="w-5 h-5 mr-3 text-tt-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg> Shop & Merchandise</span><span class="px-2 py-0.5 text-xs font-black uppercase tracking-wider bg-tt-orange text-white rounded-full">Nieuw</span></a></li>
                 <li class="pt-2">
                     <a href="#contact" class="mobile-nav-link block text-center bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-full shadow-lg transition-colors">Vraag Team Clinic aan</a>
                 </li>
@@ -595,17 +595,17 @@
                     <a href="#contact" class="block w-full bg-tt-orange hover:bg-orange-600 text-white font-bold py-3 rounded-full transition-colors text-center btn-speed relative">Boek Company Battle</a>
                 </div>
                 
-                <!-- Pakket 3: Vitaliteit & Maatwerk -->
+                <!-- Pakket 3: Eigen Toernooi op Maat -->
                 <div class="bg-white dark:bg-gray-900 dark:border-gray-700 p-6 sm:p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow text-center flex flex-col">
-                    <h3 class="font-montserrat text-2xl font-bold mb-2">Vitaliteit &amp; Maatwerk</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mb-6">Grote organisaties &amp; meerdaags</p>
+                    <h3 class="font-montserrat text-2xl font-bold mb-2">Eigen Toernooi op Maat</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">Exclusief toernooi voor kleinere teams</p>
                     <div class="text-4xl font-black text-tt-black dark:text-white mb-2">Op Maat</div>
-                    <p class="text-xs text-gray-400 mb-6">Vanaf 12+ personen (meerdere trainers) of meerdaags</p>
+                    <p class="text-xs text-gray-400 mb-6">Excl. btw · Tot max. 8 personen · Toernooiformat</p>
                     <ul class="text-left space-y-3 mb-8 flex-1 text-sm">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Complete zaal exclusief voor grote groepen (tot 30+ pers.)</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Meerdere trainers &amp; compleet toernooischema</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Bedrijfscompetitie opzet voor het hele jaar</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Volledig afgestemd op jullie bedrijfsprogramma</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Eigen toernooi op maat samengesteld</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Maximaal 8 spelers voor optimale speeltijd</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Persoonlijke wedstrijdleiding, poules &amp; finale</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-tt-orange mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Inclusief zaal &amp; materiaal bij TTV The Victory</li>
                     </ul>
                     <a href="#contact" class="block w-full bg-tt-black hover:bg-gray-800 text-white font-bold py-3 rounded-full transition-colors btn-speed">Bespreek Mogelijkheden</a>
                 </div>
@@ -650,8 +650,8 @@
         </div>
     </section>
 
-    <!-- Reviews / Ervaringen van Teams -->
-    <section id="reviews" class="pt-16 md:pt-20 pb-16 md:pb-24 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <!-- Reviews / Ervaringen van Teams (Verborgen maar bewaard in de code) -->
+    <section id="reviews" class="hidden pt-16 md:pt-20 pb-16 md:pb-24 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
         <!-- Dynamische decoratieve swoosh linksboven en rechtsonder -->
         <svg class="absolute -left-28 top-8 w-[38rem] h-80 opacity-20 dark:opacity-10 pointer-events-none transform -rotate-6 scale-x-[-1]" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
         <svg class="absolute -right-28 bottom-4 w-[38rem] h-80 opacity-20 dark:opacity-10 pointer-events-none transform rotate-6" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><use href="#tt-streaks"/></svg>
@@ -931,7 +931,7 @@
 
 
     <!-- Contact Formulier -->
-    <section id="contact" class="pt-16 md:pt-20 pb-16 md:pb-24 bg-white dark:bg-gray-900 relative z-20 transition-colors duration-300">
+    <section id="contact" class="pt-16 md:pt-20 pb-56 md:pb-64 bg-white dark:bg-gray-900 relative z-20 transition-colors duration-300">
         <div class="container mx-auto px-4 max-w-5xl">
             <h2 class="font-montserrat text-3xl sm:text-4xl font-black text-center italic mb-10 sm:mb-12 uppercase text-tt-black dark:text-white">
                 <svg class="inline-block w-10 sm:w-12 h-5 sm:h-6 mr-2 sm:mr-3 -mt-2 align-middle" viewBox="0 0 60 24" aria-hidden="true"><use href="#tt-streak-sm"/></svg>Neem <span class="text-tt-orange">Contact</span> Op
@@ -979,8 +979,8 @@
                                 <option value="battle" selected>Company Battle (tot 12 personen · 2,5 uur) – Meest gekozen</option>
                                 <option value="blacklight">Glow-in-the-Dark / Blacklight Team Clinic (The Victory Weesp)</option>
                                 <option value="kickoff">Team Kick-off (tot 12 personen · 1,5 uur)</option>
+                                <option value="toernooi-op-maat">Eigen Toernooi op Maat (tot max. 8 personen)</option>
                                 <option value="woensdagochtend">Woensdagochtend Tafeltennis (The Victory Weesp · 09:30-11:30)</option>
-                                <option value="vitaliteit">Vitaliteit &amp; Maatwerk (grote groepen / meerdaags)</option>
                                 <option value="thevictory">Clinic bij TTV The Victory Weesp</option>
                                 <option value="overig">Overig / Maatwerk voorstel</option>
                             </select>
@@ -997,9 +997,9 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- OFFICIËLE TT CLINICS SHOP & MERCHANDISE -->
+    <!-- OFFICIËLE TT CLINICS SHOP & MERCHANDISE (Verborgen op publieke pagina) -->
     <!-- ========================================== -->
-    <section id="shop" class="pt-16 md:pt-20 pb-56 md:pb-64 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
+    <section id="shop" class="hidden pt-16 md:pt-20 pb-56 md:pb-64 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
         <!-- Achtergrond decoratieve streaks & glow -->
         <div class="absolute -top-32 -left-32 w-96 h-96 bg-tt-orange/10 dark:bg-tt-orange/5 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -1432,7 +1432,7 @@
                     <li><a href="#clinics" class="hover:text-tt-orange transition-colors">Clinics</a></li>
                     <li><a href="#over-ons" class="hover:text-tt-orange transition-colors">Over Ons</a></li>
                     <li><a href="#prijzen" class="hover:text-tt-orange transition-colors">Tarieven</a></li>
-                    <li><a href="#reviews" class="hover:text-tt-orange transition-colors">Reviews</a></li>
+                    <li class="hidden"><a href="#reviews" class="hover:text-tt-orange transition-colors">Reviews</a></li>
                     <li><a href="#contact" class="hover:text-tt-orange transition-colors">Contact</a></li>
                     <li><a href="visitekaartje.html" class="hover:text-tt-orange transition-colors text-tt-orange font-normal hover:underline">Visitekaartje</a></li>
                 </ul>
@@ -1481,6 +1481,31 @@
         window.addEventListener('load', syncNavbarHeight);
         document.addEventListener('DOMContentLoaded', syncNavbarHeight);
         syncNavbarHeight();
+
+        // Optioneel vanuit het Partner Portaal (?shop=1) de verborgen Shop tonen voor de businesscase
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('shop') === '1') {
+                const shopSec = document.getElementById('shop');
+                const contactSec = document.getElementById('contact');
+                const cartBtn = document.getElementById('openCartBtn');
+                const cartDiv = document.getElementById('cartDivider');
+                const navDesk = document.getElementById('navShopDesktop');
+                const navMob = document.getElementById('navShopMobile');
+                if (shopSec) shopSec.classList.remove('hidden');
+                if (contactSec) {
+                    contactSec.classList.remove('pb-56', 'md:pb-64');
+                    contactSec.classList.add('pb-16', 'md:pb-24');
+                }
+                if (cartBtn) {
+                    cartBtn.classList.remove('hidden');
+                    cartBtn.classList.add('flex');
+                }
+                if (cartDiv) cartDiv.classList.remove('hidden');
+                if (navDesk) navDesk.classList.remove('hidden');
+                if (navMob) navMob.classList.remove('hidden');
+            }
+        })();
 
         const toggleBtn = document.getElementById('themeToggle');
         if (toggleBtn) {
