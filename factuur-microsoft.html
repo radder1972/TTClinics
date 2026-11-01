@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factuur TTC-2026-0089 - Microsoft Nederland | TT Clinics</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tt-orange': '#FF6B00',
+                        'tt-orange-dark': '#E05A00',
+                        'tt-black': '#191919',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Exact A4 Standard: 210mm x 297mm */
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        @media screen {
+            .a4-container {
+                width: 210mm;
+                min-height: 297mm;
+                margin: 0 auto;
+                background: #ffffff;
+                box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.06);
+            }
+        }
+
+        @media print {
+            html, body {
+                width: 210mm !important;
+                height: 297mm !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: #ffffff !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .a4-container {
+                width: 210mm !important;
+                height: 297mm !important;
+                max-height: 297mm !important;
+                margin: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 16mm 20mm !important;
+                box-sizing: border-box !important;
+                page-break-after: avoid !important;
+                page-break-inside: avoid !important;
+                overflow: hidden !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-200/70 text-slate-800 font-sans min-h-screen py-8 px-4 sm:px-6">
+
+    <!-- Action Toolbar (hidden on print) -->
+    <div class="max-w-[210mm] mx-auto mb-5 flex items-center justify-between no-print">
+        <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-white border border-slate-300 px-3.5 py-2 rounded-lg shadow-sm transition hover:bg-slate-50">
+            <svg class="w-4 h-4 text-tt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            TT Clinics
+        </a>
+
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-medium text-slate-500 hidden sm:inline">Formaat: A4 (210 × 297 mm)</span>
+            <button onclick="window.print()" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-black text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg shadow-md transition transform active:scale-95 cursor-pointer">
+                <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                <span>Afdrukken / Opslaan als PDF</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Authentic A4 Sheet Document -->
+    <main class="a4-container p-10 sm:p-14 flex flex-col justify-between box-border">
+        
+        <!-- Top Section -->
+        <div>
+            <!-- Header -->
+            <header class="flex justify-between items-start pb-7 border-b border-slate-200">
+                <!-- Brand / Logo -->
+                <div class="flex items-center gap-4">
+                    <img src="images/logo-sticker.png" alt="TT Clinics Logo" class="h-14 w-auto object-contain">
+                    <div>
+                        <h1 class="font-montserrat font-black italic text-2xl text-tt-black tracking-tight leading-none">
+                            <span class="text-tt-orange">TT</span> CLINICS
+                        </h1>
+                        <p class="text-xs text-slate-500 font-medium mt-1.5">'s-Gravelandseweg 3a · 1381 HK Weesp</p>
+                    </div>
+                </div>
+
+                <!-- Invoice Label -->
+                <div class="text-right">
+                    <div class="text-xs uppercase tracking-widest font-extrabold text-slate-400 font-mono">Factuur</div>
+                    <div class="text-2xl font-mono font-bold text-slate-900 mt-0.5"># TTC-2026-0089</div>
+                </div>
+            </header>
+
+            <!-- Address details -->
+            <section class="grid grid-cols-2 gap-8 py-7 border-b border-slate-200 text-sm">
+                <!-- Factuur aan -->
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-2 font-mono">Factuur aan</span>
+                    <div class="font-bold text-slate-900 text-base">Microsoft Nederland B.V.</div>
+                    <div class="text-slate-600 mt-1 space-y-0.5 text-xs sm:text-sm">
+                        <p>T.a.v. People &amp; Culture</p>
+                        <p>Evert van de Beekstraat 354</p>
+                        <p>1118 CZ Schiphol</p>
+                        <p class="pt-1 text-xs text-slate-500 font-mono">KvK: 32057538 · Btw-id: NL007011983B01</p>
+                    </div>
+                </div>
+
+                <!-- Gegevens TT Clinics -->
+                <div class="text-right">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-2 font-mono">Gegevens</span>
+                    <div class="font-bold text-slate-900 text-base">TT Clinics</div>
+                    <div class="text-slate-600 mt-1 space-y-0.5 text-xs sm:text-sm">
+                        <p>Edward Westhoff</p>
+                        <p>info@ttclinics.nl</p>
+                        <p>06 - 11618060</p>
+                        <p class="pt-1 text-xs text-slate-500 font-mono">KvK: 84920193 · Btw-id: NL003829144B01</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Invoice Meta Grid -->
+            <section class="grid grid-cols-4 gap-4 py-5 border-b border-slate-200 text-xs">
+                <div>
+                    <span class="text-slate-400 font-medium block uppercase tracking-wider text-[10px]">Factuurdatum</span>
+                    <span class="font-semibold text-slate-800 text-sm">18 december 2026</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 font-medium block uppercase tracking-wider text-[10px]">Datum Clinic</span>
+                    <span class="font-semibold text-slate-800 text-sm">18 december 2026</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 font-medium block uppercase tracking-wider text-[10px]">Vervaldatum</span>
+                    <span class="font-semibold text-slate-800 text-sm">17 januari 2027</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 font-medium block uppercase tracking-wider text-[10px]">Referentie / PO</span>
+                    <span class="font-mono font-semibold text-slate-800 text-sm">PO-MSFT-2026-94821</span>
+                </div>
+            </section>
+
+            <!-- Line Items Table -->
+            <section class="py-6">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-slate-900 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                            <th class="py-3 pr-4">Omschrijving</th>
+                            <th class="py-3 px-3 text-center w-16 whitespace-nowrap">Aantal</th>
+                            <th class="py-3 px-4 text-right w-32 whitespace-nowrap">Tarief</th>
+                            <th class="py-3 px-3 text-center w-16 whitespace-nowrap">Btw</th>
+                            <th class="py-3 pl-4 text-right w-36 whitespace-nowrap">Totaal (excl.)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <tr class="align-top">
+                            <td class="py-5 pr-4">
+                                <div class="font-bold text-slate-900">
+                                    Glow-in-the-Dark / Blacklight Team Clinic
+                                </div>
+                                <div class="text-slate-500 text-xs mt-1 leading-relaxed">
+                                    Clinic (2,5 uur, tot 12 personen) bij TTV The Victory Weesp incl. UV-installatie, materialen en begeleiding.
+                                </div>
+                            </td>
+                            <td class="py-5 px-3 text-center font-mono font-medium text-slate-700 whitespace-nowrap">1</td>
+                            <td class="py-5 px-4 text-right font-mono text-slate-800 whitespace-nowrap">€&nbsp;1.845,00</td>
+                            <td class="py-5 px-3 text-center font-mono text-slate-600 whitespace-nowrap">21%</td>
+                            <td class="py-5 pl-4 text-right font-mono font-bold text-slate-900 whitespace-nowrap">€&nbsp;1.845,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Calculation & Summary -->
+            <section class="border-t border-slate-200 pt-6 pb-4 flex justify-between items-start gap-8">
+                <!-- Payment Instructions -->
+                <div class="text-xs text-slate-600 max-w-sm space-y-2">
+                    <span class="font-bold text-slate-800 uppercase tracking-wider text-[10px] block">Betaalgegevens</span>
+                    <p>Gelieve het totaalbedrag binnen 30 dagen over te maken o.v.v. factuurnummer <strong>TTC-2026-0089</strong>.</p>
+                    
+                    <div class="pt-2 space-y-1 font-mono text-xs text-slate-700">
+                        <div><span class="text-slate-400">IBAN:</span> <strong class="text-slate-900 whitespace-nowrap">NL44 INGB 0008 2419 72</strong></div>
+                        <div><span class="text-slate-400">BIC:</span> INGBNL2A</div>
+                        <div><span class="text-slate-400">T.n.v.:</span> TT Clinics</div>
+                    </div>
+                </div>
+
+                <!-- Totals Box -->
+                <div class="w-64 space-y-2 text-sm">
+                    <div class="flex justify-between text-slate-600 py-1 border-b border-slate-100">
+                        <span class="whitespace-nowrap">Subtotaal</span>
+                        <span class="font-mono font-medium text-slate-800 whitespace-nowrap">€&nbsp;1.845,00</span>
+                    </div>
+                    <div class="flex justify-between text-slate-600 py-1 border-b border-slate-100">
+                        <span class="whitespace-nowrap">Btw (21%)</span>
+                        <span class="font-mono font-medium text-slate-800 whitespace-nowrap">€&nbsp;387,45</span>
+                    </div>
+                    <div class="flex justify-between text-slate-900 py-2.5 font-bold border-b-2 border-slate-900">
+                        <span class="whitespace-nowrap">Totaal incl. btw</span>
+                        <span class="font-mono text-base text-tt-orange-dark font-extrabold whitespace-nowrap">€&nbsp;2.232,45</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Note at Bottom of A4 -->
+        <footer class="pt-6 border-t border-slate-200 flex justify-between items-center text-xs text-slate-400">
+            <div>Hartelijk dank voor de samenwerking.</div>
+            <div>www.ttclinics.nl</div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
