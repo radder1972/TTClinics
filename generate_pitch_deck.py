@@ -232,7 +232,7 @@ p.font.bold = True
 p.font.color.rgb = C_TEXT_HEAD
 
 p2 = tf_d.add_paragraph()
-p2.text = "TT Clinics  |  info@ttclinics.nl  |  www.ttclinics.nl  |  Heel Nederland"
+p2.text = "TT Clinics  |  edward@ttclinics.nl  |  www.ttclinics.nl  |  Heel Nederland"
 p2.font.name = FONT_BODY
 p2.font.size = Pt(12)
 p2.font.color.rgb = C_TEXT_MUTED
@@ -936,7 +936,7 @@ p.font.bold = True
 p.font.color.rgb = C_TEXT_TITLE
 
 contact_rows = [
-    (ICON_MAIL, "info@ttclinics.nl", C_TEXT_TITLE),
+    (ICON_MAIL, "edward@ttclinics.nl", C_TEXT_TITLE),
     (ICON_PHONE, "06 - 11618060", C_TEXT_TITLE),
     (ICON_WEB, "www.ttclinics.nl", C_ORANGE_DARK),
 ]
