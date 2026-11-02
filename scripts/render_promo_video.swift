@@ -125,7 +125,7 @@ for sc in scenes {
     loadedIcons.append(cgIcon)
 }
 
-guard let nsLogo = NSImage(contentsOfFile: "images/logo-lockup-header.png"),
+guard let nsLogo = NSImage(contentsOfFile: "images/logo-lockup-purewhite.png"),
       let cgLogo = nsLogo.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
     print("❌ Kan logo niet laden")
     exit(1)
@@ -294,91 +294,47 @@ while frameIndex < totalFrames {
         ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
     }
 
-    // D. ECHTE UITGESNEDEN HOEK (GEEN RECHTHOEKIG BLOK!)
-    // Een strakke, dynamische diagonale snede verankerd aan de linkerbovenhoek van het scherm
+    // D. DE SWOOSHES GROOT OP DE ACHTERGROND + HET LOGO GROOT IN HET WIT!
+    // 1. Grote dynamische swooshes over de volle breedte van het scherm
     ctx.saveGState()
+    let swooshX = 60.0
+    let swooshY = 1670.0
+    let swooshScale = 4.8 // GROOT! Spant ~940px breed over de bovenkant
 
-    // 1. Oranje accent-snede (de krachtige schuine oranje lijn)
-    let orangeSlashPath = CGMutablePath()
-    orangeSlashPath.move(to: CGPoint(x: 0, y: 1920))
-    orangeSlashPath.addLine(to: CGPoint(x: 580, y: 1920))
-    orangeSlashPath.addLine(to: CGPoint(x: 430, y: 1680))
-    orangeSlashPath.addLine(to: CGPoint(x: 0, y: 1680))
-    orangeSlashPath.closeSubpath()
-
-    ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
-    ctx.setShadow(offset: CGSize(width: 4, height: -6), blur: 24, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.75))
-    ctx.addPath(orangeSlashPath)
-    ctx.fillPath()
-
-    // 2. HELDER WITTE UITGESNEDEN BINNENKANT (Logo 100% leesbaar met maximaal contrast!)
-    let innerCutoutPath = CGMutablePath()
-    innerCutoutPath.move(to: CGPoint(x: 0, y: 1920))
-    innerCutoutPath.addLine(to: CGPoint(x: 566, y: 1920))
-    innerCutoutPath.addLine(to: CGPoint(x: 418, y: 1688))
-    innerCutoutPath.addLine(to: CGPoint(x: 0, y: 1688))
-    innerCutoutPath.closeSubpath()
-
-    ctx.setFillColor(CGColor(red: 0.98, green: 0.99, blue: 1.0, alpha: 0.96))
-    ctx.addPath(innerCutoutPath)
-    ctx.fillPath()
-
-    // 3. Dynamische scherpe TT swooshes die subtiel over het wit vloeien
-    ctx.saveGState()
-    let swooshClip = CGMutablePath()
-    swooshClip.move(to: CGPoint(x: 0, y: 1920))
-    swooshClip.addLine(to: CGPoint(x: 750, y: 1920))
-    swooshClip.addLine(to: CGPoint(x: 418, y: 1680))
-    swooshClip.addLine(to: CGPoint(x: 0, y: 1680))
-    swooshClip.closeSubpath()
-    ctx.addPath(swooshClip)
-    ctx.clip()
-
-    let swooshX = 140.0
-    let swooshY = 1685.0
-    let swooshScale = 2.1
     ctx.translateBy(x: CGFloat(swooshX), y: CGFloat(swooshY))
     ctx.scaleBy(x: CGFloat(swooshScale), y: CGFloat(swooshScale))
-    ctx.setAlpha(0.28) // Subtiel contrastrijk op wit zodat het logo domineert
+    ctx.setShadow(offset: CGSize(width: 0, height: -4), blur: 18, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.6))
+    ctx.setAlpha(0.70)
 
-    // Oranje hoofdstreak
+    // Oranje hoofdstreak (#FF6B00)
     let p1 = CGMutablePath()
-    p1.move(to: CGPoint(x: 0, y: 82))
-    p1.addLine(to: CGPoint(x: 196, y: 8))
-    p1.addLine(to: CGPoint(x: 176, y: 30))
-    p1.closeSubpath()
+    p1.move(to: CGPoint(x: 0, y: 82)); p1.addLine(to: CGPoint(x: 196, y: 8)); p1.addLine(to: CGPoint(x: 176, y: 30)); p1.closeSubpath()
     ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
-    ctx.addPath(p1)
-    ctx.fillPath()
+    ctx.addPath(p1); ctx.fillPath()
 
-    // Lichtoranje streak
+    // Lichtoranje highlight streak (#FF9A4D)
     let p2 = CGMutablePath()
-    p2.move(to: CGPoint(x: 22, y: 98))
-    p2.addLine(to: CGPoint(x: 184, y: 44))
-    p2.addLine(to: CGPoint(x: 170, y: 56))
-    p2.closeSubpath()
+    p2.move(to: CGPoint(x: 22, y: 98)); p2.addLine(to: CGPoint(x: 184, y: 44)); p2.addLine(to: CGPoint(x: 170, y: 56)); p2.closeSubpath()
     ctx.setFillColor(CGColor(red: 1.0, green: 0.60, blue: 0.30, alpha: 1.0))
-    ctx.addPath(p2)
-    ctx.fillPath()
+    ctx.addPath(p2); ctx.fillPath()
 
-    // Grijze streak
+    // Metallic zilver/witte streak (#E2E8F0)
     let p3 = CGMutablePath()
-    p3.move(to: CGPoint(x: 8, y: 58))
-    p3.addLine(to: CGPoint(x: 150, y: 6))
-    p3.addLine(to: CGPoint(x: 136, y: 20))
-    p3.closeSubpath()
-    ctx.setFillColor(CGColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.0))
-    ctx.addPath(p3)
-    ctx.fillPath()
+    p3.move(to: CGPoint(x: 8, y: 58)); p3.addLine(to: CGPoint(x: 150, y: 6)); p3.addLine(to: CGPoint(x: 136, y: 20)); p3.closeSubpath()
+    ctx.setFillColor(CGColor(red: 0.88, green: 0.91, blue: 0.95, alpha: 1.0))
+    ctx.addPath(p3); ctx.fillPath()
 
     ctx.restoreGState()
 
-    // 4. TT Clinics Logo in de uitgesneden hoek
-    let lw = 360.0
-    let lh = lw * (Double(cgLogo.height) / Double(cgLogo.width))
-    let lx = 32.0
-    let ly = 1740.0
-    ctx.draw(cgLogo, in: CGRect(x: lx, y: ly, width: lw, height: lh))
+    // 2. Het logo GROOT in het WIT er direct bovenop met krachtige schaduw
+    ctx.saveGState()
+    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 24, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.92))
+
+    let logoW = 580.0 // GROOT!
+    let logoH = logoW * (Double(cgLogo.height) / Double(cgLogo.width))
+    let logoX = (Double(width) - logoW) / 2.0 // Gecentreerd
+    let logoY = 1735.0
+    ctx.draw(cgLogo, in: CGRect(x: logoX, y: logoY, width: logoW, height: logoH))
 
     ctx.restoreGState()
 
