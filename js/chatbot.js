@@ -67,10 +67,7 @@
         <!-- Floating Launcher Button -->
         <div id="ttChatLauncher" class="tt-chat-launcher" role="button" aria-label="Open TT Clinics AI Assistent">
           <div class="tt-chat-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <!-- TT Batje Icoon -->
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm-1 18v2c0 .55.45 1 1 1s1-.45 1-1v-2h-2z"/>
-            </svg>
+            <img src="images/chatbot-icon.svg" alt="TT Robot Assistent" width="36" height="36" />
             <span class="tt-status-dot"></span>
           </div>
           <span class="hidden sm:inline font-montserrat font-bold text-sm">Vraag Onze Assistent 🏓</span>
@@ -87,7 +84,9 @@
           <!-- Header -->
           <div class="tt-chat-header">
             <div class="tt-header-left">
-              <div class="tt-header-avatar">🏓</div>
+              <div class="tt-header-avatar">
+                <img src="images/chatbot-icon.svg" alt="TT AI Robot" width="36" height="36" />
+              </div>
               <div class="tt-header-info">
                 <h4>TT Clinics Assistent</h4>
                 <p>Online • Direct advies &amp; offerte</p>
