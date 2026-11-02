@@ -1,78 +1,84 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <defs>
-    <!-- TT Orange Ball 3D Radial Gradient -->
-    <radialGradient id="ballGrad" cx="36%" cy="32%" r="68%">
-      <stop offset="0%" stop-color="#FFAE5C"/>
-      <stop offset="35%" stop-color="#FF6B00"/>
-      <stop offset="80%" stop-color="#D14200"/>
+    <!-- TT Clinics Vibrant Orange 3D Ball -->
+    <radialGradient id="ballGlow" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFB266"/>
+      <stop offset="25%" stop-color="#FF6B00"/>
+      <stop offset="75%" stop-color="#D64400"/>
       <stop offset="100%" stop-color="#9E2F00"/>
     </radialGradient>
 
-    <!-- Sleek Titanium/Carbon Visor Gradient -->
-    <linearGradient id="visorCarbon" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B"/>
-      <stop offset="50%" stop-color="#0F172A"/>
-      <stop offset="100%" stop-color="#020617"/>
+    <!-- Sleek Obsidian Visor -->
+    <linearGradient id="visorMatte" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F293D"/>
+      <stop offset="40%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#030712"/>
     </linearGradient>
 
-    <!-- Cyan Laser Glow -->
-    <filter id="cyberGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
+    <!-- Cyan Laser Optic Glow -->
+    <filter id="cyberGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- Drop Shadow for depth -->
-    <filter id="softShadow" x="-15%" y="-15%" width="130%" height="135%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+    <!-- Soft Drop Shadow -->
+    <filter id="iconShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.35"/>
     </filter>
   </defs>
 
-  <g filter="url(#softShadow)">
-    <!-- Abstract Speed Orbit Trail (The pingpong ball smash trajectory) -->
-    <path d="M14 26 C26 10, 68 8, 86 22" fill="none" stroke="#FF8533" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
-    <path d="M10 38 C16 20, 52 12, 78 16" fill="none" stroke="#FFA04D" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <g filter="url(#iconShadow)">
+    <!-- Abstract Aerodynamic Speed Rings / Orbit -->
+    <path d="M16 26 C28 10, 68 8, 86 22" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+    <path d="M12 36 C18 20, 52 12, 78 16" fill="none" stroke="#FFB266" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
 
-    <!-- The Table Tennis Ball Core (Main Head Sphere) -->
-    <circle cx="50" cy="52" r="35" fill="url(#ballGrad)"/>
+    <!-- Main Spherical Body: The Table Tennis Ball -->
+    <circle cx="50" cy="52" r="37" fill="url(#ballGlow)"/>
 
-    <!-- Subtle TT Seam Highlight Curve -->
-    <path d="M24 38 C35 26, 65 26, 76 38" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+    <!-- Subtle TT Ball Seam Curve (3-star ITTF reference) -->
+    <path d="M23 37 C34 24, 66 24, 77 37" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
 
-    <!-- Robot Top Antenna / AI Sensor Spike -->
-    <line x1="50" y1="19" x2="50" y2="8" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="50" cy="6" r="3.5" fill="#00F0FF" filter="url(#cyberGlow)"/>
+    <!-- Top AI Transponder / Micro-Antenna -->
+    <line x1="50" y1="16" x2="50" y2="6" stroke="#0F172A" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="50" cy="5" r="4" fill="#00F0FF" filter="url(#cyberGlow)"/>
+    <circle cx="50" cy="5" r="1.8" fill="#FFFFFF"/>
 
-    <!-- Geometric Cyber Crown / Head Bracket -->
-    <path d="M22 37 C32 24, 68 24, 78 37" fill="none" stroke="#0F172A" stroke-width="4.5" stroke-linecap="round"/>
-    <path d="M25 37 C34 26, 66 26, 75 37" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+    <!-- Cyber Headband / Structural Bracket -->
+    <path d="M20 37 C30 23, 70 23, 80 37" fill="none" stroke="#0F172A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M23 37 C32 25, 68 25, 77 37" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
 
-    <!-- The Robot Visor: Ultra-Clean Angular Cyber Shield -->
+    <!-- Angular Robot Cyber-Visor -->
     <!-- Visor Beveled Outer Frame -->
-    <path d="M14 50 L25 43 L75 43 L86 50 L78 63 L50 66 L22 63 Z" 
-          fill="url(#visorCarbon)" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M13 50 L25 43 L75 43 L87 50 L79 64 L50 67 L21 64 Z" 
+          fill="url(#visorMatte)" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
     
-    <!-- Visor Front Recess (Dark inner aperture) -->
-    <path d="M26 46 L74 46 L78 52 L70 61 L30 61 L22 52 Z" fill="#040711"/>
+    <!-- Visor Inner Recess (High-Contrast Obsidian Glass) -->
+    <path d="M26 46 L74 46 L78 52 L69 61 L31 61 L22 52 Z" fill="#020617"/>
 
-    <!-- Futuristic Diagonal Lens Reflection -->
-    <path d="M29 48 L46 48 L36 59 L25 59 Z" fill="#FFFFFF" opacity="0.12"/>
+    <!-- Diagonal Glass Specular Glint -->
+    <path d="M29 48 L46 48 L36 59 L25 59 Z" fill="#FFFFFF" opacity="0.14"/>
 
-    <!-- Glowing Cybernetic LED Eyes (Twin Sharp Horizontal Laser Slits) -->
-    <path d="M32 53.5 L43 53.5" stroke="#00F0FF" stroke-width="3.5" stroke-linecap="round" filter="url(#cyberGlow)"/>
-    <circle cx="50" cy="53.5" r="2" fill="#00F0FF" filter="url(#cyberGlow)"/>
-    <path d="M57 53.5 L68 53.5" stroke="#00F0FF" stroke-width="3.5" stroke-linecap="round" filter="url(#cyberGlow)"/>
+    <!-- Glowing Cybernetic LED Eyes (Twin Sharp Laser Slits) -->
+    <path d="M31 53.5 L43 53.5" stroke="#00F0FF" stroke-width="4" stroke-linecap="round" filter="url(#cyberGlow)"/>
+    <circle cx="37" cy="53.5" r="1.5" fill="#FFFFFF"/>
+    
+    <!-- Center Target Core -->
+    <circle cx="50" cy="53.5" r="2.2" fill="#00F0FF" filter="url(#cyberGlow)"/>
 
-    <!-- Micro Audio / Sensor Nodes on Sides (Streamlined) -->
-    <rect x="11" y="46" width="4.5" height="11" rx="2.2" fill="#FF6B00"/>
-    <rect x="84.5" y="46" width="4.5" height="11" rx="2.2" fill="#FF6B00"/>
+    <path d="M57 53.5 L69 53.5" stroke="#00F0FF" stroke-width="4" stroke-linecap="round" filter="url(#cyberGlow)"/>
+    <circle cx="63" cy="53.5" r="1.5" fill="#FFFFFF"/>
 
-    <!-- Specular Ball Highlight (Top Left) -->
-    <ellipse cx="36" cy="32" rx="6" ry="3" transform="rotate(-35 36 32)" fill="#FFFFFF" opacity="0.45"/>
+    <!-- Streamlined Side Audio/Sensor Nodes -->
+    <rect x="10" y="46" width="5" height="12" rx="2.5" fill="#FF6B00" stroke="#0F172A" stroke-width="1"/>
+    <rect x="85" y="46" width="5" height="12" rx="2.5" fill="#FF6B00" stroke="#0F172A" stroke-width="1"/>
 
-    <!-- Minimalist Chin Sensor / Subtle Smiling Notch -->
-    <path d="M46 72 L50 75 L54 72" fill="none" stroke="#0F172A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Top Left Ball Glanslicht -->
+    <ellipse cx="35" cy="30" rx="7" ry="3.5" transform="rotate(-35 35 30)" fill="#FFFFFF" opacity="0.55"/>
+
+    <!-- Subtle Smiling Chin Sensor -->
+    <path d="M45 73 L50 76 L55 73" fill="none" stroke="#0F172A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

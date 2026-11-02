@@ -70,13 +70,12 @@
       const container = document.createElement('div');
       container.id = 'tt-chatbot-container';
       container.innerHTML = `
-        <!-- Floating Launcher Button -->
-        <div id="ttChatLauncher" class="tt-chat-launcher" role="button" aria-label="Open TT Clinics AI Assistent">
+        <!-- Floating Launcher Button: Strakke Icon Knop -->
+        <div id="ttChatLauncher" class="tt-chat-launcher" role="button" aria-label="Open TT Clinics AI Assistent" title="Vraag de TT Clinics AI Assistent 🏓">
           <div class="tt-chat-icon-wrap">
-            <img src="images/chatbot-icon.svg" alt="TT Robot Assistent" width="36" height="36" />
+            <img src="images/chatbot-icon.svg" alt="TT Clinics Assistent" width="44" height="44" />
             <span class="tt-status-dot"></span>
           </div>
-          <span class="hidden sm:inline font-montserrat font-bold text-sm">Vraag Onze Assistent 🏓</span>
         </div>
 
         <!-- Popover Hint Callout -->
@@ -217,15 +216,19 @@
 
     toggleChat(forceState) {
       this.isOpen = typeof forceState === 'boolean' ? forceState : !this.isOpen;
+      const container = document.getElementById('tt-chatbot-container');
+
       if (this.isOpen) {
         this.windowEl.classList.add('is-open');
         this.windowEl.setAttribute('aria-hidden', 'false');
+        if (container) container.classList.add('chat-is-open');
         if (this.calloutEl) this.calloutEl.style.display = 'none';
         setTimeout(() => this.inputEl.focus(), 200);
         this.scrollToBottom();
       } else {
         this.windowEl.classList.remove('is-open');
         this.windowEl.setAttribute('aria-hidden', 'true');
+        if (container) container.classList.remove('chat-is-open');
       }
     }
 
