@@ -4,7 +4,7 @@ import AppKit
 import CoreGraphics
 import CoreText
 
-// Configuratie voor 9:16 Vertical Video (Instagram Reels / TikTok / Shorts)
+// Configuratie voor 100% Fullscreen 9:16 Vertical Video (Instagram Reels / TikTok / YouTube Shorts)
 let width = 1080
 let height = 1920
 let fps: Int32 = 30
@@ -16,8 +16,9 @@ struct PromoScene {
     let tag: String
     let title: String
     let subtitle: String
+    let cta: String
     let duration: Double
-    let panDirection: String // "up", "down", "zoom-in", "zoom-out"
+    let motionType: String // "zoom-in", "zoom-out", "pan-left", "pan-right", "pan-up"
 }
 
 let scenes: [PromoScene] = [
@@ -27,8 +28,9 @@ let scenes: [PromoScene] = [
         tag: "TT CLINICS · HÉT SPORTIEVE BEDRIJFSUITJE",
         title: "Klaar voor méér energie?",
         subtitle: "Hét meest dynamische teamuitje van Nederland",
-        duration: 5.17 + 0.6,
-        panDirection: "zoom-in"
+        cta: "Boek jullie team clinic ➔ ttclinics.nl",
+        duration: 5.0,
+        motionType: "zoom-in"
     ),
     PromoScene(
         imagePath: "images/nieuws-edward-vmbo-kader-clinic.jpg",
@@ -36,17 +38,19 @@ let scenes: [PromoScene] = [
         tag: "EDWARD WESTHOFF · CLINIC MASTER",
         title: "Schaken op topsnelheid!",
         subtitle: "Tricks, effectballen & topsportvitaliteit",
-        duration: 6.69 + 0.6,
-        panDirection: "down"
+        cta: "Inclusief professionele coaching ➔ ttclinics.nl",
+        duration: 7.0,
+        motionType: "zoom-in"
     ),
     PromoScene(
         imagePath: "images/zaal-toernooi-opgeflufft.jpg",
         audioPath: "audio/promo-3-zaal.m4a",
         tag: "DE LOCATIE · WEESP & OP EIGEN KANTOOR",
-        title: "Professionele zaal & topsfeer",
+        title: "Professionele zaal & sfeer",
         subtitle: "Bij The Victory in Weesp én op jullie locatie",
-        duration: 6.10 + 0.6,
-        panDirection: "zoom-in"
+        cta: "Vaste clubzaal of op jullie kantoor ➔ ttclinics.nl",
+        duration: 6.2,
+        motionType: "pan-right"
     ),
     PromoScene(
         imagePath: "images/wisseltrofee-medailles.jpg",
@@ -54,8 +58,9 @@ let scenes: [PromoScene] = [
         tag: "COMPETITIE · COMPANY BATTLE",
         title: "Strijd om de Wisseltrofee 🏆",
         subtitle: "Gezonde rivaliteit, toernooischema & medailles",
-        duration: 6.33 + 0.6,
-        panDirection: "up"
+        cta: "Inclusief officiële trofee & medailles ➔ ttclinics.nl",
+        duration: 6.8,
+        motionType: "pan-up"
     ),
     PromoScene(
         imagePath: "images/blacklight-team-clinic.jpg",
@@ -63,8 +68,9 @@ let scenes: [PromoScene] = [
         tag: "GLOW IN THE DARK · BLACKLIGHT",
         title: "Tafeltennis in het donker 🔮",
         subtitle: "UV-blacklight, fluor batjes & neon beats",
-        duration: 4.38 + 0.6,
-        panDirection: "zoom-out"
+        cta: "Unieke blacklight beleving in Weesp ➔ ttclinics.nl",
+        duration: 5.2,
+        motionType: "zoom-out"
     ),
     PromoScene(
         imagePath: "images/zaal-bar-kantine.jpg",
@@ -72,16 +78,18 @@ let scenes: [PromoScene] = [
         tag: "RESERVEER DIRECT · TTCLINICS.NL",
         title: "Boek jouw Team Clinic! 🏓",
         subtitle: "Gezellig borrelen · Bel 06-11618060",
-        duration: 5.88 + 1.2,
-        panDirection: "zoom-in"
+        cta: "Direct datum reserveren ➔ ttclinics.nl",
+        duration: 7.2,
+        motionType: "zoom-in"
     )
 ]
 
 let totalDuration = scenes.reduce(0.0) { $0 + $1.duration }
 let totalFrames = Int(totalDuration * Double(fps))
 
-print("🎬 Start Renderen van TT Clinics 9:16 Promo Video!")
-print("   Formaat: \(width)x\(height) @ \(fps)fps | Duur: \(String(format: "%.2f", totalDuration))s (\(totalFrames) frames)")
+print("🎬 Start Renderen van 100% Full Bleed TT Clinics 9:16 Video (ZONDER zwarte balken!)")
+print("   Formaat: \(width)x\(height) Full HD | Duur: \(String(format: "%.2f", totalDuration))s (\(totalFrames) frames)")
+print("   Stem: Roos (ElevenLabs Nederlands)")
 
 // 1. Laad beelden
 var loadedImages: [CGImage] = []
@@ -94,8 +102,8 @@ for sc in scenes {
     loadedImages.append(cgImage)
 }
 
-// 2. Video Writer opzetten (tijdelijk zonder audio)
-let rawVideoURL = URL(fileURLWithPath: "video/temp_promo_9x16.mp4")
+// 2. Video Writer opzetten (MP4 H.264 High Quality)
+let rawVideoURL = URL(fileURLWithPath: "video/temp_raw_promo.mp4")
 try? FileManager.default.removeItem(at: rawVideoURL)
 
 let videoWriter = try AVAssetWriter(outputURL: rawVideoURL, fileType: .mp4)
@@ -104,7 +112,7 @@ let videoSettings: [String: Any] = [
     AVVideoWidthKey: width,
     AVVideoHeightKey: height,
     AVVideoCompressionPropertiesKey: [
-        AVVideoAverageBitRateKey: 5_000_000,
+        AVVideoAverageBitRateKey: 6_500_000,
         AVVideoProfileLevelKey: AVVideoProfileLevelH264HighAutoLevel
     ]
 ]
@@ -143,11 +151,29 @@ for sc in scenes {
 }
 
 let colorSpace = CGColorSpaceCreateDeviceRGB()
+
+// Gradiënten voor vloeiende tekstleesbaarheid zonder zwarte balken
+let bottomColors = [
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.88),
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.60),
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.20),
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.0)
+] as CFArray
+let bottomLocs: [CGFloat] = [0.0, 0.40, 0.75, 1.0]
+let bottomGradient = CGGradient(colorsSpace: colorSpace, colors: bottomColors, locations: bottomLocs)!
+
+let topColors = [
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.70),
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.0)
+] as CFArray
+let topLocs: [CGFloat] = [0.0, 1.0]
+let topGradient = CGGradient(colorsSpace: colorSpace, colors: topColors, locations: topLocs)!
+
 var frameIndex = 0
 
 while frameIndex < totalFrames {
     if !writerInput.isReadyForMoreMediaData {
-        usleep(8_000)
+        usleep(6_000)
         continue
     }
 
@@ -190,173 +216,136 @@ while frameIndex < totalFrames {
         break
     }
 
-    // A. Donkere achtergrond
-    ctx.setFillColor(CGColor(red: 0.06, green: 0.08, blue: 0.12, alpha: 1.0))
-    ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
-
     let currentImg = loadedImages[activeSceneIdx]
     let imgOrigW = Double(currentImg.width)
     let imgOrigH = Double(currentImg.height)
 
-    // B. Ambient Bewegende Achtergrond (Groot & verduisterd voor bioscoop-sfeer)
-    ctx.saveGState()
-    let bgZoom = 1.15 + (sceneProgress * 0.06)
-    let bgScale = max(Double(width) / imgOrigW, Double(height) / imgOrigH) * bgZoom
-    let bgW = imgOrigW * bgScale
-    let bgH = imgOrigH * bgScale
-    let bgX = (Double(width) - bgW) / 2.0
-    let bgY = (Double(height) - bgH) / 2.0
-    ctx.draw(currentImg, in: CGRect(x: bgX, y: bgY, width: bgW, height: bgH))
+    // A. 100% FULLSCREEN EDGE-TO-EDGE BEREKENING (GEEN ZWARTE BALKEN!)
+    // De basis-schaal zorgt dat de afbeelding ALTIJD het volledige scherm 1080x1920 dekt:
+    let baseScale = max(Double(width) / imgOrigW, Double(height) / imgOrigH)
     
-    // Donkere overlay over achtergrond
-    ctx.setFillColor(CGColor(red: 0.05, green: 0.07, blue: 0.10, alpha: 0.82))
-    ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
-    ctx.restoreGState()
+    var motionZoom = 1.05
+    var motionOffsetX = 0.0
+    var motionOffsetY = 0.0
 
-    // C. Hoofd Focus Kaart (Scherpe afbeelding in het midden met Ken Burns beweging)
-    ctx.saveGState()
-    let cardMarginX = 64.0
-    let cardW = Double(width) - (cardMarginX * 2.0) // 952px
-    let cardH = 1080.0
-    let cardY = 520.0
-    let cardRect = CGRect(x: cardMarginX, y: cardY, width: cardW, height: cardH)
-
-    // Schaduw achter kaart
-    ctx.setShadow(offset: CGSize(width: 0, height: -16), blur: 32, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.6))
-    
-    // Afgerond masker voor de kaart
-    let clipPath = CGPath(roundedRect: cardRect, cornerWidth: 32, cornerHeight: 32, transform: nil)
-    ctx.addPath(clipPath)
-    ctx.clip()
-
-    // Ken Burns animatie binnen de kaart
-    var innerZoom = 1.0
-    var panY = 0.0
-    switch currentScene.panDirection {
+    switch currentScene.motionType {
     case "zoom-in":
-        innerZoom = 1.02 + (sceneProgress * 0.10)
+        // Subtiele push-in van 1.04 naar 1.15
+        motionZoom = 1.04 + (sceneProgress * 0.11)
     case "zoom-out":
-        innerZoom = 1.12 - (sceneProgress * 0.08)
-    case "up":
-        innerZoom = 1.08
-        panY = -40.0 + (sceneProgress * 80.0)
-    case "down":
-        innerZoom = 1.08
-        panY = 40.0 - (sceneProgress * 80.0)
+        // Pull-out van 1.15 naar 1.04
+        motionZoom = 1.15 - (sceneProgress * 0.11)
+    case "pan-right":
+        // Vloeiende pan van links naar rechts
+        motionZoom = 1.08
+        motionOffsetX = -70.0 + (sceneProgress * 140.0)
+    case "pan-left":
+        // Vloeiende pan van rechts naar links
+        motionZoom = 1.08
+        motionOffsetX = 70.0 - (sceneProgress * 140.0)
+    case "pan-up":
+        // Vloeiende tilt omhoog (bijv. van onderkant trofee naar gouden top)
+        motionZoom = 1.06
+        motionOffsetY = -60.0 + (sceneProgress * 120.0)
     default:
-        innerZoom = 1.05
+        motionZoom = 1.05
     }
 
-    let scale = max(cardW / imgOrigW, cardH / imgOrigH) * innerZoom
-    let drawW = imgOrigW * scale
-    let drawH = imgOrigH * scale
-    let drawX = cardRect.origin.x + (cardW - drawW) / 2.0
-    let drawY = cardRect.origin.y + (cardH - drawH) / 2.0 + panY
-    
+    let finalScale = baseScale * motionZoom
+    let drawW = imgOrigW * finalScale
+    let drawH = imgOrigH * finalScale
+    let drawX = (Double(width) - drawW) / 2.0 + motionOffsetX
+    let drawY = (Double(height) - drawH) / 2.0 + motionOffsetY
+
+    // Teken afbeelding over het VOLLEDIGE scherm (0 tot 1080 breed, 0 tot 1920 hoog)
     ctx.draw(currentImg, in: CGRect(x: drawX, y: drawY, width: drawW, height: drawH))
-    ctx.restoreGState()
 
-    // Oranje rand om de kaart
-    ctx.saveGState()
-    ctx.addPath(clipPath)
-    ctx.setStrokeColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.75)) // TT Orange
-    ctx.setLineWidth(4.0)
-    ctx.strokePath()
-    ctx.restoreGState()
+    // B. OVERLAY GRADIENTEN (Zachte vloeiende schaduwen, GEEN harde zwarte balken!)
+    // Gradiënt aan de onderkant zodat witte tekst altijd 100% scherp en leesbaar is
+    ctx.drawLinearGradient(bottomGradient, start: CGPoint(x: 0, y: 0), end: CGPoint(x: 0, y: 720), options: [])
+    // Gradiënt aan de bovenkant voor subtiel top-logo contrast
+    ctx.drawLinearGradient(topGradient, start: CGPoint(x: 0, y: 1920), end: CGPoint(x: 0, y: 1650), options: [])
 
-    // D. Fade-in bij begin van de scène (0.35s)
-    let fadeDuration = 0.35
+    // C. Vloeiende fade-in aan het begin van elke scène (0.28s)
+    let fadeDuration = 0.28
     if timeInScene < fadeDuration {
         let fadeAlpha = 1.0 - (timeInScene / fadeDuration)
-        ctx.setFillColor(CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: CGFloat(fadeAlpha)))
+        ctx.setFillColor(CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: CGFloat(fadeAlpha * 0.75)))
         ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
     }
 
-    // E. Top Header & Watermark (Veilige zone bovenaan)
-    // TT Clinics Brand Badge (Rechtsboven)
-    let topBrandRect = CGRect(x: 64, y: Double(height) - 180, width: Double(width) - 128, height: 72)
-    let topPillPath = CGPath(roundedRect: topBrandRect, cornerWidth: 36, cornerHeight: 36, transform: nil)
-    ctx.setFillColor(CGColor(red: 0.08, green: 0.11, blue: 0.16, alpha: 0.85))
+    // D. TOP BRANDING PILL (Subtiele compacte badge bovenaan)
+    let topPillRect = CGRect(x: 56, y: 1775, width: 440, height: 58)
+    let topPillPath = CGPath(roundedRect: topPillRect, cornerWidth: 29, cornerHeight: 29, transform: nil)
+    ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.94)) // TT Oranje
     ctx.addPath(topPillPath)
     ctx.fillPath()
-    ctx.setStrokeColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.5))
-    ctx.setLineWidth(2.0)
+
+    // Subtiele glansrand om de pil
+    ctx.setStrokeColor(CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.35))
+    ctx.setLineWidth(1.5)
     ctx.addPath(topPillPath)
     ctx.strokePath()
 
-    // TT Clinics tekst in top badge
     let topAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 26, weight: .black),
-        .foregroundColor: NSColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0)
+        .font: NSFont.systemFont(ofSize: 22, weight: .black),
+        .foregroundColor: NSColor.white
     ]
-    let topStr = NSAttributedString(string: "🏓  TT CLINICS  ·  HÉT SPORTIEVE BEDRIJFSUITJE", attributes: topAttrs)
+    let topStr = NSAttributedString(string: "🏓  TT CLINICS  ·  WEESP", attributes: topAttrs)
     let topLine = CTLineCreateWithAttributedString(topStr)
-    ctx.textPosition = CGPoint(x: 100, y: Double(height) - 146)
+    ctx.textPosition = CGPoint(x: 84, y: 1795)
     CTLineDraw(topLine, ctx)
 
-    // F. Bottom Subtitle & Caption Card (Glazen kaart onderaan met dynamische tekst)
-    let bottomCardRect = CGRect(x: 64, y: 110, width: Double(width) - 128, height: 350)
-    let bottomCardPath = CGPath(roundedRect: bottomCardRect, cornerWidth: 28, cornerHeight: 28, transform: nil)
-    
-    // Kaart achtergrond (donker glas)
-    ctx.setFillColor(CGColor(red: 0.06, green: 0.09, blue: 0.14, alpha: 0.92))
-    ctx.addPath(bottomCardPath)
-    ctx.fillPath()
-    
-    ctx.setStrokeColor(CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.15))
-    ctx.setLineWidth(2.0)
-    ctx.addPath(bottomCardPath)
-    ctx.strokePath()
+    // E. CONTENT ONDERTITELING (Rechtstreeks zwevend over het beeld met sterke schaduw!)
+    ctx.saveGState()
+    ctx.setShadow(offset: CGSize(width: 0, height: 4), blur: 16, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.85))
 
-    // Oranje accentbalkje links in de tekstkaart
-    let accentRect = CGRect(x: 84, y: 150, width: 8, height: 260)
-    ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
-    ctx.fill(accentRect)
-
-    // 1. Tag (oranje)
+    // 1. Tag (Oranje neon accent)
     let tagAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 22, weight: .black),
+        .font: NSFont.systemFont(ofSize: 24, weight: .black),
         .foregroundColor: NSColor(red: 1.0, green: 0.52, blue: 0.1, alpha: 1.0)
     ]
     let tagStr = NSAttributedString(string: currentScene.tag.uppercased(), attributes: tagAttrs)
     let tagLine = CTLineCreateWithAttributedString(tagStr)
-    ctx.textPosition = CGPoint(x: 110, y: 390)
+    ctx.textPosition = CGPoint(x: 56, y: 470)
     CTLineDraw(tagLine, ctx)
 
-    // 2. Titel (Groot, Wit, Heavy Bold)
+    // 2. Titel (Groot, Wit, Extra Vet)
     let titleAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 46, weight: .heavy),
+        .font: NSFont.systemFont(ofSize: 52, weight: .heavy),
         .foregroundColor: NSColor.white
     ]
     let titleStr = NSAttributedString(string: currentScene.title, attributes: titleAttrs)
     let titleLine = CTLineCreateWithAttributedString(titleStr)
-    ctx.textPosition = CGPoint(x: 110, y: 310)
+    ctx.textPosition = CGPoint(x: 56, y: 390)
     CTLineDraw(titleLine, ctx)
 
-    // 3. Subtitel / Spraakondertiteling (Helder wit/grijs)
+    // 3. Gesproken ondertitel (Helder wit met lichte grijstint)
     let subAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 26, weight: .semibold),
-        .foregroundColor: NSColor(white: 0.90, alpha: 1.0)
+        .font: NSFont.systemFont(ofSize: 30, weight: .semibold),
+        .foregroundColor: NSColor(white: 0.94, alpha: 1.0)
     ]
     let subStr = NSAttributedString(string: currentScene.subtitle, attributes: subAttrs)
     let subLine = CTLineCreateWithAttributedString(subStr)
-    ctx.textPosition = CGPoint(x: 110, y: 230)
+    ctx.textPosition = CGPoint(x: 56, y: 315)
     CTLineDraw(subLine, ctx)
 
-    // 4. Website / CTA footer in kaart
+    // 4. CTA / Website link
     let ctaAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 22, weight: .bold),
-        .foregroundColor: NSColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0)
+        .font: NSFont.systemFont(ofSize: 24, weight: .bold),
+        .foregroundColor: NSColor(red: 1.0, green: 0.55, blue: 0.1, alpha: 1.0)
     ]
-    let ctaStr = NSAttributedString(string: "Bekijk arrangementen & boek direct ➔ ttclinics.nl", attributes: ctaAttrs)
+    let ctaStr = NSAttributedString(string: currentScene.cta, attributes: ctaAttrs)
     let ctaLine = CTLineCreateWithAttributedString(ctaStr)
-    ctx.textPosition = CGPoint(x: 110, y: 160)
+    ctx.textPosition = CGPoint(x: 56, y: 240)
     CTLineDraw(ctaLine, ctx)
 
-    // G. Voortgangsbalk helemaal onderaan (TT Oranje)
+    ctx.restoreGState()
+
+    // F. SUBTIELE PROGRESS BAR (Onderaan, TT Oranje, 10px hoog)
     let totalProgress = CGFloat(currentTime / totalDuration)
     ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
-    ctx.fill(CGRect(x: 0, y: 0, width: CGFloat(width) * totalProgress, height: 12))
+    ctx.fill(CGRect(x: 0, y: 0, width: CGFloat(width) * totalProgress, height: 10))
 
     CVPixelBufferUnlockBaseAddress(pixelBuffer, [])
 
@@ -375,25 +364,25 @@ writerInput.markAsFinished()
 let group = DispatchGroup()
 group.enter()
 videoWriter.finishWriting {
-    print("✓ Ruwe video gerenderd: \(rawVideoURL.path)")
+    print("✓ Ruwe video succesvol gerenderd (zonder zwarte balken)")
     group.leave()
 }
 group.wait()
 
-// 3. Audio & Video Muxen met gesproken voice-overs én achtergrondmuziek!
-print("🔊 Muxen van audio (6 scènes voice-over + achtergrondmuziek)...")
+// 3. Audio & Video Muxen met ElevenLabs Roos spraak + achtergrondmuziek
+print("🔊 Muxen van audio met ElevenLabs Nederlandse stem (Roos) en muziek...")
 
 let composition = AVMutableComposition()
 let compVideoTrack = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid)!
 let compVoiceTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)!
 let compMusicTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)!
 
-// Voeg videobeelden toe
+// Videobeelden toevoegen
 let videoAsset = AVURLAsset(url: rawVideoURL)
 let videoTrack = videoAsset.tracks(withMediaType: .video).first!
 try! compVideoTrack.insertTimeRange(CMTimeRange(start: .zero, duration: videoAsset.duration), of: videoTrack, at: .zero)
 
-// Voeg de 6 spraakfragmenten in op hun exacte scènetijd
+// Voeg de 6 ElevenLabs spraakfragmenten in op hun exacte scènetijd
 for (idx, sc) in scenes.enumerated() {
     let audioURL = URL(fileURLWithPath: sc.audioPath)
     if FileManager.default.fileExists(atPath: audioURL.path) {
@@ -406,7 +395,7 @@ for (idx, sc) in scenes.enumerated() {
     }
 }
 
-// Voeg achtergrondmuziek toe met loop / trim
+// Achtergrondmuziek toevoegen
 let bgMusicURL = URL(fileURLWithPath: "audio/promo-bg-music.wav")
 if FileManager.default.fileExists(atPath: bgMusicURL.path) {
     let bgAsset = AVURLAsset(url: bgMusicURL)
@@ -416,10 +405,10 @@ if FileManager.default.fileExists(atPath: bgMusicURL.path) {
     }
 }
 
-// Audio Mix: Voice-over op 100% volume, achtergrondmuziek subtiel op 20%
+// Audio Mix: Voice-over op 100% volume, achtergrondmuziek op 18% (subtiel & warm)
 let audioMix = AVMutableAudioMix()
 let musicParams = AVMutableAudioMixInputParameters(track: compMusicTrack)
-musicParams.setVolume(0.20, at: .zero)
+musicParams.setVolume(0.18, at: .zero)
 
 let voiceParams = AVMutableAudioMixInputParameters(track: compVoiceTrack)
 voiceParams.setVolume(1.0, at: .zero)
@@ -445,7 +434,7 @@ finalExporter.exportAsynchronously {
 }
 muxGroup.wait()
 
-// Schoon tijdelijke bestanden op
+// Schoon tijdelijke ruwe videobestanden op
 try? FileManager.default.removeItem(at: rawVideoURL)
 
-print("🎉 Voltooid! Definitieve 9:16 promotievideo opgeslagen als: \(finalURL.path)")
+print("🎉 Voltooid! Definitieve 9:16 promotievideo ZONDER zwarte balken opgeslagen als: \(finalURL.path)")
