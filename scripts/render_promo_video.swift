@@ -131,6 +131,17 @@ guard let nsLogo = NSImage(contentsOfFile: "images/logo-lockup-header.png"),
     exit(1)
 }
 
+// Extra camerahoeken voor dynamische multi-angle zaaltour in Scène 3
+guard let nsZaal1 = NSImage(contentsOfFile: "images/zaal-toernooi-opgeflufft.jpg"),
+      let cgZaal1 = nsZaal1.cgImage(forProposedRect: nil, context: nil, hints: nil),
+      let nsZaal2 = NSImage(contentsOfFile: "images/zaal-perspectief-opgeflufft.jpg"),
+      let cgZaal2 = nsZaal2.cgImage(forProposedRect: nil, context: nil, hints: nil),
+      let nsZaal3 = NSImage(contentsOfFile: "images/zaal-opgeflufft.jpg"),
+      let cgZaal3 = nsZaal3.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+    print("❌ Kan extra zaal hoeken niet laden")
+    exit(1)
+}
+
 // 2. Video Writer opzetten
 let rawVideoURL = URL(fileURLWithPath: "video/temp_raw_promo.mp4")
 try? FileManager.default.removeItem(at: rawVideoURL)
@@ -246,36 +257,64 @@ while frameIndex < totalFrames {
         break
     }
 
-    let currentImg = loadedImages[activeSceneIdx]
+    var currentImg = loadedImages[activeSceneIdx]
     let currentIcon = loadedIcons[activeSceneIdx]
-    let imgOrigW = Double(currentImg.width)
-    let imgOrigH = Double(currentImg.height)
+    var imgOrigW = Double(currentImg.width)
+    var imgOrigH = Double(currentImg.height)
 
     // A. 100% FULLSCREEN EDGE-TO-EDGE BEREKENING (GEEN ZWARTE BALKEN!)
-    let baseScale = max(Double(width) / imgOrigW, Double(height) / imgOrigH)
-    
     var motionZoom = 1.05
     var motionOffsetX = 0.0
     var motionOffsetY = 0.0
 
-    switch currentScene.motionType {
-    case "zoom-in":
-        motionZoom = 1.04 + (sceneProgress * 0.11)
-    case "zoom-out":
-        motionZoom = 1.15 - (sceneProgress * 0.11)
-    case "pan-right":
-        motionZoom = 1.08
-        motionOffsetX = -70.0 + (sceneProgress * 140.0)
-    case "pan-left":
-        motionZoom = 1.08
-        motionOffsetX = 70.0 - (sceneProgress * 140.0)
-    case "pan-up":
-        motionZoom = 1.06
-        motionOffsetY = -60.0 + (sceneProgress * 120.0)
-    default:
-        motionZoom = 1.05
+    if activeSceneIdx == 2 {
+        // SCÈNE 3: DYNAMISCHE MULTI-ANGLE CAMERA TOUR DOOR DE CLUBZAAL (3 CAMERASTANDPUNTEN)
+        // Duur: 6.2 seconden
+        // Hoek 1 (0.0s - 2.1s): Centrale toernooilijn - dynamische dolly zoom naar voren over de tafels
+        // Hoek 2 (2.1s - 4.15s): Perspectief opstelling richting bar met vloeiende tracking pan
+        // Hoek 3 (4.15s - 6.2s): Groots arena perspectief met pull-back reveal van de speelvloer
+        if timeInScene < 2.1 {
+            currentImg = cgZaal1
+            let p = timeInScene / 2.1
+            motionZoom = 1.04 + (p * 0.12)
+            motionOffsetY = -20.0 + (p * 40.0)
+        } else if timeInScene < 4.15 {
+            currentImg = cgZaal2
+            let t = timeInScene - 2.1
+            let p = t / 2.05
+            motionZoom = 1.08 + (p * 0.04)
+            motionOffsetX = -60.0 + (p * 120.0)
+            motionOffsetY = 10.0
+        } else {
+            currentImg = cgZaal3
+            let t = timeInScene - 4.15
+            let p = t / 2.05
+            motionZoom = 1.15 - (p * 0.10)
+            motionOffsetY = 25.0 - (p * 50.0)
+        }
+        imgOrigW = Double(currentImg.width)
+        imgOrigH = Double(currentImg.height)
+    } else {
+        switch currentScene.motionType {
+        case "zoom-in":
+            motionZoom = 1.04 + (sceneProgress * 0.11)
+        case "zoom-out":
+            motionZoom = 1.15 - (sceneProgress * 0.11)
+        case "pan-right":
+            motionZoom = 1.08
+            motionOffsetX = -70.0 + (sceneProgress * 140.0)
+        case "pan-left":
+            motionZoom = 1.08
+            motionOffsetX = 70.0 - (sceneProgress * 140.0)
+        case "pan-up":
+            motionZoom = 1.06
+            motionOffsetY = -60.0 + (sceneProgress * 120.0)
+        default:
+            motionZoom = 1.05
+        }
     }
 
+    let baseScale = max(Double(width) / imgOrigW, Double(height) / imgOrigH)
     let finalScale = baseScale * motionZoom
     let drawW = imgOrigW * finalScale
     let drawH = imgOrigH * finalScale
@@ -283,6 +322,42 @@ while frameIndex < totalFrames {
     let drawY = (Double(height) - drawH) / 2.0 + motionOffsetY
 
     ctx.draw(currentImg, in: CGRect(x: drawX, y: drawY, width: drawW, height: drawH))
+
+    // Snelle energieke overgangsflits tussen camerastandpunten in scène 3
+    if activeSceneIdx == 2 {
+        let t1 = timeInScene - 2.1
+        let t2 = timeInScene - 4.15
+        if t1 >= 0 && t1 < 0.18 {
+            let flashAlpha = (1.0 - (t1 / 0.18)) * 0.35
+            ctx.setFillColor(CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: CGFloat(flashAlpha)))
+            ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
+        } else if t2 >= 0 && t2 < 0.18 {
+            let flashAlpha = (1.0 - (t2 / 0.18)) * 0.35
+            ctx.setFillColor(CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: CGFloat(flashAlpha)))
+            ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
+        }
+
+        // Dynamische vliegende TT-bal in scène 3 (Hoek 1 over de speeltafels)
+        if timeInScene >= 0.3 && timeInScene <= 1.4 {
+            let bt = (timeInScene - 0.3) / 1.1
+            let bx = 620.0 - (bt * 220.0)
+            let bouncePhase = bt < 0.5 ? (bt / 0.5) : ((bt - 0.5) / 0.5)
+            let arcHeight = 4.0 * bouncePhase * (1.0 - bouncePhase)
+            let tableY = 820.0 - (bt * 140.0)
+            let by = tableY + (arcHeight * 110.0)
+            let ballSize = 22.0 + (bt * 32.0)
+
+            ctx.saveGState()
+            ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 18, color: CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.85))
+            ctx.setFillColor(CGColor(red: 1.0, green: 0.48, blue: 0.0, alpha: 0.95))
+            ctx.fillEllipse(in: CGRect(x: bx, y: by, width: ballSize, height: ballSize))
+
+            // Witte glans / 3D highlight
+            ctx.setFillColor(CGColor(red: 1.0, green: 0.90, blue: 0.70, alpha: 0.90))
+            ctx.fillEllipse(in: CGRect(x: bx + (ballSize * 0.25), y: by + (ballSize * 0.45), width: ballSize * 0.38, height: ballSize * 0.38))
+            ctx.restoreGState()
+        }
+    }
 
     // B. VLOEIENDE SCHADUW-GRADIËNT VOOR TEKSTLEESBAARHEID ONDERAAN
     ctx.drawLinearGradient(bottomGradient, start: CGPoint(x: 0, y: 0), end: CGPoint(x: 0, y: 740), options: [])
