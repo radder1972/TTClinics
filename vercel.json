@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "framework": null,
+  "cleanUrls": true,
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 30
+    }
+  }
+}
