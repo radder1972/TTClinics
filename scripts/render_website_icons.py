@@ -61,6 +61,18 @@ ICONS = {
         <circle cx="12" cy="12" r="10"/>
         <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
     </svg>
+    """,
+    "icon-bot": """
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v4"/>
+        <circle cx="12" cy="2" r="1.5" fill="white"/>
+        <rect width="16" height="12" x="4" y="6" rx="3"/>
+        <circle cx="9" cy="11" r="1.2" fill="white"/>
+        <circle cx="15" cy="11" r="1.2" fill="white"/>
+        <path d="M9 14.5c1 .8 2 1 3 1s2-.2 3-1"/>
+        <path d="M2 12h2"/>
+        <path d="M20 12h2"/>
+    </svg>
     """
 }
 

@@ -70,17 +70,24 @@
       const container = document.createElement('div');
       container.id = 'tt-chatbot-container';
       container.innerHTML = `
-        <!-- Floating Launcher Button: Strakke Icon Knop -->
-        <div id="ttChatLauncher" class="tt-chat-launcher" role="button" aria-label="Open TT Clinics AI Assistent" title="Vraag de TT Clinics AI Assistent 🏓">
-          <div class="tt-chat-icon-wrap">
-            <img src="images/chatbot-icon.svg" alt="TT Clinics Assistent" width="44" height="44" />
-            <span class="tt-status-dot"></span>
-          </div>
+        <!-- Floating Launcher Button: In de exacte TT Clinics tt-icon-ball stijl -->
+        <div id="ttChatLauncher" class="tt-chat-launcher" role="button" aria-label="Open TT Clinics Assistent" title="Vraag de TT Clinics Assistent">
+          <svg class="w-7 h-7 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2v4"></path>
+            <circle cx="12" cy="2" r="1.5" fill="currentColor"></circle>
+            <rect width="16" height="12" x="4" y="6" rx="3"></rect>
+            <circle cx="9" cy="11" r="1.2" fill="currentColor"></circle>
+            <circle cx="15" cy="11" r="1.2" fill="currentColor"></circle>
+            <path d="M9 14.5c1 .8 2 1 3 1s2-.2 3-1"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+          </svg>
+          <span class="tt-status-dot"></span>
         </div>
 
         <!-- Popover Hint Callout -->
         <div id="ttChatCallout" class="tt-chat-callout" style="display: none;">
-          <span>Vragen over een clinic of offerte? 🏓</span>
+          <span>Vragen over een clinic of offerte?</span>
           <button id="ttCalloutClose" class="tt-callout-close" aria-label="Sluit hint">&times;</button>
         </div>
 
@@ -90,7 +97,16 @@
           <div class="tt-chat-header">
             <div class="tt-header-left">
               <div class="tt-header-avatar">
-                <img src="images/chatbot-icon.svg" alt="TT AI Robot" width="36" height="36" />
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2v4"></path>
+                  <circle cx="12" cy="2" r="1.5" fill="currentColor"></circle>
+                  <rect width="16" height="12" x="4" y="6" rx="3"></rect>
+                  <circle cx="9" cy="11" r="1.2" fill="currentColor"></circle>
+                  <circle cx="15" cy="11" r="1.2" fill="currentColor"></circle>
+                  <path d="M9 14.5c1 .8 2 1 3 1s2-.2 3-1"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                </svg>
               </div>
               <div class="tt-header-info">
                 <h4>TT Clinics Assistent</h4>
@@ -112,13 +128,28 @@
             <!-- Messages container -->
             <div id="ttChatMessages" class="flex flex-col gap-3"></div>
 
-            <!-- Quick Action Chips -->
+            <!-- Quick Action Chips (Huisstijl SVG iconen) -->
             <div id="ttQuickChips" class="tt-quick-chips">
-              <button class="tt-chip" data-prompt="Welk clinic-pakket past het beste bij ons team?">🏓 Welk pakket past bij ons?</button>
-              <button class="tt-chip" data-prompt="Wat zijn de tarieven van jullie clinics?">💶 Tarieven &amp; Pakketten</button>
-              <button class="tt-chip" data-prompt="Vertel me over de Glow-in-the-Dark / Blacklight clinic!">🔮 Glow / Blacklight clinic</button>
-              <button class="tt-chip" data-prompt="Komen jullie ook op onze eigen bedrijfslocatie?">📍 Locaties (Weesp of kantoor)</button>
-              <button class="tt-chip" data-prompt="Ik wil graag direct een offerte of optie aanvragen.">📋 Offerte aanvragen</button>
+              <button class="tt-chip" data-prompt="Welk clinic-pakket past het beste bij ons team?">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                <span>Welk pakket past bij ons?</span>
+              </button>
+              <button class="tt-chip" data-prompt="Wat zijn de tarieven van jullie clinics?">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>Tarieven &amp; Pakketten</span>
+              </button>
+              <button class="tt-chip" data-prompt="Vertel me over de Glow-in-the-Dark / Blacklight clinic!">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+                <span>Blacklight clinic</span>
+              </button>
+              <button class="tt-chip" data-prompt="Komen jullie ook op onze eigen bedrijfslocatie?">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Locaties (Weesp of eigen kantoor)</span>
+              </button>
+              <button class="tt-chip" data-prompt="Ik wil graag direct een offerte of optie aanvragen.">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></svg>
+                <span>Offerte aanvragen</span>
+              </button>
             </div>
 
             <!-- Typing indicator -->
@@ -453,10 +484,12 @@ Doel: Bezoekers adviseren, vragen beantwoorden en intakegegevens noteren voor ee
         actionsHTML = `
           <div class="tt-chat-actions">
             <button type="button" class="tt-action-btn tt-fill-form-btn">
-              📋 Offerteformulier invullen
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></svg>
+              <span>Offerteformulier invullen</span>
             </button>
             <a href="https://wa.me/31611618060?text=${encodeURIComponent('Hallo Edward, ik heb via de website interesse in een TT Clinic!')}" target="_blank" rel="noopener" class="tt-action-btn">
-              💬 WhatsApp Edward
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+              <span>WhatsApp Edward</span>
             </a>
           </div>
         `;
