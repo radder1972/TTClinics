@@ -295,27 +295,33 @@ while frameIndex < totalFrames {
         ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
     }
 
-    // D. ACHTERGROND GLOED VOOR HET ORIGINELE LOGO (Zachte lichte backlight, GEEN KADER/BOX)
+    // D. TT CLINICS LOGO LINKSBOVEN MET GROTE ACHTERGROND SWOOSHES & BACKLIGHT GLOED
+    let logoW = 500.0
+    let logoH = logoW * (Double(cgLogo.height) / Double(cgLogo.width))
+    let logoX = 56.0 // Strak uitgelijnd met de content & iconen links
+    let logoY = 1730.0
+
+    // 1. Zachte backlight-gloed gecentreerd achter het logo linksboven
+    let glowCenter = CGPoint(x: logoX + (logoW * 0.45), y: logoY + (logoH * 0.45))
     ctx.drawRadialGradient(
         glowGradient,
-        startCenter: CGPoint(x: Double(width) / 2.0, y: 1790.0),
+        startCenter: glowCenter,
         startRadius: 0.0,
-        endCenter: CGPoint(x: Double(width) / 2.0, y: 1790.0),
-        endRadius: 400.0,
+        endCenter: glowCenter,
+        endRadius: 420.0,
         options: [.drawsBeforeStartLocation, .drawsAfterEndLocation]
     )
 
-    // E. DE SWOOSHES GROOT OP DE ACHTERGROND
-    // 1. Grote dynamische swooshes over de volle breedte van het scherm
+    // 2. Dynamische swooshes groot op de achtergrond die vanaf linksboven naar rechts schieten
     ctx.saveGState()
-    let swooshX = 60.0
-    let swooshY = 1670.0
-    let swooshScale = 4.8 // GROOT! Spant ~940px breed over de bovenkant
+    let swooshX = 30.0
+    let swooshY = 1675.0
+    let swooshScale = 4.6
 
     ctx.translateBy(x: CGFloat(swooshX), y: CGFloat(swooshY))
     ctx.scaleBy(x: CGFloat(swooshScale), y: CGFloat(swooshScale))
-    ctx.setShadow(offset: CGSize(width: 0, height: -4), blur: 18, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.6))
-    ctx.setAlpha(0.70)
+    ctx.setShadow(offset: CGSize(width: 0, height: -4), blur: 18, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.55))
+    ctx.setAlpha(0.72)
 
     // Oranje hoofdstreak (#FF6B00)
     let p1 = CGMutablePath()
@@ -337,16 +343,10 @@ while frameIndex < totalFrames {
 
     ctx.restoreGState()
 
-    // 2. Het originele TT Clinics logo in VOLLE ORIGINELE KLEUR (oranje bal + donkere letters, GEEN BOX!)
+    // 3. Het originele TT Clinics logo LINKSBOVEN in VOLLE ORIGINELE KLEUR (GEEN BOX!)
     ctx.saveGState()
-    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 20, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.70))
-
-    let logoW = 560.0
-    let logoH = logoW * (Double(cgLogo.height) / Double(cgLogo.width))
-    let logoX = (Double(width) - logoW) / 2.0
-    let logoY = 1725.0
+    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 18, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.65))
     ctx.draw(cgLogo, in: CGRect(x: logoX, y: logoY, width: logoW, height: logoH))
-
     ctx.restoreGState()
 
     // E. EIGEN 2D ICOON & CONTENT ONDERAAN
