@@ -1015,35 +1015,62 @@
                     </div>
                 </div>
                 <div class="md:w-3/5 p-6 sm:p-8 md:p-10 bg-white dark:bg-gray-800">
-                    <h3 class="font-montserrat text-xl sm:text-2xl font-bold text-tt-black dark:text-white mb-6">Stuur een bericht</h3>
-                    <form class="space-y-4">
+                    <h3 class="font-montserrat text-xl sm:text-2xl font-bold text-tt-black dark:text-white mb-2">Stuur een aanvraag</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Ontvang direct advies of een offerte op maat van Edward Westhoff.</p>
+                    
+                    <form id="ttContactForm" class="space-y-4">
+                        <div id="contactFormAlert" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Naam</label>
-                                <input id="contactNaam" type="text" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="Jouw naam">
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Naam <span class="text-tt-orange">*</span></label>
+                                <input id="contactNaam" name="naam" type="text" required class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="Jouw naam">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">E-mail</label>
-                                <input type="email" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="jouw@email.nl">
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Telefoonnummer <span class="text-tt-orange">*</span></label>
+                                <input id="contactTelefoon" name="telefoon" type="tel" required class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="06 - 12345678">
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Interesse in</label>
-                            <select id="clinicInteresse" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white">
-                                <option value="battle" selected>Company Battle (tot 12 personen · 2,5 uur) – Meest gekozen</option>
-                                <option value="blacklight">Glow-in-the-Dark / Blacklight Team Clinic (The Victory Weesp)</option>
-                                <option value="kickoff">Team Kick-off (tot 12 personen · 1,5 uur)</option>
-                                <option value="toernooi-op-maat">Eigen Toernooi op Maat (tot max. 8 personen)</option>
-                                <option value="woensdagochtend">Woensdagochtend Tafeltennis (The Victory Weesp · 09:30-11:30)</option>
-                                <option value="thevictory">Clinic bij TTV The Victory Weesp</option>
-                                <option value="overig">Overig / Maatwerk voorstel</option>
-                            </select>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">E-mailadres</label>
+                                <input id="contactEmail" name="email" type="email" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="jouw@bedrijf.nl">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Bedrijfsnaam / Team</label>
+                                <input id="contactBedrijf" name="bedrijf" type="text" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="Optioneel">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Bericht</label>
-                            <textarea id="bericht" rows="4" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="Waar kunnen we je mee helpen?"></textarea>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Interesse in</label>
+                                <select id="clinicInteresse" name="clinic" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white">
+                                    <option value="battle" selected>Company Battle (Meest gekozen · tot 12 pers · €745,-)</option>
+                                    <option value="blacklight">Glow-in-the-Dark / Blacklight Team Clinic (Weesp)</option>
+                                    <option value="kickoff">Team Kick-off (tot 12 pers · 1,5 uur · €395,-)</option>
+                                    <option value="toernooi-op-maat">Eigen Toernooi op Maat (grote groepen / maatwerk)</option>
+                                    <option value="woensdagochtend">Woensdagochtend Tafeltennis (The Victory Weesp)</option>
+                                    <option value="thevictory">Clinic bij TTV The Victory Weesp</option>
+                                    <option value="overig">Overig / Vraag aan Edward</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Voorkeursdatum of periode</label>
+                                <input id="contactDatum" name="datum" type="text" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="Bijv. vrijdagmiddag in november">
+                            </div>
                         </div>
-                        <button type="button" class="w-full bg-tt-orange hover:bg-orange-600 text-white font-bold py-3.5 sm:py-3 rounded-lg transition-colors mt-4 btn-speed text-base">Verstuur Bericht</button>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Bericht of opmerkingen</label>
+                            <textarea id="bericht" name="bericht" rows="3" class="w-full px-4 py-2.5 sm:py-2 text-base sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-tt-orange focus:border-tt-orange outline-none transition-all bg-white dark:bg-gray-700 text-tt-black dark:text-white" placeholder="Aantal personen, specifieke wensen of vragen..."></textarea>
+                        </div>
+
+                        <button id="contactSubmitBtn" type="submit" class="w-full bg-tt-orange hover:bg-orange-600 text-white font-black uppercase italic tracking-wide py-3.5 sm:py-3 rounded-xl transition-all duration-300 mt-4 btn-speed text-base shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2">
+                            <span>Verstuur Aanvraag</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -2453,6 +2480,93 @@
             });
             // Also run immediately in case DOM is already ready
             renderCartUI();
+        })();
+    </script>
+
+    <!-- Contact Form Handler (Directe Notificatie naar Edward) -->
+    <script>
+        (function() {
+            const form = document.getElementById('ttContactForm');
+            if (!form) return;
+
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const alertBox = document.getElementById('contactFormAlert');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const naam = document.getElementById('contactNaam')?.value.trim();
+                const telefoon = document.getElementById('contactTelefoon')?.value.trim();
+                const email = document.getElementById('contactEmail')?.value.trim();
+                const bedrijf = document.getElementById('contactBedrijf')?.value.trim();
+                const clinic = document.getElementById('clinicInteresse')?.value;
+                const datum = document.getElementById('contactDatum')?.value.trim();
+                const opmerkingen = document.getElementById('bericht')?.value.trim();
+
+                if (!naam) {
+                    alert('Vul alsjeblieft je naam in.');
+                    return;
+                }
+
+                if (!telefoon && !email) {
+                    alert('Vul minimaal een telefoonnummer of e-mailadres in.');
+                    return;
+                }
+
+                // Loading state
+                const originalBtnHtml = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Versturen...</span>
+                `;
+
+                try {
+                    const response = await fetch('/api/aanvraag', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            naam,
+                            telefoon,
+                            email,
+                            bedrijf,
+                            clinic,
+                            datum,
+                            opmerkingen,
+                            bron: 'Website Contactformulier'
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        alertBox.className = 'p-4 rounded-xl text-sm font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 flex items-start gap-3';
+                        alertBox.innerHTML = `
+                            <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <div>
+                                <div class="font-bold text-base">Aanvraag succesvol verstuurd! 🎉</div>
+                                <div class="text-xs sm:text-sm font-normal mt-0.5 opacity-90">Bedankt <strong>${naam}</strong>! Edward Westhoff heeft je aanvraag ontvangen en neemt z.s.m. telefonisch of per mail contact op.</div>
+                            </div>
+                        `;
+                        alertBox.classList.remove('hidden');
+                        form.reset();
+                        alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        throw new Error(data.error || 'Verzenden mislukt');
+                    }
+                } catch (err) {
+                    console.error('Form error:', err);
+                    alertBox.className = 'p-4 rounded-xl text-sm font-semibold bg-red-50 dark:bg-red-950/60 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800';
+                    alertBox.textContent = 'Er ging iets mis bij het verzenden van je bericht. Bel ons direct op 06 - 11618060 of stuur een e-mail naar edward@ttclinics.nl.';
+                    alertBox.classList.remove('hidden');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+            });
         })();
     </script>
 
