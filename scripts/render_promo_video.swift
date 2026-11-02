@@ -307,11 +307,11 @@ while frameIndex < totalFrames {
     orangeSlashPath.closeSubpath()
 
     ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
-    ctx.setShadow(offset: CGSize(width: 4, height: -6), blur: 22, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.75))
+    ctx.setShadow(offset: CGSize(width: 4, height: -6), blur: 24, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.75))
     ctx.addPath(orangeSlashPath)
     ctx.fillPath()
 
-    // 2. Donkere uitgesneden binnenkant
+    // 2. HELDER WITTE UITGESNEDEN BINNENKANT (Logo 100% leesbaar met maximaal contrast!)
     let innerCutoutPath = CGMutablePath()
     innerCutoutPath.move(to: CGPoint(x: 0, y: 1920))
     innerCutoutPath.addLine(to: CGPoint(x: 566, y: 1920))
@@ -319,11 +319,11 @@ while frameIndex < totalFrames {
     innerCutoutPath.addLine(to: CGPoint(x: 0, y: 1688))
     innerCutoutPath.closeSubpath()
 
-    ctx.setFillColor(CGColor(red: 0.06, green: 0.08, blue: 0.12, alpha: 0.94))
+    ctx.setFillColor(CGColor(red: 0.98, green: 0.99, blue: 1.0, alpha: 0.96))
     ctx.addPath(innerCutoutPath)
     ctx.fillPath()
 
-    // 3. Dynamische scherpe TT swooshes die UIT de uitgesneden hoek vloeien
+    // 3. Dynamische scherpe TT swooshes die subtiel over het wit vloeien
     ctx.saveGState()
     let swooshClip = CGMutablePath()
     swooshClip.move(to: CGPoint(x: 0, y: 1920))
@@ -339,7 +339,7 @@ while frameIndex < totalFrames {
     let swooshScale = 2.1
     ctx.translateBy(x: CGFloat(swooshX), y: CGFloat(swooshY))
     ctx.scaleBy(x: CGFloat(swooshScale), y: CGFloat(swooshScale))
-    ctx.setAlpha(0.88)
+    ctx.setAlpha(0.28) // Subtiel contrastrijk op wit zodat het logo domineert
 
     // Oranje hoofdstreak
     let p1 = CGMutablePath()
