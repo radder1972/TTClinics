@@ -125,7 +125,7 @@ for sc in scenes {
     loadedIcons.append(cgIcon)
 }
 
-guard let nsLogo = NSImage(contentsOfFile: "images/logo-lockup-purewhite.png"),
+guard let nsLogo = NSImage(contentsOfFile: "images/logo-lockup-header.png"),
       let cgLogo = nsLogo.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
     print("❌ Kan logo niet laden")
     exit(1)
@@ -326,17 +326,34 @@ while frameIndex < totalFrames {
 
     ctx.restoreGState()
 
-    // 2. Het logo GROOT in het WIT er direct bovenop met krachtige schaduw
-    ctx.saveGState()
-    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 24, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.92))
-
-    let logoW = 580.0 // GROOT!
+    // 2. Lichte achtergrond achter het originele logo zodat het zwarte gedeelte loepzuiver afsteekt
+    let logoW = 460.0
     let logoH = logoW * (Double(cgLogo.height) / Double(cgLogo.width))
-    let logoX = (Double(width) - logoW) / 2.0 // Gecentreerd
+    let logoX = (Double(width) - logoW) / 2.0
     let logoY = 1735.0
-    ctx.draw(cgLogo, in: CGRect(x: logoX, y: logoY, width: logoW, height: logoH))
 
+    let padX = 26.0
+    let padY = 14.0
+    let pillRect = CGRect(x: logoX - padX, y: logoY - padY, width: logoW + (padX * 2), height: logoH + (padY * 2))
+    let pillPath = CGPath(roundedRect: pillRect, cornerWidth: 26, cornerHeight: 26, transform: nil)
+
+    ctx.saveGState()
+    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 24, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.50))
+    
+    // Heldere lichte capsule (wit met subtiele glans)
+    ctx.setFillColor(CGColor(red: 0.98, green: 0.99, blue: 1.0, alpha: 0.95))
+    ctx.addPath(pillPath)
+    ctx.fillPath()
+
+    // Subtiele TT oranje rand
+    ctx.setStrokeColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.45))
+    ctx.setLineWidth(2.0)
+    ctx.addPath(pillPath)
+    ctx.strokePath()
     ctx.restoreGState()
+
+    // 3. Origineel TT Clinics logo direct op de lichte achtergrond
+    ctx.draw(cgLogo, in: CGRect(x: logoX, y: logoY, width: logoW, height: logoH))
 
     // E. EIGEN 2D ICOON & CONTENT ONDERAAN
     ctx.saveGState()
