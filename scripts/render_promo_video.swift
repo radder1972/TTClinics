@@ -190,12 +190,14 @@ let bottomColors = [
 let bottomLocs: [CGFloat] = [0.0, 0.40, 0.75, 1.0]
 let bottomGradient = CGGradient(colorsSpace: colorSpace, colors: bottomColors, locations: bottomLocs)!
 
-let topColors = [
-    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.75),
-    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.0)
+// Zachte lichte achtergrond-gloed voor het originele logo (zonder box)
+let glowColors = [
+    CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.85),
+    CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.45),
+    CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
 ] as CFArray
-let topLocs: [CGFloat] = [0.0, 1.0]
-let topGradient = CGGradient(colorsSpace: colorSpace, colors: topColors, locations: topLocs)!
+let glowLocs: [CGFloat] = [0.0, 0.45, 1.0]
+let glowGradient = CGGradient(colorsSpace: colorSpace, colors: glowColors, locations: glowLocs)!
 
 var frameIndex = 0
 
@@ -282,9 +284,8 @@ while frameIndex < totalFrames {
 
     ctx.draw(currentImg, in: CGRect(x: drawX, y: drawY, width: drawW, height: drawH))
 
-    // B. VLOEIENDE SCHADUW-GRADIËNTEN VOOR TEKSTLEESBAARHEID
+    // B. VLOEIENDE SCHADUW-GRADIËNT VOOR TEKSTLEESBAARHEID ONDERAAN
     ctx.drawLinearGradient(bottomGradient, start: CGPoint(x: 0, y: 0), end: CGPoint(x: 0, y: 740), options: [])
-    ctx.drawLinearGradient(topGradient, start: CGPoint(x: 0, y: 1920), end: CGPoint(x: 0, y: 1650), options: [])
 
     // C. Vloeiende fade-in per scène (0.28s)
     let fadeDuration = 0.28
@@ -294,7 +295,17 @@ while frameIndex < totalFrames {
         ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
     }
 
-    // D. DE SWOOSHES GROOT OP DE ACHTERGROND + HET LOGO GROOT IN HET WIT!
+    // D. ACHTERGROND GLOED VOOR HET ORIGINELE LOGO (Zachte lichte backlight, GEEN KADER/BOX)
+    ctx.drawRadialGradient(
+        glowGradient,
+        startCenter: CGPoint(x: Double(width) / 2.0, y: 1790.0),
+        startRadius: 0.0,
+        endCenter: CGPoint(x: Double(width) / 2.0, y: 1790.0),
+        endRadius: 400.0,
+        options: [.drawsBeforeStartLocation, .drawsAfterEndLocation]
+    )
+
+    // E. DE SWOOSHES GROOT OP DE ACHTERGROND
     // 1. Grote dynamische swooshes over de volle breedte van het scherm
     ctx.saveGState()
     let swooshX = 60.0
@@ -326,34 +337,17 @@ while frameIndex < totalFrames {
 
     ctx.restoreGState()
 
-    // 2. Lichte achtergrond achter het originele logo zodat het zwarte gedeelte loepzuiver afsteekt
-    let logoW = 460.0
+    // 2. Het originele TT Clinics logo in VOLLE ORIGINELE KLEUR (oranje bal + donkere letters, GEEN BOX!)
+    ctx.saveGState()
+    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 20, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.70))
+
+    let logoW = 560.0
     let logoH = logoW * (Double(cgLogo.height) / Double(cgLogo.width))
     let logoX = (Double(width) - logoW) / 2.0
-    let logoY = 1735.0
-
-    let padX = 26.0
-    let padY = 14.0
-    let pillRect = CGRect(x: logoX - padX, y: logoY - padY, width: logoW + (padX * 2), height: logoH + (padY * 2))
-    let pillPath = CGPath(roundedRect: pillRect, cornerWidth: 26, cornerHeight: 26, transform: nil)
-
-    ctx.saveGState()
-    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 24, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.50))
-    
-    // Heldere lichte capsule (wit met subtiele glans)
-    ctx.setFillColor(CGColor(red: 0.98, green: 0.99, blue: 1.0, alpha: 0.95))
-    ctx.addPath(pillPath)
-    ctx.fillPath()
-
-    // Subtiele TT oranje rand
-    ctx.setStrokeColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.45))
-    ctx.setLineWidth(2.0)
-    ctx.addPath(pillPath)
-    ctx.strokePath()
-    ctx.restoreGState()
-
-    // 3. Origineel TT Clinics logo direct op de lichte achtergrond
+    let logoY = 1725.0
     ctx.draw(cgLogo, in: CGRect(x: logoX, y: logoY, width: logoW, height: logoH))
+
+    ctx.restoreGState()
 
     // E. EIGEN 2D ICOON & CONTENT ONDERAAN
     ctx.saveGState()
