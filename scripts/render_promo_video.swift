@@ -41,11 +41,11 @@ let scenes: [PromoScene] = [
         iconPath: "images/icon-heartbeat.png",
         audioPath: "audio/promo-2-edward.m4a",
         tag: "EDWARD WESTHOFF · CLINIC MASTER",
-        subtag: "VITALITEIT & TOPSPORT",
+        subtag: "VITALITEIT & TOPSFEER",
         title: "Schaken op topsnelheid!",
         subtitle: "Tricks, effectballen & topsportvitaliteit",
-        cta: "Inclusief professionele coaching ➔ ttclinics.nl",
-        duration: 7.0,
+        cta: "Inclusief professionele clinic ➔ ttclinics.nl",
+        duration: 6.2,
         motionType: "zoom-in"
     ),
     PromoScene(
@@ -101,11 +101,9 @@ let scenes: [PromoScene] = [
 let totalDuration = scenes.reduce(0.0) { $0 + $1.duration }
 let totalFrames = Int(totalDuration * Double(fps))
 
-print("🎬 Start Renderen van TT Clinics Promotievideo!")
+print("🎬 Start Renderen van TT Clinics Promotievideo (Uitgesneden hoek & Eye of the Tiger beat)")
 print("   Formaat: \(width)x\(height) Full HD | Duur: \(String(format: "%.2f", totalDuration))s (\(totalFrames) frames)")
-print("   Stem: Roos (ElevenLabs Nederlands)")
-print("   Muziek: Eye of the Tiger stijl opzwepende rock/synth beat")
-print("   Branding: Hoek gereserveerd voor TT Logo & Swooshes + Eigen 2D Iconen")
+print("   Stem: Roos (ElevenLabs Nederlands - Edward = Clinic Master & Coach)")
 
 // 1. Laad beelden
 var loadedImages: [CGImage] = []
@@ -127,7 +125,6 @@ for sc in scenes {
     loadedIcons.append(cgIcon)
 }
 
-// Laad header logo voor de gereserveerde hoek
 guard let nsLogo = NSImage(contentsOfFile: "images/logo-lockup-header.png"),
       let cgLogo = nsLogo.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
     print("❌ Kan logo niet laden")
@@ -184,7 +181,6 @@ for sc in scenes {
 
 let colorSpace = CGColorSpaceCreateDeviceRGB()
 
-// Gradiënten voor doorkijk
 let bottomColors = [
     CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.90),
     CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.60),
@@ -284,10 +280,9 @@ while frameIndex < totalFrames {
     let drawX = (Double(width) - drawW) / 2.0 + motionOffsetX
     let drawY = (Double(height) - drawH) / 2.0 + motionOffsetY
 
-    // Teken afbeelding over het VOLLEDIGE scherm
     ctx.draw(currentImg, in: CGRect(x: drawX, y: drawY, width: drawW, height: drawH))
 
-    // B. VLOEIENDE SCHADUW-GRADIËNTEN VOOR TEKSTLEESBAARHEID (GEEN HARDE BALKEN!)
+    // B. VLOEIENDE SCHADUW-GRADIËNTEN VOOR TEKSTLEESBAARHEID
     ctx.drawLinearGradient(bottomGradient, start: CGPoint(x: 0, y: 0), end: CGPoint(x: 0, y: 740), options: [])
     ctx.drawLinearGradient(topGradient, start: CGPoint(x: 0, y: 1920), end: CGPoint(x: 0, y: 1650), options: [])
 
@@ -299,36 +294,54 @@ while frameIndex < totalFrames {
         ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
     }
 
-    // D. GERESERVEERDE HOEK VOOR TT CLINICS LOGO EN SCHERPE SWOOSHES
+    // D. ECHTE UITGESNEDEN HOEK (GEEN RECHTHOEKIG BLOK!)
+    // Een strakke, dynamische diagonale snede verankerd aan de linkerbovenhoek van het scherm
     ctx.saveGState()
 
-    let cornerBadgeRect = CGRect(x: 44, y: 1730, width: 440, height: 130)
-    let cornerPath = CGPath(roundedRect: cornerBadgeRect, cornerWidth: 24, cornerHeight: 24, transform: nil)
+    // 1. Oranje accent-snede (de krachtige schuine oranje lijn)
+    let orangeSlashPath = CGMutablePath()
+    orangeSlashPath.move(to: CGPoint(x: 0, y: 1920))
+    orangeSlashPath.addLine(to: CGPoint(x: 580, y: 1920))
+    orangeSlashPath.addLine(to: CGPoint(x: 430, y: 1680))
+    orangeSlashPath.addLine(to: CGPoint(x: 0, y: 1680))
+    orangeSlashPath.closeSubpath()
 
-    // Glazen badge achtergrond
-    ctx.setFillColor(CGColor(red: 0.06, green: 0.09, blue: 0.14, alpha: 0.85))
-    ctx.addPath(cornerPath)
+    ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
+    ctx.setShadow(offset: CGSize(width: 4, height: -6), blur: 22, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.75))
+    ctx.addPath(orangeSlashPath)
     ctx.fillPath()
 
-    // Oranje accentrand
-    ctx.setStrokeColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.65))
-    ctx.setLineWidth(2.0)
-    ctx.addPath(cornerPath)
-    ctx.strokePath()
+    // 2. Donkere uitgesneden binnenkant
+    let innerCutoutPath = CGMutablePath()
+    innerCutoutPath.move(to: CGPoint(x: 0, y: 1920))
+    innerCutoutPath.addLine(to: CGPoint(x: 566, y: 1920))
+    innerCutoutPath.addLine(to: CGPoint(x: 418, y: 1688))
+    innerCutoutPath.addLine(to: CGPoint(x: 0, y: 1688))
+    innerCutoutPath.closeSubpath()
 
-    // Teken de scherpe TT swooshes dynamisch binnen het hoekje achter het logo
+    ctx.setFillColor(CGColor(red: 0.06, green: 0.08, blue: 0.12, alpha: 0.94))
+    ctx.addPath(innerCutoutPath)
+    ctx.fillPath()
+
+    // 3. Dynamische scherpe TT swooshes die UIT de uitgesneden hoek vloeien
     ctx.saveGState()
-    ctx.addPath(cornerPath)
+    let swooshClip = CGMutablePath()
+    swooshClip.move(to: CGPoint(x: 0, y: 1920))
+    swooshClip.addLine(to: CGPoint(x: 750, y: 1920))
+    swooshClip.addLine(to: CGPoint(x: 418, y: 1680))
+    swooshClip.addLine(to: CGPoint(x: 0, y: 1680))
+    swooshClip.closeSubpath()
+    ctx.addPath(swooshClip)
     ctx.clip()
 
-    let swooshScale = 1.85
-    let swooshX = 210.0
-    let swooshY = 1715.0
+    let swooshX = 140.0
+    let swooshY = 1685.0
+    let swooshScale = 2.1
     ctx.translateBy(x: CGFloat(swooshX), y: CGFloat(swooshY))
     ctx.scaleBy(x: CGFloat(swooshScale), y: CGFloat(swooshScale))
-    ctx.setAlpha(0.90)
+    ctx.setAlpha(0.88)
 
-    // 1. Oranje hoofdstreak
+    // Oranje hoofdstreak
     let p1 = CGMutablePath()
     p1.move(to: CGPoint(x: 0, y: 82))
     p1.addLine(to: CGPoint(x: 196, y: 8))
@@ -338,7 +351,7 @@ while frameIndex < totalFrames {
     ctx.addPath(p1)
     ctx.fillPath()
 
-    // 2. Lichtoranje highlight streak
+    // Lichtoranje streak
     let p2 = CGMutablePath()
     p2.move(to: CGPoint(x: 22, y: 98))
     p2.addLine(to: CGPoint(x: 184, y: 44))
@@ -348,7 +361,7 @@ while frameIndex < totalFrames {
     ctx.addPath(p2)
     ctx.fillPath()
 
-    // 3. Grijze metallic streak
+    // Grijze streak
     let p3 = CGMutablePath()
     p3.move(to: CGPoint(x: 8, y: 58))
     p3.addLine(to: CGPoint(x: 150, y: 6))
@@ -360,11 +373,11 @@ while frameIndex < totalFrames {
 
     ctx.restoreGState()
 
-    // Teken het officiële TT Clinics header logo bovenop de swooshes
+    // 4. TT Clinics Logo in de uitgesneden hoek
     let lw = 360.0
     let lh = lw * (Double(cgLogo.height) / Double(cgLogo.width))
-    let lx = 60.0
-    let ly = 1730.0 + (130.0 - lh) / 2.0
+    let lx = 32.0
+    let ly = 1740.0
     ctx.draw(cgLogo, in: CGRect(x: lx, y: ly, width: lw, height: lh))
 
     ctx.restoreGState()
@@ -376,13 +389,12 @@ while frameIndex < totalFrames {
     let iconY = 410.0
     let iconSize = 96.0
 
-    // Teken het 2D icoon van de specifieke scène met schaduw
+    // Teken het 2D icoon van de specifieke scène
     ctx.saveGState()
     ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 18, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.85))
     ctx.draw(currentIcon, in: CGRect(x: iconX, y: iconY, width: iconSize, height: iconSize))
     ctx.restoreGState()
 
-    // Tekst naast en onder het icoon
     ctx.setShadow(offset: CGSize(width: 0, height: 4), blur: 16, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.85))
 
     // 1. Tag (oranje neon)
@@ -415,7 +427,7 @@ while frameIndex < totalFrames {
     ctx.textPosition = CGPoint(x: 56, y: 330)
     CTLineDraw(titleLine, ctx)
 
-    // 4. Gesproken ondertitel (Helder wit met grijstint)
+    // 4. Gesproken ondertitel
     let subAttrs: [NSAttributedString.Key: Any] = [
         .font: NSFont.systemFont(ofSize: 28, weight: .semibold),
         .foregroundColor: NSColor(white: 0.94, alpha: 1.0)
@@ -459,7 +471,7 @@ writerInput.markAsFinished()
 let group = DispatchGroup()
 group.enter()
 videoWriter.finishWriting {
-    print("✓ Ruwe video gerenderd met gereserveerde hoek en 2D iconen!")
+    print("✓ Ruwe video gerenderd met uitgesneden hoek!")
     group.leave()
 }
 group.wait()
@@ -499,7 +511,7 @@ if FileManager.default.fileExists(atPath: bgMusicURL.path) {
     }
 }
 
-// Audio Mix: Voice-over 100%, opzwepende rock muziek op 22%
+// Audio Mix: Voice-over 100%, rock muziek op 22%
 let audioMix = AVMutableAudioMix()
 let musicParams = AVMutableAudioMixInputParameters(track: compMusicTrack)
 musicParams.setVolume(0.22, at: .zero)
