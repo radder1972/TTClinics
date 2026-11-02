@@ -12,8 +12,10 @@ let timeScale: Int32 = 600
 
 struct PromoScene {
     let imagePath: String
+    let iconPath: String
     let audioPath: String
     let tag: String
+    let subtag: String
     let title: String
     let subtitle: String
     let cta: String
@@ -24,8 +26,10 @@ struct PromoScene {
 let scenes: [PromoScene] = [
     PromoScene(
         imagePath: "images/hero-photo.jpg",
+        iconPath: "images/icon-chart.png",
         audioPath: "audio/promo-1-hook.m4a",
-        tag: "TT CLINICS · HÉT SPORTIEVE BEDRIJFSUITJE",
+        tag: "TT CLINICS · SPORTIEF BEDRIJFSUITJE",
+        subtag: "ENERGIE & TEAMBUILDING",
         title: "Klaar voor méér energie?",
         subtitle: "Hét meest dynamische teamuitje van Nederland",
         cta: "Boek jullie team clinic ➔ ttclinics.nl",
@@ -34,8 +38,10 @@ let scenes: [PromoScene] = [
     ),
     PromoScene(
         imagePath: "images/nieuws-edward-vmbo-kader-clinic.jpg",
+        iconPath: "images/icon-heartbeat.png",
         audioPath: "audio/promo-2-edward.m4a",
         tag: "EDWARD WESTHOFF · CLINIC MASTER",
+        subtag: "VITALITEIT & TOPSPORT",
         title: "Schaken op topsnelheid!",
         subtitle: "Tricks, effectballen & topsportvitaliteit",
         cta: "Inclusief professionele coaching ➔ ttclinics.nl",
@@ -44,18 +50,22 @@ let scenes: [PromoScene] = [
     ),
     PromoScene(
         imagePath: "images/zaal-toernooi-opgeflufft.jpg",
+        iconPath: "images/icon-location.png",
         audioPath: "audio/promo-3-zaal.m4a",
-        tag: "DE LOCATIE · WEESP & OP EIGEN KANTOOR",
+        tag: "DE LOCATIE · WEESP & OP KANTOOR",
+        subtag: "THUISBASIS THE VICTORY",
         title: "Professionele zaal & sfeer",
         subtitle: "Bij The Victory in Weesp én op jullie locatie",
-        cta: "Vaste clubzaal of op jullie kantoor ➔ ttclinics.nl",
+        cta: "Vaste clubzaal of op eigen locatie ➔ ttclinics.nl",
         duration: 6.2,
         motionType: "pan-right"
     ),
     PromoScene(
         imagePath: "images/wisseltrofee-medailles.jpg",
+        iconPath: "images/icon-trophy.png",
         audioPath: "audio/promo-4-battle.m4a",
         tag: "COMPETITIE · COMPANY BATTLE",
+        subtag: "OFFICIËLE WISSELTROFEE",
         title: "Strijd om de Wisseltrofee 🏆",
         subtitle: "Gezonde rivaliteit, toernooischema & medailles",
         cta: "Inclusief officiële trofee & medailles ➔ ttclinics.nl",
@@ -64,18 +74,22 @@ let scenes: [PromoScene] = [
     ),
     PromoScene(
         imagePath: "images/blacklight-team-clinic.jpg",
+        iconPath: "images/icon-shield.png",
         audioPath: "audio/promo-5-glow.m4a",
         tag: "GLOW IN THE DARK · BLACKLIGHT",
+        subtag: "UNIEKE BELEVING IN HET DONKER",
         title: "Tafeltennis in het donker 🔮",
         subtitle: "UV-blacklight, fluor batjes & neon beats",
-        cta: "Unieke blacklight beleving in Weesp ➔ ttclinics.nl",
+        cta: "Exclusief te boeken in Weesp ➔ ttclinics.nl",
         duration: 5.2,
         motionType: "zoom-out"
     ),
     PromoScene(
         imagePath: "images/zaal-bar-kantine.jpg",
+        iconPath: "images/icon-phone.png",
         audioPath: "audio/promo-6-outro.m4a",
         tag: "RESERVEER DIRECT · TTCLINICS.NL",
+        subtag: "VRAAG EEN VRIJBLIJVEND VOORSTEL AAN",
         title: "Boek jouw Team Clinic! 🏓",
         subtitle: "Gezellig borrelen · Bel 06-11618060",
         cta: "Direct datum reserveren ➔ ttclinics.nl",
@@ -87,12 +101,16 @@ let scenes: [PromoScene] = [
 let totalDuration = scenes.reduce(0.0) { $0 + $1.duration }
 let totalFrames = Int(totalDuration * Double(fps))
 
-print("🎬 Start Renderen van 100% Full Bleed TT Clinics 9:16 Video (ZONDER zwarte balken!)")
+print("🎬 Start Renderen van TT Clinics Promotievideo!")
 print("   Formaat: \(width)x\(height) Full HD | Duur: \(String(format: "%.2f", totalDuration))s (\(totalFrames) frames)")
 print("   Stem: Roos (ElevenLabs Nederlands)")
+print("   Muziek: Eye of the Tiger stijl opzwepende rock/synth beat")
+print("   Branding: Hoek gereserveerd voor TT Logo & Swooshes + Eigen 2D Iconen")
 
 // 1. Laad beelden
 var loadedImages: [CGImage] = []
+var loadedIcons: [CGImage] = []
+
 for sc in scenes {
     guard let nsImage = NSImage(contentsOfFile: sc.imagePath),
           let cgImage = nsImage.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
@@ -100,9 +118,23 @@ for sc in scenes {
         exit(1)
     }
     loadedImages.append(cgImage)
+
+    guard let nsIcon = NSImage(contentsOfFile: sc.iconPath),
+          let cgIcon = nsIcon.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+        print("❌ Kan icoon niet laden: \(sc.iconPath)")
+        exit(1)
+    }
+    loadedIcons.append(cgIcon)
 }
 
-// 2. Video Writer opzetten (MP4 H.264 High Quality)
+// Laad header logo voor de gereserveerde hoek
+guard let nsLogo = NSImage(contentsOfFile: "images/logo-lockup-header.png"),
+      let cgLogo = nsLogo.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+    print("❌ Kan logo niet laden")
+    exit(1)
+}
+
+// 2. Video Writer opzetten
 let rawVideoURL = URL(fileURLWithPath: "video/temp_raw_promo.mp4")
 try? FileManager.default.removeItem(at: rawVideoURL)
 
@@ -152,9 +184,9 @@ for sc in scenes {
 
 let colorSpace = CGColorSpaceCreateDeviceRGB()
 
-// Gradiënten voor vloeiende tekstleesbaarheid zonder zwarte balken
+// Gradiënten voor doorkijk
 let bottomColors = [
-    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.88),
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.90),
     CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.60),
     CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.20),
     CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.0)
@@ -163,7 +195,7 @@ let bottomLocs: [CGFloat] = [0.0, 0.40, 0.75, 1.0]
 let bottomGradient = CGGradient(colorsSpace: colorSpace, colors: bottomColors, locations: bottomLocs)!
 
 let topColors = [
-    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.70),
+    CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.75),
     CGColor(red: 0.02, green: 0.03, blue: 0.05, alpha: 0.0)
 ] as CFArray
 let topLocs: [CGFloat] = [0.0, 1.0]
@@ -217,11 +249,11 @@ while frameIndex < totalFrames {
     }
 
     let currentImg = loadedImages[activeSceneIdx]
+    let currentIcon = loadedIcons[activeSceneIdx]
     let imgOrigW = Double(currentImg.width)
     let imgOrigH = Double(currentImg.height)
 
     // A. 100% FULLSCREEN EDGE-TO-EDGE BEREKENING (GEEN ZWARTE BALKEN!)
-    // De basis-schaal zorgt dat de afbeelding ALTIJD het volledige scherm 1080x1920 dekt:
     let baseScale = max(Double(width) / imgOrigW, Double(height) / imgOrigH)
     
     var motionZoom = 1.05
@@ -230,21 +262,16 @@ while frameIndex < totalFrames {
 
     switch currentScene.motionType {
     case "zoom-in":
-        // Subtiele push-in van 1.04 naar 1.15
         motionZoom = 1.04 + (sceneProgress * 0.11)
     case "zoom-out":
-        // Pull-out van 1.15 naar 1.04
         motionZoom = 1.15 - (sceneProgress * 0.11)
     case "pan-right":
-        // Vloeiende pan van links naar rechts
         motionZoom = 1.08
         motionOffsetX = -70.0 + (sceneProgress * 140.0)
     case "pan-left":
-        // Vloeiende pan van rechts naar links
         motionZoom = 1.08
         motionOffsetX = 70.0 - (sceneProgress * 140.0)
     case "pan-up":
-        // Vloeiende tilt omhoog (bijv. van onderkant trofee naar gouden top)
         motionZoom = 1.06
         motionOffsetY = -60.0 + (sceneProgress * 120.0)
     default:
@@ -257,16 +284,14 @@ while frameIndex < totalFrames {
     let drawX = (Double(width) - drawW) / 2.0 + motionOffsetX
     let drawY = (Double(height) - drawH) / 2.0 + motionOffsetY
 
-    // Teken afbeelding over het VOLLEDIGE scherm (0 tot 1080 breed, 0 tot 1920 hoog)
+    // Teken afbeelding over het VOLLEDIGE scherm
     ctx.draw(currentImg, in: CGRect(x: drawX, y: drawY, width: drawW, height: drawH))
 
-    // B. OVERLAY GRADIENTEN (Zachte vloeiende schaduwen, GEEN harde zwarte balken!)
-    // Gradiënt aan de onderkant zodat witte tekst altijd 100% scherp en leesbaar is
-    ctx.drawLinearGradient(bottomGradient, start: CGPoint(x: 0, y: 0), end: CGPoint(x: 0, y: 720), options: [])
-    // Gradiënt aan de bovenkant voor subtiel top-logo contrast
+    // B. VLOEIENDE SCHADUW-GRADIËNTEN VOOR TEKSTLEESBAARHEID (GEEN HARDE BALKEN!)
+    ctx.drawLinearGradient(bottomGradient, start: CGPoint(x: 0, y: 0), end: CGPoint(x: 0, y: 740), options: [])
     ctx.drawLinearGradient(topGradient, start: CGPoint(x: 0, y: 1920), end: CGPoint(x: 0, y: 1650), options: [])
 
-    // C. Vloeiende fade-in aan het begin van elke scène (0.28s)
+    // C. Vloeiende fade-in per scène (0.28s)
     let fadeDuration = 0.28
     if timeInScene < fadeDuration {
         let fadeAlpha = 1.0 - (timeInScene / fadeDuration)
@@ -274,75 +299,145 @@ while frameIndex < totalFrames {
         ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
     }
 
-    // D. TOP BRANDING PILL (Subtiele compacte badge bovenaan)
-    let topPillRect = CGRect(x: 56, y: 1775, width: 440, height: 58)
-    let topPillPath = CGPath(roundedRect: topPillRect, cornerWidth: 29, cornerHeight: 29, transform: nil)
-    ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.94)) // TT Oranje
-    ctx.addPath(topPillPath)
+    // D. GERESERVEERDE HOEK VOOR TT CLINICS LOGO EN SCHERPE SWOOSHES
+    ctx.saveGState()
+
+    let cornerBadgeRect = CGRect(x: 44, y: 1730, width: 440, height: 130)
+    let cornerPath = CGPath(roundedRect: cornerBadgeRect, cornerWidth: 24, cornerHeight: 24, transform: nil)
+
+    // Glazen badge achtergrond
+    ctx.setFillColor(CGColor(red: 0.06, green: 0.09, blue: 0.14, alpha: 0.85))
+    ctx.addPath(cornerPath)
     ctx.fillPath()
 
-    // Subtiele glansrand om de pil
-    ctx.setStrokeColor(CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.35))
-    ctx.setLineWidth(1.5)
-    ctx.addPath(topPillPath)
+    // Oranje accentrand
+    ctx.setStrokeColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.65))
+    ctx.setLineWidth(2.0)
+    ctx.addPath(cornerPath)
     ctx.strokePath()
 
-    let topAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 22, weight: .black),
-        .foregroundColor: NSColor.white
-    ]
-    let topStr = NSAttributedString(string: "🏓  TT CLINICS  ·  WEESP", attributes: topAttrs)
-    let topLine = CTLineCreateWithAttributedString(topStr)
-    ctx.textPosition = CGPoint(x: 84, y: 1795)
-    CTLineDraw(topLine, ctx)
-
-    // E. CONTENT ONDERTITELING (Rechtstreeks zwevend over het beeld met sterke schaduw!)
+    // Teken de scherpe TT swooshes dynamisch binnen het hoekje achter het logo
     ctx.saveGState()
+    ctx.addPath(cornerPath)
+    ctx.clip()
+
+    let swooshScale = 1.85
+    let swooshX = 210.0
+    let swooshY = 1715.0
+    ctx.translateBy(x: CGFloat(swooshX), y: CGFloat(swooshY))
+    ctx.scaleBy(x: CGFloat(swooshScale), y: CGFloat(swooshScale))
+    ctx.setAlpha(0.90)
+
+    // 1. Oranje hoofdstreak
+    let p1 = CGMutablePath()
+    p1.move(to: CGPoint(x: 0, y: 82))
+    p1.addLine(to: CGPoint(x: 196, y: 8))
+    p1.addLine(to: CGPoint(x: 176, y: 30))
+    p1.closeSubpath()
+    ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
+    ctx.addPath(p1)
+    ctx.fillPath()
+
+    // 2. Lichtoranje highlight streak
+    let p2 = CGMutablePath()
+    p2.move(to: CGPoint(x: 22, y: 98))
+    p2.addLine(to: CGPoint(x: 184, y: 44))
+    p2.addLine(to: CGPoint(x: 170, y: 56))
+    p2.closeSubpath()
+    ctx.setFillColor(CGColor(red: 1.0, green: 0.60, blue: 0.30, alpha: 1.0))
+    ctx.addPath(p2)
+    ctx.fillPath()
+
+    // 3. Grijze metallic streak
+    let p3 = CGMutablePath()
+    p3.move(to: CGPoint(x: 8, y: 58))
+    p3.addLine(to: CGPoint(x: 150, y: 6))
+    p3.addLine(to: CGPoint(x: 136, y: 20))
+    p3.closeSubpath()
+    ctx.setFillColor(CGColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.0))
+    ctx.addPath(p3)
+    ctx.fillPath()
+
+    ctx.restoreGState()
+
+    // Teken het officiële TT Clinics header logo bovenop de swooshes
+    let lw = 360.0
+    let lh = lw * (Double(cgLogo.height) / Double(cgLogo.width))
+    let lx = 60.0
+    let ly = 1730.0 + (130.0 - lh) / 2.0
+    ctx.draw(cgLogo, in: CGRect(x: lx, y: ly, width: lw, height: lh))
+
+    ctx.restoreGState()
+
+    // E. EIGEN 2D ICOON & CONTENT ONDERAAN
+    ctx.saveGState()
+
+    let iconX = 56.0
+    let iconY = 410.0
+    let iconSize = 96.0
+
+    // Teken het 2D icoon van de specifieke scène met schaduw
+    ctx.saveGState()
+    ctx.setShadow(offset: CGSize(width: 0, height: 6), blur: 18, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.85))
+    ctx.draw(currentIcon, in: CGRect(x: iconX, y: iconY, width: iconSize, height: iconSize))
+    ctx.restoreGState()
+
+    // Tekst naast en onder het icoon
     ctx.setShadow(offset: CGSize(width: 0, height: 4), blur: 16, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.85))
 
-    // 1. Tag (Oranje neon accent)
+    // 1. Tag (oranje neon)
     let tagAttrs: [NSAttributedString.Key: Any] = [
         .font: NSFont.systemFont(ofSize: 24, weight: .black),
         .foregroundColor: NSColor(red: 1.0, green: 0.52, blue: 0.1, alpha: 1.0)
     ]
     let tagStr = NSAttributedString(string: currentScene.tag.uppercased(), attributes: tagAttrs)
     let tagLine = CTLineCreateWithAttributedString(tagStr)
-    ctx.textPosition = CGPoint(x: 56, y: 470)
+    ctx.textPosition = CGPoint(x: iconX + iconSize + 20, y: iconY + 54)
     CTLineDraw(tagLine, ctx)
 
-    // 2. Titel (Groot, Wit, Extra Vet)
+    // 2. Sub-tag (helder wit/lichtgrijs)
+    let subtagAttrs: [NSAttributedString.Key: Any] = [
+        .font: NSFont.systemFont(ofSize: 20, weight: .bold),
+        .foregroundColor: NSColor(white: 0.85, alpha: 1.0)
+    ]
+    let subtagStr = NSAttributedString(string: currentScene.subtag.uppercased(), attributes: subtagAttrs)
+    let subtagLine = CTLineCreateWithAttributedString(subtagStr)
+    ctx.textPosition = CGPoint(x: iconX + iconSize + 20, y: iconY + 16)
+    CTLineDraw(subtagLine, ctx)
+
+    // 3. Titel (Groot, Wit, Extra Vet)
     let titleAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 52, weight: .heavy),
+        .font: NSFont.systemFont(ofSize: 50, weight: .heavy),
         .foregroundColor: NSColor.white
     ]
     let titleStr = NSAttributedString(string: currentScene.title, attributes: titleAttrs)
     let titleLine = CTLineCreateWithAttributedString(titleStr)
-    ctx.textPosition = CGPoint(x: 56, y: 390)
+    ctx.textPosition = CGPoint(x: 56, y: 330)
     CTLineDraw(titleLine, ctx)
 
-    // 3. Gesproken ondertitel (Helder wit met lichte grijstint)
+    // 4. Gesproken ondertitel (Helder wit met grijstint)
     let subAttrs: [NSAttributedString.Key: Any] = [
-        .font: NSFont.systemFont(ofSize: 30, weight: .semibold),
+        .font: NSFont.systemFont(ofSize: 28, weight: .semibold),
         .foregroundColor: NSColor(white: 0.94, alpha: 1.0)
     ]
     let subStr = NSAttributedString(string: currentScene.subtitle, attributes: subAttrs)
     let subLine = CTLineCreateWithAttributedString(subStr)
-    ctx.textPosition = CGPoint(x: 56, y: 315)
+    ctx.textPosition = CGPoint(x: 56, y: 260)
     CTLineDraw(subLine, ctx)
 
-    // 4. CTA / Website link
+    // 5. CTA / Website link
     let ctaAttrs: [NSAttributedString.Key: Any] = [
         .font: NSFont.systemFont(ofSize: 24, weight: .bold),
         .foregroundColor: NSColor(red: 1.0, green: 0.55, blue: 0.1, alpha: 1.0)
     ]
     let ctaStr = NSAttributedString(string: currentScene.cta, attributes: ctaAttrs)
     let ctaLine = CTLineCreateWithAttributedString(ctaStr)
-    ctx.textPosition = CGPoint(x: 56, y: 240)
+    ctx.textPosition = CGPoint(x: 56, y: 195)
     CTLineDraw(ctaLine, ctx)
 
     ctx.restoreGState()
 
-    // F. SUBTIELE PROGRESS BAR (Onderaan, TT Oranje, 10px hoog)
+    // F. VOORTGANGSBLAK ONDERAAN (TT Oranje, 10px hoog)
     let totalProgress = CGFloat(currentTime / totalDuration)
     ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 1.0))
     ctx.fill(CGRect(x: 0, y: 0, width: CGFloat(width) * totalProgress, height: 10))
@@ -364,20 +459,19 @@ writerInput.markAsFinished()
 let group = DispatchGroup()
 group.enter()
 videoWriter.finishWriting {
-    print("✓ Ruwe video succesvol gerenderd (zonder zwarte balken)")
+    print("✓ Ruwe video gerenderd met gereserveerde hoek en 2D iconen!")
     group.leave()
 }
 group.wait()
 
-// 3. Audio & Video Muxen met ElevenLabs Roos spraak + achtergrondmuziek
-print("🔊 Muxen van audio met ElevenLabs Nederlandse stem (Roos) en muziek...")
+// 3. Audio & Video Muxen met ElevenLabs Roos spraak + Eye of the Tiger beat
+print("🔊 Muxen van audio met ElevenLabs Nederlandse stem (Roos) en Eye of the Tiger beat...")
 
 let composition = AVMutableComposition()
 let compVideoTrack = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid)!
 let compVoiceTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)!
 let compMusicTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)!
 
-// Videobeelden toevoegen
 let videoAsset = AVURLAsset(url: rawVideoURL)
 let videoTrack = videoAsset.tracks(withMediaType: .video).first!
 try! compVideoTrack.insertTimeRange(CMTimeRange(start: .zero, duration: videoAsset.duration), of: videoTrack, at: .zero)
@@ -395,7 +489,7 @@ for (idx, sc) in scenes.enumerated() {
     }
 }
 
-// Achtergrondmuziek toevoegen
+// Achtergrondmuziek toevoegen (Eye of the Tiger beat)
 let bgMusicURL = URL(fileURLWithPath: "audio/promo-bg-music.wav")
 if FileManager.default.fileExists(atPath: bgMusicURL.path) {
     let bgAsset = AVURLAsset(url: bgMusicURL)
@@ -405,10 +499,10 @@ if FileManager.default.fileExists(atPath: bgMusicURL.path) {
     }
 }
 
-// Audio Mix: Voice-over op 100% volume, achtergrondmuziek op 18% (subtiel & warm)
+// Audio Mix: Voice-over 100%, opzwepende rock muziek op 22%
 let audioMix = AVMutableAudioMix()
 let musicParams = AVMutableAudioMixInputParameters(track: compMusicTrack)
-musicParams.setVolume(0.18, at: .zero)
+musicParams.setVolume(0.22, at: .zero)
 
 let voiceParams = AVMutableAudioMixInputParameters(track: compVoiceTrack)
 voiceParams.setVolume(1.0, at: .zero)
@@ -434,7 +528,7 @@ finalExporter.exportAsynchronously {
 }
 muxGroup.wait()
 
-// Schoon tijdelijke ruwe videobestanden op
+// Schoon tijdelijke ruwe video op
 try? FileManager.default.removeItem(at: rawVideoURL)
 
-print("🎉 Voltooid! Definitieve 9:16 promotievideo ZONDER zwarte balken opgeslagen als: \(finalURL.path)")
+print("🎉 Voltooid! Definitieve 9:16 promotievideo opgeslagen als: \(finalURL.path)")
