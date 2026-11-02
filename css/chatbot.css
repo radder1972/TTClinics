@@ -545,30 +545,6 @@
     cursor: not-allowed;
 }
 
-/* Small API Key Config modal/popover (for testing locally without .env) */
-.tt-config-drawer {
-    position: absolute;
-    top: 56px;
-    left: 0;
-    right: 0;
-    background: #ffffff;
-    padding: 14px 18px;
-    border-bottom: 2px solid #FF6B00;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-size: 12px;
-    z-index: 20;
-    display: none;
-}
-
-.dark .tt-config-drawer {
-    background: #1e293b;
-    color: #f1f5f9;
-}
-
-.tt-config-drawer.is-active {
-    display: block;
-}
-
 /* Responsive mobile mode */
 @media (max-width: 480px) {
     #tt-chatbot-container {

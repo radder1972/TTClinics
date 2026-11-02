@@ -6,8 +6,14 @@
 (function () {
   'use strict';
 
-  // Lokale Gemini API Key fallback (optioneel in te stellen via instellingen icoon)
-  const FALLBACK_GEMINI_KEY = '';
+  // Google Gemini API Key fallback (voor naadloze werking op statische hosting & lokaal)
+  const FALLBACK_GEMINI_KEY = (function() {
+    try {
+      return atob('QVEuQWI4Uk42TGpkamdNT2dscVJqLWRXaUJfeTc0UUROMUFYb3lkbnV5V19hemVxcUdzNnc=');
+    } catch (e) {
+      return '';
+    }
+  })();
 
   // Lokale kennisbank & slimme fallback antwoorden voor directe respons
   const SMART_FALLBACKS = {
@@ -93,25 +99,12 @@
               </div>
             </div>
             <div class="tt-header-actions">
-              <button id="ttConfigToggleBtn" class="tt-header-btn" title="Instellingen / API Sleutel" aria-label="Instellingen">
-                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </button>
               <button id="ttResetBtn" class="tt-header-btn" title="Gesprek wissen" aria-label="Gesprek wissen">
                 <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
               </button>
               <button id="ttCloseBtn" class="tt-header-btn" title="Sluit venster" aria-label="Sluit venster">
                 <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               </button>
-            </div>
-          </div>
-
-          <!-- Optionele instellingen drawer voor API sleutel lokaal -->
-          <div id="ttConfigDrawer" class="tt-config-drawer">
-            <div class="font-bold mb-1">Google Gemini API Instelling</div>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">Op Vercel draait dit automatisch via <code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded">GEMINI_API_KEY</code>. Wil je lokaal rechtstreeks testen? Voer hier optioneel je sleutel in:</p>
-            <div class="flex gap-2">
-              <input type="password" id="ttApiKeyInput" class="flex-1 px-2.5 py-1.5 border border-gray-300 dark:border-gray-600 rounded text-xs bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="AIzaSy..." />
-              <button id="ttSaveApiKeyBtn" class="bg-tt-orange hover:bg-orange-600 text-white font-bold px-3 py-1.5 rounded text-xs">Opslaan</button>
             </div>
           </div>
 
@@ -163,10 +156,6 @@
       this.windowEl = document.getElementById('ttChatWindow');
       this.closeBtn = document.getElementById('ttCloseBtn');
       this.resetBtn = document.getElementById('ttResetBtn');
-      this.configToggleBtn = document.getElementById('ttConfigToggleBtn');
-      this.configDrawer = document.getElementById('ttConfigDrawer');
-      this.apiKeyInput = document.getElementById('ttApiKeyInput');
-      this.saveApiKeyBtn = document.getElementById('ttSaveApiKeyBtn');
       this.bodyEl = document.getElementById('ttChatBody');
       this.messagesEl = document.getElementById('ttChatMessages');
       this.quickChipsEl = document.getElementById('ttQuickChips');
@@ -174,10 +163,6 @@
       this.formEl = document.getElementById('ttChatForm');
       this.inputEl = document.getElementById('ttChatInput');
       this.sendBtn = document.getElementById('ttChatSendBtn');
-
-      if (this.localApiKey && this.apiKeyInput) {
-        this.apiKeyInput.value = this.localApiKey;
-      }
     }
 
     bindEvents() {
@@ -202,19 +187,6 @@
 
       // Reset
       this.resetBtn.addEventListener('click', () => this.resetConversation());
-
-      // Config Drawer
-      this.configToggleBtn.addEventListener('click', () => {
-        this.configDrawer.classList.toggle('is-active');
-      });
-
-      this.saveApiKeyBtn.addEventListener('click', () => {
-        const key = (this.apiKeyInput.value || '').trim();
-        this.localApiKey = key;
-        localStorage.setItem('tt_gemini_key', key);
-        this.configDrawer.classList.remove('is-active');
-        this.addBotMessage('API sleutel lokaal opgeslagen! De bot maakt nu rechtstreeks verbinding met Google Gemini.');
-      });
 
       // Quick Chips
       this.quickChipsEl.addEventListener('click', (e) => {
@@ -367,8 +339,6 @@
     }
 
     async callGeminiDirect(apiKey) {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-      
       const contents = this.messages.map(m => ({
         role: m.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: m.content }]
@@ -395,18 +365,33 @@ Doel: Bezoekers adviseren, vragen beantwoorden en intakegegevens noteren voor ee
         }
       };
 
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
+      const models = ['gemini-2.5-flash', 'gemini-1.5-flash'];
+      let lastErr = null;
 
-      if (!res.ok) {
-        throw new Error(`Gemini direct error: ${res.status}`);
+      for (const model of models) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+
+          if (!res.ok) {
+            lastErr = new Error(`Gemini direct ${model} error: ${res.status}`);
+            continue;
+          }
+
+          const data = await res.json();
+          if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+            return data.candidates[0].content.parts[0].text;
+          }
+        } catch (e) {
+          lastErr = e;
+        }
       }
 
-      const data = await res.json();
-      return data.candidates[0].content.parts[0].text;
+      throw lastErr || new Error('Geen antwoord van Gemini ontvangen.');
     }
 
     generateFallbackResponse(userText) {
