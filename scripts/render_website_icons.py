@@ -73,11 +73,39 @@ ICONS = {
         <path d="M2 12h2"/>
         <path d="M20 12h2"/>
     </svg>
+    """,
+    "icon-racket": """
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10.5" y="15" width="3" height="7" rx="1" />
+        <ellipse cx="12" cy="9" rx="5" ry="6" />
+        <circle cx="19" cy="5" r="2" fill="white" stroke="none" />
+    </svg>
+    """,
+    "icon-glow": """
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>
+    """,
+    "icon-drinks": """
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 11h1a3 3 0 0 1 0 6h-1"/>
+        <path d="M9 12v6"/>
+        <path d="M13 12v6"/>
+        <path d="M14 7.5a6.5 6.5 0 0 0-4-1.5 5 5 0 0 0-4 1.5"/>
+        <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/>
+    </svg>
     """
 }
 
 # Generate standalone HTML for each icon
 for name, svg_content in ICONS.items():
+    badge_bg = "radial-gradient(circle at 32% 28%, #ffffff 0%, #fff0e6 16%, #ff8a33 38%, #ff6b00 70%, #b83d00 100%)"
+    badge_shadow = "0 16px 36px rgba(255, 107, 0, 0.4), inset -6px -9px 18px rgba(130, 40, 0, 0.55), inset 6px 6px 14px rgba(255, 255, 255, 0.85)"
+    
+    if name == "icon-glow":
+        badge_bg = "radial-gradient(circle at 32% 28%, #ffffff 0%, #d8b4fe 16%, #a855f7 40%, #7e22ce 70%, #3b0764 100%)"
+        badge_shadow = "0 16px 36px rgba(168, 85, 247, 0.45), inset -6px -9px 18px rgba(59, 7, 100, 0.55), inset 6px 6px 14px rgba(255, 255, 255, 0.85)"
+
     html_content = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -96,10 +124,8 @@ for name, svg_content in ICONS.items():
     width: 216px;
     height: 216px;
     border-radius: 50%;
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fff0e6 16%, #ff8a33 38%, #ff6b00 70%, #b83d00 100%);
-    box-shadow: 0 16px 36px rgba(255, 107, 0, 0.4),
-                inset -6px -9px 18px rgba(130, 40, 0, 0.55),
-                inset 6px 6px 14px rgba(255, 255, 255, 0.85);
+    background: {badge_bg};
+    box-shadow: {badge_shadow};
     display: flex;
     align-items: center;
     justify-content: center;

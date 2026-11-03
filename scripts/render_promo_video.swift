@@ -26,7 +26,7 @@ struct PromoScene {
 let scenes: [PromoScene] = [
     PromoScene(
         imagePath: "images/hero-photo.jpg",
-        iconPath: "images/icon-chart.png",
+        iconPath: "images/icon-heartbeat.png",
         audioPath: "audio/promo-1-hook.m4a",
         tag: "TT CLINICS · SPORTIEF BEDRIJFSUITJE",
         subtag: "ENERGIE & TEAMBUILDING",
@@ -38,7 +38,7 @@ let scenes: [PromoScene] = [
     ),
     PromoScene(
         imagePath: "images/nieuws-edward-vmbo-kader-clinic.jpg",
-        iconPath: "images/icon-heartbeat.png",
+        iconPath: "images/icon-racket.png",
         audioPath: "audio/promo-2-edward.m4a",
         tag: "EDWARD WESTHOFF · CLINIC MASTER",
         subtag: "VITALITEIT & TOPSFEER",
@@ -74,7 +74,7 @@ let scenes: [PromoScene] = [
     ),
     PromoScene(
         imagePath: "images/blacklight-team-clinic.jpg",
-        iconPath: "images/icon-shield.png",
+        iconPath: "images/icon-glow.png",
         audioPath: "audio/promo-5-glow.m4a",
         tag: "GLOW IN THE DARK · BLACKLIGHT",
         subtag: "UNIEKE BELEVING IN HET DONKER",
@@ -85,8 +85,8 @@ let scenes: [PromoScene] = [
         motionType: "zoom-out"
     ),
     PromoScene(
-        imagePath: "images/zaal-bar-kantine.jpg",
-        iconPath: "images/icon-phone.png",
+        imagePath: "images/zaal-bar-gezellig.jpg",
+        iconPath: "images/icon-drinks.png",
         audioPath: "audio/promo-6-outro.m4a",
         tag: "RESERVEER DIRECT · TTCLINICS.NL",
         subtag: "VRAAG EEN VRIJBLIJVEND VOORSTEL AAN",
@@ -428,8 +428,8 @@ while frameIndex < totalFrames {
     ctx.saveGState()
 
     let iconX = 56.0
-    let iconY = 410.0
-    let iconSize = 96.0
+    let iconY = 485.0
+    let iconSize = 108.0
 
     // Teken het 2D icoon van de specifieke scène
     ctx.saveGState()
@@ -446,7 +446,7 @@ while frameIndex < totalFrames {
     ]
     let tagStr = NSAttributedString(string: currentScene.tag.uppercased(), attributes: tagAttrs)
     let tagLine = CTLineCreateWithAttributedString(tagStr)
-    ctx.textPosition = CGPoint(x: iconX + iconSize + 20, y: iconY + 54)
+    ctx.textPosition = CGPoint(x: iconX + iconSize + 22, y: iconY + 60)
     CTLineDraw(tagLine, ctx)
 
     // 2. Sub-tag (helder wit/lichtgrijs)
@@ -456,7 +456,7 @@ while frameIndex < totalFrames {
     ]
     let subtagStr = NSAttributedString(string: currentScene.subtag.uppercased(), attributes: subtagAttrs)
     let subtagLine = CTLineCreateWithAttributedString(subtagStr)
-    ctx.textPosition = CGPoint(x: iconX + iconSize + 20, y: iconY + 16)
+    ctx.textPosition = CGPoint(x: iconX + iconSize + 22, y: iconY + 18)
     CTLineDraw(subtagLine, ctx)
 
     // 3. Titel (Groot, Wit, Extra Vet)
@@ -466,7 +466,7 @@ while frameIndex < totalFrames {
     ]
     let titleStr = NSAttributedString(string: currentScene.title, attributes: titleAttrs)
     let titleLine = CTLineCreateWithAttributedString(titleStr)
-    ctx.textPosition = CGPoint(x: 56, y: 330)
+    ctx.textPosition = CGPoint(x: 56, y: 400)
     CTLineDraw(titleLine, ctx)
 
     // 4. Gesproken ondertitel
@@ -476,17 +476,17 @@ while frameIndex < totalFrames {
     ]
     let subStr = NSAttributedString(string: currentScene.subtitle, attributes: subAttrs)
     let subLine = CTLineCreateWithAttributedString(subStr)
-    ctx.textPosition = CGPoint(x: 56, y: 260)
+    ctx.textPosition = CGPoint(x: 56, y: 330)
     CTLineDraw(subLine, ctx)
 
-    // 5. CTA / Website link
+    // 5. CTA / Website link (boven de video controls bar!)
     let ctaAttrs: [NSAttributedString.Key: Any] = [
         .font: NSFont.systemFont(ofSize: 24, weight: .bold),
         .foregroundColor: NSColor(red: 1.0, green: 0.55, blue: 0.1, alpha: 1.0)
     ]
     let ctaStr = NSAttributedString(string: currentScene.cta, attributes: ctaAttrs)
     let ctaLine = CTLineCreateWithAttributedString(ctaStr)
-    ctx.textPosition = CGPoint(x: 56, y: 195)
+    ctx.textPosition = CGPoint(x: 56, y: 265)
     CTLineDraw(ctaLine, ctx)
 
     ctx.restoreGState()
