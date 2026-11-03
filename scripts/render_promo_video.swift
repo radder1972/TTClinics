@@ -387,16 +387,15 @@ while frameIndex < totalFrames {
         options: [.drawsBeforeStartLocation, .drawsAfterEndLocation]
     )
 
-    // 2. Dynamische swooshes groot op de achtergrond die vanaf linksboven naar rechts schieten
+// Reusable 2D TT Speed Swooshes (matching #tt-streaks from index.html)
+func drawTTSwooshes(ctx: CGContext, origin: CGPoint, scaleX: CGFloat, scaleY: CGFloat, alpha: CGFloat = 0.8, shadow: Bool = true) {
     ctx.saveGState()
-    let swooshX = 30.0
-    let swooshY = 1675.0
-    let swooshScale = 4.6
-
-    ctx.translateBy(x: CGFloat(swooshX), y: CGFloat(swooshY))
-    ctx.scaleBy(x: CGFloat(swooshScale), y: CGFloat(swooshScale))
-    ctx.setShadow(offset: CGSize(width: 0, height: -4), blur: 18, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.55))
-    ctx.setAlpha(0.72)
+    ctx.translateBy(x: origin.x, y: origin.y)
+    ctx.scaleBy(x: scaleX, y: scaleY)
+    if shadow {
+        ctx.setShadow(offset: CGSize(width: 0, height: -4), blur: 14, color: CGColor(red: 0, green: 0, blue: 0, alpha: 0.55))
+    }
+    ctx.setAlpha(alpha)
 
     // Oranje hoofdstreak (#FF6B00)
     let p1 = CGMutablePath()
@@ -416,7 +415,17 @@ while frameIndex < totalFrames {
     ctx.setFillColor(CGColor(red: 0.88, green: 0.91, blue: 0.95, alpha: 1.0))
     ctx.addPath(p3); ctx.fillPath()
 
+    // Zachte extra oranje accentstreak
+    let p4 = CGMutablePath()
+    p4.move(to: CGPoint(x: 70, y: 100)); p4.addLine(to: CGPoint(x: 200, y: 64)); p4.addLine(to: CGPoint(x: 186, y: 74)); p4.closeSubpath()
+    ctx.setFillColor(CGColor(red: 1.0, green: 0.42, blue: 0.0, alpha: 0.7))
+    ctx.addPath(p4); ctx.fillPath()
+
     ctx.restoreGState()
+}
+
+// 2. Dynamische swooshes groot op de achtergrond die vanaf linksboven naar rechts schieten
+    drawTTSwooshes(ctx: ctx, origin: CGPoint(x: 30, y: 1675), scaleX: 4.6, scaleY: 4.6, alpha: 0.72)
 
     // 3. Het originele TT Clinics logo LINKSBOVEN in VOLLE ORIGINELE KLEUR (GEEN BOX!)
     ctx.saveGState()
@@ -458,6 +467,13 @@ while frameIndex < totalFrames {
     let subtagLine = CTLineCreateWithAttributedString(subtagStr)
     ctx.textPosition = CGPoint(x: iconX + iconSize + 22, y: iconY + 18)
     CTLineDraw(subtagLine, ctx)
+
+    // 2D TT SPEED SWOOSH ACHTER DE TEKST
+    // A. Subtiele grote swoosh rechtsonder op de achtergrond van het tekstvak
+    drawTTSwooshes(ctx: ctx, origin: CGPoint(x: 460, y: 170), scaleX: 3.0, scaleY: 1.8, alpha: 0.22, shadow: false)
+
+    // B. Scherpe dynamische 2D TT swoosh direct achter en onder de scènetitel
+    drawTTSwooshes(ctx: ctx, origin: CGPoint(x: 46, y: 355), scaleX: 3.7, scaleY: 1.12, alpha: 0.65, shadow: true)
 
     // 3. Titel (Groot, Wit, Extra Vet)
     let titleAttrs: [NSAttributedString.Key: Any] = [
